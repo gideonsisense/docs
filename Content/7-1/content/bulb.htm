@@ -1,0 +1,104 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="6498" MadCap:lastWidth="843">
+    <head>
+        <title>Sisense Enabled Bulb</title>
+    </head>
+    <body>
+        <h1>Sisense Enabled Bulb</h1>
+        <p class="bold">Beta License Agreement</p>
+        <p>This product is still in beta and may undergo further changes.</p>
+        <p>The following are instructions for using various equipment with Sisense’s BI Everywhere software functionality (the equipment and the BI Everywhere software is collectively referred to herein as the “Product”). This notice is to remind users that the Product is a beta release offering and is not warranted to be at the level of performance of a commercially available product offering. In addition, the Product may be substantially modified prior to first commercial release, or at Sisense’s option may not be released commercially in the future. As such, by using the equipment along with the Sisense Software, each user agrees (i) to follow all instructions provided by Sisense with respect to the installation and use of the equipment with the Sisense Software, including the below, and (ii) that such use continues to be for testing and evaluation purposes only.</p>
+        <p>The Product and Documentation are provided “AS IS” without warranty of any kind, and Sisense and its licensors and suppliers disclaim all warranties, express, implied or statutory, including without limitation any implied warranties of title, non-infringement of third party rights, merchantability, or fitness for a particular purpose. The entire risk arising out of the use or performance of the Product remains with the user.</p>
+        <p>For the sake of clarity, the provisions in the license agreement between the licensee of the Sisense Software and Sisense (the “License Agreement”), providing any representations, warranties or indemnities shall not apply to the Product. For purposes of the limitation of liability provisions of the License Agreement, no amount has been paid or is payable to Sisense in connection with the Product. However, the license provisions continue to apply to the Sisense Software and the confidentiality provisions of the License Agreement shall continue to apply to those portions of the information shared with you by Sisense that are Confidential Information as defined in the License Agreement or any confidentiality agreement in effect between the licensee and Sisense.</p>
+        <h2 class="notoc">Introduction</h2>
+        <p>Traditional dashboards provide comprehensive access to vast amounts of data, however, sometimes you need quick, actionable insights. The Sisense-Enabled Bulb provides an immediate visual representation of a KPI. Sisense recommends choosing a KPI that is meaningful to your business and you expect might change frequently. KPIs that are relatively static are less meaningful to monitor with the Sisense-Enabled Bulb.</p>
+        <p>To see how Sisense’s Marketing department has implemented the Sisense-Enabled Bulb, click here.</p>
+        <p>If you have not purchased a bulb, for US customers you can purchase one from the LIFX US site and for European customers, you can visit the LIFX Europe site.</p>
+        <p>This page provides the following information:</p>
+        <ul>
+            <li>
+                <a href="#How">How does it Work</a>: Describes how the Sisense-Enabled Bulb works.</li>
+            <li>
+                <a href="#Connecti2">Connecting the Sisense-Enabled Bulb to Your Wi-Fi</a>: Describes how to connect your Sisense-Enabled Bulb to your Wi-Fi.</li>
+            <li>
+                <a href="#Retrievi">Retrieving a Sisense-Enabled Bulb Token</a>: Describes how to retrieve a LIFX token for your bulb.</li>
+            <li>
+                <a href="#Connecti">Connecting Your Bulb to Sisense</a>: Describe how to connect Sisense to your Sisense-Enabled Bulb.</li>
+            <li>
+                <a href="#Troubles">Troubleshooting the Sisense-Enabled Bulb</a>: Describes how to troubleshoot potential issues with the Sisense-Enabled Bulb.</li>
+        </ul>
+        <h2 class="notoc">
+            <a name="How">
+            </a>How does it Work?</h2>
+        <p>The Sisense-Enabled Bulb is connected to your Wi-Fi connection and dynamically updates when a data alert is triggered. You can create data alerts for a wide array of conditions. To learn more, see <a href="../sisense-pulse-and-alerting/create-data-alert.htm">Data Alerts</a>.</p>
+        <p>Sisense can be configured to send a webbook to Zapier each time a data alert is triggered. When the webhook arrives, Zapier sends a request, also known as a ‘Zap’, to LIFX API. The Zap contains the ID of your bulb and defines how your bulb should respond to an alert. For example, how many times the bulb show blink or what color to display.</p>
+        <p>To set up an LIFX bulb, connect your LIFX bulb to your Wifi, retrieve an ID for your bulb, and finally, create a Zap that is sent to the LIFX API when your data alert is triggered.</p>
+        <h2 class="notoc">
+            <a name="Connecti2">
+            </a>Connecting the Sisense-Enabled Bulb to Your WiFi</h2>
+        <p>To connect to the Sisense-Enabled Bulb to your wifi, you must download the LIFX app. The LIFX provides an interface in Apple or Android-based mobile devices for defining your bulb’s color and connections settings.</p>
+        <p class="bold">To connect to the Sisense-Enabled Bulb:</p>
+        <ol>
+            <li>Before plugging the lamp into the power outlet, screw the bulb into the lamp.</li>
+            <li>Plug the lamp into the power outlet and turn it on.<br /><span class="bold">Note</span>: You can reset the lamp by turning the lamp on and off 5 times. When you reset the lamp you must complete this procedure again.</li>
+            <li>Download and install LIFX. For Apple-based mobile devices, click <a href="https://itunes.apple.com/us/app/lifx/id657758311?mt=8" target="_blank">here</a>, and for Android, click <a href="https://play.google.com/store/apps/details?id=com.lifx.lifx" target="_blank">here</a>.</li>
+            <li>Open the LIFX app <img src="../../Resources/Images/lifxapp1.png" class="docbutton" />.</li>
+            <li>In LIFX, tap <span class="bold">Register</span> and create an account.<br /><img src="../../Resources/Images/lisignin.png" class="thumblarge" /></li>
+            <li>Enter an email address and password to be used for your LIFX account and tap <span class="bold">Sign In</span>.</li>
+            <li>In the top-right corner, tap <span class="bold">+</span> and then <span class="bold">Connect light</span>. LIFX locates the bulb.</li>
+            <li>Tap the name of the bulb located by LIFX.<br /><img src="../../Resources/Images/liconnecta.png" class="thumblarge" /></li>
+            <li>Connect the bulb to your Wi-Fi.<br /><img src="../../Resources/Images/liconnectb.png" class="thumblarge" /></li>
+            <li>LIFX will connect to your Sisense-Enabled Bulb, and display a list of all your Sisense-Enabled Bulbs. The current color of your bulb is displayed.<br /><img src="../../Resources/Images/Liconnected1.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Retrievi">
+            </a>Retrieving a Sisense-Enabled Bulb Token</h2>
+        <p>To allow Sisense to communicate with your LIFX bulb, you must provide Sisense with access to your LIFX bulb. After you provide access, LIFX returns a token that you include in your Zap that enables your bulb to authenticate requests from Sisense when updating your bulb’s color.</p>
+        <p class="bold">To retrieve a token:</p>
+        <ol>
+            <li>In your web browser, open the Sisense LIFX authorization site located <a href="https://bulbi.sisense.com/lifxauth/" target="_blank">here</a>.<br /><img src="../../Resources/Images/lifxsign.png" class="thumblarge" /></li>
+            <li>Enter your LIFX account email address and password in the relevant fields.</li>
+            <li>Click <span class="bold">Sign in</span>. The Authorization page is displayed.<br /><img src="../../Resources/Images/authapp-1.png" class="thumblarge" /></li>
+            <li>In the Authorization page, click <span class="bold">Authorize</span>. Your Sisense BulbiToken is displayed.</li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Connecti">
+            </a>Connecting Your Bulb to Sisense</h2>
+        <p>Now that have set up your bulb and retrieved a token, you can create a Zap that defines how your bulb responds to a data alert.</p>
+        <p>When connecting your bulb to Sisense, you need Sisense V6.5 or later and a Zapier account. If you do not have a Zapier account, you can make one for free here.</p>
+        <p>
+            <span class="bold">Note</span>: Repeat this procedure for every color you want your bulb to support. For example, if you use colors green and red to represent alerts, repeat this procedure twice, once for each color.</p>
+        <p class="bold">To configure Zapier to work with the Sisense-Enabled Bulb:</p>
+        <ol>
+            <li>Log in to your Zapier account.</li>
+            <li>Open this <a href="https://zapier.com/app/editor/template/1676" target="_blank">Zap template</a> prepared by Sisense.</li>
+            <li>Click <span class="bold">Create this Zap</span>.</li>
+            <li>Click <span class="bold">Continue</span>. The Webhook Setup options are displayed.</li>
+            <li>Click <span class="bold">Continue</span>. The Test Webhooks page is displayed.</li>
+            <li>In the Test Webhooks page a webhook generated by Zapier is displayed, click <span class="bold">Copy to clipboard</span> to copy this URL.</li>
+            <li>Test the webhook by pasting the it into your browser and add ?data= to the end of the URL to verify that the webhook works. For example:<br />https://hooks.zapier.com/hooks/catch/1779449/5f9jj7/<span class="bold">?data=</span><br />If the webhook is working as expected, you should see “status”: “success” and some additional IDs in your browser. Keep the URL saved in your clipboard as you need to paste it again later.</li>
+            <li>In the Test Webhooks page, click I did this to confirm that you have tested the webhook. A message is displayed confirming that the test was successful.</li>
+            <li>Open the Sisense Web Application.</li>
+            <li>Create a new data alert or edit an existing alert. For more information, see <a href="../sisense-pulse-and-alerting/create-data-alert.htm" target="_blank">Creating Data Alerts</a>.</li>
+            <li>In the Notifications Options of your alert, select <span class="bold">Zapier</span> and paste the webhook URL copied from Step 6 into the <span class="bold">URL</span> field (without the <span class="bold">?data=</span> parameter included in the URL).<br /><img src="../../Resources/Images/total.png" class="thumblarge" /></li>
+            <li>In the bottom left corner of the window, click <span class="bold">Additional Options</span> and select N<span class="bold">otify only once after a condition</span> is met to limit how many times your bulb refreshes itself after an alert is triggered.</li>
+            <li>Return to Zapier and click <span class="bold">Continue</span>.</li>
+            <li>Create a new webhook by clicking <span class="bold">Continue</span>. The Set Up Webhooks page is displayed.<br /><img src="../../Resources/Images/setupzapier1.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">URL</span> field, enter your LIFX URL. The URL has the following structure: <span class="code">https://api.lifx.com/v1/lights/BULB_ID/effects/pulse</span>.Replace <span class="bold">BULB_ID</span> with the token from your LIFX bulb. <span class="bold">The token should be written in lowercase letters.</span><img src="../../Resources/Images/bulbsn.png" class="thumblarge" /></li>
+            <li>Select <span class="bold">Show advanced options</span>. Additional fields are displayed.<br /><img src="../../Resources/Images/zapierfields1.png" class="thumblarge" /></li>
+            <li>From the <span class="bold">Payload Type</span> list, select <span class="bold">JSON</span>.</li>
+            <li>In the Data section you need to add several key-value pairs that determine the behavior of your bulb when an alert is triggered. The values of these keys are passed as parameters through your webhook to the bulb. Click <span class="bold">+</span> to add five fields. Entering the following details into the fields:<br />Key 1: Enter <span class="bold">color</span> in the <span class="bold">Key</span> field and in the <span class="bold">Value</span> field, enter the color you want the bulb to be when an alert is triggered.<br />Key 2: Enter <span class="bold">power_on</span> in the <span class="bold">Key</span> field, and in the <span class="bold">Value</span> field, enter <span class="bold">true</span>. When true, Sisense turns the bulb on even if it is not already on.<br />Key 3: Enter <span class="bold">cycles</span> in the <span class="bold">Key</span> field and in the <span class="bold">Value</span> field enter the number of cycles. Cycles are the number of times a light pulsates when an alert is triggered.<br />Key 4: Enter <span class="bold">period</span> in the <span class="bold">Key</span> field and in the <span class="bold">Value</span> field enter the number of seconds for each period. Periods are the time in seconds for a single cycle to complete.<br />Key 5: Enter persist in the <span class="bold">Key</span> field and in the <span class="bold">Value</span> field, enter <span class="bold">true</span>. When true, the last color displayed in the bulb is the color displayed until your next alert.<br />For example:<br /><img src="../../Resources/Images/zapierdata-300x135.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">Unflatten</span> field, enter <span class="bold">yes</span> to convert fields with underscores into nested dictionaries.</li>
+            <li>In the <span class="bold">Headers</span> section, enter the following key-value pair:<ul><li>In the <span class="bold">Key</span> field, enter <span class="bold">Authorization</span>.</li><li>In the <span class="bold">Value</span> field, enter <span class="bold">Bearer</span> and your LIFX token with a space in between, for example, <span class="bold">Bearer 23Sk5fj23934fLMNs</span>. Click here to retrieve your LIFX token.</li></ul></li>
+            <li>Click <span class="bold">Continue</span>. The Test Webhook page is displayed.</li>
+            <li>Click <span class="bold">Create &amp; Continue</span>. The next time the alert is triggered, Sisense fires a webhook that activates your Sisense-Enabled Bulb.</li>
+        </ol>
+        <h3 class="notoc">
+            <a name="Troubles">
+            </a>Troubleshooting the Sisense-Enabled Bulb</h3>
+        <ul>
+            <li>Bulbs are designed to communicate on channels 1 through 11 on the 2.4GHz (802.11 b,g,n) spectrum. If your router is in auto-channel mode, disable it and ensure you are somewhere between channels 1 through 11. We suggest channels 1, 6, or 11, as these are the only channels that are non-overlapping.</li>
+            <li>You can reset the bulb by turning it on and off 5 times in a row. When you reset the lamp you must reconnect the lamp as described <a href="#Connecti">here</a>.</li>
+        </ul>
+    </body>
+</html>

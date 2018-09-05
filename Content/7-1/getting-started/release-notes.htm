@@ -1,0 +1,1375 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Release Notes | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h2 class="notoc">7.1.3</h2>
+        <p><span class="bold">7.1.3.11003</span> – Service Pack – August 13, 2018</p>
+        <ul>
+            <li>Fixed:&#160;"There was an error reading from the pipe" error could occur under high loads and required restarting the <MadCap:variable name="Variables.ElastiCube" /></li>
+        </ul>
+        <p><span class="bold">7.1.3.10025</span> - Official release of Sisense V7.1.3 - July 22, 2018</p>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Grand totals did not take data security into account when using an Elasticube set in some scenarios</li>
+            <li>Values that included special characters, such as ‘$’, were not filtered as expected</li>
+            <li>Value labels in some scenarios were not displayed as expected</li>
+            <li>In some scenarios, numeric fields were not imported as expected from Postgres data sources</li>
+            <li>In certain scenarios, a catalog file would become corrupted resulting in lost build schedules</li>
+            <li>Updating data security rules did not reset dependent filters selections</li>
+            <li>In some cases, when republishing a dashboard, widgets which were deleted from the original dashboard appeared for shared users</li>
+            <li>Custom SQL queries with NOT EXISTS did not return the correct results in some scenarios</li>
+            <li>When applying a filter of the same time resolution on a multi-pass aggregation with a date field, the grand total was returned</li>
+            <li>When changing the system’s language, Date filters were not translated as expected</li>
+            <li>Some values were not displayed as expected when translated to Japanese</li>
+            <li>When translating Sisense metadata, some custom titles were not displayed in the translated language</li>
+            <li>In some cases, when downloading filtered data as a CSV file, all the results were displayed</li>
+        </ul>
+        <h2 class="notoc">7.1.2</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">7.1.2.11001</span> – Service Pack – June 4, 2018</p>
+        <ul>
+            <li>Box &amp; Whisker Plot widgets were not working as expected</li>
+        </ul>
+        <p><span class="bold">7.1.2.10076</span> -  Official release of Sisense V7.1.2  - May 30, 2018</p>
+        <ul>
+            <li>In Sisense V6.7.1.17004, in some cases, data security was not working as expected when working with fields from tables which are not connected within a schema. This fix was also included in Sisense V7.1.2. See the <a href="../administration/defining-security-and-access-settings/security-bulletin.htm" target="_blank">Security Bulletin</a> for more information. </li>
+        </ul>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>Fiscal Years can now be defined to start at any month across your system or per ElastiCube (<a href="../creating-dashboards/working-with-time/fiscal-years.htm">Documentation</a>)</li>
+            <li>Connectivity settings can be updated for supported web-based data sources    (<a href="../managing-data/connectors/change-connect.htm">Documentation</a>)</li>
+            <li>Build settings have been updated to be more intuitive and you can limit the number of rows included per build (<a href="../managing-data/build-ecube.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>When sharing a dashboard, if the data source was not previously shared with the user, the user could not view the dashboard</li>
+            <li>Data Administrators could not add new hierarchies</li>
+            <li>In some cases, changes that were made by Dashboard Designers to their dashboard’s copy might be republished to all users</li>
+            <li>In some scenarios, some values were missing when working with Polar charts</li>
+            <li>When changing column types and refreshing the schema, the column’s type was not recognized </li>
+            <li>Data Designers could not preview ElastiCubes in some scenarios</li>
+            <li>In some cases, ElastiCubes with special characters in the table names were not displayed as expected </li>
+            <li>In some scenarios, the Data page failed to load</li>
+        </ul>
+        <h3 class="notoc">Known Issues and Limitations</h3>
+        <ul>
+            <li>When changing a connection for a table where the build behavior for a column is Accumulate By, and the column doesn't exist in the new table, the connection change fails</li>
+        </ul>
+        <h2 class="notoc">7.1.1</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">7.1.1.11008</span> – Service Pack – June 7, 2018</p>
+        <ul>
+            <li>Metadata aliasing  was not working as expected and returned an error in some cases</li>
+            <li>In some cases, additional predefined hierarchies were displayed when working with ElastiCube Sets </li>
+            <li>The Min value in Bar charts could not be manually set to a negative number </li>
+        </ul>
+        <p><span class="bold">7.1.1.10089</span> -  Official release of Sisense V7.1.1  - May 6, 2018</p>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>In some scenarios, an error occurred when adding a data source from the Quick Access list  when working with the latest Chrome version (version 66)</li>
+            <li>Pivot table grand-totals were not translated as expected</li>
+            <li>When the ElastiCube or server name had a period in its name, dashboard filters were not saved</li>
+            <li>The auto-complete functionality in the SQL editor in the web-based ElastiCube Manager did not work as expected in some scenarios<br /></li>
+            <li>Building an ElastiCube from the web-based ElastiCube required more memory resources than expected</li>
+            <li>In some scenarios, when working with the web-based ElastiCube Manager, the Build button was disabled after a build failure</li>
+            <li>No table preview was available when restoring the last valid custom column expression</li>
+            <li>Dashboard filters were not applied on all widgets in some scenarios</li>
+            <li>In some scenarios, when having many categories, some of the categories' labels were not displayed as expected in Bar and Column charts</li>
+            <li>In some cases, Pie charts were not displayed as expected after applying a filter</li>
+            <li>Ticker Indicator widgets were not displayed as expected in some cases</li>
+            <li>When exporting Pivot tables to Excel, tables with custom currency were not formatted as expected</li>
+            <li>Max value labels were not always displayed as expected when working with Bar and Column charts</li>
+            <li>Abbreviated numbers were not translated in Chinese as expected </li>
+        </ul>
+        <h2 class="notoc">7.1</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">7.1.0.12003</span> – Service Pack – April 24, 2018</p>
+        <ul>
+            <li>Multiple sessions in the same <MadCap:variable name="Variables.ElastiCube" /> model are allowed</li>
+        </ul>
+        <p>The following issue was resolved:</p>
+        <ul>
+            <li>In some cases, builds failed when connecting two tables through text fields </li>
+        </ul>
+        <p><span class="bold">7.1.0.11010</span> – Service Pack – April 12, 2018</p>
+        <p>The following issues were fixed:</p>
+        <ul>
+            <li>Widgets were not displayed as expected when a new widget was added to a new row in the dashboard</li>
+            <li>Unable to dismiss the 100% Zoom warning message</li>
+            <li>Some Date fields formats in Excel were not imported as expected when working with the web-based ElastiCube Manager</li>
+            <li>Filters were not applied to all widgets the first time they were loaded in some scenarios</li>
+            <li>“Error in deserializing body of reply message for operation describeSObjects” when working with SalesForce connector</li>
+        </ul>
+        <div><span class="bold">7.1.0.10324</span> -  Official release of Sisense V7.1  - April 2, 2018</div>
+        <h3 class="notoc">Web-Based ElastiCube Manager Enhancements</h3>
+        <ul>
+            <li>Improved data modeling experience:<ul><li>Organize your data easily with pinned tables</li><li>View related columns from the schema by hovering over their relationships</li><li>Understand your schema with a descriptive legend</li><li>For more information, see <a href="../managing-data/working-with-data/manage-tables.htm">Managing Tables and Columns</a></li></ul></li>
+            <li>Impact Analysis<ul><li>See what Sisense entities, such as dashboards or Pulse alerts, rely on your ElastiCubes with dependencies (<a href="../managing-data/managing-data/manage-ecube.htm">Documentation</a>)</li><li>When deleting an ElastiCube, view the dependencies prior to deleting a cube. Easily map dashboards, widgets and Pulse alerts to an alternative ElastiCube</li></ul></li>
+            <li>Save drafts of unfinished custom SQL queries for later and revert back to previous queries (<a href="../managing-data/transforming-data/define-edit-sql.htm">Documentation</a>)</li>
+            <li>Sort, filter, and sample your data when previewing your tables (<a href="../managing-data/transforming-data/preview-results.htm">Documentation</a>)</li>
+            <li>Schedule ElastiCube builds from the web-based ElastiCube Manager (<a href="../managing-data/managing-data/scheduling-data-loads.htm">Documentation</a>)</li>
+            <li>Upload Excel and CSV files to the web-based ElastiCube Manager (<a href="../managing-data/DataSources.htm">Documentation</a>)</li>
+            <li>Define custom SQL queries for Oracle, PostgreSQL, Redshift, SQL, and MySQL databases (<a href="../managing-data/connectors/using-sql.htm">Documentation</a>)</li>
+            <li>Duplicate values straight from the Sisense Web Application without having to copy existing formulas</li>
+            <li>Import relationships directly from your data source</li>
+        </ul>
+        <h3 class="notoc">Dashboard Management</h3>
+        <ul>
+            <li>Administrators can access and control all dashboards across their system from the Analytics page (<a href="../administration/dashboard-management/manage-your-users-dash.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Performance Enhancements</h3>
+        <ul>
+            <li>Significant improvement in dashboard load time</li>
+            <li>Immediate transition when moving from a widget view to a dashboard view</li>
+            <li>Improved ElastiCube build time and memory consumption, especially for ElastiCubes with custom tables and ElastiCube to ElastiCube imports</li>
+        </ul>
+        <h3 class="notoc">Fiscal Years</h3>
+        <ul>
+            <li>Easily define when your Fiscal year begins across your system or per ElastiCube (<a href="../creating-dashboards/working-with-time/fiscal-years.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Publishing dashboards for a large number of users took longer than expected in some cases</li>
+            <li>Calendar date filters could become misaligned when using the browser’s native zoom</li>
+            <li>When drilling down into Date dimensions, the menu was not displayed in the translated language Pulse alert tooltip was not translated as expected</li>
+            <li>Long labels names are not displayed in widgets correctly in some cases</li>
+            <li>Auto-Zoom could not be disabled in Line widgets in Sisense V7</li>
+            <li>In some cases, when sorting a Column chart, the loading indicator was still displayed after the sorting was completed</li>
+            <li>Values could not be renamed in the Formula Editor in some cases</li>
+            <li>Labels with different format types for each value were displayed with the in Column charts.</li>
+            <li>In some scenarios, Table widgets with infinite scrolls in the dashboard were not exported to PDF properly</li>
+            <li>Certain special characters in the Pivot table name were corrupted when exporting to PDF</li>
+            <li>When exporting Pivot to Excel, the columns were displayed in a different order in some cases</li>
+            <li>Sisense Web Application did not load as expected and returned the error ‘503 Service Unavailable’</li>
+            <li>After upgrading to Sisense V6.7.1, users authenticated with SSO were redirected using the HTTP protocol instead of HTTPS</li>
+            <li>The ElastiCube server crashed with “CMapiLib.mapi_result” error in some scenarios</li>
+            <li>When working with the online ElastiCube Manager, custom import queries were removed from Redshift tables after duplicating the table</li>
+            <li>Sisense might not work as expected in high availability configurations when the primary application database is down</li>
+        </ul>
+        <p class="bold">Limitations</p>
+        <ul>
+            <li>Using the web-based <MadCap:variable name="Variables.ECM" /> is supported in high availability environments with limitations described <a href="../administration/high-availability-in-sisense/ecm_ha.htm">here</a></li>
+            <li>Changing the fiscal year after a dashboard or widget filter with a related date field is in use might lead to incorrect results. To resolve this, the date filter should be removed and added again</li>
+            <li>Tables cannot be refreshed when working on a remote ElastiCube. To refresh tables, the ElastiCube must be located on the same machine as the web server</li>
+        </ul>
+        <h2 class="notoc">7.0.2</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">7.0.2.14004</span> – Service Pack  – April 22, 2018</p>
+        <ul>
+            <li>Growth function did not work as expected in Continous Line charts</li>
+            <li>Unable to perform drilling on charts when working with Continuous Timeline charts in some scenarios</li>
+            <li>In some cases, the drill breadcrumb was not working as expected when working with Continuous Timeline charts</li>
+        </ul>
+        <p><span class="bold">7.0.2.13001</span> – Service Pack – April 2, 2018 </p>
+        <p>The following issues were fixed:</p>
+        <ul>
+            <li>Continuous Timeline charts did not behave as expected when the user changed their time zone</li>
+            <li>Unable to perform drilling when the first column in a Pivot table is disabled</li>
+        </ul>
+        <p><span class="bold">7.0.2.12002</span> – Service Pack – March 23, 2018</p>
+        <p>The following issue was fixed:</p>
+        <ul>
+            <li>When exporting Pivot tables to Excel, tables with currency were not formatted as expected in some cases</li>
+        </ul>
+        <p><span class="bold">7.0.2.11001</span> – Service Pack – February 22, 2018</p>
+        <p>The following issues were fixed:</p>
+        <ul>
+            <li>Dashboard filters on Date fields might filter the wrong dates/time due to time zone differences</li>
+            <li>Exclude Date filter members were not displayed as grayed out</li>
+        </ul>
+        <div><span class="bold">7.0.2.10036</span> -  Official release of Sisense V7.0.2  - February 12, 2018</div>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Ticker Indicator widgets were not displayed as expected when the Min value was negative</li>
+            <li>In some scenarios, the table preview was not shown in the web-based ElastiCube Manager</li>
+            <li>High CPU consumption occurred when working with the Weeks resolution in some scenarios</li>
+            <li>When embedding Sisense, the left navigation panel was empty although the panel was set as visible</li>
+            <li>Oracle connector did not allow Service IDs with numeric values in the web-based ElastiCube Manager</li>
+            <li>Some Oracle tables could not be added in the web-based ElastiCube Manager in some scenarios</li>
+            <li>Data Designers could not access the Data page when SSO was enabled</li>
+            <li>Sisense.Repository service did not start after rebooting the machine in some cases</li>
+            <li>Pulse KPI history events were not displayed as expected in the History tab in some cases</li>
+        </ul>
+        <h2 class="notoc">7.0.1</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">7.0.12003</span> - Service pack - January 31, 2018</p>
+        <ul>
+            <li>Added configuration attribute to determine whether SAML SSO groups are synchronized after each login</li>
+        </ul>
+        <p><span class="bold">7.0.1.11006</span> – Service pack – January 24, 2018</p>
+        <ul>
+            <li>Fixed SisenseJS widget load issue</li>
+        </ul>
+        <p><span class="bold">7.0.1.10061</span> – Official release of Sisense V7.0.1 –  January 15, 2018</p>
+        <h3 class="notoc">Announcing Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SSO&#160;JWT</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Following recent security improvements, the return_to URL must redirect users to a URL with the same protocol and domain as the URL where the authentication request originated from. Keep in mind, if your domain’s port is not the default port 80, you must include the port as part of the domain in the value of the return_to parameter, for example, return_to=http://localhost:8081.</p>
+                <p>If you have implemented SSO with a JWT token, your scripts should be updated to ensure that your user is redirected as expected.</p>
+                <p>For more information, see <a href="../administration/user-management/single-sign-on/sso-jwt.htm">SSO via JWT</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SSO&#160;SAML</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The /settings/sso endpoints in the REST API V1.0 have a new attribute <span class="bold">syncGroupsFromSamlToken</span>.</p>
+                <p>When using SAML SSO, you can specify which groups the user belongs to as part of the SAML SSO token. The user is associated with these groups when the user is first created during the SAML SSO login process.</p>
+                <p>This new attribute controls whether to update the user’s groups from the SAML SSO token on subsequent logins.</p>
+                <p>By default the value is "false", meaning the user’s groups are updated only when the user is created. Specify “true” to synchronize the user’s groups on each login via SAML SSO.  Specifying “true” will overwrite any manual changes to the user’s groups made in the Sisense application.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Application Database</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Following recent improvements to the Sisense application database, if you have implemented high availability with a MongoDB replica set or connect to the application database remotely, you need to modify the mongodbconfig.conf file and change the values of bindIp from an array to a string.</p>
+                <p>For more information, see:</p>
+                <p><a href="../administration/application-database/limiting-access-to-application-database.htm">Limiting Access to the Application Database</a>
+                </p>
+                <p><a href="../administration/high-availability-in-sisense/replica-sets.htm">Replica Sets</a>
+                </p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <ul>
+            <li>Support for Hours and Minutes time resolutions (<a href="../creating-dashboards/working-with-time/time-in-sisense.htm">Documentation</a>)</li>
+            <li>Support for formatting and data masks when exporting to Excel (<a href="../using-dashboards/export-overview.htm">Documentation</a>)</li>
+            <li>New dashboard color palettes. The new palettes are Pastel Rainbow, Meadow, Midnight Light, and Soil (<a href="../creating-dashboards/additional-widget-designs/change-dashboard-pallette.htm">Documentation</a>)</li>
+            <li>Backslash (\) escape key supported when searching for special characters in text filters (<a href="../creating-dashboards/filtering-dashboards-and-widgets/designer-filters/create-dashboard-filter.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Dashboards embedded in iFrames loaded navigation panels that were hidden</li>
+            <li>Google Spreadsheets builds could fail on empty tables</li>
+            <li>MySQL Live connections did not support comments</li>
+            <li>After disabling Sisense Pulse, some charts still displayed the ‘Add to Pulse’ menu option</li>
+            <li>'ww dd' formatting didn't show the first day of the week in aggregated week dimensions</li>
+            <li>Break By values for Column and Bar widgets were not sorted as expected</li>
+            <li>SAML SSO users with uppercase letters in their email addresses could not log in</li>
+            <li>Widget descriptions were not always presented as expected</li>
+            <li>Some formulas and quick functions could not be used as arguments in other arguments</li>
+            <li>Column chart value labels were not always displayed above the bar as expected</li>
+        </ul>
+        <h2 class="notoc">7.0</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">7.0.0.21003</span> - Service pack update including several bug fixes - December 27, 2017</p>
+        <p><span class="bold">7.0.0.20135</span> - Improved relationships workflow, performance enhancements, and bug fixes - December 19, 2017</p>
+        <p><span class="bold">7.0.0.10700</span> - Bug fixes - November 30, 2017</p>
+        <p><span class="bold">7.0.0.10065</span> - Official release of Sisense V7.0 - October 30, 2017</p>
+        <h3 class="notoc">Before You Upgrade to Sisense V7.0</h3>
+        <p>Are you upgrading from a pre-6.7 version of Sisense? If so, there were significant changes to Sisense's infrastructure including upgrading to a newer version of its application database (MongoDB), which supports the Sisense Web Application</p>
+        <p>If you are upgrading from a version earlier than Sisense V6.7, see the <a href="../67-upgrade.htm">Sisense Upgrade Guide</a> before upgrading to Sisense V7.0</p>
+        <h3 class="notoc">Introducing the New Web-Based ElastiCube Manager</h3>
+        <p>Sisense V7.0 offers a new way of working with your data. To familiarize yourself with some of the changes, check out <a href="../getting-started-ecm.htm">Getting Started: New ElastiCube Manager</a>.</p>
+        <h3 class="notoc">Web-based ElastiCube Authoring and Management</h3>
+        <ul>
+            <li>Model your data from an intuitive new interface (<a href="../managing-data/ElastiCubeManager.htm">Documentation</a>)</li>
+            <li>Create and manage ElastiCubes straight from your browser (<a href="../managing-data/IntroToWorkData.htm">Documentation</a>)</li>
+            <li>Share ElastiCubes and collaborate with others using two new roles:<ul><li>Data Administrator: Can access the Admin page of the Sisense Web Application from where they can manage all ElastiCubes and Live connections across the system</li><li>Data Designer: Can create and edit ElastiCubes they created or were shared with them. (<a href="user-roles.htm">Documentation</a>)</li></ul></li>
+            <li>New Data Page to view and manage all Elasticubes on the web (<a href="../managing-data/IntroToWorkData.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Improved Data Modeling Workflows</h3>
+        <ul>
+            <li>Locate tables and fields faster with highlighted search results (<a href="../managing-data/working-with-data/searching-tables-fields.htm">Documentation</a>)</li>
+            <li>Manage tables and fields settings directly from the navigation menu</li>
+            <li>Improved Custom SQL editor for creating custom tables and columns<ul><li>Intuitive parsing that highlights SQL and functions</li><li>Related functions grouped together</li><li>New functional categories for aggregations and keywords</li><li>Find and replace text in your SQL statements</li></ul></li>
+            <li>Create and preview relationships from the new Relationship window</li>
+            <li>Undo and redo schema changes as necessary from the dashboard menu</li>
+        </ul>
+        <h3 class="notoc">Field Suggestions</h3>
+        <ul>
+            <li>Suggestive technologies displays field suggestions so that Designers can quickly create meaningful visualizations (<a href="../content/field-suggests.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Dashboard Visualization &amp; Performance Enhancements</h3>
+        <ul>
+            <li>Improved the dashboard loading experience</li>
+            <li>Deep dive into the Pie Chart’s Others slice to display a full breakdown (<a href="../creating-dashboards/adding-widgets-to-dash/pie-chart.htm">Documentation</a>)</li>
+            <li>Improved X-axis navigator and new Y-axis navigator support</li>
+            <li>Interactive legends that highlight selected data when you hover over them and hide data when clicked</li>
+        </ul>
+        <h3 class="notoc">ElastiCube Enhancements</h3>
+        <ul>
+            <li>Automatic Many-to-Many avoidance in scenarios where a dashboard filter caused a Many-to-Many relationship</li>
+        </ul>
+        <h3 class="notoc">Administration Enhancements</h3>
+        <ul>
+            <li>Review active features and user allocation for your account from the Licensing Utilization page (<a href="../administration/user-management/license-utilization.htm">Documentation</a>)</li>
+            <li>Access your Server Console settings from the Admin Console (<a href="../administration/system-settings/server-settings.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Data Connectors</h3>
+        <ul>
+            <li>New live connector to Oracle</li>
+        </ul>
+        <h3 class="notoc">Sisense Mobile</h3>
+        <ul>
+            <li>Monitor important KPIs and create alerts from Sisense Pulse</li>
+            <li>Review your latest Sisense Pulse notifications</li>
+            <li>Share your widgets and insights using native mobile screen sharing</li>
+            <li>Enhanced dashboard experience with new widget tiles and a fresher look</li>
+            <li>New navigation area to easily move between dashboards, Pulse and notifications</li>
+            <li>Leverage popular Sisense plugins on Sisense Mobile</li>
+        </ul>
+        <h3 class="notoc">Other</h3>
+        <ul>
+            <li>Customizable Base URLs that allow you to define Sisense hostnames as a subfolder of a domain, for example: www.acme.com/reporting (<a href="setup-production.htm">Documentation</a>)</li>
+            <li>Read preference options are supported for application database replica sets in High Availability configurations (<a href="../administration/high-availability-in-sisense/replica-sets.htm">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Negative numbers are not displayed on bar and column charts</li>
+            <li>Some buttons in Sisense V7.0 were not translated as expected</li>
+            <li>Filter mode occasionally changed from single to multi-selection when the viewer was not allowed to see the published value</li>
+            <li>Scheduled reports were not sent to users in the “Everyone” group</li>
+            <li>Some Value labels were overlapping each other in charts</li>
+            <li>Continuous timelines on charts were not rendered as expected in some cases</li>
+            <li>Scatter Chart Y-axis were not always sorted as expected</li>
+            <li>Heavy Line charts took longer to load than expected</li>
+            <li>X-Axis titles disappeared after drilling down</li>
+            <li>Dashboard filters were not being updated when changing the dashboard data source in some scenarios</li>
+            <li>Pie charts slices were duplicated after applying filter changes in Sisense V6.6</li>
+            <li>Accumulative builds on MongoDB date fields were slower than expected in certain scenarios</li>
+            <li>Builds occasionally failed when working with Postgres in certain scenarios</li>
+            <li>Users could not change connectivity settings on ElastiCubes for certain connectors after downgrading the Postgres connector</li>
+            <li>Importing CSV folders failed when the original file was removed</li>
+            <li>‘Specified cast is not valid’ build error returned when importing data from a decimal field 26 digits of precision or more</li>
+            <li>Change Connectivity Settings window in Sisense V6.7 was not displayed as expected when changing the settings for the Generic ODBC driver</li>
+        </ul>
+        <h3 class="notoc">Limitations</h3>
+        <ul>
+            <li>Sisense Field suggestions are updated once a day and might take from a few seconds to several minutes to run. During that time, suggestions might not be available.</li>
+        </ul>
+        <p class="bold">Downgrading to an Earlier Version</p>
+        <p>After upgrading to Sisense V7.0, if you decide to downgrade, keep the following in mind:</p>
+        <ol>
+            <li>The ElastiCube’s layout in the new ElastiCube Manager’s schema will be lost. The tables will appear in the ElastiCube Manager stacked on one another until you reorder them. All relationships are maintained, only the layout is lost.</li>
+            <li>Tables that are part of ElastiCubes that were edited in the new ElastiCube Manager will be displayed under the Live Data Sets section of the Data Sources page in the Admin console. These tables can be deleted from the Live Data Sets section without impacting your ElastiCube. <span class="bold">Note</span>: The tables will not be displayed as Live Connections when adding new data to an ElastiCube.</li>
+        </ol>
+        <h2 class="notoc">6.7.1</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">6.7.1.17004</span> - Service pack - May 23, 2018</p>
+        <ul>
+            <li>In some cases, data security was not working as expected when working with fields from tables which are not connected within a schema. See the <a href="../administration/defining-security-and-access-settings/security-bulletin.htm" target="_blank">Security Bulletin</a> for more information</li>
+        </ul>
+        <p><span class="bold">6.7.1.15016</span> - Service pack - January 7, 2017</p>
+        <ul>
+            <li>Sisense has made several security improvements to the SSO JWT feature, see the Breaking Changes section below for more information</li>
+            <li>Sisense has implemented several features for improved security of Sisense web pages, and now supports additional configurable parameters for security hardening of web pages (<a href="../administration/defining-security-and-access-settings/security-hardening.htm">Documentation</a>)</li>
+        </ul>
+        <p>The following bugs were fixed:</p>
+        <ul>
+            <li>The Sisense application database (MongoDB) could be corrupted following a system restart due to a MongoDB bug</li>
+            <li>Exporting Pivot tables to Excel might fail in some systems. When a reverse proxy or load balancer is combined with SSL, additional configuration is required (<a href="../administration/high-availability-in-sisense/replica-sets.htm">See Step 6 in Setting Up SSL</a>)</li>
+            <li>Email reports failed and returned the error ("could not connect to the ElastiCube")</li>
+            <li>The left navigation panel was loaded by the browser in embedded environments although the panel was not visible</li>
+            <li>The SiSenseRepository service failed to restart in some scenarios</li>
+        </ul>
+        <p><span class="bold">6.7.1.14504</span> - Hotfix - December 19, 2017</p>
+        <p>The following security vulnerability was resolved: In some cases when a pivot table was exported to an Excel file, the wrong data security rules were applied</p>
+        <p><span class="bold">6.7.1.14018</span> - Service pack  -  November 29, 2017</p>
+        <p>The Sisense Web Application now supports Dutch</p>
+        <p>The following bugs were fixed:</p>
+        <ul>
+            <li>In some scenarios, the build time might gradually increase over time</li>
+            <li>Export Pivot to PDF ignores the word wrap definition</li>
+            <li>Categories in Pie charts may be duplicated after applying filter changes in some scenarios</li>
+            <li>Pulse might affect the dashboard load time in some cases</li>
+        </ul>
+        <p><span class="bold">6.7.1.13022</span> - Service pack -  November 6, 2017</p>
+        <p>Sisense has enhanced the pagination capabilities of Custom REST connector. See <a href="https://developer.sisense.com/pages/viewpage.action?pageId=3702834">Pagination</a> for more information</p>
+        <p>The following bugs were fixed:</p>
+        <ul>
+            <li>Exporting Pivot tables to Excel failed in some cases</li>
+            <li>Dependant filters could not be reordered</li>
+            <li>In certain scenarios, Sisense could not authenticate users that opened multiple sessions concurrently</li>
+            <li>When using JWT SSO with username authentication, Administrators could not see the ElastiCubes list</li>
+            <li>Unable to perform drilling when working with the mobile app in some cases</li>
+            <li>Occasionally, accumulative builds performed on the MongoDB date field performed slower than expected</li>
+            <li>In Sisense V6.7, the Connectivity settings for generic ODBC connectors could not be changed</li>
+        </ul>
+        <p><span class="bold">6.7.1.10043</span> - Official Release -  September 4, 2017</p>
+        <h3 class="notoc">Announcing Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>"SSO - JWT"</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Following recent security improvements in Sisense V6.7.1.15016, the return_to URL must redirect users to a URL with the same protocol and domain as the URL where the authentication request originated from. Keep in mind, if your domain’s port is not the default port 80, you must include the port as part of the domain in the value of the return_to parameter, for example, return_to=http://localhost:8081.</p>
+                <p>If you have implemented SSO with a JWT token, your scripts should be updated to ensure that your user is redirected as expected.</p>
+                <p>For more information, see <a href="../administration/user-management/single-sign-on/sso-jwt.htm">SSO via JWT</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvements and bug fixes</p>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <ul>
+            <li>Improved Indicator widget styling added to the JavaScript API (<a href="https://developer.sisense.com/display/API2/JavaScript+API+Reference#JavaScriptAPIReference-IndicatorObjectindicator">documentation</a>)</li>
+            <li>New secure flag for cookies (<a href="https://developer.sisense.com/display/API2/Developer+Release+Notes">documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>The ‘Others’ slice in Pie charts was not abbreviated as expected</li>
+            <li>Changes to font colors in Text widgets were not displayed in Internet Explorer 11</li>
+            <li>Occasionally when updating a dependent filter via a member selection in a widget, the filter type changes from single to multi-selection</li>
+            <li>Filters and some nested objects were not translated as expected by the metadata aliasing mechanism after implementing custom translations for the Sisense Web Application</li>
+            <li>YTD/MTD/QTDSUM functions in widgets without a date field could return incorrect results when used in conjunction with dashboard-level date filters</li>
+            <li>Importing .ecdata files with data type mismatches could result in a server crash</li>
+            <li>Polar charts were not displayed correctly when the same dimension was included in Categories and Break By</li>
+        </ul>
+        <h2 class="notoc">6.7.0.12010</h2>
+        <h3 class="notoc">Build History</h3>
+        <p><span class="bold">6.7.0.12010</span> - Hotfix #2 -  August 20, 2017</p>
+        <p><span class="bold">6.7.0.11001</span> Hotfix #1  - August 15, 2017</p>
+        <ul>
+            <li>Occasionally, dashboards were not loaded as expected. This issue is related to cookie expiration and can be resolved by logging out and logging back into the Sisense Web Application.</li>
+        </ul>
+        <p><span class="bold">6.7.0.10573</span> - Sisense V6.7 official release -  August 6, 2017</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Official release of Sisense V6.7</li>
+        </ul>
+        <h3 class="notoc">Before You Upgrade to Sisense 6.7</h3>
+        <p>Sisense has made significant changes to its infrastructure including upgrading to a newer version of its application database (MongoDB), which supports the Sisense Web Application.</p>
+        <p>To make your upgrade as seamless as possible, see the <a href="../67-upgrade.htm">Sisense V6.7 Upgrade Guide</a> before upgrading to Sisense V6.7.</p>
+        <h3 class="notoc">Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Application Database</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Sisense has improved the security of the application database included in the Sisense installation. All access to it must now be authenticated. If you access the application database directly, you must access the database with users created by Sisense during the Sisense installation. For more information, see <a href="../administration/application-database/access-sisense-application-database.htm">Accessing the Application Database</a>.</p>
+                <p>If you backup your Sisense application database, or use scripts that routinely do this for you, the location of the application database has been changed from:</p>
+                <p><span class="bold">Backing up the Sisense Application Database</span>
+                </p>
+                <p>If you backup your Sisense application database, or use scripts that routinely do this for you, the location of the application database has been changed from:</p>
+                <p>%ProgramData%\Sisense\PrismWeb\DB\Prod</p>
+                <p>to its new location at:</p>
+                <p>%ProgramData%\Sisense\PrismWeb\Repository\DB</p>
+                <p><span class="bold">High Availability</span>
+                </p>
+                <p>If you have implemented replica sets to support a high availability deployment, you need to reconfigure your replica set to work with the MongoDB V3.4 supported by Sisense, and to use the relevant database user credentials. For more information, see <a href="../administration/high-availability-in-sisense/replica-sets.htm">Replica Sets</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>ElastiCube Memory Settings</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If you have set a specific percentage for ElastiCube memory usage in the ElastiCube server settings, it will be changed back to 'Dynamic' by default to support the new Garbage Collector mechanism. Contact Sisense Technical Support if you believe this may have any negative effect on your performance before making any changes.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Google Adwords and Google Analytics</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If you have customized your Google Analytics or Adwords files GAnalytics.Tables and AdWords.Tables XML files in the following directory:</p>
+                <p>%AppData% \Roaming\Sisense\Prism\LocalRepository2.0\Resources\Google\Analytics (or Adwords)</p>
+                <p>you should move these files to the following directories to continue using the Google Analytics and Google Adwords connectors without any interruption:</p>
+                <p>%ProgramData%\Sisense\PrismServer\LocalRepository2.0\Resources\Google\Analytics</p>
+                <p>%ProgramData%\Sisense\PrismServer\LocalRepository2.0\Resources\Google\Adwords</p>
+                <p>If this directory does not exist, create it and then move your XML files to this directory.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">Enhanced Sisense Reports and Pivot Exporting</p>
+        <ul>
+            <li>Export pivot tables to Excel while maintaining your pivot’s layout and structure (<a href="../using-dashboards/export-overview.htm">Documentation</a>)</li>
+            <li>Export pivot tables into customizable, multi-page PDF reports (<a href="../using-dashboards/export-overview.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Sisense Narratives</p>
+        <ul>
+            <li>Add automatically generated text to popular widgets that communicates your analytics and provides insights of your data</li>
+            <li>See <a href="../content/narratives.htm">Sisense Narratives</a> for more information</li>
+            <li>This feature is available for customers who purchased the Natural Language Package package. For details contact your CSM.</li>
+        </ul>
+        <p class="bold">Plug-in Management</p>
+        <ul>
+            <li>Manage your plug-ins from a centralized UI in the Sisense Web Application</li>
+            <li>Control which plug-ins are enabled or disabled</li>
+            <li>See <a href="../administration/manage-plugin.htm">Managing Plug-ins</a> for more information</li>
+        </ul>
+        <p class="bold">Sisense Monitor</p>
+        <ul>
+            <li>Easily monitor information about your system, including system utilization (CPU, memory and disk space), Elasticube build times, dashboard query times, and more.</li>
+            <li>See <a href="../content/sisense-monitor.htm">Sisense Monitor</a> for additional information.</li>
+            <li>This feature is being released gradually and has a waiting list. For more details regarding this service, contact your CSM.</li>
+        </ul>
+        <p class="bold">Data Connectors</p>
+        <ul>
+            <li>Google Analytics connector enhancements  (<a href="../managing-data/connectors/google-analytics.htm">Documentation</a>)<ul><li>Support for segments, filters, and sorting</li></ul></li>
+            <li>The following data connectors are now available in beta<ul><li>Sharepoint</li><li>Microsoft Dynamics NAV</li><li>Contact your CSM for the latest beta connectors</li></ul></li>
+        </ul>
+        <p class="bold">Sisense Mobile</p>
+        <ul>
+            <li>Drilling is now natively supported in Sisense Mobile</li>
+            <li>Focus on a single widget to easily view and interact with the data using mobile app gestures such as (two fingers) zoom in/out</li>
+            <li>SSO support</li>
+            <li>See <a href="../using-dashboards/viewing-dashboards.htm">Viewing Dashboards on Mobile Devices</a> for more information.</li>
+        </ul>
+        <p class="bold">ElastiCube Engine</p>
+        <ul>
+            <li>Enhancements to the memory Garbage Collection mechanism provide up to X10 performance improvements under high-load &amp; memory intensive circumstances</li>
+        </ul>
+        <p class="bold">Improved Application Database Security</p>
+        <ul>
+            <li>Authenticated access to the application database</li>
+            <li>HTTPS support for connections to the application database</li>
+            <li>Access to the application database is limited to the local host. You can add access from external IP addresses, if necessary (<a href="../administration/application-database/limiting-access-to-application-database.htm" target="_blank">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Other</p>
+        <ul>
+            <li>New Running Sum Function – Accumulate a running total of a value. Now available in the quick function menu and the formula editor as RSum()</li>
+            <li>ElastiCube sets now include a failover option. You can define a cube that will be the failover option for an ElastiCube set, and will only be used if none of the other cubes in the set are available (Documentation)</li>
+            <li>Reporting enhancements for scale - identical reports are sent together to reduce server load and support higher PDF generation loads</li>
+        </ul>
+        <p class="bold">Select Bug Fixes</p>
+        <ul>
+            <li>In some cases, the Sisense Web Application could not locate the ElastiCube associated with a dashboard</li>
+            <li>When a dashboard was not imported successfully, no error message was displayed</li>
+            <li>Some custom REST connectors were displayed as Live connectors when adding a live connector</li>
+            <li>When browsing locally in Sisense V6.4.1, a blank page was displayed when opening the Sisense Login page</li>
+            <li>Refreshing the connectivity settings deleted custom import queries</li>
+            <li>The Sisense MongoDB ODBC connector V2.2.1 could only import 4096 rows</li>
+            <li>When a broken value was present in Column, Bar, Line, or Area charts, the Drill Into option was not displayed from the dashboard</li>
+            <li>In some cases, the text widget may not appear as expected in the Sisense Mobile app</li>
+            <li>The ElastiCube server crashed when importing an .ecdata file in some circumstances</li>
+            <li>Build failures when importing data from Google Analytics that generated error 403: Rate Limit Exceeded were resolved</li>
+            <li>When implementing localization, the POST and PATCH Settings/Globalization endpoints in the REST API did not update the date and number formats as expected</li>
+            <li>Text widgets with background colors in multi-column layouts did not display as expected</li>
+            <li>In FireFox, bar and pie charts did not respond when hovering the mouse of the widgets</li>
+            <li>The ElastiCube &amp; Data Sets page loaded slowly when there are large amounts of ElastiCube Sets</li>
+            <li>In some cases, custom expressions did not display strings correctly in the Preview window in the ElastiCube Manager</li>
+            <li>Build errors that resulted in "Could not connect to 127.0.0.1:50XXX" (or higher port number) errors</li>
+            <li>In high availability environments, Orchestrator-related build issues</li>
+        </ul>
+        <h3 class="notoc">Limitations</h3>
+        <ul>
+            <li>Exporting a Pivot table to PDF is supported for up to 10,000 rows only and the following plug-ins are not support:<ol><li>Embed images to Pivot tables</li><li>Conditional format Pivot foreground</li><li>Embed a sparkline chart into a Pivot</li></ol></li>
+            <li>When exporting a Pivot to Excel, formatting and data-bars are not supported</li>
+            <li>Running Sums (RSUM) are not supported on live data sources</li>
+            <li>Grand-Totals break the entire query (widget error) when used in conjunctions with the function</li>
+            <li>Sub-Totals are aggregated as an independent series, which is distracting and logically inaccurate</li>
+            <li>Sisense V6.7 does not support FIPS 140-2. This issue is currently planned to be resolved in Sisense V7.0</li>
+            <li>During the upgrade process for high availability deployments, the following files are overwritten:<ol><li>default.yaml</li><li>Sisense.WebQueryService.exe.config</li><li>Mongodbconfig.conf</li><li>Configuration updates performed on these files, will need to be reconfigured following the upgrade</li></ol></li>
+        </ul>
+        <h2 class="notoc">6.6.1.12014</h2>
+        <p>Release Date: May 19, 2017</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvements and bug fixes</p>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">Sisense Pulse</p>
+        <ul>
+            <li>Define alerts for more widgets, including Line, Bar, Area, and Column charts (<a href="../sisense-pulse-and-alerting/create-data-alert.htm">Documentation</a>)</li>
+            <li>New ‘Between’ condition added for data alerts</li>
+            <li>Added JavaScript customization support for Pulse tiles and Pulse page (<a href="https://developer.sisense.com/display/API2/Pulse+APIhttps://developer.sisense.com/display/API2/Pulse+API">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Performance Enhancements</p>
+        <ul>
+            <li>Significant improvements to dashboard load times due to optimizations in Indicator and Text widgets</li>
+        </ul>
+        <p class="bold">Data Connectors</p>
+        <p>Sisense has significantly upgraded several data connectors:</p>
+        <ul>
+            <li>Facebook<ul><li>Facebook has been split into two connectors, Facebook and Facebook Ads</li><li>If you previously connected to Facebook Ads tables with an earlier version of the Facebook connector, you can continue to connect to those tables by changing the connectivity settings for those tables. For more information, see <a href="../managing-data/connectors/change-connect.htm">Change Connectivity Settings</a></li><li>Easily add tables without custom SQL</li><li>Automatic retry mechanism for Facebook Ads to improve build success</li></ul></li>
+            <li>MongoDB<ul><li>Support added for MongoDB 3.4</li><li>For more information, see <a href="../managing-data/connectors/mongo-db.htm">Connecting to MongoDB</a></li></ul></li>
+            <li>Oracle<ul><li>Support added for Relations and Synonyms</li></ul></li>
+            <li>Generic ODBC<ul><li>Reduced data import times</li><li>Customizable ODBC connections to support more data sources (<a href="../managing-data/connectors/odbc.htm">Documentation</a>)</li></ul></li>
+            <li>Custom REST<ul><li>Define schema maps for data sources (<a href="http://developer.sisense.com/display/API2/Settings">Documentation</a>)</li><li><span class="bold">Note</span>:  New procedure for upgrading Sisense when using Custom REST connectors (<a href="http://developer.sisense.com/display/API2/Creating+Configuration+Files#library">Documentation</a>)</li></ul></li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>In certain scenarios, the Gauge and Indicator widgets were not displayed as expected</li>
+            <li>In some browsers and devices, when hovering over certain parts of a widget, the tooltip was displayed in another part of the dashboard</li>
+            <li>In some instances, multiple copies of some email reports were sent to users</li>
+            <li>When changing connectivity settings on Google Analytics tables, all the views were selected by default</li>
+            <li>Extra delimiters at the end of CSV headers caused the build to fail</li>
+            <li>RedShift connector occasionally converted Float types to Strings</li>
+            <li>Some dashboards were not displayed as expected when published to thousands of users at a time</li>
+            <li>Authenticated users over SSO could not connect to Sisense using multiple devices, concurrently</li>
+            <li>Some data connectors might not be available after restarting your system</li>
+            <li>TempCloudML folder size was not restricted in disk space</li>
+            <li>Pie Chart might display a grayed out image when no results are returned</li>
+        </ul>
+        <h2 class="notoc">6.6.0.10327</h2>
+        <p>Release Date: April 18, 2017</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Official release of Sisense V6.6</li>
+        </ul>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">Introducing Sisense Live Connect</p>
+        <ul>
+            <li>Access, govern and visualize live data directly from SQL Server, MySql, Postgres, and Redshift for an immediate view of your data</li>
+            <li>Present live and ElastiCube data in the same dashboard for a more complete analysis</li>
+            <li>Refresh widgets with live data automatically or manually from the Sisense Web Application</li>
+            <li>For more information, <a href="../managing-data/LiveConnect.htm">click here</a></li>
+        </ul>
+        <p class="bold">Enhanced Sisense Reports</p>
+        <ul>
+            <li>Transform dashboards into professional, and easy-to-read PDF reports</li>
+            <li>Export Table widgets into customized multi-page PDF reports</li>
+            <li>Control how dashboards look and feel with predefined paper sizes and customized headers and footers</li>
+            <li>Preview reports from the Report Settings window before sharing</li>
+            <li>For more information, click <a href="../using-dashboards/export-overview.htm">here</a></li>
+        </ul>
+        <p class="bold">New Sisense Migration Capabilities</p>
+        <ul>
+            <li>Easily copy dashboards across environments from the Sisense Web Application</li>
+            <li>Import and export multiple dashboards in a single .dash file</li>
+            <li>For more information, click <a href="../administration/migrate-sisense.htm">here</a></li>
+        </ul>
+        <p class="bold">Internationalization and Localization</p>
+        <ul>
+            <li>Sisense supports multiple languages on the same Sisense server</li>
+            <li>Users can select their preferred language from the Sisense Web Application</li>
+            <li>Translate more Sisense metadata including widget titles, dashboard names, and folder names (<a href="../administration/internationalization-and-localization/translate-metadata.htm">Documentation</a>)</li>
+            <li>Define default languages for new users and groups</li>
+            <li>Italian now supported</li>
+        </ul>
+        <p class="bold">Security</p>
+        <ul>
+            <li>Improved security for Sisense user passwords which are now encrypted with a stronger encryption methodology</li>
+        </ul>
+        <p class="bold">Dashboard Enhancements</p>
+        <ul>
+            <li>Perform operations (export/delete/copy to server) on multiple dashboards and folders at once</li>
+            <li>Support for filters from multiple data sources in the same dashboard</li>
+        </ul>
+        <p class="bold">Mobile Filters</p>
+        <ul>
+            <li>New filtering functionality included in the Sisense mobile app.</li>
+        </ul>
+        <p class="bold">Data Connectors</p>
+        <ul>
+            <li>Bing (<a href="../managing-data/connectors/bing.htm">Documentation</a>)</li>
+            <li>Box (<a href="../managing-data/connectors/box.htm">Documentation</a>)</li>
+            <li>Google AdWords API has been updated to the latest version, v201702. Google Adwords API v201607  supported by Sisense v6.5.1 and earlier has been deprecated.</li>
+            <li>ServiceNow, Youtube, Youtube Analytics are available for general release</li>
+            <li>Accumulative builds for numeric data supported for Facebook, DynamoDB, HubSpot</li>
+            <li>Improved rate limitation handling for Facebook</li>
+            <li>Sisense now supports the following for Splunk:<ul><li>Importing the latest artifact from a list instead of the first (oldest) one</li><li>Importing data from specific Splunk apps</li></ul></li>
+        </ul>
+        <p class="bold">Other</p>
+        <ul>
+            <li>ElastiCube performance enhancements including faster queries when used in conjunction with Rank filtering, Statistical functions, and Distinct Count</li>
+            <li>Many more REST API  capabilities (<a href="http://developer.sisense.com/display/API2/Developer+Release+Notes">Documentation</a>)</li>
+            <li>More PSM.exe commands added for automating ElastiCube model changes (<a href="http://developer.sisense.com/display/API2/Developer+Release+Notes">Documentation</a>)</li>
+            <li>Windows 2016 is now supported</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>In some cases, builds failed with the message: “Failed to Load Elasticube &lt;name of the EC&gt; Process” for several build types and during various build stages</li>
+            <li>In certain scenarios, builds failed with the message “Connection Lost”, during the calculation of custom tables</li>
+            <li>Occasionally, the Dashboard navigation tree did not load as expected or after a significant amount of time</li>
+            <li>Inner arrays in Custom REST Connectors were not handled as expected for certain data sources</li>
+            <li>Importing tables from Google Analytics failed in some cases with the message: “GA analytics query returned wrong results” thrown by the data source</li>
+            <li>The full Google Analytics paths were not displayed in tooltips in the ElastiCube Manager</li>
+            <li>Exported CSV files with certain escape characters were not displayed as expected</li>
+            <li>When applying date-related filters to Calendar Heatmaps, the widget was not displayed as expected</li>
+            <li>When changing connectivity settings, Change Source Provider did not change the source for each table for a data source</li>
+            <li>Calendar heatmap widgets were not displayed correctly when uBlock was installed</li>
+            <li>The GET /elasticubes/{elasticube}/Sql endpoint with certain queries returned a parsing error</li>
+            <li>The POST /elasticubes/ attach and detach endpoints did not work as expected</li>
+            <li>When changing the Min and Max values of a Gauge widget, the values were not updated in certain scenarios</li>
+            <li>After upgrading to Sisense V6.5, some existing Active Directory users experienced login issues</li>
+        </ul>
+        <h3 class="notoc">Limitations</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sisense Live&#160;Connect</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The current features are not supported by live connections:</p>
+                <ul>
+                    <li>Pulse alerts</li>
+                    <li>Box &amp; Whisker and Heatmaps</li>
+                    <li>R is not currently supported</li>
+                    <li>Some functions are not currently supported</li>
+                    <li>Changing live data sources for dashboards</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sisense Reports</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The current plug-ins are not supported in Sisense Reports:</p>
+                <ul>
+                    <li>Accordion</li>
+                    <li>Forecasting</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Downgrading from&#160;Sisense V6.6</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To increase Sisense server security, starting from Sisense v6.6, user passwords stored in the Sisense server are encrypted with a stronger encryption algorithm. When downgrading from v6.6, all users who have logged into version 6.6 will need to reset their passwords. Alternatively, after downgrade from 6.6, you can restore all user information from a previous backup of a version lower than v6.6.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 class="notoc">6.5.2.11007</h2>
+        <p>Release Date: January 22, 2017</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvements and bug fixes</p>
+        <h3 class="notoc">Announcing Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Google Adwords</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Google AdWords API has been updated to the latest version – v201609. Earlier versions of the Google Adwords API have been deprecated by Google and are no longer supported. Due to the updated API, the following fields are no longer supported by Google:</p>
+                <ul>
+                    <li>CostPerConvertedClick</li>
+                    <li>ConvertedClicks</li>
+                </ul>
+                <p>This update affects the following tables:</p>
+                <ul>
+                    <li>ADGROUP_PERFORMANCE_REPORT</li>
+                    <li>Ad Group (Report), Daily Report</li>
+                    <li>Ad Group (Report), Monthly Report</li>
+                    <li>Geo Performance Report</li>
+                    <li>Search Query Performance, Daily Report</li>
+                    <li>Search Query Performance, Monthly Report</li>
+                    <li>Keyword, Daily Report</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">New Data Connectors</p>
+        <ul>
+            <li>QuickBooks Desktop (<a href="../managing-data/connectors/quickbooks-desktop.htm">Documentation</a>)</li>
+            <li>Xero Accounting (<a href="../managing-data/connectors/xero.htm">Documentation</a>)</li>
+            <li>Exact Online (<a href="../managing-data/connectors/exact.htm">Documentation</a>)</li>
+            <li>Microsoft Dynamics CRM (<a href="../managing-data/connectors/ms-dynamics-crm.htm">Documentation</a>)</li>
+            <li>Microsoft Active Directory (<a href="../managing-data/connectors/ms-active-directory.htm">Documentation</a>)</li>
+            <li>Gmail (<a href="../managing-data/connectors/gmail.htm">Documentation</a>)</li>
+            <li>Stripe (<a href="../managing-data/connectors/stripe.htm">Documentation</a>)</li>
+            <li>ServiceNow (<a href="../managing-data/connectors/service-now.htm">Documentation</a>)</li>
+            <li>Box (Beta) (<a href="../managing-data/connectors/box.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Custom REST API Enhancements</p>
+        <p>The Sisense Custom REST API now supports:</p>
+        <ul>
+            <li>Nested objects in Post requests</li>
+            <li>Several new pagination options</li>
+            <li>CSV, XML, and JSON responses</li>
+            <li>For more information click <a href="http://developer.sisense.com/pages/viewpage.action?pageId=3702834">here</a>.</li>
+        </ul>
+        <p class="bold">REST API User Authentication</p>
+        <p>Sisense has removed the REST API token from the Admin page. This token is used for REST API v0.9 authentication methodology. While this methodology is still supported and available through the REST API, Sisense recommends implementing the REST API v 1.0 methodology, as described <a href="http://developer.sisense.com/display/API2/Using+the+REST+API#UsingtheRESTAPI-Authentication">here</a>.</p>
+        <p>For information about retrieving a token through the REST API v 0.9 authentication methodology, click <a href="http://developer.sisense.com/display/API2/Authenticating+Requests+with+a+Global+Token">here</a>.</p>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Sisense Pulse notifications were not sent from remote ElastiCubes</li>
+            <li>In some scenarios, since Sisense v6.4.2, custom tables took longer to build than expected</li>
+            <li>When building ElastiCubes with accumulative builds in Sisense v6.5, under certain conditions the build time was longer than expected</li>
+            <li>Tables were not loaded as expected when connecting to ElastiCubes with Chinese names through the Sisense ElastiCube connector</li>
+            <li>After importing data through the SalesForce connector, any new fields subsequently added were not imported into the ElastiCube</li>
+            <li>Title casing was applied to the main title of Indicator widgets even when written in all uppercase letters</li>
+            <li>In some configurations, new fields were not displayed in the Data Browser when creating a widget or filter</li>
+            <li>When embedding the Sisense Pulse page, the page was not displayed as expected</li>
+            <li>When applying data security to a field, only the top five search results were displayed when searching for an accessible value</li>
+            <li>Changing the default language to Russian did not change the language displayed in automatic emails</li>
+            <li>In Sisense v6.5.1, background filters were not displayed</li>
+        </ul>
+        <h2 class="notoc">6.5.1.10075</h2>
+        <p>Release Date: January 1, 2017</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvements and bug fixes</p>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>Pulse functionality improved to send alerts to Sisense mobile users by default</li>
+            <li>Greater flexibility added to the Custom REST @today parameter through the TodayFormat key</li>
+            <li>POST /dashboards/{dashboardid}/widgets endpoint creates widgets and displays them in the specified dashboard in a single call</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Exporting Text widgets to PDF in Sisense 6.5 returned unexpected artifacts</li>
+            <li>Line Charts exported to PDF in Sisense 6.5 PDF were not displayed as expected</li>
+            <li>The PASTYEAR function returned the wrong year when the Weeks dimension was applied</li>
+            <li>In some scenarios, the secondary value of an Indicator widget was not displayed</li>
+            <li>Tables exported to CSV with line breaks and commas were not displayed properly</li>
+            <li>Pivot Tables exported to CSV may return unexpected results</li>
+        </ul>
+        <h2 class="notoc">6.5.0.11013</h2>
+        <p>Release Date: November 29, 2016</p>
+        <h2 class="notoc">Release Summary</h2>
+        <ul>
+            <li>Official release of Sisense V6.5</li>
+        </ul>
+        <h3 class="notoc">Announcing Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SalesForce Connector</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Starting from early 2017, SalesForce will require use of TLS 1.1 and higher to login to SalesForce services.To ensure uninterrupted service, you should upgrade to Sisense version 6.5 or higher, prior to the SalesForce login protocol change in early 2017.</p>
+                <p>Sisense has developed a new Sisense SalesForce connector that supports v37.0 of the SalesForce API.</p>
+                <p>The latest API includes changes to some of the SalesForce tables. Consequently, you may need to refresh the connectivity settings and your table's fields. Then, rebuild your ElastiCube’s schema or your ElastiCube build will fail due to the change in the SalesForce v37.0 API.For more information about changes to the SalesForce API, click <a href="https://developer.salesforce.com/docs/atlas.en-us.202.0.api.meta/api/sforce_api_quickstart_intro.htm">here</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SisenseJS</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>To ensure that SisenseJS continues to work after installing Sisense 6.5, your Sisense HTML content must be encapsulated within a div element with the ID "sisenseApp".</p>
+                <p>This is required for all Sisense.js scripts whether or not your website uses the Angular framework.</p>
+                <p>For more information, click <a href="http://developer.sisense.com/display/API2/SisenseJS/#angular">here</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">Introducing Sisense Pulse</p>
+        <ul>
+            <li>Create alerts for data and system events and be notified via email, mobile, built-in feed, or across 3rd party platforms like Slack and Zapier</li>
+            <li>Allow Sisense to intelligently identify anomalies in your data based on machine learning algorithms</li>
+            <li>Easily monitor important KPIs from multiple dashboards from the new Sisense Pulse page<br />For more information, click <a href="../sisense-pulse-and-alerting/pulse-overview.htm">here</a>.</li>
+        </ul>
+        <p class="bold">New Conditional Statements in Widgets</p>
+        <ul>
+            <li>Conditional statements are now supported in widget formulas using IF and CASE functions. (<a href="../creating-dashboards/using-formulas/conditional-statements.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Box &amp; Whisker Plot Widget Added</p>
+        <ul>
+            <li>Sisense enables you to visualize data on a box &amp; whisker plot. This widget provides an intuitive graphical representation that summarizes data and displays the results in a single graph. Box &amp; whisker plots allow for comparing data from different categories offering deeper data insights. (<a href="../creating-dashboards/adding-widgets-to-dash/box-and-whisker-plot.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Accumulative Builds Enhancements</p>
+        <ul>
+            <li>Query ElastiCubes during accumulative builds</li>
+            <li>Automatic roll back to your last successful build if an issue occurs</li>
+        </ul>
+        <p class="bold">New Data Connectors</p>
+        <ul>
+            <li>Facebook (<a href="../managing-data/connectors/Facebook.htm">Documentation</a>)</li>
+            <li>Twitter (<a href="../managing-data/connectors/twitter.htm">Documentation</a>)</li>
+            <li>YouTube - Beta (<a href="../managing-data/connectors/youtube.htm">Documentation</a>)</li>
+            <li>YouTube Analytics - Beta (<a href="../managing-data/connectors/youtube-analytics.htm">Documentation</a>)</li>
+            <li>DynamoDB (<a href="../managing-data/connectors/dynamo-db.htm">Documentation</a>)</li>
+            <li>QuickBooks Online (<a href="../managing-data/connectors/quickbooks-online.htm">Documentation</a>)</li>
+            <li>HubSpot (<a href="../managing-data/connectors/hubspot.htm">Documentation</a>)</li>
+        </ul>
+        <p>Additional 21 new beta connectors. Click <a href="../managing-data/DataSources.htm">here</a> for the complete list.</p>
+        <p class="bold">Enhancements to Existing Connectors</p>
+        <ul>
+            <li>Custom REST<ul><li>Support added for the POST HTTP method and HTTPS redirect URLs</li></ul></li>
+            <li>Google AdWords</li>
+            <li>Support added for unicode character-sets and floating point data types</li>
+            <li>Salesforce: Support added for:<ul><li>Salesforce's latest TLS encryption protocol</li><li>Accumulative builds</li><li>Salesforce sandbox environments</li><li>Custom SQL statements when importing tables</li><li>SOQL statements when importing tables</li></ul></li>
+            <li>Splunk <ul><li>Support added for the new Splunk SDK (2.0)</li></ul></li>
+        </ul>
+        <p class="bold">Support for Multiple Active Directory Domains</p>
+        <ul>
+            <li>Sisense now supports users and groups from multiple Active Directory domains. (<a href="../administration/user-management/integrate-active-directory.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">SSO Enhancements</p>
+        <ul>
+            <li>Support for SSO authentication using SAML 2.0<br />Sisense has added support for SSO using SAML 2.0 to allow easy integration with SAML-based authentication systems. This is provided in addition to the previously supported SSO using JWT. (<a href="../administration/user-management/single-sign-on/sso-saml.htm">Documentation</a>)</li>
+            <li>Support for SSO authentication using User Name<br />Sisense now supports SSO authentication using a user name in addition to email addresses.</li>
+            <li>Support for SSO authentication over JWT without enforcing jti attribute<br />Sisense allows you to set a lower security level when using JWT SSO. You can configure the Sisense server to not enforce a mandatory jti attribute through the Sisense REST API.</li>
+        </ul>
+        <p class="bold">Sisense Web Application UI Enhancements</p>
+        <ul>
+            <li>Enhanced Sisense Web Application UI with a sharper, fresher look</li>
+        </ul>
+        <p class="bold">New and Improved Sisense Mobile App</p>
+        <ul>
+            <li>The Sisense Mobile App for Android and Apple-supported devices offers improved dashboard performance and the ability to receive notifications from Sisense Pulse. (<a href="../sisense-mobile.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">AngularJS Support Enhancements</p>
+        <p>In addition to supporting Angular 2.x, Sisense V6.5 adds support for Angular 1.x. This enhancement allows you to embed SisenseJS on sites in which Angular 1.x and 2.x have been implemented.  For more information, click here.</p>
+        <p class="bold">System Requirements</p>
+        <ul>
+            <li>Sisense 6.5 requires .NET version 4.5.2. When you install or upgrade to Sisense 6.5,  .NET version 4.5.2 is installed if it was not previously installed. For offline installations, you must install .NET version 4.5.2 prior to installing Sisense.</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>In some cases, the Formula Editor did not recognize parentheses as legal expressions</li>
+            <li>The Area Map and Indicator widgets were not translated when switching between languages in the Sisense Web Application</li>
+            <li>When importing tables from an ElastiCube through the ODBC driver, queries were not displayed in the Preview area</li>
+            <li>Emails were sent an hour later than scheduled following changes to daylight savings</li>
+            <li>When creating new dashboards or changing a dashboard's ElastiCube, the full name of the ElastiCube was truncated in the dashboard selection menus</li>
+            <li>Pie chart labels were partially displayed after drilling down</li>
+            <li>Very large tables imported through the Zendesk REST Connector may cause a build to fail</li>
+            <li>When importing tables through the Hive ODBC driver, queries were not displayed in the Preview area</li>
+            <li>Drilling into a dimension with a one filter, and then drilling into the same dimension with another filter displayed the results of the first filter applied</li>
+            <li>Widget animations in Internet Explorer 10 did not run smoothly</li>
+            <li>Widgets labels and legends were partially displayed in Internet Explorer 10</li>
+            <li>In some cases, the ElastiCube-to-ElastiCube ODBC driver timed out during builds where large amounts of data were imported</li>
+        </ul>
+        <h3 class="notoc">Limitations</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sisense Pulse</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>Alerts are not supported in High Availability deployments.</li>
+                    <li>Currently, Sisense supports up to 30 alerts per user, including those created by the user and shared with the user.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Accumulative Builds</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>The first time you run an accumulative build, Sisense copies the ElastiCube to your server. While the ElastiCube is copied to your server, you cannot query the ElastiCube.</li>
+                    <li>In the event of a build failure, the ElastiCube with the last successful build may be unavailable while it is copy and pasted on your server.</li>
+                    <li>Your server should have enough disk space available to support a copy of your ElastiCube in case an error occurs during a build.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Downgrading from Sisense V6.5</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>In the event that you need to downgrade from Sisense 6.5 to an earlier version, please contact Sisense Support who can guide you.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 class="notoc">6.4.2.11006</h2>
+        <p>Release Date: September 26, 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvements and bug fixes</p>
+        <h3 class="notoc">Improvements</h3>
+        <p class="bold">New Data Connectors</p>
+        <ul>
+            <li>Native Sisense ElastiCube connector with significantly faster performance than ODBC. (<a href="../managing-data/connectors/odbc.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Other</p>
+        <ul>
+            <li>Weeks time resolution support has been expanded to all time-related functions</li>
+            <li>New dashboard color palettes for color blind users (<a href="../creating-dashboards/additional-widget-designs/change-dashboard-pallette.htm">Documentation</a>)</li>
+            <li>Improved Data Security page load time</li>
+            <li>Enhanced performance for Distinct Count query</li>
+            <li>Sisense now supports using more than 10 arguments when using R in formulas</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>In some scenarios, builds failed due to simultaneous builds connected to the same data source</li>
+            <li>Email reports were not sent as expected due to deleted dashboards with scheduled reports</li>
+            <li>European Date fields in Excel were not imported as expected into ElastiCubes in some formats</li>
+            <li>Formula validation returns an error in some cases when a newline character is present</li>
+            <li>When inserting a link in a Text widget, you could not open the link in new windows as expected</li>
+        </ul>
+        <h2 class="notoc">6.4.1.13002</h2>
+        <p>Release Date: August 30, 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvements and bug fixes</p>
+        <h3 class="notoc">Announcing SSO Breaking Changes due to Security Hardening</h3>
+        <p>To improve security, when creating a JWT request for SSO, the jti attribute is now mandatory.</p>
+        <p>For more information, click <a href="../administration/user-management/single-sign-on/sso-jwt.htm">here</a>.</p>
+        <h3 class="notoc">Improvements</h3>
+        <p class="bold">Internationalization and Localization</p>
+        <ul>
+            <li>Metadata localization (<a href="../administration/internationalization-and-localization/translate-metadata.htm">Documentation</a>)</li>
+            <li>The system language can be controlled directly from the <MadCap:variable name="Variables.Sisense Web Application" /> Admin page (<a href="../administration/internationalization-and-localization/international-locale.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Custom REST API</p>
+        <ul>
+            <li>Support for accumulative builds (<a href="https://developer.sisense.com/display/API2/Custom+REST+Connector">Documentation</a>)</li>
+            <li>Authentication details can now be controlled on a connection basis via the UI (<a href="https://developer.sisense.com/display/API2/Custom+REST+Connector">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Data Connectivity</p>
+        <ul>
+            <li>Support for Snowflake ODBC Driver (<a href="../managing-data/connectors/snowflake.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Security</p>
+        <ul>
+            <li>When updating your Sisense password, Sisense has implemented a new password policy. Passwords must meet the following requirements:<ul><li>Contain at least 8 characters</li><li>Include at least one letter, number, and special character</li><li>Not match your previous password</li></ul></li>
+            <li>The ElastiCube metadata file (ElastiCube.xml) is now encrypted</li>
+        </ul>
+        <p><span class="bold">Other</span>
+        </p>
+        <ul>
+            <li>Sisense Shell (psm.exe) now supports refreshing all tables in an ElastiCube (<a href="https://developer.sisense.com/pages/viewpage.action?pageId=1409131">Documentation</a>)</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Some new widgets did not display any data and returned the error “Widget has now raw query result. Query simulation cannot take place."</li>
+            <li>In some scenarios, email limitations were ignored and updates were sent after every build</li>
+            <li>Dynamic Conditional Coloring does not update after filtering</li>
+            <li>Occasionally when updating a parent filter, the refresh animation continued to be displayed for nested filters</li>
+            <li>When signing into Sisense, new users with Active Directory that entered the wrong credentials received the error message “Problem during operation”</li>
+            <li>GB (Great Britain) was not displayed properly in map visualizations</li>
+        </ul>
+        <h3 class="notoc">Limitations</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Upgrading Custom REST connectors from 6.4 to 6.4.1</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Connectors created in version 6.4 of Sisense will not work unless you update the DLL files in each custom connector folder. You can retrieve this file from one of the sample REST connector files included in your Sisense installation located at:</p>
+                <p>...Program Files\Sisense\DataConnectors\DotNetContainer\SampleRestConnectors.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Downgrading ElastiCubes from v6.4.1</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Following 6.4 security improvements, ElastiCubes built in version 6.4.1 have to go through the following process in order to work in pre-6.4.1 versions:</p>
+                <p>As a work around, you can do the following:</p>
+                <ol>
+                    <li>In the Sisense Server Console, stop the Elasticube you want to import into an earlier version and export that ElastiCube to an ecdata file.  For more information, click <a href="../managing-data/managing-data/import-export-ecube.htm">here</a>.</li>
+                    <li>From the Command prompt, run psm.exe ecdata 62downgrade filename=&lt;your ecdata filename&gt;. For more information, click <a href="https://developer.sisense.com/pages/viewpage.action?pageId=1409131">here</a>.</li>
+                    <li>Import the updated version up the ElastiCube to an earlier version of Sisense.</li>
+                </ol>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 class="notoc">6.4.0.30091</h2>
+        <p>Release Date: July 27, 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Official release of Sisense V6.4</li>
+        </ul>
+        <h3 class="notoc">Announcing Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Google Adwords</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Google AdWords API has been updated to the latest version – v201605. In addition, Sisense has updated the Google Adwords connector that is 10x faster and more robust than its predecessor.</p>
+                <p>1 - Refreshing AdWords tables</p>
+                <p>The v201605 API version includes changes to some of the AdWords predefined columns. Consequently, it is required for you to click refresh in the 'Change Connectivity Settings...' window next to your AdWords data source and rebuild your ElastiCube. Unless this action is taken, your ElastiCube build will fail due to the change in Google AdWords schema.</p>
+                <p>2 - .NET 4.5.2</p>
+                <p>Your system has to be updated with .NET 4.5.2 for the updated AdWords connector to work</p>
+                <p>3 - Customized AdWords tables/column</p>
+                <p>If you use customized tables or columns, the resource folder has changed and you should move the files Adwords.Tables.xml or Adwords.Fields.xml to the following directory:</p>
+                <p>%ProgramData%\Sisense\PrismServer\LocalRepository2.0\Resources\Google\Adwords</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>MongoDB</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Sisense now support MongoDB v2.0. This upgrade contains breaking changes. For more information, click <a href="../managing-data/connectors/mongo-db.htm">here</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">Introducing High Availability with Sisense</p>
+        <ul>
+            <li>Ensure uptime for mission-critical environments</li>
+            <li>Scale out components for high concurrency scenarios</li>
+            <li>Failover for every component</li>
+            <li>For more information, click <a href="../administration/high-availability-in-sisense/high-availability.htm">here</a></li>
+        </ul>
+        <p class="bold">Introducing SisenseJS</p>
+        <ul>
+            <li>Load Sisense runtime anywhere through the Sisense JavaScript library</li>
+            <li>Load or create dashboards in runtime without iFrames</li>
+            <li>Render all/part/new widgets in any DOM container</li>
+            <li>For more information, click <a href="http://developer.sisense.com/display/API2/SisenseJS">here</a></li>
+        </ul>
+        <p class="bold">Internationalization and Localization (i18n and l10n)</p>
+        <p>Sisense now supports the following languages in the Sisense Web Application:</p>
+        <p>Chinese (Simple), French (France), German, Japanese, Portuguese (BR), Russian, Spanish (ES), Spanish (LA)</p>
+        <p>For more information, click <a href="../administration/internationalization-and-localization/international-locale.htm">here</a>.</p>
+        <p class="bold">Custom REST Connector</p>
+        <p>Connect to open 3rd party RESTful data sources and import data into Sisense with Sisense's Custom REST Connector. (<a href="http://developer.sisense.com/display/API2/Custom+REST+Connector">documentation</a>)</p>
+        <p class="bold">In-Chip Enhancements</p>
+        <ul>
+            <li>Enhanced cross-process memory management</li>
+            <li>Enhanced memory eviction algorithms</li>
+            <li>Increased performance in high-concurrency environments</li>
+        </ul>
+        <p class="bold">Other</p>
+        <ul>
+            <li>Week time resolution</li>
+            <li>Updates to the following connectors:<ul><li>MongoDB (<a href="../managing-data/connectors/mongo-db.htm">Download</a>)</li><li>Hive (<a href="../managing-data/connectors/hadoop-via-hive.htm">Download</a>)</li><li>Google BigQuery (<a href="../managing-data/connectors/google-big-query.htm">Download</a>)</li></ul></li>
+            <li>To update your connector to the latest version, uninstall the current version of the connector. Then, download and install the latest version.</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Scheduled email reports were occasionally sent twice to subscribed users</li>
+            <li>Custom queries returned empty tables in some scenarios</li>
+            <li>Timeout errors were returned when importing data from an ElastiCube to another ElastiCube through the ODBC connector</li>
+            <li>Sisense failed to install when installing IIS Express after installing IIS</li>
+            <li>The POST /Palettes API did not always display new colors</li>
+            <li>Some characters were displayed incorrectly when opening CSVs exported from Sisense in Excel</li>
+            <li>An error occurred when changing the source folder of CSV files imported into Sisense</li>
+            <li>Import/Export dashboard API in the interactive API reference page did not work as expected</li>
+            <li>When loading Sisense after several hours without use, the dashboard list was not always loaded</li>
+            <li>In some scenarios, widgets were not refreshed after deselecting date members that you have previously selected</li>
+            <li>Custom SQL queries were not displayed in the Connectivity Settings page for imported ElastiCubes</li>
+            <li>Not all tables were imported from Google BigQuery when importing large amounts of tables</li>
+            <li>MongoDB ODBC connections did not display the query in the preview screen</li>
+            <li>Dashboard reports from ElastiCube Sets were not sent after a build is complete in some cases</li>
+            <li>100% zoom warning message was displayed even when the browser is set to 100%</li>
+            <li>Sisense version number overlapped the browser scroll bar on the home page of the Sisense Web Application</li>
+        </ul>
+        <h3 class="notoc">Limitations</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Weeks-time Resolution</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>Currently, Sisense does not support the Prev/Next and Running Sum/Avg function sets when working on the weeks level.</li>
+                    <li>The week hierarchy is not automatically available for drilling down in widgets that were created prior to 6.4. Designers can add the week hierarchy manually.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>SisenseJS</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li>Currently, Sisense.js can't run in apps that use Angular JS 1.x.</li>
+                    <li>Sisense.js overrides the "Date" prototype with the "toISOString" function.</li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>High Availability</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>The Sisense build node that distributes ElastiCubes to your query nodes does not support concurrent builds.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Connectors</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>After upgrading to the latest drivers, ElastiCubes that import tables from MongoDB/BigQuery/Hive using the lastest drivers will not be backwards compatible with the pre-6.4 drivers.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 class="notoc">6.2.5.141</h2>
+        <p>Release Date: June 7, 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Improvement and bug fix release</p>
+        <p class="bold">Downgrade &amp; Compatibility Limitation</p>
+        <ul>
+            <li>Some ElastiCubes that have been used in V6.2.5 will not work with older versions of Sisense. In this case, they will have to be rebuilt with the older version. For additional information contact us through our <a href="https://support.sisense.com/hc/en-us/requests/new">Help Center</a>.</li>
+        </ul>
+        <p class="bold">Javascript Changes</p>
+        <ul>
+            <li>Following infrastructure improvements in our JavaScript framework, some changes might affect your plugins. Additional information can be found in the <a href="http://developer.sisense.com/display/API2/Developer+Release+Notes#625">Developer Release Notes</a></li>
+        </ul>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>Support for custom email servers (<a href="../administration/system-settings/setup-custom-email.htm">Documentation</a>)</li>
+            <li>New help section in the menu bar of the Sisense Web Application with links to the Sisense forums and documentation. To redirect users to your documentation, click <a href="../administration/embedded-analytics/rebranding-sisense/rebrand-auto.htm">here</a>.</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Bar/Column chart legends do not match the order of the data displayed in the widget</li>
+            <li>Dashboards shared with Admins group are not displayed in the administrator’s dashboard panel</li>
+            <li>When creating a new dashboard with a long name, the full title was not displayed. You can now view the full title in the tooltip</li>
+            <li>When using the ‘Between’ condition in a numeric filter, the 'from' value was displayed as the 'from' and 'to' values</li>
+            <li>Filters pane can’t be minimized when embedding dashboard on iPads</li>
+            <li>When clicking the menu or filter buttons in some tablet devices, the dashboard is moved off screen.</li>
+            <li>When refreshing a widget, the 'Widget affect dashboard filters' checkbox is cleared even if selected previously</li>
+            <li>ElastiCube set permissions defined through the UI were not always saved</li>
+            <li>Setting ElastiCube set permissions via the API prevented designers from creating dashboards.</li>
+        </ul>
+        <h2 class="notoc">6.2.2.35</h2>
+        <p>Release Date: May 1, 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Bug fix release</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Email report issues specific to V6.2</li>
+            <li>White labeling parameter inconsistencies between Sisense versions</li>
+            <li>Filters pane can’t be minimized when embedding dashboard on iPads</li>
+            <li>Scatter map widget can cause the Sisense Web Application to become unresponsive under heavy loads</li>
+            <li>Parameters that are added to the URL of embedded dashboards and widgets are not passed when selecting different dashboards from the Dashboard list</li>
+            <li>After a user transfers ownership of a dashboard, deleting the same user can delete their previously owned dashboards in the new owner’s Dashboard list</li>
+            <li>When trying to change the source DB from SQL to Oracle - the following error message was displayed: "Index was out of range"</li>
+        </ul>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>Support for session-only cookies (<a href="../administration/user-management/manage-user-session.htm">documentation</a>)</li>
+            <li>Press CTRL-S to save a script in the JavaScript editor</li>
+            <li>Added support for Javascript script editing for text widgets</li>
+        </ul>
+        <h2 class="notoc">6.2.1.80</h2>
+        <p>Release Date: March 30, 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Bug fixes and improvements release</li>
+        </ul>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>Send an immediate email report to yourself from the Shared Dashboard window.</li>
+            <li>The Google AdWords API has been updated to the latest version – v201601.</li>
+            <li>Improved Google Analytics connectivity during high loads by using <a href="https://developers.google.com/analytics/devguides/config/mgmt/v3/errors#backoff">Exponential Backoff</a>.</li>
+            <li>New Ordering() R function that allows you to control the order in which data is sent to R (<a href="../creating-dashboards/using-formulas/function-references.htm">documentation</a>).</li>
+            <li>Google BigQuery now supports native syntax when using the "manual query" option.</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>When loading dashboards on an ElastiCube build that has been stopped or  or an ElastiCube right after a build, some widgets might return errors until refreshed.</li>
+            <li>Updating the source database through "Change Connectivity Settings" in the ElastiCube Manager could throw "Object Reference Not Set to Instance of Object" for certain database configurations.</li>
+            <li>Login attempts resulted in "Problem During Operation" errors for certain IIS configurations.</li>
+            <li>Exported CSVs could be empty for viewers for certain widget configurations.</li>
+            <li>Widgets and email reports can fail with an "Index '-1' out of range" error.</li>
+            <li>Clicking Update on dashboards that are set for manual update would not trigger immediately in certain dashboards.</li>
+            <li>Exporting dashboards through the REST API would not work for specific dashboards.</li>
+        </ul>
+        <h2 class="notoc">6.2.0.339</h2>
+        <p>Release Date: February 29th 2016</p>
+        <h3 class="notoc">6.2.0.357 Hotfix – March 12th 2016</h3>
+        <p class="bold">Bug Fixes</p>
+        <ul>
+            <li>Email reports not sent for certain configurations.</li>
+            <li>Unable to connect to some/all ElastiCubes from the Sisense Web Application in certain scenarios.</li>
+            <li>Localization settings are not applied when exporting to CSV.</li>
+            <li>Exporting a large pivot to CSV takes a long time.</li>
+        </ul>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Official release of Sisense V6.2</li>
+        </ul>
+        <h3 class="notoc">New Features and Improvements</h3>
+        <p class="bold">Introducing ElastiCube Sets</p>
+        <ul>
+            <li>Combine identical ElastiCubes into a single ElastiCube set</li>
+            <li>Allows dashboard querying during accumulative builds</li>
+            <li>Supports single/multiple nodes</li>
+            <li>For more details go to the ElastiCube Sets (<a href="../administration/high-availability-in-sisense/ecubeset.htm">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Dashboard Management Enhancements</p>
+        <ul>
+            <li>Dashboard sub-folders</li>
+            <li>Dashboard search</li>
+            <li>Copy widgets across dashboards (<a href="../creating-dashboards/adding-widgets-to-dash/manage-widgets.htm">Documentation</a>)</li>
+            <li>Attach PDFs to email reports (<a href="../using-dashboards/export-overview.htm">Documentation</a>)</li>
+            <li>Change dashboard owner via the share window</li>
+            <li>Change the dashboard's source ElastiCube (<a href="../creating-dashboards/changing-dashboard-source.htm">Documentation</a>)</li>
+            <li>Re-sizable dashboard panel</li>
+            <li>Share dashboards directly from the navigation tree</li>
+        </ul>
+        <p class="bold">Data Connectors</p>
+        <ul>
+            <li>New Google BigQuery connector (<a href="../managing-data/connectors/google-big-query.htm">Documentation</a>)</li>
+            <li>New Hive connector (<a href="../managing-data/connectors/hadoop-via-hive.htm">Documentation</a>)</li>
+            <li>SSL support for MSSQL and MySQL</li>
+        </ul>
+        <p class="bold">Other</p>
+        <ul>
+            <li>Import tables between ElastiCubes via Sisense ODBC (<a href="../odbc.htm">Documentation</a>)</li>
+            <li>New API 1.0 functionality (See <a href="http://developer.sisense.com/display/API2/REST+API+Reference+-+v1.0">Developer Release Notes</a>)</li>
+            <li>New statistical functions: Rank, Intercept, Slope</li>
+            <li>New mathematical functions: Log, Ln, Exp, Mod, Quotient, Ceiling, Floor, Round, Sin, Cos, Tan, Cot, Asin, Acos, Atan, Sinh, Cosh, Tanh</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>"Failed to load ElastiCube &lt;name&gt; process" build failure in certain scenarios</li>
+            <li>Drilling in a pre-defined hierarchy might ignore filters when skipping a level</li>
+            <li>When importing data from MySql with custom SQL data types might be incorrectly assigned</li>
+            <li>Running multiple builds concurrently might result in build failures in specific scenarios</li>
+            <li>Using tables with identical names on different Redshift schemas might result in a 'connection failed' error</li>
+        </ul>
+        <h2 class="notoc">6.0.2.32</h2>
+        <p>Release Date: January 17th 2016</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Bug fixes release</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Email to user groups are not being sent in some Active Directory configurations</li>
+            <li>Exporting a very large pivot to CSV could take very long when working with IIS Express</li>
+            <li>Some widgets could be cut off in pdf exports</li>
+            <li>When working side by side with V4 dashboards, some filters might result in an error</li>
+            <li>The Sisense web app could become unresponsive when dealing with hundreds of widgets</li>
+            <li>Active Directory configuration screen is empty when working with an AdBlock plugin</li>
+        </ul>
+        <h2 class="notoc">6.0.1.87</h2>
+        <p>Release Date: December 27th 2015</p>
+        <h3 class="notoc">Release Summary</h3>
+        <ul>
+            <li>Bug fixes and improvements release</li>
+        </ul>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>FIPS Compliance<br />This version is suitable for regular deployments or installed on FIPS compliant machines.The Federal Information Processing Standard (FIPS) Publication 140-2, is a U.S. government computer security standard used to accredit cryptographic modules. </li>
+            <li>Allow exporting of large datasets out of the ElastiCube into CSV</li>
+            <li>Allow viewer to delete his sample dashboards</li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Export to CSV Error 413 – “Request entity too large”</li>
+            <li>Builds with CSV/Excel files could fail when changing the file location</li>
+            <li>Build failures with the error "Failed to execute reader"</li>
+            <li>Build failures with the error "index out of range"</li>
+            <li>"Error saving data" when trying to preview or import data from NetSuite via ODBC</li>
+            <li>Scatter Chart size value show up wrong in tooltips</li>
+            <li>Table headers could become misaligned when using the browser’s native zoom</li>
+            <li>Stacked charts might display additional 'N/A' column when two categories are defined</li>
+            <li>"Problem during Operation" error when attempting to log in to Sisense Web</li>
+            <li>Formulas are not being saved when the ElastiCube's name contains special characters</li>
+            <li>Groups with long name are not always displayed properly</li>
+        </ul>
+        <h2 class="notoc">6.0.0.1602</h2>
+        <p>Release Date: November 15 2015</p>
+        <h3 class="notoc">Release Summary</h3>
+        <p>Official release of Sisense 6.0</p>
+        <h3 class="notoc">Announcing Breaking Changes</h3>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Javascript API </MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Please note that due to an upgrade to the Javascript Infrastructure in V6, custom Javascript functionality &amp; plugins might need to be adjusted.</p>
+                <p>Additional information can be found under the <a href="https://developer.sisense.com/display/API2/Developer+Release+Notes">Developer Release Notes</a></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h3 class="notoc">New Features</h3>
+        <p class="bold">OPEN Sisense:</p>
+        <ul>
+            <li>Sisense ODBC - Allow 3rd party tools to connect directly to ElastiCubes (Link)</li>
+            <li>Note: This feature is subject to additional terms &amp; conditions.  Please contact your success manager.</li>
+            <li>Sisense API version 1.0 (<a href="https://developer.sisense.com/display/API2/Developer+Release+Notes">Documentation</a>)</li>
+        </ul>
+        <p class="bold">Sisense Mobile</p>
+        <ul>
+            <li>New native apps for iOS and Android </li>
+        </ul>
+        <p class="bold">Advanced Analytics</p>
+        <ul>
+            <li>R Integration - run R code directly from Sisense dashboards (<a href="../creating-dashboards/using-formulas/r-formulas.htm">Documentation</a>)</li>
+            <li>New set of native statistical functions (<a href="../creating-dashboards/using-formulas/function-references.htm">Documentation</a>):<ul><li>Correlation</li><li>Covariance</li><li>Skewness</li><li>Normal Distribution</li><li>T-Distribution</li><li>Possion Distribution</li><li>Exponential Distribution</li></ul></li>
+            <li>New mathematical functions (<a href="../creating-dashboards/using-formulas/function-references.htm">Documentation</a>):<ul><li>Square Root</li><li>Absolute</li><li>Power</li></ul></li>
+        </ul>
+        <h3 class="notoc">Improvements</h3>
+        <ul>
+            <li>Formula editor improvements (<a href="../creating-dashboards/using-formulas/using-formula-editor.htm">Documentation</a>):<ul><li>'Jump To' button for quick navigation between formula categories</li><li>'Expand' button to switch to new expanded window for easier handling of large formulas.</li></ul></li>
+            <li>Sisense Web Performance and Infrastructure Improvements<ul><li>Reduced application size and load time</li><li>Improved rendering times due to Angular.js framework upgrade</li><li>Read more in the <a href="https://developer.sisense.com/display/API2/Developer+Release+Notes">Developer Release Notes</a></li></ul></li>
+            <li>ElastiCube Performance Improvements<ul><li>New heuristic algorithms to improve performance of grouping in queries</li><li>Improved performance for basic and advanced aggregations</li><li>Improved decompression performance for recycled queries in big data ElastiCubes</li></ul></li>
+        </ul>
+        <h3 class="notoc">Selected Bug Fixes</h3>
+        <ul>
+            <li>Identical table names across different schemas would collide in some databases</li>
+            <li>ElastiCube could become unavailable for queries during full builds in certain scenarios</li>
+            <li>Unable to change the width of a pivot's column in some cases</li>
+            <li>Data security option did not work as expected when combining an 'Everything' rule with 'Everyone else'</li>
+            <li>Alignment issues when exporting dashboards with several columns to PDF</li>
+            <li>Sorting from the dashboard view would not take effect after multiple sorting modifications</li>
+            <li>Scatter map would hang with empty strings</li>
+            <li>Selections in charts would not take effect when working with the 'continuous timeline' feature</li>
+            <li>Scatter chart tooltip is not always well formatted for dates and formulas</li>
+            <li>Dashboard filter ranking tab terminology is misleading in some cases</li>
+        </ul>
+        <p>For Release Notes prior to version 6.0, see the <a href="https://documentation.sisense.com/release-notes/" target="_blank">Release Notes Archive</a>.</p>
+    </body>
+</html>

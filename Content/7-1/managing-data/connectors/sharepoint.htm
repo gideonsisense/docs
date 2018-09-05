@@ -1,0 +1,160 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to SharePoint | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to SharePoint</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> SharePoint connector is a standalone connector that allows you to import data from SharePoint’s into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string contains your credentials and is used by SharePoint to authenticate your account. Once you have connected to SharePoint, you can import a variety of tables from SharePoint.</p>
+        <p>This page describes how to install the SharePoint connector, how to connect to SharePoint with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the SharePoint Connector</a>
+            </li>
+            <li><a href="#Creating">Creating A SharePoint Connection String</a>
+            </li>
+            <li><a href="#Adding">Adding SharePoint Tables to your <MadCap:variable name="Variables.ECM" /></a>
+            </li>
+            <li><a href="#SharePoi">SharePoint Tables</a>
+            </li>
+            <li><a href="#Versions">Versions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the SharePoint Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the SharePoint connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the SharePoint connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Sharepoint.Connector.Installer.exe">Download</a> the SharePoint installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The SharePoint connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/sharepoint1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Creating"></a>Creating a SharePoint Connection String</h2>
+        <p>To connect to your SharePoint account’s data, you provide your SharePoint credentials in a connection string. <MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to SharePoint and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>The following is an example of a SharePoint connection string:</p>
+        <p class="code">jdbc:sharepoint:User=MyUserAccount;Password=MyPassword;Auth Scheme=NTLM;Share Point Edition=SharePoint Online;URL=http://sharepointserver/mysite;</p>
+        <p>The connection string must start with “jdbc:sharepoint:” and include the following name-value pairs separated with semicolons:</p>
+        <ul>
+            <li><span class="bold">User</span>: The SharePoint user account used to authenticate.</li>
+            <li><span class="bold">Password</span>: The password used to authenticate the user.</li>
+            <li><span class="bold">Share Point Edition</span>: The edition of SharePoint being used. Set to either SharePoint Online or SharePoint On-Premise. If you are using SharePoint Online, add the URL parameter. If you are using SharePoint On-Premise, add the Auth Scheme parameter.</li>
+            <li><span class="bold">URL</span>: The base URL for the site.</li>
+            <li><span class="bold">Auth Scheme</span>: The scheme used for authenticating to SharePoint On-Premise instances. Accepted entries are NTLM, BASIC, DIGEST, FORMS, NONE, NEGOTIATE, and KERBEROSDELEGATION. NTLM is the default.</li>
+        </ul>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h2 class="notoc"><a name="Adding"></a>Adding SharePoint Tables to Your ElastiCube</h2>
+        <p class="bold">To import SharePoint tables:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, SharePoint. The Connect to SharePoint window is displayed.<br /><img src="../../../Resources/Images/sharepoint2.png" class="thumblarge" /></li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. SharePoint is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to SharePoint and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc"><a name="SharePoi"></a>SharePoint Tables</h2>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> SharePoint connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Announcements</td>
+                    <td>Create, update, delete, and query items in Announcement lists.</td>
+                </tr>
+                <tr>
+                    <td>Attachments</td>
+                    <td>Read or delete Attachments for the specified item on the specified list.</td>
+                </tr>
+                <tr>
+                    <td>Calendar</td>
+                    <td>Create, update, query, and delete items in SharePoint Calendar lists.</td>
+                </tr>
+                <tr>
+                    <td>Contacts</td>
+                    <td>Create, update, query, and delete items in SharePoint Contact lists.</td>
+                </tr>
+                <tr>
+                    <td>Documents</td>
+                    <td>Create, update, delete, and query Documents from SharePoint libraries.</td>
+                </tr>
+                <tr>
+                    <td>FileVersions</td>
+                    <td>Lists the versions of files available on SharePoint.</td>
+                </tr>
+                <tr>
+                    <td>GetValidTerms</td>
+                    <td>Gets a list of valid terms for the specified column on the specified table.</td>
+                </tr>
+                <tr>
+                    <td>Groups</td>
+                    <td>Create, update, delete, and query Groups from SharePoint.</td>
+                </tr>
+                <tr>
+                    <td>IssueTracking</td>
+                    <td>Create, update, query, and delete items in SharePoint Issue Tracking lists.</td>
+                </tr>
+                <tr>
+                    <td>Links</td>
+                    <td>Create, update, query, and delete items in SharePoint Link lists.</td>
+                </tr>
+                <tr>
+                    <td>Lists</td>
+                    <td>Lists can be used to list the tables in SharePoint. This will only return actual lists in SharePoint and not any special tables associated with the driver.</td>
+                </tr>
+                <tr>
+                    <td>Permissions</td>
+                    <td>The permissions for a site or list.</td>
+                </tr>
+                <tr>
+                    <td>Pictures</td>
+                    <td>Create, update, delete, and query documents in a picture library.</td>
+                </tr>
+                <tr>
+                    <td>Roles</td>
+                    <td>Create, update, delete, and query Roles from SharePoint.</td>
+                </tr>
+                <tr>
+                    <td>Subsites</td>
+                    <td>This lists the available subsites.</td>
+                </tr>
+                <tr>
+                    <td>Tasks</td>
+                    <td>Create, update, query, and delete items in a SharePoint Tasks list.</td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>Create, update, delete, and query Users from SharePoint.</td>
+                </tr>
+                <tr>
+                    <td>Views</td>
+                    <td>Create, update, delete, and query the available lists in SharePoint.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Versions"></a>Versions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.1.2</td>
+                    <td>May 23, 2017</td>
+                    <td>General Beta release</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

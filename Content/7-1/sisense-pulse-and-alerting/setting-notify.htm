@@ -1,0 +1,217 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Setting Notification Channels | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Setting Notification Channels</h1>
+        <p>By default, your users are notified via their email addresses registered with <MadCap:variable name="Variables.CompanyName" />. In addition, <MadCap:variable name="Variables.CompanyName" /> supports a variety of workflows by sending notifications across multiple applications and services. For example, your users can receive notifications through the <MadCap:variable name="Variables.CompanyName" /> mobile application, Zapier, Slack, and other 3rd services via webhooks.</p>
+        <p class="bold">To define how users are notified:</p>
+        <ol>
+            <li>
+                <MadCap:conditionalText MadCap:conditions="Default.Website">For Build Alerts, select the <img src="../../Resources/Images/alertnotify.png" /> tab.</MadCap:conditionalText>
+            </li>
+            <li>For Data Alerts, select <span class="bold">Advanced Options</span> &gt; <img src="../../Resources/Images/alertnotify1.png" />.<br /><img src="../../Resources/Images/advancedtab.png" class="thumblarge" /></li>
+            <li>In the Notifications area, select the relevant channel for your notification. The default channel, Email, is already selected.<br />You can select one or more of the following channels:<br /></li>
+            <ul>
+                <li>Email</li>
+                <li>Mobile</li>
+                <li>Slack</li>
+                <li>Zapier</li>
+                <li>Webhook</li>
+                <li MadCap:conditions="Default.Website">
+                    <MadCap:conditionalText MadCap:conditions="Default.Website">mobile</MadCap:conditionalText>
+                    <br />
+                </li>
+            </ul>
+            <li>Click <span class="bold">Save</span>.</li>
+        </ol>
+        <h2 class="notoc" MadCap:conditions="Default.Website">
+            <MadCap:variable name="Variables.CompanyName" /> Mobile</h2>
+        <p MadCap:conditions="Default.Website">
+            <MadCap:variable name="Variables.CompanyName" /> Mobile enables users to view <MadCap:variable name="Variables.CompanyName" /> dashboards through their mobile devices. You or your users can receive notifications through <MadCap:variable name="Variables.CompanyName" /> Mobile. After selecting the users you want to notify, any users with a <MadCap:variable name="Variables.CompanyName" /> user account and <MadCap:variable name="Variables.CompanyName" /> Mobile will receive a notification when an alert is triggered.<br /><img src="../../Resources/Images/1_home.png" class="thumblarge" /></p>
+        <h2 class="notoc">Slack</h2>
+        <p>Slack is a real-time team collaboration messaging platform that allows you to receive incoming Webhooks from external sources such as <MadCap:variable name="Variables.CompanyName" />. To send notifications through Slack, you need to enter the URL and optionally, your Slack channel or username, where the notification is to be displayed. </p>
+        <p MadCap:conditions="Default.Whitelabeled">You can ask your Administrator to provide you with the Slack URL and channel.</p>
+        <p MadCap:conditions="Default.Website">You can obtain these details by adding the Incoming WebHooks app into your Slack configuration.</p>
+        <p class="bold" MadCap:conditions="Default.Website">To obtain a Webhook URL and channel from Slack:</p>
+        <ol>
+            <li MadCap:conditions="Default.Website">Add the Incoming WebHooks app to Slack. You can find this app in Slack’s App Directory.</li>
+            <li MadCap:conditions="Default.Website">In the Incoming WebHooks app page, click <span class="bold">Add Configuration</span>.<br /></li>
+            <li MadCap:conditions="Default.Website">After you add the Incoming WebHooks app, you can select which channel to post the notifications to. The channel name is optional and displays the notification in the channel associated with your WebHook URL. In the Post to Channel area, select the channel where the notification is to be displayed and click <span class="bold">Add Incoming WebHooks integration</span>.<br /><img src="../../Resources/Images/addslack2.png" class="thumblarge" /></li>
+            <li MadCap:conditions="Default.Website">In the Setup Instructions the Webhook URL is displayed. Copy the Webhook URL.<br /><img src="../../Resources/Images/slackwebhook1.png" class="thumblarge" /><br /></li>
+            <li MadCap:conditions="Default.Website">In <MadCap:variable name="Variables.CompanyName" /> when sending notifications through Slack, in the <span class="bold">URL</span> field, enter the URL copied in the previous step and in the #channel/@username field, enter the channel name if you have defined one.</li>
+        </ol>
+        <h2 class="notoc">Zapier</h2>
+        <p>Zapier is an online service that lets you create automated actions connecting disparate business apps and services such as <MadCap:variable name="Variables.CompanyName" />. To receive notifications through Zapier, you must create a Zap and provide <MadCap:variable name="Variables.CompanyName" /> with the relevant URL when configuring your alerts’ notifications.<br /></p>
+        <p>When an alert is triggered, <MadCap:variable name="Variables.CompanyName" /> sends the notification to the Webhook you define in Zapier.</p>
+        <p MadCap:conditions="Default.Whitelabeled">You can ask your Administrator to provide you with the Zapier URL.</p>
+        <p class="bold" MadCap:conditions="Default.Website">To obtain a Webhook URL from Zapier:</p>
+        <ol>
+            <li MadCap:conditions="Default.Website">Log in to Zapier and click <span class="bold">Make a Zap</span>. The Trigger App page is displayed.<br /></li>
+            <li MadCap:conditions="Default.Website">From the Trigger App page select Webhooks. The Connect to Webhooks by Zapier page is displayed.</li>
+            <li MadCap:conditions="Default.Website">In Step 1 &gt; Set Up Webhook, click <span class="bold">Copy to clipboard</span> to copy the Webhook URL you need to provide to <MadCap:variable name="Variables.CompanyName" />.<br /><img src="../../Resources/Images/zapierwebhook-1024x347.png" class="thumblarge" /></li>
+            <li MadCap:conditions="Default.Website">In <MadCap:variable name="Variables.CompanyName" />, when sending notifications through Zapier, in the <span class="bold">URL</span> field, enter the URL copied in the previous step.</li>
+        </ol>
+        <h2 class="notoc">Webhooks</h2>
+        <p>Webhooks are a system of automated notifications that indicate that an event occurred, in this case an alert being triggered. To send notifications through additional 3rd party channels, you can select <span class="bold">Webhook </span>and enter the Webhook name and URL.<br /></p>
+        <p>Your Webhook server listens for incoming messages from <MadCap:variable name="Variables.CompanyName" /> across the URL specified in the URL field.</p>
+        <p MadCap:conditions="Default.Whitelabeled">You can ask your system administrator to provide you with the Webhook URL.</p>
+        <p MadCap:conditions="Default.Website">When <MadCap:variable name="Variables.CompanyName" /> sends notifications to your custom Webhook, they are sent within a JSON payload. Your Wehbook provider must interpret the payload and display the notification to your users. The following <MadCap:conditionalText MadCap:conditions="Default.Website">are</MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.Whitelabeled">is an </MadCap:conditionalText>example<MadCap:conditionalText MadCap:conditions="Default.Website">s</MadCap:conditionalText> of <MadCap:conditionalText MadCap:conditions="Default.Whitelabeled">a </MadCap:conditionalText>notifications sent in a JSON payload and a description of the contents of the payload:</p>
+        <p MadCap:conditions="Default.Website">{ type: 'kpi',
+
+ name: 'Total Sales',
+
+ message: 'Hello World',
+
+ originDashboardLink: '58128745677f52dc0f000019',
+
+ measure: 'Revenue',
+ 
+value: 39759625.51502721,
+
+ condition: 'none',
+ 
+filters:
+  [ { asDimension: false,
+
+      title: 'Category',
+      
+value: 'Include all',
+
+      jaql: [Object],
+      panel: 'scope' },
+&#160;
+    { asDimension: false,
+      
+title: 'Gender',
+      
+value: 'Include all',
+
+      jaql: [Object],
+
+      panel: 'scope' } ]
+</p>
+        <table style="width: 100%;" MadCap:conditions="Default.Website">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <span class="bold">Data Events</span>
+                    </td>
+                    <td>
+                        <MadCap:conditionalText MadCap:conditions="Default.Website">
+                            <span class="bold">Build Events</span>
+                        </MadCap:conditionalText>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <pre>{ type: 'kpi',
+
+ name: 'Total Sales',
+
+ message: 'Hello World',
+
+ originDashboardLink: '58128745677f52dc0f000019',
+
+ measure: 'Revenue',
+ 
+value: 39759625.51502721,
+
+ condition: 'none',
+ 
+filters:
+  [ { asDimension: false,
+
+      title: 'Category',
+      
+value: 'Include all',
+
+      jaql: [Object],
+      panel: 'scope' },
+&#160;
+    { asDimension: false,
+      
+title: 'Gender',
+      
+value: 'Include all',
+
+      jaql: [Object],
+
+      panel: 'scope' } ]
+</pre>
+                    </td>
+                    <td>
+                        <p class="code" MadCap:conditions="Default.Website">{ type: 'build',
+  </p>
+                        <p class="code" MadCap:conditions="Default.Website">name: 'Success Event',
+  </p>
+                        <p class="code" MadCap:conditions="Default.Website">measure: null,
+  </p>
+                        <p class="code" MadCap:conditions="Default.Website">value: 1,
+  condition: 'none',
+  filters: null }</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <table MadCap:conditions="Default.Website">
+            <col />
+            <col style="width: 93px;" />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Type</td>
+                    <td>String</td>
+                    <td>Type of alert. ‘kpi’ for data events and ‘build’ for build events.</td>
+                </tr>
+                <tr>
+                    <td>Name</td>
+                    <td>String</td>
+                    <td>Name of the alert.</td>
+                </tr>
+                <tr>
+                    <td>Message</td>
+                    <td>String</td>
+                    <td>Notification message.</td>
+                </tr>
+                <tr>
+                    <td>originDashboardLink</td>
+                    <td>String</td>
+                    <td>
+                        <p>Dashboard ID provided by <MadCap:variable name="Variables.CompanyName" />. You can find the dashboard ID from the URL of the dashboard.</p>
+                        <p>For example, the ID of the dashboard below if:</p>
+                        <p class="code">http://localhost:8081/app/main#/dashboards/<span class="bold">573b4322048e5e382a000001</span></p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>value</td>
+                    <td>Double</td>
+                    <td>
+                        <p>For data events when a threshold condition is applied, this is the value of the threshold.</p>
+                        <p MadCap:conditions="Default.Website">For build events, the value is 0 for failed builds and 1 for successful builds.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>condition</td>
+                    <td>String</td>
+                    <td>Type of condition that generated the alert.</td>
+                </tr>
+                <tr>
+                    <td>filters</td>
+                    <td>Object</td>
+                    <td>Object that defines filters applied to the dashboard.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

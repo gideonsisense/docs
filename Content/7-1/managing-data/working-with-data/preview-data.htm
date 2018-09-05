@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Previewing Data from a Table | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Previewing Data from a Table</h1>
+        <p>The Preview table lets you see all the values for all the rows and columns in a table. This includes any custom columns, tables, and ETL processes that have been applied to your table.</p>
+        <p>The Preview table makes it easy to verify that the data in your table is accurate and complete.</p>
+        <p>In addition to displaying a preview of your data, from the Preview table, you can view which columns are connected to other tables and add custom columns.</p>
+        <p><span class="bold">Note</span>: To view underlying table data, you will first need to build your <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p class="bold">To review the underlying table data:</p>
+        <ul>
+            <li>Click the relevant table and select the magnifying glass icon to display the Preview table.<br /><img src="../../../Resources/Images/vyzoom.png" class="thumblarge" /><br /></li>
+        </ul>
+        <p>The Preview table contains a variety of information and functionality that relate to your table. A sample preview is displayed below.</p>
+        <p>
+            <img src="../../../Resources/Images/previewdata1.png" class="thumblarge" />
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>
+                    </th>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Column Filter</td>
+                    <td>In the left pane, you can search for columns in your table. As you begin to type, any relevant results are displayed in the left pane. This does not affect the results displayed in the preview.</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Connected Table</td>
+                    <td>This icon indicates that the column is connected to another table. Click the icon to disconnect the relationship or to view more information about the connection. See <a href="create-relations.htm">Creating and Removing a Relationship between Tables</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Table Details</td>
+                    <td>This information describes the number of columns and rows included in the table.</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Menu Options</td>
+                    <td>This is a list of tasks you can perform on a column. Hover over the column to display the menu and click it to display the options.</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Filter Column</td>
+                    <td>Click to apply filters to the data in the column. You can filter numeric data and text data. See <a href="#Filterin">Filtering Columns</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>6</td>
+                    <td>Sort Column</td>
+                    <td>Click to sort a column. Hover over the column name to display the sort icon. You can sort the column by date, numerically, or alphabetically depending on the type of column.</td>
+                </tr>
+                <tr>
+                    <td>7</td>
+                    <td>Add Custom Column</td>
+                    <td>Click to add a custom column to the table. See <a href="../transforming-data/add-custom-field.htm">Adding a New Custom Column</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>8</td>
+                    <td>Sample Data</td>
+                    <td>Click to see a sample of your data. See <a href="#Sampling">Sampling Data</a> for more information.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc"><a name="Filterin"></a>Filtering Columns</h2>
+        <p>You can filter data displayed in your Preview table’s columns by defining conditions for numeric data and text data. To limit what data is displayed in the preview, you can add multiple conditions that you define. For example, a Text filter can limit what strings are included in the preview.</p>
+        <p>
+            <img src="../../../Resources/Images/valuesfilter.png" class="thumblarge" />
+        </p>
+        <p>Filtering the data in the Preview table does not affect the data itself, just what you see in the preview.</p>
+        <p>Filtering your preview is useful if you need to check specific data to verify its accuracy of your table’s completeness.</p>
+        <p class="bold">To filter entire rows or columns of data from your preview:</p>
+        <ol>
+            <li>In the Preview table, hover over the header in the of the relevant column to display the Filter icon.</li>
+            <li>Click the Filter icon to define the filter’s conditions.</li>
+        </ol>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td><span class="bold">Text</span>
+                    </td>
+                    <td><span class="bold">Numeric</span>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../../Resources/Images/textfilter.png" class="thumblarge" />
+                    </td>
+                    <td>
+                        <img src="../../../Resources/Images/valuesfilter.png" class="thumblarge" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ol start="3">
+            <li>Define your filters. Click <span class="bold">Add Condition</span> to add more conditions to the filter or click <span class="bold">Clear</span> to erase all the conditions.</li>
+            <li>After you have defined your conditions, click <span class="bold">Apply</span> to update the preview.</li>
+        </ol>
+        <h2 class="notoc"><a name="Sampling"></a>Sampling Data</h2>
+        <p>If you are working with a large dataset, you may want to restrict the amount of data displayed in your Preview table. <MadCap:variable name="Variables.CompanyName" /> provides three options for displaying a sample of your data:</p>
+        <p><span class="bold">Top</span>: The first rows that are contained at the top of your data.</p>
+        <p><span class="bold">Bottom</span>: The last rows that are contained at the bottom of your data.</p>
+        <p><span class="bold">Sample</span>: A random selection of rows contained in your table. <MadCap:variable name="Variables.CompanyName" /> selects a sample of your data randomly by rows. If you open the preview again, the same rows will be displayed until your next <MadCap:variable name="Variables.ElastiCube" /> build.</p>
+        <p>
+            <img src="../../../Resources/Images/samplingdata.png" class="thumblarge" />
+        </p>
+        <p>With each sampling option, you can determine how many rows are display according to the value of the <span class="bold">Number of Rows</span> field. You can modify this value to display as few as 10 rows or include as many as you like up to the full amount of rows included in the table.</p>
+        <p class="bold">To view a sample of your data:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.ECM" />, open a preview of your table.<br /><img src="../../../Resources/Images/opensample.png" class="thumblarge" /></li>
+            <li>In the top-right corner of the Preview table, click the <span class="bold">Sampling</span> Icon.<br /><img src="../../../Resources/Images/samplingicon.png" class="thumblarge" /></li>
+            <li>Select the relevant sampling option for your data and enter the amount of rows to be included in the sample in the <span class="bold">Number of Rows</span> field.<br /><img src="../../../Resources/Images/samplingarea.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Done</span>. Your Preview table is updated.</li>
+        </ol>
+    </body>
+</html>

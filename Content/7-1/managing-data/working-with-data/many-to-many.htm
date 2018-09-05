@@ -1,0 +1,179 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="8597" MadCap:lastWidth="871">
+    <head>
+        <title>Many-to-Many Relationships | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Many-to-Many Relationships</h1>
+        <p>
+            <span class="bold">Note</span>: The image on this page were taken in the desktop version of the <MadCap:variable name="Variables.ECM" />, however, the same principles described on this page also apply to the <MadCap:variable name="Variables.ECM" /> Online.</p>
+        <p>In databases, a Many-to-Many relationship exists when the value in each field used to create a relationship between tables is included multiple times in each table.</p>
+        <p>The problem with Many-to-Many relationships is that it can cause duplications in the returned datasets, which can result in incorrect results and might consume excessive computing resources. This section provides solutions and workarounds to common scenarios with many-to-many relationships.</p>
+        <p>
+            <span class="bold">Example</span>: A hotel may have a table with reservation data and a table with payment data. Both tables include the name of the guest. A guest can have multiple reservations under their name as well as multiple payments recorded on their name. If a relationship exists between the reservation and payment tables based on the guest’s name, a many-to-many relationship is created, as the guest’s name appears multiple times in each table.</p>
+        <p class="bold">Summary of Relationship Types</p>
+        <ul>
+            <li>
+                <span class="bold">One-to-One Relationship</span>:&#160;In this scenario both sides of the relationship have unique values for every row.</li>
+            <li>
+                <span class="bold">One-to-Many Relationship</span>:&#160;In this scenario one side of the relationship will contain unique values for every row, but the other side of the relationship will contain duplicate values for any or all of the corresponding values in the first table.</li>
+            <li>
+                <span class="bold">Many-to-Many Relationship</span>:&#160;In this scenario, both sides of the relationship will hold duplicated values, causing excessive calculations for every query run against it.</li>
+        </ul>
+        <p>There are several methods to resolve and bypass a many-to-many relationship. The solution depends on the business model and the logic of the business questions at hand. The following solutions differ by business logic and the schema at hand; each solution can be applied to each schema respectively.</p>
+        <p>The following sections cover:</p>
+        <ul>
+            <li>Testing your schema to see if it includes many-to-many relationships</li>
+            <li>Understanding which scenario best fits your current schema</li>
+            <li>According to your schema logic, applying the respective solution</li>
+        </ul>
+        <p>To check if a relationship is Many-to-Many, you need to check the cardinality of the relationship, and determine the number of unique and duplicate values on each side of the relationship.</p>
+        <h3 class="notoc">Testing if a Relationship is Many-to-Many</h3>
+        <p>Many-to-Many relationships occur when two tables are joined on a field containing duplicate values on both tables. For example the same guest may have multiple reservations and multiple payments at a hotel, thus joining on the guest between the reservation and payment table would result in a M2M relationship.</p>
+        <p>When testing, if you get the same value for both the unique and duplicate values, then there is no duplication, and this will either be a One-to-Many or a One-to-One relationship. If the number of duplicate values is larger than the number of unique values, then this side of the relationship has duplicated values, and you will need to investigate the other side of the relationship.  If the other side of the relationship yields unique values, this is a one-to-many relationship. If not, you have a many-to-many relationship.</p>
+        <p>Use the following SQL statement to test for potential M2M relationships:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.ECM" />, open the relevant ecube file.</li>
+            <li>Click <span class="bold">Add Data</span>&gt; <span class="bold">Custom SQL Expression</span>.</li>
+            <li>Enter and adjust the SQL statement below.</li>
+            <p class="code">SELECT [Do I have duplications?]</p>
+            <p class="code">FROM (</p>
+            <p class="code">SELECT distinct_count(t1.col1)&lt;&gt;count(t1.col1) AS [Do I have duplications?]</p>
+            <p class="code">FROM [Table1] t1</p>
+            <p class="code">UNION all</p>
+            <p class="code">SELECT distinct_count(t2.col2)&lt;&gt;count(t2.col2)</p>
+            <p class="code">FROM [Table2] t2) AS temp</p>
+            <p class="code">GROUP BY [Do I have duplications?]</p>
+            <p>
+                <img src="../../../Resources/Images/many1.png" class="thumblarge" />
+            </p>
+            <li>In the top right of the expression editor window, click Parse SQL Expression. If the expression parses successfully, click Preview result table.</li>
+            <p>
+                <img src="../../../Resources/Images/many2.png" class="thumblarge" />
+            </p>
+            <li>If the returned result is ‘True’ in both lines, a many-to-many relationship exists, and will need to be considered in the ElastiCube design.</li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/many3.png" class="thumblargeli" />
+        </p>
+        <h3 class="notoc">Many-to-Many Relationship Prior to Resolution</h3>
+        <p>If the two values are equal, all guest IDs appear only once, making all values unique. Even if the other side of the relationship has duplicate values for guest ID, this is till a One-To-Many relationship, where the unique values are on the reservations side, and the duplicate values are on the Payments side. </p>
+        <p>If there are more than two tables connected to this relationship, that is, if there are more than two tables merged on the same field, a few more options exist. The solution for the single many-to-many relationship will be a sub-problem of this scenario. In this case, you’ll need to run the test on every table to see the uniqueness or duplication of the merged fields.</p>
+        <p class="bold">Two Tables with One Relationship</p>
+        <p>This section describes two possible workarounds when you have a schema that includes two tables with one relationship:</p>
+        <ul>
+            <li>Two Separate One-to-Many Relationships</li>
+            <li>Creating an Aggregated Table</li>
+        </ul>
+        <p class="bold">Two Separate One-to-Many Relationships</p>
+        <p>The direct solution for such a problem is to break this relationship into two separate one-to-many relationships.</p>
+        <p>
+            <img src="../../../Resources/Images/many4.png" class="thumblarge" />
+        </p>
+        <p>You can use the following diagram to understand the logic behind this testing:</p>
+        <p>
+            <img src="../../../Resources/Images/testing-logic1.png" class="thumblarge" />
+        </p>
+        <p>1 – Create a custom SQL expression in the Elasticube. In the expression of this table select all the individual values for the identifier column from both sides. The expression should look like this:</p>
+        <p class="code">SELECT * FROM</p>
+        <p class="code">(SELECT DISTINCT r.GuestID, r.GuestName</p>
+        <p class="code">FROM [Reservations] r</p>
+        <p class="code">UNION</p>
+        <p class="code">SELECT DISTINCT p.GuestID, p.GuestName</p>
+        <p class="code">FROM [Payments] p) AS G</p>
+        <p>This query will take all Guest ID values from both tables, and using the UNION statement, will bring in only the unique values from both tables, making this a complete list of all distinct Guest ID values.</p>
+        <p>2 – Merge the Guest ID field from the new ‘linking’ table to the other two Guest ID fields from the other two tables, thus creating two One-To-Many relationships.</p>
+        <p>You can now use this Guest ID field as the rows or axes elements of a widget, pulling in the unique values from the new Guest Dimension, with measures from the two other tables. See image above.</p>
+        <p class="bold">Creating an Aggregated Table</p>
+        <p>In situations where you have more than one fact table (a Fact table is a primary table containing the measures or fields used for calculations in the dashboard) in the Elasticube, there are several situations when an aggregated table can resolve a many-to-many relationship.</p>
+        <p>
+            <img src="../../../Resources/Images/many5.png" class="thumblarge" />
+        </p>
+        <p>Two fact tables</p>
+        <p>Assuming you want to segment your data according to a few different dimensions, creating relationships directly between these fields can and will create many-to-many relationships in one of two ways, according to the schema:</p>
+        <ul>
+            <li>Both tables don’t hold unique values, and all values from one table are held in the second table. In this scenario either a linked dimension (as described in the first solution – Two Separate One-to-Many Relationships) or an aggregated table can be created which will hold all the unique values and the desired calculations for one of the tables. To create an aggregate table, create a custom SQL expression and aggregate values from the table that includes all values; its own, and the subset present in the other table with the following expression:</li>
+        </ul>
+        <p class="code">SELECT i.OrderDateKey, i.ProductKey, sum(i.DiscountAmount), sum(i.SalesAmount), avg(i.UnitPriceDiscountPct)</p>
+        <p class="code">FROM [FactInternetSales] i</p>
+        <p class="code">GROUP BY i.OrderDateKey, i.ProductKey</p>
+        <p>
+            <img src="../../../Resources/Images/many6.png" />
+        </p>
+        <p>This custom SQL expression will select the distinct OrderDateKeys and their corresponding ProductKeys from the FactInternetSales, grouped by these fields, together with single value aggregations for the different fields, in this case, Discount Amount, Sales Amount and the average unit Price discount. After merging the OrderDateKey and Product Key to the two other tables, you will be able to pull the values from this new table into the rows or axes panel of a widget in the Sisense Web Application with measures and additional aggregations from the two other tables.</p>
+        <p>
+            <span class="bold">Note</span>: The non-aggregated table needs to be a subset in terms of the primary fields from the aggregated table.</p>
+        <ul>
+            <li>Both tables don’t include unique values, and there are different values for several fields in both the tables. Resolving this scenario incorporates both solutions mentioned above. In this scenario, create an aggregated table and a dimension table (both described above). The final resolution should look like this:</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/many7.png" class="thumblarge" />
+        </p>
+        <span class="bold">Two Fact tables with a date dimension table and an aggregative Products table</span>
+        <p class="bold">More than Two Tables with More than One Relationship</p>
+        <p>This section provides two possible workarounds when you have a schema that includes more than two tables with more than one relationship:</p>
+        <p>Options include:</p>
+        <ul>
+            <li>Using the Lookup function</li>
+            <li>Concatenating two tables into one</li>
+        </ul>
+        <p class="bold">Using the Lookup Function</p>
+        <p>In most scenarios, you will aggregate values according to a given ID from the unique side of the relationship to the duplicate side. However in specific cases it’ll be vice versa.</p>
+        <p>For example in the following scenario, in which we have three tables, and between them two one-to-many relationships, this can potentially create a many-to-many relationship, if you query the two leaf tables. This means that the query result table will have multiple rows which won’t be distinguishable one from the other.</p>
+        <p>
+            <img src="../../../Resources/Images/many8.png" class="thumblarge" />
+        </p>
+        <span class="bold">Two consecutive M-to-M relationships</span>
+        <p>Using the Lookup Function, you can import values from a remote table by matching values in a different column. This will create a new column in the table where you want to perform an aggregation of a given field(s), with the matching value of the identifying field from the other table. Taking the example of tables T1, T2 and T3, we’d like to run a query that will display aggregations from the duplicate IDs from T1, with a measure from T3. If you run the query as is, you will get multiple values for the query’s result set, and we will not be able to run this aggregation. To resolve this, use the Lookup function to import the values from T3 into T2 and then re-run the query only on tables T1 and T2. Using the lookup function, available in the ‘Miscellaneous Functions’ in the custom SQL editor, you can import the values of ‘M3’ from the ‘T3’ table into the ‘T2’ table. Create a new custom column, and use the Lookup function to import the values of attribute, In this case, the Lookup function should look like this:</p>
+        <p>Lookup([T3],[T3].[M3], [T2].id2,[T3].id2)</p>
+        <p>Running this statement in table T2 will import the matching values of M3 from T3 according to the matching results in ID2 between the two tables.</p>
+        <p>LOOKUP(remote_table,remote_result_column,current_match_column, remote_match_column)</p>
+        <p>Matches the current value with another value from a remote table. The result will be the value in remote_result_column for which the corresponding remote_match_column equals the current_match_column.</p>
+        <p>
+            <img src="../../../Resources/Images/many9.png" class="thumblarge" />
+        </p>
+        <span class="bold">Two consecutive M-to-O relationships after Lookup fix</span>
+        <p class="bold">Concatenating Two Tables into One</p>
+        <p>Assuming you have two separate tables with duplicate ID values in each, and each including different columns for each ID, you can create a new table including all values for every ID, and pull the aggregations from this new table.</p>
+        <p>Note that the two original tables; Table_1, Table_2 have different columns.</p>
+        <p>
+            <img src="../../../Resources/Images/many10.png" class="thumblarge" />
+        </p>
+        <span class="bold">Concatenating tables</span>
+        <p>Using the following SQL statement, you can import the data from both tables, with the IDs and the columns respectively:</p>
+        <p class="code">SELECT s.id AS id, s.m1, s.m2, ToInt( NULL ) m3 , ToInt( NULL ) m4</p>
+        <p class="code">FROM [Table 1] s</p>
+        <p class="code">UNION</p>
+        <p class="code">SELECT t.id, ToInt( NULL ) , ToInt( NULL ) , t.m3, t.m4</p>
+        <p class="code">FROM [Table 2] t</p>
+        <p class="code">This will create a table with five columns:</p>
+        <p class="code">Id</p>
+        <p class="code">M1 (from table_1)</p>
+        <p class="code">M2 (from table_1)</p>
+        <p class="code">M3 (from table_2)</p>
+        <p class="code">M4 (from table_2)</p>
+        <p>The values missing from each table respectively will be NULL’s which will result in the following table.</p>
+        <p>
+            <img src="../../../Resources/Images/many11.png" class="thumblarge" />
+        </p>
+        <p>
+            <img src="../../../Resources/Images/many12.png" class="thumblarge" />
+        </p>
+        <span class="bold">Concatenated table – result set</span>
+        <p>
+            <img src="../../../Resources/Images/many13.png" class="thumblarge" />
+        </p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

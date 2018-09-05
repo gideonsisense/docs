@@ -1,0 +1,158 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="4391" MadCap:lastWidth="1187">
+    <head>
+        <title>Sisense-Enabled Echo | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>
+            <MadCap:variable name="Variables.CompanyName" />-Enabled Echo</h1>
+        <h3 class="notoc">Beta License Agreement</h3>
+        <p>This product is still in beta and may undergo further changes.</p>
+        <p>The following are instructions for using various equipment with Sisense’s BI Everywhere software functionality (the equipment and the BI Everywhere software is collectively referred to herein as the “Product”). This notice is to remind users that the Product is a beta release offering and is not warranted to be at the level of performance of a commercially available product offering. In addition, the Product may be substantially modified prior to first commercial release, or at Sisense’s option may not be released commercially in the future. As such, by using the equipment along with the Sisense Software, each user agrees (i) to follow all instructions provided by Sisense with respect to the installation and use of the equipment with the Sisense Software, including the below, and (ii) that such use continues to be for testing and evaluation purposes only.</p>
+        <p>The Product and Documentation are provided “AS IS” without warranty of any kind, and Sisense and its licensors and suppliers disclaim all warranties, express, implied or statutory, including without limitation any implied warranties of title, non-infringement of third party rights, merchantability, or fitness for a particular purpose. The entire risk arising out of the use or performance of the Product remains with the user.</p>
+        <p>For the sake of clarity, the provisions in the license agreement between the licensee of the Sisense Software and Sisense (the “License Agreement”), providing any representations, warranties or indemnities shall not apply to the Product. For purposes of the limitation of liability provisions of the License Agreement, no amount has been paid or is payable to Sisense in connection with the Product. However, the license provisions continue to apply to the Sisense Software and the confidentiality provisions of the License Agreement shall continue to apply to those portions of the information shared with you by Sisense that are Confidential Information as defined in the License Agreement or any confidentiality agreement in effect between the licensee and Sisense.</p>
+        <h2 class="notoc">Introduction</h2>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> provides you with the means to interact with your data through traditional point-and-click interfaces as well as through voice commands. With a single voice command, you can retrieve and hear your numeric KPIs. The <MadCap:variable name="Variables.CompanyName" />-Enabled Echo searches your widgets and dashboards to provide you with the best result according to your command.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> enables Amazon’s Echo, which is a voice-powered, wireless-enabled speaker that interfaces with Alexa, to retrieve your data in <MadCap:variable name="Variables.CompanyName" />. Alexa is a cloud-based voice service that powers the Echo. Alexa’s default capabilities such as playing music can be extended through skills. <MadCap:variable name="Variables.CompanyName" /> has developed a Sisense skill that extends the Echo’s functionality and returns numeric KPIs through voice commands.</p>
+        <p>This page provides the following information:</p>
+        <ol>
+            <li>
+                <a href="#How">How does it Work</a>: Describes how the <MadCap:variable name="Variables.CompanyName" />-Enabled Echo works.</li>
+            <li>
+                <a href="#Setting">
+                    <a href="#Setting">Setting up the Sisense-Enabled Echo</a>
+                </a>: Describes how to set up the <MadCap:variable name="Variables.CompanyName" />-Enabled Echo.</li>
+            <li>
+                <a href="#Querying">Querying the Sisense-Enabled Echo</a>: Describes how to query the <MadCap:variable name="Variables.CompanyName" />-Enabled Echo.</li>
+            <li>
+                <a href="#Troubles">Troubleshooting</a>: Describes how to troubleshoot potential issues with the <MadCap:variable name="Variables.CompanyName" />-Enabled Echo.</li>
+        </ol>
+        <h2 class="notoc">
+            <a name="How">
+            </a>How does it Work?</h2>
+        <p>After launching Sisense via voice command, you can retrieve numeric data quickly by asking Alexa about your KPIs similar to issuing traditional queries through Sisense.  Your Sisense-Enabled Echo listens for the command and forwards it to Alexa.</p>
+        <p>
+            <img src="../Resources/Images/alexadiagram.png" class="thumblarge" />
+        </p>
+        <p>Alexa handles your requests and routes the request to the Sisense ElastiCube where your information is retrieved. Alexa then translates this data into an audio response played back by your Sisense-Enabled Echo.</p>
+        <h2 class="notoc">
+            <a name="Setting">
+            </a>Setting Up <MadCap:variable name="Variables.CompanyName" />-Enabled Echo</h2>
+        <p>Sisense has developed a skill that enables you to retrieve your data via voice commands. This skill takes requests from the Alexa service and leverages the Sisense APIs to retrieve your data.</p>
+        <p>To enable your Sisense-Enabled Echo to accept your voice commands and pass them through the Alexa service and the Sisense APIs, you will need to enable the Sisense skill.</p>
+        <p>Before setting up your Sisense-Enabled Echo, you may want to create a new user with a single dashboard associated with their account so you can easily test your Echo without returning unexpected results from various dashboards.</p>
+        <p>
+            <span class="bold">Note</span>: To participate in the Sisense-Enabled Echo Beta Program, your Sisense server must be accessible over the Internet without a VPN.</p>
+        <p class="bold">To set up the Sisense-Enabled Echo:</p>
+        <ol>
+            <li>Download the Alexa app from the app store and activate it using your email address.</li>
+        </ol>
+        <ul>
+            <li>
+                <a href="https://play.google.com/store/apps/details?id=com.amazon.dee.app&amp;hl=en">Android</a>
+            </li>
+            <li>
+                <a href="https://itunes.apple.com/us/app/amazon-alexa/id944011620?mt=8">iTunes</a>
+            </li>
+        </ul>
+        <ol start="2">
+            <li>Turn on your Echo and connect it to your WIFI.</li>
+            <li>Open the <a href="https://www.amazon.com/gp/product/B06VW15G94?ie=UTF8&amp;path=%2Fgp%2Fproduct%2FB06VW15G94&amp;ref_=skillrw_dsk_si_dp&amp;useRedirectOnSuccess=1&amp;">Sisense Skill page</a> and click <span class="bold">Enable</span>.<br /><img src="../Resources/Images/skillpage.png" class="thumblarge" /><br /></li>
+            <li>After you have enabled the skill, the <span class="bold">Link Account</span> button is displayed.</li>
+            <li>Click <span class="bold">Link Account</span> to display the Sisense Insights page in a new window. If you have a pop-up blocker enabled, you may need to allow the website insights.sisense.com to be opened in a new window.<br /><img src="../Resources/Images/linkacct.png" class="thumblarge" /><br /></li>
+            <li>In the Sisense Insights page you link the Sisense skill to your Sisense account. Enter the following details:<br /><span class="bold">Sisense server address</span>: The address of your Sisense account including “http://.<br /><span class="bold">Email address</span>: Your Sisense account email address.<br /><span class="bold">Password</span>: The password of your Sisense account.<br /><img src="../Resources/Images/alexasignin.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Authenticate</span>. Your account is now authenticated and you can begin to work with the Sisense-Enabled Echo.</li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Querying">
+            </a>Querying the Sisense-Enabled Echo</h2>
+        <p>There are two ways you can query your Sisense-Enabled Echo. The first option is to ask a question in a single question session. The second option is to ask your questions in a multi-question session, in which you ask multiple questions in a single session. The difference between the two options is that in single question sessions, you must invoke Sisense each time you ask a question. In a multi-question session, you invoke Sisense once, and then ask your questions without having to invoke Sisense again until after you exit the session.</p>
+        <p>For example:</p>
+        <p class="bold">Single Question Session</p>
+        <p>
+            <i>“Echo/Alexa, ask Sisense, what is my Total Sales”</i>
+        </p>
+        <p>
+            <i>“Echo/Alexa, ask Sisense, get Total Visits”</i>
+        </p>
+        <p class="bold">Multi-Question Session</p>
+        <p>
+            <i>“Echo/Alexa, Start Sisense” (Opens a multi-question session)</i>
+        </p>
+        <p>
+            <i>“What is my Total Sales?”</i>
+        </p>
+        <p>
+            <i>“Get Total Visits”</i>
+        </p>
+        <p>
+            <i>“Provide Total Sales”</i>
+        </p>
+        <p>
+            <i>“Exit” (Closes a multi-question session)</i>
+        </p>
+        <p>The table below provides a list of supported commands, the objects they refer to, and the results you can expect when you give the command:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Command</th>
+                    <th>Object</th>
+                    <th>Results</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Refresh metadata</td>
+                    <td>Generic</td>
+                    <td>Refreshes the dashboard list.</td>
+                </tr>
+                <tr>
+                    <td>Deactivate</td>
+                    <td>Generic</td>
+                    <td>Sign's you out and ends your Alexa session.</td>
+                </tr>
+                <tr>
+                    <td>Provide/Get/What - (Widget title)</td>
+                    <td>Generic</td>
+                    <td>Returns the requested widget's data. In cases of charts, the widget is displayed in your browser.</td>
+                </tr>
+                <tr>
+                    <td>Get (Dashboard name)</td>
+                    <td>Generic</td>
+                    <td>Opens the requested Sisense dashboard in your browser.</td>
+                </tr>
+                <tr>
+                    <td>Share/Send widget to (username from your shared list of users)</td>
+                    <td>Widget</td>
+                    <td>Sends an image of a widget to the user defined in your command. The user must be included in your list of shared users. The widget will be sent in an email to the user.</td>
+                </tr>
+                <tr>
+                    <td>When was the data last updated</td>
+                    <td>Widget</td>
+                    <td>Returns the last time the widget was built.This command will only work following a widget request - for example, Get "widget title" then this command.</td>
+                </tr>
+                <tr>
+                    <td>Build (ElastiCube name) ElastiCube</td>
+                    <td>Generic</td>
+                    <td>Build the ElastiCube described in the command:Note: You must be an Administrator to execute this command.</td>
+                </tr>
+                <tr>
+                    <td>Describe/Explain (widget name)</td>
+                    <td>Generic</td>
+                    <td>Sisense generates a description of your widget that is narrated to you by Alexa.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Security</h3>
+        <p>There are two potential security issues that arise when working with the Sisense-Enabled Echo. The first issue is what happens to data when you ask a question.  When you ask questions and receive answers, your data is sent to and returned from the Alexa service. This data transfer takes place across secured SSL ensuring that no one can access your data.</p>
+        <p>The second issue is securing the Sisense-Enabled Echo itself, so no one can access it and retrieve your data. When you say to Alexa, “Deactivate Account”, this disconnects your Sisense-Enabled Echo from your Sisense account. Alexa will ask you to confirm that you want to deactivate your account. If you respond “Yes”, the account is deactivated. No one will be able to access your data through the Sisense-Enabled Echo until the next time you manually reactivate your account.</p>
+        <h3 class="notoc">
+            <a name="Troubles">
+            </a>Troubleshooting</h3>
+        <p>For Amazon Tap and Echo devices, you can use Voice Training. Voice Training helps Alexa understand your speech patterns. During a Voice Training session, the Alexa app shows 25 different phrases, which you say to your device. To learn more, go to Voice Training.</p>
+        <p>If your selected language doesn’t match the language settings for your Amazon account, Alexa may not always understand what you say and may have trouble pronouncing things. For example, if you are located in Canada and are having language problems, change the language setting to US English.</p>
+        <p>If you have any issues authenticating your Echo, you can try to enable the device from the desktop through the following site.</p>
+    </body>
+</html>

@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Adding Widgets to a Dashboard | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Adding Widgets to a Dashboard</h1>
+        <p>This topic describes how to add widgets to your dashboard through the Widget Wizard.</p>
+        <p>The Widget Wizard automatically guides you through a very simple process of creating a widget, while offering the best recommendations for displaying the data that you select.</p>
+        <p>Almost always, simply accepting the wizard’s recommendations will help you create a great widget. However, if you want more control over your widget’s appearance and behavior, click the <span class="bold">Advanced Configuration</span> option in the bottom left of the wizard to access a rich variety of additional design options, as described in <a href="widget-designer.htm">Using the Widget Designer</a>.</p>
+        <h2 class="notoc">
+            <a name="Using">
+            </a>Using the Widget Wizard</h2>
+        <p class="bold">To add a widget to the dashboard:</p>
+        <ol>
+            <li>If this is your first widget, click <img src="../../../Resources/Images/v7selectdata.png" class="docbutton" />. The <MadCap:variable name="Variables.CompanyName" /> Data Browser opens, and from there you can select one of the fields (columns) from this dashboard’s data sources. If you already have widgets in your dashboard, then click the <img src="../../../Resources/Images/newwidget2.png" class="docbutton" /> button.<br /><span class="bold">Note</span>: To select data from a different <MadCap:variable name="Variables.ElastiCube" />, click <span class="bold">from</span> on the right side of the <span class="bold">New Widget</span> window, and select an <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>You can add a title to your widget now or after creating your widget.<br /><img src="../../../Resources/Images/v7addtitle.png" class="thumblarge" /></li>
+            <li>In the Data Browser, select a field to add to your widget. The field that you select is automatically displayed in a suggested widget. When only a single numeric field is selected, it is displayed as an Indicator widget. A single descriptive field is displayed as a Pivot widget.</li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/v7newindict.png" class="thumblargeli" />
+        </p>
+        <p class="indent">
+            <span class="bold">Single Numeric Field</span>
+        </p>
+        <p>
+            <img src="../../../Resources/Images/v7brand.png" class="thumblargeli" />
+        </p>
+        <p class="indent">
+            <span class="bold">Single Descriptive Field</span>
+        </p>
+        <p class="indent">But your widget is not really interesting yet, because it has only one field!</p>
+        <p>
+            <img src="../../../Resources/Images/v7examples.png" class="thumblargeli" />
+        </p>
+        <p class="indent">Repeat the step above to add more fields to the widget.</p>
+        <p class="indent">As you add fields, the relevant options are displayed as buttons to the left of your selection.</p>
+        <p class="indent">The fields that you select are listed across the top left of the wizard.</p>
+        <p class="indent">You can click on each visualization button to display the selected fields in that visualization/chart.</p>
+        <p class="indent">For example, the same widget as above could be displayed as a Pie chart:</p>
+        <p>
+            <img src="../../../Resources/Images/v7piechart.png" class="thumblargeli" />
+        </p>
+        <p><![CDATA[
+        ]]><span class="bold">Tip</span>: <MadCap:variable name="Variables.CompanyName" /> provides its best recommendation for your widget design. However, if you want more control, you can click the <span class="bold">Advanced Configuration</span> option on the bottom left of the window to provide a rich variety of additional design options, as described in <a href="#Using">Using the Widget Designer</a>.
+        </p>
+        <h2 class="notoc">Data Browser</h2>
+        <p>In the Data Browser, you can select and add columns (sometimes called fields) from an <MadCap:variable name="Variables.ElastiCube" /> to your widget.</p>
+        <p>
+            <img src="../../../Resources/Images/v7databrowser.png" class="thumblarge" />
+        </p>
+        <p>An icon appears to the left of each field to indicate its data type:</p>
+        <p>
+            <img src="../../../Resources/Images/icondate.png" class="docbutton" />  Date</p>
+        <p>
+            <img src="../../../Resources/Images/iconAlpha.png" class="docbutton" />   Alphanumeric string</p>
+        <p>
+            <img src="../../../Resources/Images/iconnumeric.png" class="docbutton" />  Numeric</p>
+        <p>As you type into the Data Browser, the list is dynamically filtered to only show the fields that contain the text you typed.</p>
+        <p>
+            <img src="../../../Resources/Images/v7brands1-768x447.png" class="thumblarge" />
+        </p>
+        <p>Simply clicking a field to add it to the widget generally provides great results, however there are more options in the Data Browser.</p>
+        <ul>
+            <li>Hover over a field in the Data Browser and click <span class="bold">More …</span> to display additional aggregation (quick functions) and filtering options.</li>
+            <li>Click  the <img src="../../../Resources/Images/formulaButton.png" class="docbutton" /> button to define formulas (free-form expressions) that define the field values and filters of a widget. A rich variety of functions are provided for you to use in the formula that you define.</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/v7options.png" class="thumblarge" />
+        </p>
+        <p>To learn more about these options, see <a href="../using-formulas/using-formula-editor.htm">Using Formulas</a>.</p>
+    </body>
+</html>

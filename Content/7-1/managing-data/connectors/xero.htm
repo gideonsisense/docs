@@ -1,0 +1,341 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Xero Accounting | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Xero Accounting</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Xero connector is a standalone connector that allows you to import data from Xero’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide Sisense in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Xero APIs. To obtain a connection string, you will need to create a Xero app.</p>
+        <p>Once you have connected to Xero, you can import a variety of tables from the Xero API.</p>
+        <p>This page describes how to install the Xero connector, how to connect to Xero with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Xero Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Xero REST API</a>
+            </li>
+            <li><a href="#Xero">Xero Tables</a>
+            </li>
+            <li><a href="#Limitati">Limitations</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Xero Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" />e provides the Xero connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Xero connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Xero.Connector.Installer.exe">Download</a> the Xero installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.<br />The Xero connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</li>
+        </ol>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Xero REST API</h2>
+        <p>To access Xero’s REST API from the <MadCap:variable name="Variables.ECM" />, you must provide valid Oauth Xero credentials through a connection string. These credentials are provided by Xero when you register an application.</p>
+        <p>After you receive your credentials from Xero, you can create the connection string and provide <MadCap:variable name="Variables.CompanyName" /> with it to connect to your data.</p>
+        <h3 class="notoc">Registering an App</h3>
+        <p>Follow the steps below to obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Log in to the Xero Developer Portal.</li>
+            <li>Click <span class="bold">My Applications</span> &gt; <span class="bold">Add Application</span>.</li>
+            <li>Select the <span class="bold">Public</span> option.</li>
+            <li>Enter a name for your application and the URL of your company. This information is displayed to users when they connect.</li>
+            <li>If you are making a Desktop application, set the Callback Domain to ‘localhost’. <br />If you are making a Web application, set the Callback Domain to the domain name of the URL where the user returns with the token that verifies that they have granted your app access.<br /> After you click Save, you are shown your OAuth credentials, the consumer key, and consumer secret.</li>
+        </ol>
+        <h3 class="notoc">Adding Xero Tables to your <MadCap:variable name="Variables.ElastiCube" /></h3>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Xero and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p> Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. </p>
+        <p>The connection string to Xero is in the following format:</p>
+        <p class="code">jdbc:xero:<b>OAuthclientId</b>=xxxxxxxxxxxxxxxxxxxxxx;</p>
+        <p>For example:</p>
+        <p class="code">jdbc:xero:OAuthclientId=xxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxx;</p>
+        <p class="code">InitiateOAuth=GETANDREFRESH;XeroAppAuthentication=PUBLIC;</p>
+        <p>Your Xero connection string should include the following parameters, separated by a semicolon </p>
+        <ul>
+            <li><span class="bold">OAuthClientId</span>: Set this to the consumer key in your app settings.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the consumer secret in your app settings.</li>
+            <li><span class="bold">XeroAppAuthentication</span>: Set this to the type of your application. Allowed values: PUBLIC or PARTNER. Default: PUBLIC.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property.</li>
+        </ul>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <p class="bold">To add Xero data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Xero</span>. The Connect to Xero window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Xero is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Xero and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>.<br />The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc"><a name="Xero"></a>Xero Tables</h2>
+        <p>Xero’s RESTful APIs expose the following Xero tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Xero connector:</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accounts</td>
+                    <td>Create, delete, and query accounts for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>BankTransactions</td>
+                    <td>Create, update, delete, and query bank transactions for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>BankTransfers</td>
+                    <td>Usage information for the operation BankTransfers.rsd.</td>
+                </tr>
+                <tr>
+                    <td>ContactGroups</td>
+                    <td>Create, update, and query contact groups for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Contacts</td>
+                    <td>Create, update, and query contacts for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>CreditNotes</td>
+                    <td>Create, update, delete, and query credit notes for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>Create, update, and query employees for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>ExpenseClaims</td>
+                    <td>Create, update, and query expense claims for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Invoices</td>
+                    <td>Create, update, delete, and query invoices for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Items</td>
+                    <td>Create, update, delete, and query items for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>LinkedTransactions</td>
+                    <td>Create, update, and query LinkedTransactions for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>ManualJournals</td>
+                    <td>Create, update, and query manual journals for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Payments</td>
+                    <td>Create and query payments for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrders</td>
+                    <td>Create, update, delete, and query purchase orders for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Receipts</td>
+                    <td>Create, update, delete, and query receipts for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>TaxRates</td>
+                    <td>Usage information for the operation TaxRates.rsd.</td>
+                </tr>
+                <tr>
+                    <td><span class="bold">Payroll US Data Model</span>
+                    </td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>Create, update, and query employees for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsBenefits</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsDeductions</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsEarnings</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsReimbursements</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsTimeOff</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayRuns</td>
+                    <td>Create, update, and query payruns for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PaySchedules</td>
+                    <td>Create, update, and query PaySchedules for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Paystubs</td>
+                    <td>Create, update, and query pay stubs for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>WorkLocations</td>
+                    <td>Create, update, and query work locations for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td><span class="bold">Payroll AUS Data Model</span>
+                    </td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>Create, update, and query employees for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>LeaveApplications</td>
+                    <td>Create, update, and query Leave Applications for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsDeductions</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsEarnings</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsLeave</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayItemsReimbursements</td>
+                    <td>Create, update, and query PayItems for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayrollCalendars</td>
+                    <td>Create, update, and query Payroll Calendars for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>PayRuns</td>
+                    <td>Create, update, and query payruns for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>SuperFunds</td>
+                    <td>Retrieve, add and update Payroll Super Funds in a Xero organisation.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Available Views</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td><span class="bold">Accounting Data Model</span>
+                    </td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>AgedPayablesByContact</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>AgedReceivablesByContact</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>BalanceSheet</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>BankSummary</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>BrandingThemes</td>
+                    <td>Query branding themes for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>BudgetSummary</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Currencies</td>
+                    <td>Query currencies for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Journals</td>
+                    <td>Query the line items in journals for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Organisation</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Overpayments</td>
+                    <td>Create and query Overpayments for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Prepayments</td>
+                    <td>Create and query Prepayments for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>ProfitAndLoss</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>RepeatingInvoices</td>
+                    <td>Usage information for the operation RepeatingInvoices.rsd.</td>
+                </tr>
+                <tr>
+                    <td>TrackingCategories</td>
+                    <td>Query tracking categories for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>TrialBalance</td>
+                    <td>Query organisation data for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>Query users for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td><span class="bold">Payroll US Data Model</span>
+                    </td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>TimeOffBalances</td>
+                    <td>Retrieve, add and update an Employee's TimeOff balance in a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td>Timesheets</td>
+                    <td>Create, update, and query timesheets for a Xero organisation.</td>
+                </tr>
+                <tr>
+                    <td><span class="bold">Payroll AUS Data Model</span>
+                    </td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>LeaveBalances</td>
+                    <td>Retrieve, add and update an Employee's Leave balance in a Xero organisation.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Limitati"></a>Limitations</h3>
+        <p>To access the AgedPayablesByContact and AgedRecievablesByContact tables, you need to specify a particular ContactID, the unique ID of the Contacts table, in the select query using a WHERE clause. This allows you to retrieve data for a specific contact. These are limitations of the Xero API, as these reports are specific to each contact. Here’s an example:</p>
+        <p class="code">SELECT due, paid, total FROM AgedPayablesByContact WHERE ContactID='xyz'</p>
+        <p class="code">SELECT duedate, reference FROM AgedRecievablesByContact WHERE ContactID='1234'</p>
+        <p>Due this limitation, you cannot build an ElastiCube with these tables without custom SQL.</p>
+        <p class="bold">Daily Limit</p>
+        <p>There is a daily limit of 1000 API calls against a single Xero organisation in a rolling 24-hour period.</p>
+        <p>In addition to the daily limit, a single access token can only be used up to 60 times in a rolling 60-second period.</p>
+        <p class="bold">Encountering a Rate Limit</p>
+        <p>If you encounter a rate limit, the Xero API will return an HTTP 503 (Service Unavailable) error, with the following message: “oauth_problem=rate limit exceeded”.</p><span class="bold">Note</span>: If you encounter a rate limit, do not continue to make requests, as this may continue to add to your limitation. If necessary, you may need to queue requests.<p class="bold">Token Limitations</p><p>Each access token will only last for 30 minutes. If you want longer access to the organization, you need the user to re-authorize your application.</p></body>
+</html>

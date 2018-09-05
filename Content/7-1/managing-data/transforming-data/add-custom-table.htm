@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Adding a New Custom Table | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Adding a Custom Table</h1>
+        <p>With <MadCap:variable name="Variables.CompanyName" />, you can easily create custom tables, which can combine existing data. This is useful for preparing and cleansing data. Follow the steps below to learn how to add custom tables using SQL.</p>
+        <p class="bold">To create a custom table:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.CompanyName" />, open the schema of the <MadCap:variable name="Variables.ElastiCube" /> you want to add to a custom table to.</li>
+            <li>In the menu bar of the schema, click <img src="../../../Resources/Images/v7custombutton.png" class="docbutton" />. The New Custom Table area is displayed.</li>
+            <li>Enter the name of the custom table, and click <img src="../../../Resources/Images/v7verify.png" class="docbutton" />.</li>
+            <li>Enter SQL statements to access tables and fields that exist in the <MadCap:variable name="Variables.ECM" /> schema. See also <a href="sql-reference.htm">SQL Reference</a> and <a href="function-reference/functions.htm">Function Reference</a>.</li>
+            <li>To view results based on the SQL statement, click <img src="../../../Resources/Images/v7preview3.png" class="docbutton" />.<br /><span class="bold">Note</span>: You can save an incomplete or invalid SQL expression, however when you build the <MadCap:variable name="Variables.ElastiCube" />. only the last valid expression will be included. If you have not built an <MadCap:variable name="Variables.ElastiCube" /> with a valid expression, then the invalid or incomplete expression will not be saved.</li>
+            <li>Click <span class="bold">Save</span> to save your changes.</li>
+        </ol>
+        <p>
+            <span class="bold">Tip</span>
+        </p>
+        <ul>
+            <li>Press Ctrl + Space to complete an SQL statement.</li>
+            <li>To make it easier to access table fields, give the table name an alias and reference the alias to bring up the related fields. For example SELECT A. FROM A.</li>
+            <li>You can add comments in expressions by using the ‘–’ for a single line or /…/ for blocks.</li>
+        </ul>
+    </body>
+</html>

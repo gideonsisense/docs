@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Insight Miner SDK</title>
+    </head>
+    <body>
+        <h1>Insight Miner SDK</h1>
+        <p>Insight Miner Custom Plugins Guide</p>
+        <p>Insight Miner is a Sisense plugin that enables data analysts to quickly extract interesting insights from their data. Insight Miner currently provides 4 out of the box insight types: Correlations, Bivariate, Multivariate and Decision trees.</p>
+        <p>Sisense provides new functionality to enable you to inject your own pre-processes and models into Insight Miner and combine it with existing procedures. You can implement your custom pre-processes, such as outlier detection techniques, missing values imputation or any other cleansing procedure. In addition, you can inject custom models or statistical tests, such as seasonality detection if your data is time-dependent or association rules if your data is transactional.</p>
+        <p>This guide explains how you can inject your pre-processes and models by using an interface and updating the plugins configuration file.</p>
+        <h2 class="notoc">Interfaces</h2>
+        <p class="bold">Sisense provides four types of Interfaces:</p>
+        <h3 class="notoc">1. Preprocess</h3>
+        <p>Here, you can implement any preprocess procedure or transformation on your data. You’ll need to create a class that implements the Preprocess interface. The constructor of the class gets the following attributes:</p>
+        <ol>
+            <li><span class="bold">data</span>: A pandas dataframe with the data.</li>
+            <li><span class="bold">metadata</span>: A dictionary that maps between the dataset columns to their data types. The keys of the dictionary are the column names and the values are the data types.</li>
+            <li><span class="bold">target_variable</span>: The target variable column name.</li>
+        </ol>
+        <p>You’ll need to implement the method preprocess that returns the processed dataset and metadata.</p>
+        <p><span class="bold">Note</span>: If new columns were added/dropped, it should be reflected in the metadata.</p>
+        <p class="code">from abc import ABC, abstractmethod<br />class Preprocess(ABC):<br /> def __init__(self, data, metadata, target_variable):<br /> self.data = data<br /> self.metadata = metadata<br /> self.target_variable = target_variable<br /> super().__init__()<br />@abstractmethod<br />def preprocess(self):<br /> #returns data and metadata<br /> pass</p>
+        <h3 class="notoc">2. OutliersTargetRemoval</h3>
+        <p>This interface is very similar to the the Proprocess interface, but enables you to indicate the number of detected target variable outliers in the UI.</p>
+        <p>You’ll need to create a class that implements the OutliersTargetRemoval interface. The constructor of the class gets the following attributes:</p>
+        <ol>
+            <li><span class="bold">data</span>: A pandas dataframe with the data.</li>
+            <li><span class="bold">metadata</span>: A dictionary that maps between the dataset columns to their data types. The keys of the dictionary are the column names and the values are the data types.</li>
+            <li><span class="bold">target_variable</span>: The target variable.</li>
+        </ol>
+        <p>You’ll need to implement the method removeTargetOutliers that returns the dataset without the outliers and the number of outliers. If there aren’t any outliers, return None.</p>
+        <p class="code">from abc import ABC, abstractmethod<br />class OutliersTargetRemoval(ABC):<br /> def __init__(self, data, metadata,target_variable):<br /> self.data = data<br /> self.target_variable = target_variable<br /> self.metadata = metadata<br /> super().__init__()<br />@abstractmethod<br />#returns dataset without the outliers and the number of outliers (if there aren't any outliers, return None)<br />def removeTargetOutliers(self):<br /> pass</p>
+        <h3 class="notoc">3. MetadataDiscovery</h3>
+        <p>By implementing this interface you can create your own mapping between the variables and their data types. If this interface isn’t implemented, Insight Miner’s default metadata discovery process is applied. You’ll need to create a class that implements the MetadataDiscovery interface. The constructor of the class gets the following attributes:</p>
+        <ol>
+            <li><span class="bold">data</span>: A pandas dataframe with the data.</li>
+            <li><span class="bold">target_variable</span>: The target variable.</li>
+        </ol>
+        <p>You’ll need to implement the method discoverMetadata that returns:</p>
+        <ol>
+            <li><span class="bold">metadata object</span>: A dictionary that maps between the dataset columns to their data types.The keys of the dictionary are the column names and the values are the data types.</li>
+            <li><span class="bold">dataset</span>: A pandas dataframe where the columns types correspond to the metadata data types. For example, if the datatype of a column is date, then the pandas series of this column should be of the type datetime</li>
+        </ol>
+        <p>You can add your data types if you want, but Insight Miner’s existing models will ignore them. Keep in mind that by default, Insight Miner ignores all columns that are not numeric or categorical columns. Insight Miner filters out all non-numeric or categorical columns from your dataset. If you want to change this for your custom plugin’s implementation, make sure to change the parameter "Ignore non-numeric or categorical columns" to “No” in the plugins configurations file.</p>
+        <p class="code">from abc import ABC, abstractmethod<br />class MetadataDiscovery(ABC):<br /> def __init__(self, data, target_variable,date_columns = []):<br /> self.data = data<br /> self.target_variable = target_variable<br /> self.date_columns = date_columns<br /> super().__init__()<br />@abstractmethod<br />def discoverMetadata(self):<br /> #returns metadata and data<br /> pass</p>
+        <h3 class="notoc">4. Model</h3>
+        <p>Here you can implement your models and algorithms. You’ll need to create a class that implements the Model interface. The constructor of the class gets the following attributes:</p>
+        <ol>
+            <li><span class="bold">data</span>: A pandas dataframe with the data.</li>
+            <li><span class="bold">metadata</span>: A dictionary that maps between the dataset columns to their data types. The keys of the dictionary are the column names and the values are the data types.</li>
+            <li><span class="bold">target_variable</span>: The target variable.</li>
+        </ol>
+        <p>You’ll need to implement the method extractInsights that returns a list of InsightCard objects with your insights.</p>
+        <p class="code">from abc import ABC, abstractmethod<br />class Model(ABC):<br /> def __init__(self, data, metadata, target_variable):<br /> self.data = data<br /> self.metadata = metadata<br /> self.target_variable = target_variable<br /> super().__init__()<br />@abstractmethod<br />def extractInsights(self):<br /> #returns a list of InsightCard Objects<br /> pass</p>
+        <h2 class="notoc">Metadata Object</h2>
+        <p>The metadata object maps between the dataset columns’ names to their data types. Insight Miner supports the following data types:</p>
+        <ol>
+            <li>numeric</li>
+            <li>categorical</li>
+            <li>date</li>
+            <li>identifier</li>
+            <li>text</li>
+        </ol>
+        <p>Note that by default, Insight Miner ignores all columns that are not numeric or categorical columns. Insight Miner filters out all non-numeric or categorical columns from your dataset. If you want to change this for your custom plugin’s implementation, make sure to change the parameter "Ignore non-numeric or categorical columns" to “No” in the plugins configurations file.</p>
+        <h2 class="notoc">InsightCard Object</h2>
+        <p>The InsightCard object holds the metadata from which the Insight Cards in the UI are generated. The constructor of the object gets the following attributes:</p>
+        <ol>
+            <li><span class="bold">textual_output</span>: The text that will appear on the Insight Card.</li>
+            <li><span class="bold">numeirc_output</span>: A number (int or float) that will appear on the Insight Card.</li>
+            <li><span class="bold">left_textual_output</span>: The text that will appear under the numeric output.</li>
+        </ol>
+        <p>
+            <img src="../../random-forest-card.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Plugins Configuration File</h2>
+        <p>The plugins configuration file can be found in the following directory:</p>
+        <p class="code">C:\Program Files\Sisense\PrismWeb\backendPlugins\insightMinerBackend\python-config\plugins config</p>
+        <p>Any implemented plugin scripts should be saved in this folder.</p>
+        <p>In addition, you’ll need to update the config file “insightminer-plugins-config.txt” with the plugins.</p>
+        <p>The plugins config files is composed of 2 sections:</p>
+        <ol>
+            <li><span class="bold">[custom-plugins](#custom-plugins)</span>:This is where you need to include all of your custom plugins.</li>
+            <li><span class="bold">[build-in](#buildin-plugins)</span>: This section includes all Insight Miner’s build-in processes that you can switched on or off.</li>
+        </ol>
+        <p class="code">{<br /> "custom-plugins":{<br /> "seasonality_check": "Model"<br />},<br />"build-in":{<br /> "Drop columns more than threshold NA synonyms":"Yes",<br /> "Remove rows with missing target variable":"Yes",<br /> "Remove target outliers":"Yes",<br /> "Extract date features":"Yes",<br /> "Ignore non numeric or categorical columns":"Yes",<br /> "Impute missing values":"Yes",<br /> "Remove columns with missing values":"Yes",<br /> "Drop highly dependent columns with target variable":"Yes",<br /> "Correlations":"Yes",<br /> "Bivariate":"Yes",<br /> "Multivariate":"Yes",<br /> "Decision tree":"Yes"<br /> }<br />}</p>
+        <p class="code">{'build-in': {'Bivariate': 'Yes',<br /> 'Correlations': 'Yes',<br /> 'Decision tree': 'Yes',<br /> 'Drop columns more than threshold NA synonyms': 'Yes',<br /> 'Drop highly dependent columns with target variable': 'Yes',<br /> 'Extract date features': 'Yes',<br /> 'Ignore non numeric or categorical columns': 'Yes',<br /> 'Impute missing values': 'Yes',<br /> 'Multivariate': 'Yes',<br /> 'Remove columns with missing values': 'Yes',<br /> 'Remove rows with missing target variable': 'Yes',<br /> 'Remove target outliers': 'Yes'},<br /> 'custom-plugins': {'seasonality_check': 'Model'}}</p>
+        <h2 class="notoc">custom-plugins</h2>
+        <p>Make sure to include all you custom plugins in this section. Each custom plugin should be inserted to the custom-plugins section as a name:value object. The name is the name of the script (without the extension py) and the value is the Interface the script implements (Preprocess, OutliersTargetRemoval, MetadataDiscovery or Model).</p>
+        <p><span class="bold">Note</span>: The name of the file should be identical to the name of the Class.</p>
+        <p>For example, in the above configuration, there is one custom plugin. The name of the python file is seasonality_check and it implements the Model interface.</p>
+        <p>Insight Miner will run your custom plugins in the following order: first the MetadataDiscovery plugins (if it exists). If there isn’t a custom implementation for the the MetadataDiscovery, Insight Miner will run it’s own default implementation. Then, the Preprocess and OutliersTargetRemoval custom plugins will run (according to the order they appear in the config file). At the end, the Model custom plugins will run.</p>
+        <p>
+            <img src="../../plugins-order-flow.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Build-in</h3>
+        <p>This section includes all Insight Miner’s build-in processes that you can be switched on or off (by changing to Yes/No).</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Process</th>
+                    <th>Description</th>
+                    <th>Default Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Drop columns more than threshold NA synonyms</td>
+                    <td>Insight Miner treats blank spaces and N\A as missing values. All other forms that might be considered as missing values (na, nan) are not considered as missing and treated as categories. Columns where their percentage of na or nan values is larger than a threshold are dropped (the percentage threshold can be configured in the config parameters file). If you don’t want Insight Miner to drop such columns, change the value to “No”. This will be applied on both the custom plugins and Insight Miner’s default models.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Remove rows with missing target variable</td>
+                    <td>Insight Miner removes rows with missing target values. If you don’t want Insight Miner to drop rows with missing target variables, change the value to “No”. This will be applied only on the custom plugins.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Remove target outliers</td>
+                    <td>If the OutliersTargetRemoval interface is not implemented, Insight Miner will remove outliers from the target variable using the double MAD approach. If you don’t want Insight Miner to remove outliers, change the value to “No”. This will be applied on both the custom plugins and Insight Miner’s default models.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Extract date features</td>
+                    <td>Insight Miner extracts new features from date columns. To avoid it, change the value to “No”. This will be applied on both the custom plugins and Insight Miner’s default models.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Ignore non numeric or categorical columns</td>
+                    <td>Insight Miner drops all columns that are non-numeric or categorical. To avoid it, change the value to “No”. This will be applied on both the custom plugins and Insight Miner’s default models.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Impute missing values</td>
+                    <td>Insight Miner imputes missing values. There are 2 options for missing values imputation that can be configured through the parameters config file: 1. “Simple” imputation in which numeric missing values are replaced with the column’s mean value and categorical missing values are replaced with the most frequent category of the column. 2. Predictive model imputation - a predictive model is trained for each column with missing values (based on all other columns). The missing values are replaced with the prediction. If you don’t want Insight Miner to impute missing values (in either of these methods), change the value to “No”. You can implement your own missing values imputation with the Preprocess interface. This will be applied on both the custom plugins and Insight Miner’s default models.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Remove columns with missing values</td>
+                    <td>Insight Miner removes columns with missing values. There could be 2 possible scenarios for this: 1. When there isn’t missing values imputation. 2. Insight Miner only impute missing values when the percentage of missing values of the column is less than 10% (can be configured). If you don’t want Insight Miner to drop those columns, change the value to “No”. This will be applied only on the custom plugins.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Drop highly dependent columns with target variable</td>
+                    <td>To avoid obvious insights, Insight Miner drops explaining columns that have a high dependency with the target variable. When the conditional entropy between the explaining column and the target variable is low (configurable threshold), the explaining column is dropped. To avoid this, change the value to “No”. This will be applied on both the custom plugins and Insight Miner’s default models.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Correlations</td>
+                    <td>Change this value to “No” if you don’t want Insight Miner to find correlations insights.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Bivariate</td>
+                    <td>Change this value to “No” if you don’t want Insight Miner to find bivariate insights.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Multivariate</td>
+                    <td>Change this value to “No” if you don’t want Insight Miner to find multivariate insights.</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Decision tree</td>
+                    <td>Change this value to “No” if you don’t want Insight Miner to find decision tree insights.</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">Insight Miner Flow</h2>
+        <p>
+            <img src="../../IM-flow.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Installing New Python Packages</h2>
+        <p>If you want to use new Python packages in your custom plugins that are not included in the Anaconda distribution, you’ll need to install them.</p>
+        <p class="bold">To do so, please follow these steps:</p>
+        <ol>
+            <li>Open Anaconda prompt.</li>
+            <li>Run the command: activate %ProgramData%\Sisense\PrismWeb\plugins\insightMiner\python_env</li>
+            <li>Run: pip install [package name]</li>
+        </ol>
+        <p>You can find the list of packages that come with the default Anaconda installation in: <a href="https://docs.anaconda.com/anaconda/packages/old-pkg-lists/4.3.0/py36">https://docs.anaconda.com/anaconda/packages/old-pkg-lists/4.3.0/py36</a></p>
+        <h2 class="notoc">Example - Model Interface Implementation</h2>
+        <p>In the example below, we’ll train a random forest model on the dataset and return as an insight the 5 features with the highest feature importance score. We’ll use the scikit-learn implementation for Random Forests. For more information on the implementation, please refer to the following sources:</p>
+        <p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html">http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestClassifier.html</a>
+        </p>
+        <p><a href="http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html">http://scikit-learn.org/stable/modules/generated/sklearn.ensemble.RandomForestRegressor.html</a>
+        </p>
+        <p><a href="http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html">http://scikit-learn.org/stable/auto_examples/ensemble/plot_forest_importances.html</a>
+        </p>
+        <p>Since scikit-learn is included in the Anaconda distribution, we don’t need to install it. Next, let’s start working on the python script. We need to implement the Model interface.</p>
+        <h3 class="notoc">Interface Implementation</h3>
+        <p>First, we need to import some packages</p>
+        <p class="code">from api.Model import *<br />from api.InsightCard import *<br />from sklearn.ensemble import RandomForestRegressor, RandomForestClassifier<br />from sklearn.preprocessing import LabelEncoder<br />import pandas as pd</p>
+        <p>The first import is for the Model interface that we need to implement. The second import imports the InsightCard object that our Model interface of implementation will need to return a list of.</p>
+        <p>Next, we create a RandomForest_model class that implements the Model interface. We need to implement the extractInsights method.</p>
+        <p class="code">We can use the self.data, self.metadata and self.target_variable arguments of the class<br />class RandomForest_model(Model):<br />def extractInsights(self):<br />#check if the target variable is numeric or categorical<br />if self.target_variable in self.metadata.keys() and self.metadata[self.target_variable] in ("numeric","categorical"):<br />target = self.data[self.target_variable]<br />le = LabelEncoder()<br />target = le.fit_transform(target)<br />self.data = self.data[list({k: v for k, v in self.metadata.items() if v in ("numeric", "categorical")})]<br />if self.data.shape[1] &gt; 1:<br />data = pd.get_dummies(self.data.drop(self.target_variable,axis=1))<br />if self.metadata[self.target_variable] == "numeric":<br />model = RandomForestRegressor()<br />else:<br />model = RandomForestClassifier()<br />model.fit(data,target)<br />impor_features = pd.DataFrame({'feature': data.columns,<br />'imp': model.feature_importances_}).sort_values('imp', ascending=False).head(5)<br />impor_features = impor_features[impor_features.imp &gt; 0]<br />#create the InsgihtCard text<br />text = 'Top %s most important features with their weights (the higher the better):&lt;br&gt;' % impor_features.shape[0] + '&lt;br&gt;'.join(<br />impor_features['feature'].str.cat((100 * impor_features['imp']).round(1).astype(str) + '%', sep=': '))<br />#return a list of cards, in this case the list includes only one card<br />return [InsightCard(text,0,"Random Forest Features Importance")]<br />return None</p>
+        <p><span class="bold">Note</span>: each class needs to be saved in a different file and the name of the file needs to be identical to the class name (in this case the name of the file should be RandomForest_model.py)</p>
+        <p>The file RandomForest_model.py should now be placed in the path C:\Program Files\Sisense\PrismWeb\backendPlugins\insightMinerBackend\python-config\plugins config</p>
+        <h3 class="notoc">Editing the Configuration file</h3>
+        <p>We need to inform Insight Miner about our new model. To do so, we need to update the plugins configuration file. The configuartion file can be found in C:\Program Files\Sisense\PrismWeb\backendPlugins\insightMinerBackend\python-config\plugins config. The name of the file is insigthminer-plugins-config. The file includes two sections, we'll need to update the first section - "custom-plugins".We need to add a new name value pair to the custom-plugins section. The name will be the name of our script (RandomForest_model), the value is the name of the intefrace we implemented (Model).</p>
+        <p class="code">{<br />"custom-plugins":{<br />"RandomForest_model": "Model"<br />},<br />"build-in":{<br />"Drop columns more than threshold NA synonyms":"Yes",<br />"Remove rows with missing target variable":"Yes",<br />"Remove target outliers":"Yes",<br />"Extract date features":"Yes",<br />"Ignore non numeric or categorical columns":"No",<br />"Impute missing values":"Yes",<br />"Remove columns with missing values":"Yes",<br />"Drop highly dependent columns with target variable":"Yes",<br />"Correlations":"Yes",<br />"Bivariate":"Yes",<br />"Multivariate":"Yes",<br />"Decision tree":"Yes"<br />}<br />}</p>
+        <p class="code">{'build-in': {'Bivariate': 'Yes',<br />'Correlations': 'Yes',<br />'Decision tree': 'Yes',<br />'Drop columns more than threshold NA synonyms': 'Yes',<br />'Drop highly dependent columns with target variable': 'Yes',<br />'Extract date features': 'Yes',<br />'Ignore non numeric or categorical columns': 'No',<br />'Impute missing values': 'Yes',<br />'Multivariate': 'Yes',<br />'Remove columns with missing values': 'Yes',<br />'Remove rows with missing target variable': 'Yes',<br />'Remove target outliers': 'Yes'},<br />'custom-plugins': {'RandomForest_model': 'Model'}}</p>
+    </body>
+</html>

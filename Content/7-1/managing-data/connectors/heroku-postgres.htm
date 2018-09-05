@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="1312" MadCap:lastWidth="706">
+    <head>
+        <title>Connecting to Heroku Postgres | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Heroku Postgres</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to databases, tables and views contained within Heroku Postgres  databases. The steps below describe how to connect to this type of data source.</p>
+        <ol>
+            <li>Click <span class="bold">Add data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the <span class="bold">Web Services</span> category select <span class="bold">Heroku Postgres</span>.<br /><img src="../../../Resources/Images/heroku.png" class="thumblarge" /></li>
+            <li>You will be prompted to enter the following information:</li>
+            <ul>
+                <li>
+                    <span class="bold">Database server location</span>: Enter the computer/server IP address which holds the database.</li>
+                <li>Either use <span class="bold">Windows Authentication</span> if configured with the database, or alternatively enter the <span class="bold">Username</span> and <span class="bold">Password</span> to connect to the database.</li>
+                <li>
+                    <span class="bold">Database</span>: Enter the name of the database to connect to.<br /><img src="../../../Resources/Images/heroku2.png" class="thumblarge" /><br /></li>
+            </ul>
+            <li>Click <span class="bold">Connect to Database</span>.<br />All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/heroku3.png" class="thumblarge" /><br />To view a preview of data contained in a particular table, highlight the table or view in the list, and select the <span class="bold">Preview</span> checkbox.</li>
+            <li>Select the checkbox next to each table or view you want to use.<br />Existing relationships between tables can be automatically replicated in the ElastiCube by selecting the <span class="bold">Automatically create relationships from database</span> checkbox. Likewise fields with similar names can be linked by selecting the <span class="bold">Automatically create relationships for fields with the same name </span>checkbox.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+    </body>
+</html>

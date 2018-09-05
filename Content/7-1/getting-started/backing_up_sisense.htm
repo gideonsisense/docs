@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1861" MadCap:lastWidth="1218">
+    <head>
+        <title>Backing Up Sisense</title>
+    </head>
+    <body>
+        <h1>Backing Up Sisense</h1>
+        <p>The backup process requires backing up your ElastiCubes and the Sisense Web Application.</p>
+        <p>In addition, if you have any custom plugins located in the directory C:\Program Files\Sisense\PrismWeb\plugins, this folder should be backed up as well.</p>
+        <p>The procedures below describe how to back up your ElastiCubes, the Sisense Web Application, and Sisense in high availability environments.</p>
+        <h2 class="notoc">
+            <a name="Backing">
+            </a>Backing Up Your ElastiCubes</h2>
+        <p>Your ElastiCube Server contains information about your ElastiCubes, including the schema and the data that was imported when the ElastiCube was built. This information is saved in a collection of folders stored in the ElastiCube Data folder. The files and folders in the ElastiCube Data must be saved and their structured maintained to ensure your implementation will work as expected on the migrated machine.</p>
+        <p class="bold">To back your ElastiCubes:</p>
+        <ol>
+            <li>Open the directory:<br /><span class="code">%ProgramData%\Sisense\PrismServer\ElastiCubeData</span><br /><span class="bold">Note</span>: This is the default path. To check which path is being used, open the Sisense Server Console and click on the Server Preferences icon <img src="../../Resources/Images/serverpref.png" class="docbutton" /> to verify the correct path.<br /><img src="../../Resources/Images/serverpref1.png" /></li>
+            <li>Copy the data to your backup location.</li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Backing2">
+            </a>Backing Up the Sisense Web Application</h2>
+        <p>The Sisense Web Application uses information stored in an instance on the Sisense application database where the Sisense Web Application is installed. This instance stores data about users, dashboards, widgets, and other information. This information must be stored to ensure your Sisense Web Application runs properly.</p>
+        <p class="bold">To back up the Sisense Web Application:</p>
+        <ol>
+            <li>Open the directory:<br /><span class="code">%ProgramData%\Sisense\PrismWeb\Repository\DB</span></li>
+            <li>Copy the data to your backup location maintaining the same file structure.</li>
+            <li>From Sisense V7.0 and later, copy and back up the file located at:&#160;<br /><span class="code">C:\Program Files\Sisense\Prism\ECMLogsPersistence\src\config\default.yaml</span><br /></li>
+            <li>From Sisense V7.1 and later, copy and back up the file located at:<br /><span class="code">C:\Program Files\Sisense\PrismWeb\SisenseStorage\config\default.yaml</span></li>
+            <li>(Optional) Back up your custom plugins by copying the directory:<br /><span class="code">C:\Program Files\Sisense\PrismWeb\plugins</span><br /></li>
+            <li>(Optional) In Sisense V6.7.1.15016 and Sisense V7.0.1 and later, if you have enabled SSL, you need to back up the following file, C:\Program Files\Sisense\PrismWeb\AnalyticalEngine\dist\config\production.json and move it to the same location after you have installed Sisense. <br />For information on how to automate the backup process, see <a href="backing-up-sisense-application-database.htm">Automatically Backup Sisense Web Data</a>.</li>
+        </ol>
+        <h2 class="notoc">Backing Up Sisense in a High Availability Environment</h2>
+        <p>If you have implemented a high availability environment for Sisense and want to back up your installation, the files described below should be backed up in addition to the files described above in <a href="#Backing">Backing Up Your <MadCap:variable name="Variables.ElastiCube" />s</a> and <a href="#Backing2">Backing Up&#160;Your <MadCap:variable name="Variables.Sisense Web Application" /></a>:</p>
+        <p class="bold">Build Node(s):</p>
+        <ul>
+            <li>C:\Program Files\Sisense\Sisense.Orchestration\config\config.json<br /><i>From Sisense V7.0 and later:</i><br /></li>
+            <li>C:\Program Files\Sisense\Prism\ECMLogsPersistence\src\config\default.yaml</li>
+        </ul>
+        <p class="bold">Web Node(s):</p>
+        <ul>
+            <li>C:\Program Files\Sisense\PrismWeb\vnext\config\default.yaml</li>
+            <li>C:\Program Files\Sisense\PrismWeb\App_Data\Configurations\db.config</li>
+            <li>C:\Program Files\Sisense\PrismWeb\ECMNext\GraphQL\src\config\default.yaml</li>
+            <li>C:\Program Files\Sisense\Infra\MongoDB\keyfile. See <a href="../administration/application-database/key-file.htm">Creating a KeyFile</a> for more information.</li>
+            <li>C:\Program Files\Sisense\Infra\MongoDB\mongodbconfig.conf</li>
+            <li>C:\Program Files\Sisense\PrismWeb\AnalyticalEngine\dist\config\production.json<br /><i>From Sisense V7.1 and later:</i></li>
+            <li>C:\Program Files\Sisense\PrismWeb\SisenseStorage\config\default.yaml</li>
+        </ul>
+    </body>
+</html>

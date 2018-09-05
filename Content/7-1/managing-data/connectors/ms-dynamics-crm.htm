@@ -1,0 +1,1021 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Microsoft Dynamics CRM | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Microsoft Dynamics CRM</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Microsoft Dynamics CRM connector is a standalone connector that allows you to import data from Microsoft Dynamics CRM’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide Sisense in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Microsoft Dynamics CRM tables. To obtain a connection string, you will need to obtain your credentials from Microsoft Dynamics CRM.</p>
+        <p>Once you have connected to Microsoft Dynamics CRM, you can import a variety of tables from the Microsoft Dynamics CRM API.</p>
+        <p>This page describes how to install the Microsoft Dynamics CRM connector, how to connect to Microsoft Dynamics CRM with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Microsoft Dynamics CRM Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Microsoft Dynamics CRM</a>
+            </li>
+            <li><a href="#Adding">Adding Microsoft Dynamics CRM Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Microsof">Microsoft Dynamics CRM Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Microsoft Dynamics CRM Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Microsoft Dynamics CRM connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Microsoft Dynamics CRM connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Microsoft DynamicsCRM.Connector.Installer.exe">Download</a> the Microsoft Dynamics CRM installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p class="indent">The Microsoft Dynamics CRM connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Microsoft Dynamics CRM</h2>
+        <p>The connection string used to connect to the Microsoft Dynamics CRM connects to various instances you have in the Microsoft Dynamics CRM. By providing your Microsoft Dynamics CRM credentials as values in the connection string, you can add Microsoft Dynamic CRM tables to the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <h3 class="notoc"><a name="Adding"></a>Adding Microsoft Dynamics CRM Tables to your <MadCap:variable name="Variables.ElastiCube" /></h3>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Microsoft Dynamics CRM and import data into the <MadCap:variable name="Variables.ECM" />.</p>
+        <p>The connection string to connect to Microsoft Dynamics CRM has the following structure:</p>
+        <p>jdbc:dynamicscrm:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a Microsoft Dynamics CRM connection string:</p>
+        <p class="code">jdbc:dynamicscrm:User=xxxxxxxxxx;Password=xxxxxxxxxx;URL=https://xxxxxxxxxx.dynamics.com/;CRMVersion=CRM Online Office 365;</p>
+        <p>To connect to your instance, set the User and Password properties, under the Authentication section, to valid Dynamics CRM user credentials and set the Url to a valid Dynamics CRM server organization root.</p>
+        <p>Additionally, set the CRMVersion property. Supported versions are CRM Online Office 365, CRM 4.0, CRM 2011, CRM 2013, CRM 2015.</p>
+        <p><span class="bold">Note</span>: To switch between accounts, you need to delete the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Microsoft Dynamics CRM Data Provider or you can add OAuthSettingsLocation to the connection string. See Switching between Accounts for more information.</p>
+        <p class="bold">To add Microsoft Dynamics CRM data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Microsoft Dynamics CRM</span>. The Connect to Microsoft Dynamics CRM window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Microsoft Dynamics CRM is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Microsoft Dynamics CRM and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. </li>
+        </ol>
+        <p class="indent">The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</p>
+        <p class="indent">If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h3 class="notoc">Switching between Accounts</h3>
+        <p>When you connect to the Microsoft Dynamics CRM data source, <MadCap:variable name="Variables.CompanyName" /> saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Microsoft Dynamics CRM Data Provider on your <MadCap:variable name="Variables.CompanyName" /> server. To connect to the Microsoft Dynamics CRM data source with another user on the same machine, you must delete the OAuthsettings.txt file. <MadCap:variable name="Variables.CompanyName" /> will then generate a new file for that user.</p>
+        <p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the OAuthSettingsLocation parameter. When each user connects to the data source, <MadCap:variable name="Variables.CompanyName" /> generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the Microsoft Dynamics CRM data source and for each user, <MadCap:variable name="Variables.CompanyName" /> generates a file that contains that user’s OAuth values in the location defined in the string.</p>
+        <p class="code">jdbc:MicrosoftDynamicsCRM:OAuthSettingsLocation=C:\MicrosoftDynamicsCRM\auth\john.txt;OAuthClientId=11276856774486;</p>
+        <p class="code">OAuthClientSecret=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p class="code">jdbc:MicrosoftDynamicsCRM:OAuthSettingsLocation=C:\MicrosoftDynamicsCRM\auth\sally.txt;OAuthClientId=11276856774486;</p>
+        <p class="code">OAuthClientSecret=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\MicrosoftDynamicsCRM\auth\.</p>
+        <p>This is useful if you support many users who each need to access the Microsoft Dynamics CRM data source.</p>
+        <h2 class="notoc"><a name="Microsof"></a>Microsoft Dynamics CRM Tables</h2>
+        <p>Microsoft Dynamics CRM exposes the following Microsoft Dynamics CRM tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Microsoft Dynamics CRM connector:</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accounts</td>
+                    <td>Create, update, delete, and query Account entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ActivityMimeAttachment</td>
+                    <td>Create, update, delete, and query ActivityMimeAttachment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ActivityParty</td>
+                    <td>Create, update, delete, and query ActivityParty entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ActivityPointer</td>
+                    <td>Create, update, delete, and query ActivityPointer entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Annotation</td>
+                    <td>Create, update, delete, and query Annotation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>AnnualFiscalCalendar</td>
+                    <td>Create, update, delete, and query annual fiscal calendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ApplicationFile</td>
+                    <td>Create, update, delete, and query ApplicationFile entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Appointment</td>
+                    <td>Create, update, delete, and query Appointment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>AsyncOperation</td>
+                    <td>Create, update, delete, and query AsyncOperation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Attachment</td>
+                    <td>Create, update, delete, and query Attachment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>AttributeMap</td>
+                    <td>Create, update, delete, and query AttributeMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Audit</td>
+                    <td>Create, update, delete, and query Audit entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BulkDeleteFailure</td>
+                    <td>Create, update, delete, and query BulkDeleteFailure entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BulkDeleteOperation</td>
+                    <td>Create, update, delete, and query BulkDeleteOperation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BulkOperation</td>
+                    <td>Create, update, delete, and query BulkOperation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BulkOperationLog</td>
+                    <td>This is a table representing the BulkOperationLog entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BusinessUnit</td>
+                    <td>This is a table representing the BusinessUnit entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BusinessUnitMap</td>
+                    <td>This is a table representing the BusinessUnitMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>BusinessUnitNewsArticle</td>
+                    <td>This is a table representing the BusinessUnitNewsArticle entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Calendar</td>
+                    <td>This is a table representing the Calendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CalendarRule</td>
+                    <td>This is a table representing the CalendarRule entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Campaign</td>
+                    <td>This is a table representing the Campaign entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CampaignActivity</td>
+                    <td>This is a table representing the CampaignActivityItem entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CampaignActivityItem</td>
+                    <td>This is a table representing the CampaignActivityItem entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CampaignItem</td>
+                    <td>This is a table representing the CampaignItem entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CampaignResponse</td>
+                    <td>This is a table representing the CampaignResponse entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ClientUpdate</td>
+                    <td>This is a table representing the ClientUpdate entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ColumnMapping</td>
+                    <td>This is a table representing the ColumnMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Commitment</td>
+                    <td>This is a table representing the Commitment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Competitor</td>
+                    <td>This is a table representing the Competitor entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CompetitorAddress</td>
+                    <td>This is a table representing the CompetitorAddress entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CompetitorProduct</td>
+                    <td>This is a table representing the CompetitorProduct entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CompetitorSalesLiterature</td>
+                    <td>This is a table representing the CompetitorSalesLiterature entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Connection</td>
+                    <td>This is a table representing the Connection entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ConnectionRole</td>
+                    <td>This is a table representing the ConnectionRole entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ConnectionRoleAssociation</td>
+                    <td>This is a table representing the ConnectionRoleAssociation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ConnectionRoleObjectTypeCode</td>
+                    <td>This is a table representing the ConnectionRoleObjectTypeCode entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ConstraintBasedGroup</td>
+                    <td>This is a table representing the ConstraintBasedGroup entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td>This is a table representing the Contact entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ContactInvoices</td>
+                    <td>This is a table representing the ContactInvoices entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ContactLeads</td>
+                    <td>This is a table representing the ContactLeads entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ContactOrders</td>
+                    <td>This is a table representing the ContactOrders entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ContactQuotes</td>
+                    <td>This is a table representing the ContactQuotes entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Contract</td>
+                    <td>This is a table representing the Contract entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ContractDetail</td>
+                    <td>This is a table representing the ContractDetail entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ContractTemplate</td>
+                    <td>This is a table representing the ContractTemplate entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CustomerAddress</td>
+                    <td>This is a table representing the CustomerAddress entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CustomerOpportunityRole</td>
+                    <td>This is a table representing the CustomerOpportunityRole entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>CustomerRelationship</td>
+                    <td>This is a table representing the CustomerRelationship entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Dependency</td>
+                    <td>This is a table representing the Dependency entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DependencyNode</td>
+                    <td>This is a table representing the DependencyNode entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Discount</td>
+                    <td>This is a table representing the Discount entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DiscountType</td>
+                    <td>This is a table representing the DiscountType entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DisplayString</td>
+                    <td>This is a table representing the DisplayString entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DisplayStringMap</td>
+                    <td>This is a table representing the DisplayStringMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DocumentIndex</td>
+                    <td>This is a table representing the DocumentIndex entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DuplicateRecord</td>
+                    <td>This is a table representing the DuplicateRecord entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DuplicateRule</td>
+                    <td>This is a table representing the DuplicateRule entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>DuplicateRuleCondition</td>
+                    <td>This is a table representing the DuplicateRuleCondition entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Email</td>
+                    <td>This is a table representing the Email entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>EmailHash</td>
+                    <td>This is a table representing the EmailHash entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>EmailSearch</td>
+                    <td>This is a table representing the EmailSearch entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>EntityMap</td>
+                    <td>This is a table representing the EntityMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Equipment</td>
+                    <td>This is a table representing the Equipment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Fax</td>
+                    <td>This is a table representing the Fax entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>FieldPermission</td>
+                    <td>This is a table representing the FieldPermission entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>FieldSecurityProfile</td>
+                    <td>This is a table representing the FieldSecurityProfile entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>FilterTemplate</td>
+                    <td>This is a table representing the FilterTemplate entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>FixedMonthlyFiscalCalendar</td>
+                    <td>This is a table representing the FixedMonthlyFiscalCalendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Goal</td>
+                    <td>This is a table representing the Goal entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>GoalRollupQuery</td>
+                    <td>This is a table representing the GoalRollupQuery entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Import</td>
+                    <td>This is a table representing the ImportData entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ImportData</td>
+                    <td>This is a table representing the ImportEntityMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ImportEntityMapping</td>
+                    <td>This is a table representing the ImportEntityMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ImportFile</td>
+                    <td>This is a table representing the ImportFile entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ImportJob</td>
+                    <td>This is a table representing the ImportJob entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ImportLog</td>
+                    <td>This is a table representing the ImportLog entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ImportMap</td>
+                    <td>This is a table representing the ImportMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Incident</td>
+                    <td>This is a table representing the Incident entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>IncidentResolution</td>
+                    <td>This is a table representing the IncidentResolution entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>IntegrationStatus</td>
+                    <td>This is a table representing the IntegrationStatus entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>InternalAddress</td>
+                    <td>This is a table representing the InternalAddress entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>InterProcessLock</td>
+                    <td>This is a table representing the InterProcessLock entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>InvalidDependency</td>
+                    <td>This is a table representing the InvalidDependency entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Invoice</td>
+                    <td>This is a table representing the Invoice entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>InvoiceDetail</td>
+                    <td>This is a table representing the InvoiceDetail entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>IsvConfig</td>
+                    <td>This is a table representing the IsvConfig entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>KbArticle</td>
+                    <td>This is a table representing the KbArticle entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>KbArticleComment</td>
+                    <td>This is a table representing the KbArticleComment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>KbArticleTemplate</td>
+                    <td>This is a table representing the KbArticleTemplate entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Lead</td>
+                    <td>This is a table representing the Lead entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>LeadAddress</td>
+                    <td>This is a table representing the LeadAddress entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>LeadCompetitors</td>
+                    <td>This is a table representing the LeadCompetitors entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>LeadProduct</td>
+                    <td>This is a table representing the LeadProduct entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Letter</td>
+                    <td>This is a table representing the Letter entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>License</td>
+                    <td>This is a table representing the License entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>List</td>
+                    <td>This is a table representing the List entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ListMember</td>
+                    <td>This is a table representing the ListMember entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>LookUpMapping</td>
+                    <td>This is a table representing the LookUpMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>MailMergeTemplate</td>
+                    <td>This is a table representing the MailMergeTemplate entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Metric</td>
+                    <td>This is a table representing the Metric entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>MonthlyFiscalCalendar</td>
+                    <td>This is a table representing the MonthlyFiscalCalendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Notification</td>
+                    <td>This is a table representing the Notification entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Opportunity</td>
+                    <td>This is a table representing the Opportunity entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OpportunityClose</td>
+                    <td>This is a table representing the OpportunityClose entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OpportunityCompetitors</td>
+                    <td>This is a table representing the OpportunityCompetitors entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OpportunityProduct</td>
+                    <td>This is a table representing the OpportunityProduct entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OrderClose</td>
+                    <td>This is a table representing the OrderClose entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Organization</td>
+                    <td>This is a table representing the Organization entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OrganizationStatistic</td>
+                    <td>This is a table representing the OrganizationStatistic entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OrganizationUI</td>
+                    <td>This is a table representing the OrganizationUI entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Owner</td>
+                    <td>This is a table representing the Owner entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>OwnerMapping</td>
+                    <td>This is a table representing the OwnerMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PhoneCall</td>
+                    <td>This is a table representing the PhoneCall entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PickListMapping</td>
+                    <td>This is a table representing the PickListMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PluginAssembly</td>
+                    <td>This is a table representing the PluginAssembly entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>plug-intype</td>
+                    <td>This is a table representing the plug-in type entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PluginTypeStatistic</td>
+                    <td>This is a table representing the PluginTypeStatistic entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PriceLevel</td>
+                    <td>This is a table representing the PriceLevel entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PrincipalAttributeAccessMap</td>
+                    <td>This is a table representing the PrincipalAttributeAccessMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PrincipalEntityMap</td>
+                    <td>This is a table representing the PrincipalEntityMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PrincipalObjectAccess</td>
+                    <td>This is a table representing the PrincipalObjectAccess entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PrincipalObjectAttributeAccess</td>
+                    <td>This is a table representing the PrincipalObjectAttributeAccess entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Privilege</td>
+                    <td>This is a table representing the Privilege entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PrivilegeObjectTypeCodes</td>
+                    <td>This is a table representing the PrivilegeObjectTypeCodes entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ProcessSession</td>
+                    <td>This is a table representing the ProcessSession entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Product</td>
+                    <td>This is a table representing the Product entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ProductAssociation</td>
+                    <td>This is a table representing the ProductAssociation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ProductPriceLevel</td>
+                    <td>This is a table representing the ProductPriceLevel entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ProductSalesLiterature</td>
+                    <td>This is a table representing the ProductSalesLiterature entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ProductSubstitute</td>
+                    <td>This is a table representing the ProductSubstitute entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Publisher</td>
+                    <td>This is a table representing the Publisher entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>PublisherAddress</td>
+                    <td>This is a table representing the PublisherAddress entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>QuarterlyFiscalCalendar</td>
+                    <td>This is a table representing the QuarterlyFiscalCalendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Queue</td>
+                    <td>This is a table representing the Queue entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>QueueItem</td>
+                    <td>This is a table representing the QueueItem entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Quote</td>
+                    <td>This is a table representing the Quote entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>QuoteClose</td>
+                    <td>This is a table representing the QuoteClose entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>QuoteDetail</td>
+                    <td>This is a table representing the QuoteDetail entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RecurrenceRule</td>
+                    <td>This is a table representing the RecurrenceRule entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RecurringAppointmentMaster</td>
+                    <td>This is a table representing the RecurringAppointmentMaster entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RelationshipRole</td>
+                    <td>This is a table representing the RelationshipRole entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RelationshipRoleMap</td>
+                    <td>This is a table representing the RelationshipRoleMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Report</td>
+                    <td>This is a table representing the Report entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ReportCategory</td>
+                    <td>This is a table representing the ReportCategory entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ReportEntity</td>
+                    <td>This is a table representing the ReportEntity entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ReportLink</td>
+                    <td>This is a table representing the ReportLink entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ReportVisibility</td>
+                    <td>This is a table representing the ReportVisibility entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Resource</td>
+                    <td>This is a table representing the Resource entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ResourceGroup</td>
+                    <td>This is a table representing the ResourceGroup entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ResourceGroupExpansion</td>
+                    <td>This is a table representing the ResourceGroupExpansion entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ResourceSpec</td>
+                    <td>This is a table representing the ResourceSpec entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RibbonCommand</td>
+                    <td>This is a table representing the RibbonCommand entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RibbonContextGroup</td>
+                    <td>This is a table representing the RibbonContextGroup entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RibbonCustomization</td>
+                    <td>This is a table representing the RibbonCustomization entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RibbonDiff</td>
+                    <td>This is a table representing the RibbonDiff entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RibbonRule</td>
+                    <td>This is a table representing the RibbonRule entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RibbonTabToCommandMap</td>
+                    <td>This is a table representing the RibbonTabToCommandMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Role</td>
+                    <td>This is a table representing the Role entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RolePrivileges</td>
+                    <td>This is a table representing the RolePrivileges entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RoleTemplate</td>
+                    <td>This is a table representing the RoleTemplate entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RoleTemplatePrivileges</td>
+                    <td>This is a table representing the RoleTemplatePrivileges entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>RollupField</td>
+                    <td>This is a table representing the RollupField entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SalesLiterature</td>
+                    <td>This is a table representing the SalesLiterature entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SalesLiteratureItem</td>
+                    <td>This is a table representing the SalesLiteratureItem entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SalesOrder</td>
+                    <td>This is a table representing the SalesOrder entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SalesOrderDetail</td>
+                    <td>This is a table representing the SalesOrderDetail entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SalesProcessInstance</td>
+                    <td>This is a table representing the SalesProcessInstance entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SavedQuery</td>
+                    <td>This is a table representing the SavedQuery entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SavedQueryVisualization</td>
+                    <td>This is a table representing the SavedQueryVisualization entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessage</td>
+                    <td>This is a table representing the SdkMessage entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageFilter</td>
+                    <td>This is a table representing the SdkMessageFilter entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessagePair</td>
+                    <td>This is a table representing the SdkMessagePair entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageProcessingStep</td>
+                    <td>This is a table representing the SdkMessageProcessingStep entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageProcessingStepImage</td>
+                    <td>This is a table representing the SdkMessageProcessingStepImage entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageProcessingStepSecureConfig</td>
+                    <td>This is a table representing the SdkMessageProcessingStepSecureConfig entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageRequest</td>
+                    <td>This is a table representing the SdkMessageRequest entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageRequestField</td>
+                    <td>This is a table representing the SdkMessageRequestField entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageResponse</td>
+                    <td>This is a table representing the SdkMessageResponse entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SdkMessageResponseField</td>
+                    <td>This is a table representing the SdkMessageResponseField entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SemiAnnualFiscalCalendar</td>
+                    <td>This is a table representing the SemiAnnualFiscalCalendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Service</td>
+                    <td>This is a table representing the Service entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ServiceAppointment</td>
+                    <td>This is a table representing the ServiceAppointment entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ServiceContractContacts</td>
+                    <td>This is a table representing the ServiceContractContacts entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>ServiceEndpoint</td>
+                    <td>This is a table representing the ServiceEndpoint entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SharePointDocumentLocation</td>
+                    <td>This is a table representing the SharePointDocumentLocation entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SharePointSite</td>
+                    <td>This is a table representing the SharePointSite entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Site</td>
+                    <td>This is a table representing the Site entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SiteMap</td>
+                    <td>This is a table representing the SiteMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Solution</td>
+                    <td>This is a table representing the Solution entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SolutionComponent</td>
+                    <td>This is a table representing the SolutionComponent entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>StatusMap</td>
+                    <td>This is a table representing the StatusMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>StringMap</td>
+                    <td>This is a table representing the StringMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Subject</td>
+                    <td>This is a table representing the Subject entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Subscription</td>
+                    <td>This is a table representing the Subscription entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SubscriptionClients</td>
+                    <td>This is a table representing the SubscriptionClients entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SubscriptionManuallyTrackedObject</td>
+                    <td>This is a table representing the SubscriptionManuallyTrackedObject entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SubscriptionSyncInfo</td>
+                    <td>This is a table representing the SubscriptionSyncInfo entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SubscriptionTrackingDeletedObject</td>
+                    <td>This is a table representing the SubscriptionTrackingDeletedObject entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemForm</td>
+                    <td>This is a table representing the SystemForm entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemUser</td>
+                    <td>This is a table representing the SystemUser entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemUserBusinessUnitEntityMap</td>
+                    <td>This is a table representing the SystemUserBusinessUnitEntityMap entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemUserLicenses</td>
+                    <td>This is a table representing the SystemUserLicenses entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemUserPrincipals</td>
+                    <td>This is a table representing the SystemUserPrincipals entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemUserProfiles</td>
+                    <td>This is a table representing the SystemUserProfiles entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>SystemUserRoles</td>
+                    <td>This is a table representing the SystemUserRoles entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Task</td>
+                    <td>This is a table representing the Task entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Team</td>
+                    <td>This is a table representing the Team entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TeamMembership</td>
+                    <td>This is a table representing the TeamMembership entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TeamProfiles</td>
+                    <td>This is a table representing the TeamProfiles entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TeamRoles</td>
+                    <td>This is a table representing the TeamRoles entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Template</td>
+                    <td>This is a table representing the Template entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Territory</td>
+                    <td>This is a table representing the Territory entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TimeZoneDefinition</td>
+                    <td>This is a table representing the TimeZoneDefinition entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TimeZoneLocalizedName</td>
+                    <td>This is a table representing the TimeZoneLocalizedName entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TimeZoneRule</td>
+                    <td>This is a table representing the TimeZoneRule entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TransactionCurrency</td>
+                    <td>This is a table representing the TransactionCurrency entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TransformationMapping</td>
+                    <td>This is a table representing the TransformationMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>TransformationParameterMapping</td>
+                    <td>This is a table representing the TransformationParameterMapping entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UnresolvedAddress</td>
+                    <td>This is a table representing the UnresolvedAddress entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UoM</td>
+                    <td>This is a table representing the UoM entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UoMSchedule</td>
+                    <td>This is a table representing the UoMSchedule entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserEntityInstanceData</td>
+                    <td>This is a table representing the UserEntityInstanceData entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserEntityUISettings</td>
+                    <td>This is a table representing the UserEntityUISettings entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserFiscalCalendar</td>
+                    <td>This is a table representing the UserFiscalCalendar entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserForm</td>
+                    <td>This is a table representing the UserForm entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserQuery</td>
+                    <td>This is a table representing the UserQuery entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserQueryVisualization</td>
+                    <td>This is a table representing the UserQueryVisualization entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>UserSettings</td>
+                    <td>This is a table representing the UserSettings entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WebResource</td>
+                    <td>This is a table representing the WebResource entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WebWizard</td>
+                    <td>This is a table representing the WebWizard entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WizardAccessPrivilege</td>
+                    <td>This is a table representing the WizardAccessPrivilege entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WizardPage</td>
+                    <td>This is a table representing the WizardPage entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>Workflow</td>
+                    <td>This is a table representing the Workflow entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WorkflowDependency</td>
+                    <td>This is a table representing the WorkflowDependency entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WorkflowLog</td>
+                    <td>This is a table representing the WorkflowLog entities in Dynamics CRM.</td>
+                </tr>
+                <tr>
+                    <td>WorkflowWaitSubscription</td>
+                    <td>This is a table representing the WorkflowWaitSubscription entities in Dynamics CRM.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

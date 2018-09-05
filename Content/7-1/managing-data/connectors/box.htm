@@ -1,0 +1,159 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Box | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Box</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Box connector is a standalone connector that allows you to import data from Box’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Box APIs. To obtain a connection string, you will need to register a Box app.</p>
+        <p>Once you have connected to Box, you can import a variety of tables from the Box API.</p>
+        <p>This page describes how to install the Box connector, how to connect to Box with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Box Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Box REST API</a>
+            </li>
+            <li><a href="#Adding">Adding Box Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Box">Box Tables</a>
+            </li>
+            <li><a href="#Limitati">Limitations</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Box Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Box connector as a standalone connector that you can download and add to your list of default Sisense connectors.</p>
+        <p class="bold">To install the Box connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Box.Connector.Installer.exe">Download</a> the Box installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p class="indent">The Box connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Box REST API</h2>
+        <p>To access Box’s REST API from the <MadCap:variable name="Variables.ECM" />, you must provide valid Oauth Box credentials through a connection string. These credentials are provided by Box when you create an application.</p>
+        <p>After you receive your credentials from Box, you can create the connection string and provide <MadCap:variable name="Variables.CompanyName" /> with it to connect to your data.</p>
+        <h3 class="notoc">Creating an App</h3>
+        <p>You can follow the procedure below to register an app and obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Log in to your Box developers dashboard and click <span class="bold">Create a Box Application</span>.</li>
+            <li>If you are making a desktop application, set the Redirect URI to <a href="http://localhost:33333/">http://localhost:33333</a> or a different port number of your choice. If you are making a web application, set the Redirect URI to a page on your Web app you would like the user to be returned to after they have authorized your application. The OAuthClientId and OAuthClientSecret are also displayed in the same page.</li>
+            <li>Select the scope of user permissions your app will request.</li>
+        </ol>
+        <h2 class="notoc"><a name="Adding"></a>Adding Box Tables to your ElastiCube</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Box and import data into the <MadCap:variable name="Variables.ECM" />. Connection strings contain authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. </p>
+        <p>Box requires the following parameters that you receive when registering an app with Box:&#160;</p>
+        <ul>
+            <li><span class="bold">OAuthClientId</span>: The client ID assigned when you register your application with an OAuth authorization server.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the App Secret in your app settings.</li>
+            <li><span class="bold">CallbackURL</span>: The OAuth callback URL to return to when authenticating. This value must match the callback URL you specify in your app settings. Set this to http://localhost.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property.</li>
+            <li><span class="bold">Timeout</span>: The value in seconds until the timeout error is thrown, cancelling the operation. Set to 0 to disable time outs.</li>
+        </ul>
+        <p>For more information, see <a href="connect-string.htm">Connection String Parameters</a>. </p>
+        <p>Connection strings have the following structure:</p>
+        <p>jdbc:DataSourceName:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a Exact connection string:</p>
+        <p>jdbcbox:OAuthClientId=xxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxx;Region=’United States’;Division=xxxx;InitiateOAuth=GETANDREFRESH;OAuthCallbackURL=localhost:12345;</p>
+        <p class="bold">To add Box data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Box</span>. The Connect to Box window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Box is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Box and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h3 class="notoc"><a name="Box"></a>Box Tables</h3>
+        <p>Box’s RESTful APIs expose the following Box tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Box connector:</p>
+        <h4 class="notoc">Available Tables</h4>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Collaborations</td>
+                    <td>Create, update, delete, and query the available Collaborations in Box.</td>
+                </tr>
+                <tr>
+                    <td>Comments</td>
+                    <td>Create, update, delete, and query the available Comments in Box.</td>
+                </tr>
+                <tr>
+                    <td>Files</td>
+                    <td>Update, delete, and query the available Files in Box.</td>
+                </tr>
+                <tr>
+                    <td>Folders</td>
+                    <td>Create, update, delete, and query the available Folders in Box.</td>
+                </tr>
+                <tr>
+                    <td>Groups</td>
+                    <td>Create, update, delete, and query the available Groups in Box.</td>
+                </tr>
+                <tr>
+                    <td>Memberships</td>
+                    <td>Create, update, delete, and query the available Memberships in Box.</td>
+                </tr>
+                <tr>
+                    <td>TaskAssignments</td>
+                    <td>Create, update, delete, and query the available Task Assignments in Box.</td>
+                </tr>
+                <tr>
+                    <td>Tasks</td>
+                    <td>Create, update, delete, and query the available Tasks in Box.</td>
+                </tr>
+                <tr>
+                    <td>TrashedItems</td>
+                    <td>Delete and query the available TrashedItems in Box.</td>
+                </tr>
+                <tr>
+                    <td>Users</td>
+                    <td>Create, update, delete, and query the available Users in Box.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="notoc">Available Views</h4>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>SharedItems</td>
+                    <td>Query the available shared items in Box.</td>
+                </tr>
+                <tr>
+                    <td>UserEvents</td>
+                    <td>Query the available Events in Box.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Limitati"></a>Limitations</h3>
+        <p>Aggregate functions are not supported.</p>
+        <p>To query the Collaborations table, specify an Id, FolderId, or a GroupId.</p>
+        <p class="code">SELECT * FROM Collaborations WHERE Id = '123'</p>
+        <p>To select from the Tasks table you need to specify an Id or an ItemId.</p>
+        <p class="code">SELECT * FROM Tasks WHERE Id = '123'</p>
+        <p>To select from the TasksAssignments table you need to specify an Id or a TaskId.</p>
+        <p class="code">SELECT * FROM TasksAssignments WHERE Id = '123'</p>
+        <p>To select from the Memberships table you need to specify an Id or a GroupId.</p>
+        <p class="code">SELECT * FROM Memberships WHERE Id = '123'</p>
+        <p>To select from SharedItems specify the Shared Link that points to the item.</p>
+        <p class="code">SELECT * FROM SharedItems WHERE SharedLink = 'www.url.com'</p>
+        <p>If the SharedItem has a password also specify the password.</p>
+        <p class="code">SELECT * FROM SharedItems WHERE SharedLink = 'www.url.com' AND SharedLinkPassword = 'password'</p>
+        <p>To query the Comments table specify an Id or a FileId.</p>
+        <p class="code">SELECT * FROM Comments WHERE Id = '123'</p>
+        <p>Due to these limitations, the <MadCap:variable name="Variables.ElastiCube" /> cannot be built without custom SQL.</p>
+    </body>
+</html>

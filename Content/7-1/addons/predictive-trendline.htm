@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2062" MadCap:lastWidth="877">
+    <head>
+        <title>Predictive Trend Line | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Predictive Trend Line</h1>
+        <p>The Predictive Trend Line add-on displays linear, exponential, and logarithmic trend lines in your dashboard charts.</p>
+        <p>
+            <img src="../../Resources/Images/trends.png" class="thumblarge" />
+        </p>
+        <p>The trend line allows an end user to predict future values/metrics based on historical data. See the referenced wiki page on the regression analysis for more information.</p>
+        <p class="bold">To add a predictive trend line to your charts:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/RegressionLine.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\</span> folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Create a chart. In your dashboard, click <span class="bold">New Widget</span> and select <span class="bold">Advanced Configuration</span>.<br /><img src="../../Resources/Images/advancedconfig.png" class="thumblarge" /></li>
+            <li>Select the Column Chart from the chart types menu. Pick a datetime dimension for the CATEGORIES, and one or more measures under VALUES. The most common scenario is to add the same measure twice so that you can see the historical data as one series and then turn the second series into a trend line.</li>
+            <li>On the second measure, select the Settings menu to display the Regression option. This menu is set to None by default, but you can select a prediction method to use against the data series.<br /><img src="../../Resources/Images/SettingDataSeries.png" class="thumblarge" /></li>
+            <li>Define the time frame. The default view will predict future values based on the calendar year (see below). If you want to change this, click on the Settings menu for the widget (top right corner of the screen).<br /><img src="../../Resources/Images/Options.png" class="thumblarge" /></li>
+            <li>The following options are available:</li>
+        </ol>
+        <ul>
+            <li>None – Show the trend for historical time periods only</li>
+            <li>Calendar End – This option will depend on your date dimension’s level of aggregation<ul><li>Years – When viewing data at a yearly level, the next 5 years will be predicted out</li><li>Quarters – When viewing data at a quarterly level, the add-on will predict through Q4 of the calendar year</li><li>Months – When viewing data at a monthly level, the add-on will predict through Dec of the calendar year</li><li>Days – When viewing data at a daily level, the add-on will predict through the last day of the month</li></ul></li>
+            <li>Next 3 – This option will predict out the next 3 time periods</li>
+            <li>Next 6 – This option will predict out the next 6 time periods</li>
+            <li>Next 12 – This option will predict out the next 12 time periods</li>
+        </ul>
+        <p class="bold">References/Notes</p>
+        <ul>
+            <li>Multiple regression lines on the same widget are supported.</li>
+            <li>Only one dimension on the x-axis (no hierarchies) is supported.</li>
+            <li>If your regression line is not smooth, it may be because there are gaps in the dates of your data.  You can resolve this by turning on the Continuous Timeline option of the date dimension.<br /><img src="../../Resources/Images/continuous.png" class="thumblarge" /></li>
+            <li>If you set a value in the widget, you should not toggle the value off. If you want to disable it, just delete it or set the regression to None and then toggle it off.</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Email Troubleshooting | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Email Troubleshooting</h1>
+        <p>Users of <MadCap:variable name="Variables.CompanyName" /> receive a variety of automated emails from <MadCap:variable name="Variables.CompanyName" />. Sisense emails fall into two categories of emails:</p>
+        <p><span class="bold">System Emails</span>: These emails include activation emails, password recovery emails, and updates regarding published dashboards.</p>
+        <p><span class="bold">Email Reports</span>: These emails are dashboard reports in PDF/PNG format that are sent manually or according to a schedule you define.</p>
+        <p>The following steps will help you troubleshoot email-related issues such as emails not being sent/received.</p>
+        <p>Step 1 – <a href="#Step">Verify that Emails are Configured Correctly</a></p>
+        <p>Step 2 – <a href="#Step2"><a href="#Step2">Send a Test Email</a></a></p>
+        <p>Step 3 – <a href="#Step3"><a href="#Step3">Export the Dashboard to PDF</a></a></p>
+        <p>Step 4 – <a href="#Step4">Verify System Load</a></p>
+        <p>Step 5 – <a href="#Step5"><a href="#Step5">Verify Port Bindings</a></a></p>
+        <p>Step 6 – <a href="#Step6">Custom Email Server</a></p>
+        <p>Step 7 – <a href="#Step7">Verify the default.yaml Settings</a></p>
+        <p>Step 8 – <a href="#Step8">Check Rebranded Email Settings</a></p>
+        <p>Step 9 – <a href="#Step9">Verify Spam Protection</a></p>
+        <h2 class="notoc"><a name="Step"></a>Step 1 – Verify that Emails are Configured Correctly</h2>
+        <p>You may not receive emails from <MadCap:variable name="Variables.CompanyName" /> due to configuration issues. There are four potential configuration issues that can occur.</p>
+        <ol>
+            <li>Activate <MadCap:variable name="Variables.CompanyName" /> Emails: (All email types) Make sure that <MadCap:variable name="Variables.CompanyName" /> emails have been enabled within the System Configuration page of the Admin menu.<br /><img src="../../Resources/Images/sendemails.png" class="thumblarge" /></li>
+            <li>Verify that the user you want to share the report with is selected: (Email reports only)  You can verify which users are selected by checking the <img src="../../Resources/Images/emailicons.png" />  icon associated with their name. If the <img src="../../Resources/Images/emailicons.png" />  icon is not highlighted, the user will not receive an email report. You can select the user by clicking the icon.<br /><img src="../../Resources/Images/shareemails.png" class="thumblarge" /><br />If you are sharing your reports with a group, verify that all the members are included. An Administrator can check the list of users in a group from the <span class="bold">Admin</span> page by <span class="bold">Selecting Admin</span> &gt; <span class="bold">Groups </span>&gt; <span class="bold">Edit</span>.<br /><img src="../../Resources/Images/editgroups.png" class="thumblarge" /><br /></li>
+            <li><span class="bold">Data Security</span>: (Email reports) Verify with your <MadCap:variable name="Variables.CompanyName" /> Administrator that the user you want to share the report with has access rights to the dashboard’s <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li><span class="bold">Verify Build Success</span>: (Email reports only) If you send a report following each build, verify that dashboard’s <MadCap:variable name="Variables.ElastiCube" /> was built successfully.</li>
+        </ol>
+        <h2 class="notoc"><a name="Step2"></a>Step 2 – Send a Test Email</h2>
+        <p>If you do not receive any emails from <MadCap:variable name="Variables.CompanyName" />, email reports or system emails, you can verify whether or not you can receive emails from <MadCap:variable name="Variables.CompanyName" /> by sending a report to yourself. To send an email report, click the <img src="../../Resources/Images/sharedicon-2.png" /> icon of a dashboard and in the bottom-left corner of the window, click <span class="bold">Send me a report</span> now to test the email’s functionality. If you receive an email, but do not receive your scheduled reports, see Contacting Technical Support.</p>
+        <p>
+            <img src="../../Resources/Images/sharingemails.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Step3"></a>Step 3 – Export the Dashboard to PDF</h2>
+        <p>This step is relevant for email reports. If your issue is related to system emails, goto Step 5.</p>
+        <p>If you cannot receive any email reports,  this may indicate a conflict with your plugins. By exporting your dashboard to PDF, you can verify if email reports are being sent and if not, what is the source of the problem.</p>
+        <ol>
+            <li><span class="bold">Check Plugins</span>: You can check if your plugins are interfering with your email reports by renaming the plugin folder located at C:\Program Files\Sisense\PrismWeb\plugins to another name, for example, to “plugin1”. If the email succeeds, this indicates that one of your plugins is interfering with your emails and needs to be corrected.</li>
+            <li><span class="bold">Check SSL</span>: After checking your plugins, if you still do not receive dashboard reports, this may indicate a problem with SSL. If you are using SSL, follow the instructions in this <a href="https://support.sisense.com/entries/95518447-Can-t-Download-PDF-using-SSL-redirect-">forum post</a>.</li>
+        </ol>
+        <h2 class="notoc"><a name="Step4"></a>Step 4 – Verify System Load</h2>
+        <p>This step is relevant for email reports. If your issue is related to system emails, goto Step 5.</p>
+        <p>Verify that the system is not overloading by sending too many reports at the same time. For example, if your email reports are all scheduled for 5:00pm, this may overload the email server. You can verify if this is causing problems by scheduling email loads throughout the day.</p>
+        <h2 class="notoc"><a name="Step5"></a>Step 5 – Verify Port Bindings</h2>
+        <p>Verify that your Port bindings are configured properly by using an HTTP port that is not used by other web sites on your IIS.</p>
+        <p>If you have a DNS configured make sure you have the required certificate for it.</p>
+        <h2 class="notoc"><a name="Step6"></a>Step 6 – Custom Email Server</h2>
+        <p>This step is relevant for all email types.</p>
+        <p>By default, <MadCap:variable name="Variables.CompanyName" /> uses Mandrill for emailing services. Verify that you can reach mandrill.com from the server. If you can’t, this might indicate a network security restriction. Verify that the IP addresses listed here are whitelisted. If your network security restrictions prevent you from communicating with Mandrill email services, you can implement your own custom email server, see <a href="https://documentation.sisense.com/setting-custom-email-server/">Setting Up a Custom Email Server</a>.</p>
+        <h2 class="notoc"><a name="Step7"></a>Step 7 – Verify the default.yaml Settings</h2>
+        <p>The default.yaml settings file is located in: C:\Program Files\Sisense\PrismWeb\vnext\config. These settings define which path <MadCap:variable name="Variables.CompanyName" /> uses for exporting emails.</p>
+        <p>‘webServer’ -&gt; iisPort should be the same port as the binding in the IIS.</p>
+        <p>
+            <img src="../../Resources/Images/wbserver1.png" class="thumblarge" />
+        </p>
+        <p>‘exporting’ –&gt; host = “localhost”, port = “default”.</p>
+        <p>Note that the ‘exporting’ address should be accessible from inside the server, i.e. if you can’t access localhost from your browser, but you can access it using a DNS, change the export settings to use the DNS.</p>
+        <p>
+            <img src="../../Resources/Images/wbserver2.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Step8"></a>Step 8 – Check Rebranded Email Settings</h2>
+        <p>This step is relevant for all email types.</p>
+        <p>If you have changed the default <MadCap:variable name="Variables.CompanyName" /> configuration, for example, when rebranding <MadCap:variable name="Variables.CompanyName" />, run the following requests through REST API admin page</p>
+        <ul>
+            <li>GET /branding</li>
+            <li>GET /settings/system</li>
+        </ul>
+        <p>Verify the ‘senderEmail’ is configured correctly and not listed as ‘string’ or another erroneous sender. This can happen when someone uses POST /branding and does not enter a valid email address or leaves the value as ‘string’.</p>
+        <p>If you are whitelabeling <MadCap:variable name="Variables.CompanyName" /> and rebranding your emails and experience email problems, review the following steps as described here.</p>
+        <h2 class="notoc"><a name="Step9"></a>Step 9 – Verify Spam Protection</h2>
+        <p>This step is relevant for all email types.</p>
+        <p>Make sure that emails sent from <MadCap:variable name="Variables.CompanyName" /> are whitelisted and not filtered by any spam protection. If you do not have access to your company’s Spam folder or Sisense emails may be filtered before arriving to your inbox, consult with your company’s IT administrator to verify that <MadCap:variable name="Variables.CompanyName" /> emails are not being filtered by your company’s Spam filters.</p>
+        <p>If none of the above steps have resolved the issue please contact <MadCap:variable name="Variables.CompanyName" /> Technical Support. When contacting <MadCap:variable name="Variables.CompanyName" /> Technical Support, please provide the following information to reduce the amount of time it takes to resolve your issue:</p>
+        <ul>
+            <li><span class="bold">Time</span>: When the issue occurred.</li>
+            <li><span class="bold">Logs</span>: When encountering an error while trying to send email reports, <MadCap:variable name="Variables.CompanyName" /> maintains error logs that you can review or send to Sisense Technical Support. The logs are located at …Program Files\Sisense\PrismWeb\vnext\iisnode.</li>
+            <li><span class="bold">Steps Taken</span>: List each of the steps you have taken to when trying to resolve the issue yourself.</li>
+        </ul>
+    </body>
+</html>

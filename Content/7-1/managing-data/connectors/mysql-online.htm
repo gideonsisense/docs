@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to MySQL | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to MySQL</h1>
+        <p><span class="bold">Note:</span>&#160;This topic describes how to import data using the online <MadCap:variable name="Variables.Sisense Web Application" />. To import data through the desktop <MadCap:variable name="Variables.ECM" />, click <a href="mysql.htm">here</a>. </p>
+        <p>The <MadCap:variable name="Variables.ECM" />  enables easy and quick access to databases, tables and views contained with MySQL  databases.</p>
+        <p class="bold">To import data from your MySQL database:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page of <MadCap:variable name="Variables.ECM" />, open an <MadCap:variable name="Variables.ElastiCube" /> or create a new <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>In the <MadCap:variable name="Variables.ElastiCube" />, click <img src="../../../Resources/Images/v7databutton.png" class="docbutton" />. The Add Data dialog box is displayed.<br /><img src="../../../Resources/Images/Mysqlonline.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">MySQL</span>. The MySQL Connect area is displayed.<br /><img src="../../../Resources/Images/v7mysql.png" class="thumblarge" /></li>
+            <li>Enter the following details:</li>
+            <ul>
+                <li><span class="bold">Location</span>: Enter the computer/server IP address of the database. To connect to a database running on your own computer enter <span class="bold">localhost</span>.</li>
+                <li>
+                    <p>If Windows Authentication is configured with the database in the <span class="bold">User Name</span> and <span class="bold">Password</span> fields, enter your database credentials. </p>
+                </li>
+            </ul>
+            <li><span class="bold">(Optional)</span> Select Use SSL if you are connecting to an SSL server. Enter the relevant information to configure verification between the client and the MySQL server over SSL:</li>
+            <ul>
+                <li>
+                    <p>In the<span class="bold"> Private Key </span>field, enter the path of the location of your file containing the your private key.</p>
+                </li>
+                <li>
+                    <p>In the <span class="bold">Certificate</span> field, enter the path of the location of your PEM file containing the client’s certificate.</p>
+                </li>
+                <li>
+                    <p>In the <span class="bold">Authority </span>field, enter the path of the location of your PEM file containing the trusted SSL certificate authority.</p>
+                </li>
+            </ul>
+            <li>Click <img src="../../../Resources/Images/v7next.png" class="docbutton" />. A list of tables in the database are displayed. All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/SelectTables.png" class="thumblarge" /></li>
+            <li>From the Tables list, select the relevant table or view you want to work with. You can click  <img src="../../../Resources/Images/previewtable.png" class="docbutton" /> next to the relevant table or view to see a preview of the data inside it. When you select the table or view, two new options are displayed at the bottom of the list, <span class="bold">Import Relationships</span> and <span class="bold">Add Custom Import SQL</span>.</li>
+            <li>(Optional) By default, existing relationships between tables are automatically replicated in the <MadCap:variable name="Variables.ElastiCube" />. You can disable this by toggling the <span class="bold">Import Relationships</span> switch.</li>
+            <li>(Optional) Click + to customize the data you want to import with SQL. See <a href="import-custom.htm">Importing Data with Custom Queries</a> for more information.</li>
+            <li>After you have selected all the relevant tables, click <span class="bold">Done</span>. The tables are added to your schema in the <MadCap:variable name="Variables.ECM" />.<br /></li>
+        </ol>
+    </body>
+</html>

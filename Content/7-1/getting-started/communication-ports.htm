@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Communication Ports | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Communication Ports</h1>
+        <p><MadCap:variable name="Variables.CompanyName" /> utilizes multiple communication ports.  Some of the ports are used for communication between <MadCap:variable name="Variables.CompanyName" /> modules, and others are used for communication with remote locations.</p>
+        <p>When <MadCap:variable name="Variables.CompanyName" /> is installed as part of a Single machine deployment, ports used for communication between <MadCap:variable name="Variables.CompanyName" /> modules are considered internal ports, and do not need to be open in the firewall. When <MadCap:variable name="Variables.CompanyName" /> is installed in a Clustered deployment, where <MadCap:variable name="Variables.CompanyName" /> modules installed on different computers communicate with each other, ports used for communication between <MadCap:variable name="Variables.CompanyName" /> modules may need to be opened in the firewall. This depends on the specific deployment implemented in your environment.</p>
+        <p><span class="bold">Note</span>:&#160;When trying to add an <MadCap:variable name="Variables.ElastiCube" /> server to a web server, Sisense pings the web server. If it cannot successfully ping the server, the error message "The Elasticube server is not reachable" is returned. Make sure that ICMP communication is enabled on the web server.</p>
+        <p>The tables below lists the ports on which <MadCap:variable name="Variables.CompanyName" /> listens for communication.</p>
+        <h2 class="notoc">Ports for External Communication</h2>
+        <p>The following table list ports used for communication with external locations. These ports should be open on your firewall to allow for this communication.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Port Number</th>
+                    <th>Protocol</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Web Server</td>
+                    <td>8081(*)</td>
+                    <td>HTTP</td>
+                    <td><MadCap:variable name="Variables.CompanyName" /> Web Server</td>
+                </tr>
+                <tr>
+                    <td>Sisense.Orchestrator</td>
+                    <td>445, 137-139</td>
+                    <td>SMB</td>
+                    <td>
+                        <p>	Used in high availability deployments. Otherwise, not used.
+
+</p>
+                        <p>In high-availability, it copies DB farm to query nodes.
+
+</p>
+                        <p>The <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service generates inbound (query nodes) and outbound (build node) traffic.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Sisense.Orchestrator</td>
+                    <td>22(*)</td>
+                    <td>SSH</td>
+                    <td>
+                        <p>Used in high availability deployments. Otherwise, not used.</p>
+                        <p>
+
+In high-availability, it copies DB farm to query nodes.
+
+</p>
+                        <p>The <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service generates inbound (query nodes) and outbound (build node) traffic.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>OAuth2 server</td>
+                    <td>
+                        <p>7077
+
+</p>
+                        <p>In <MadCap:variable name="Variables.CompanyName" /> V6.7, port 7043 is also used.</p>
+                    </td>
+                    <td>
+                        <p>HTTP
+
+</p>
+                        <p>In <MadCap:variable name="Variables.CompanyName" /> V6.7, HTTPS is also used.</p>
+                    </td>
+                    <td>Used by GenericREST connectors that use oAuth authentication. Otherwise, not used.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>(*) Indicates that the port is configurable.</p>
+        <h2 class="notoc">Ports for Internal and External Communication</h2>
+        <p>The following table lists all ports in which the type of communication, internal or external, depends on your deployment. In a single deployment, <MadCap:variable name="Variables.CompanyName" /> communicates internally to other services. These ports do not need to be open on your firewall. In a clustered deployment, <MadCap:variable name="Variables.CompanyName" /> communicates across your deployment to other <MadCap:variable name="Variables.CompanyName" /> services. These ports should be open on your firewall to allow for this communication.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Port Number</th>
+                    <th>Protocol</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ElastiCube Management Service, QueryServiceTcpPort</td>
+                    <td>812</td>
+                    <td>TCP</td>
+                    <td>In high-availability, it's the <MadCap:variable name="Variables.ElastiCube" /> query end point</td>
+                </tr>
+                <tr>
+                    <td>ElastiCube Management Service, QueryServiceHttpPort</td>
+                    <td>16162</td>
+                    <td>HTTP</td>
+                    <td>In high-availability, it's the <MadCap:variable name="Variables.ElastiCube" /> query end point</td>
+                </tr>
+                <tr>
+                    <td>ElastiCube Management Service, ManagementServiceTcpPort</td>
+                    <td>811</td>
+                    <td>TCP</td>
+                    <td>Elasticube Management Service endpoint</td>
+                </tr>
+                <tr>
+                    <td>ElastiCube Management Service, ManagementServiceHttpPort</td>
+                    <td>16161</td>
+                    <td>HTTP</td>
+                    <td>Elasticube Management Service endpoint</td>
+                </tr>
+                <tr>
+                    <td>Oxygen</td>
+                    <td>31112</td>
+                    <td>TCP</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>MongoDB</td>
+                    <td>20718(*)</td>
+                    <td>TCP</td>
+                    <td>&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>(*) Indicates that the port is configurable.</p>
+        <h2 class="notoc">Ports for Internal Communication</h2>
+        <p>The following table lists all ports on which <MadCap:variable name="Variables.CompanyName" /> communicates internally. These ports do not need to be open on your firewall.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Module</th>
+                    <th>Port Number</th>
+                    <th>Protocol</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MontoriongMongoDB</td>
+                    <td>27019</td>
+                    <td>TCP</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Sisense.CLRConnectorsContainer Server</td>
+                    <td>	8090</td>
+                    <td>TCP</td>
+                    <td>CLR container server: Data transport between EC and data sources</td>
+                </tr>
+                <tr>
+                    <td>Sisense.JVMConnectorsContainer Server</td>
+                    <td>Dynamically allocated</td>
+                    <td>TCP</td>
+                    <td>JVM container server: Data transport between EC and data sources</td>
+                </tr>
+                <tr>
+                    <td>Sisense.JVMConnectorsContainer Management</td>
+                    <td>8095</td>
+                    <td>TCP</td>
+                    <td>Container management - e.g. Adding/Removing/Updating connectors</td>
+                </tr>
+                <tr>
+                    <td>Sisense.Discovery</td>
+                    <td>	2181</td>
+                    <td>TCP</td>
+                    <td>Discovery service for connectors (Zookeeper)</td>
+                </tr>
+                <tr>
+                    <td>Sisense WebServer (Node.JS)</td>
+                    <td>40001</td>
+                    <td>	HTTP</td>
+                    <td>Webserver
+
+Note: This module is relevant fro, <MadCap:variable name="Variables.CompanyName" /> V6.7 onwards.</td>
+                </tr>
+                <tr>
+                    <td>Sisense.WebQueryService (.Net)</td>
+                    <td>	40002</td>
+                    <td>	HTTP</td>
+                    <td>	WebQueryService
+
+Note: This module is relevant fro, Sisense V6.7 onwards.</td>
+                </tr>
+                <tr>
+                    <td>Streaming Processing Engine	</td>
+                    <td>40003</td>
+                    <td>HTTP</td>
+                    <td>Processing Engine (Node.js)</td>
+                </tr>
+                <tr>
+                    <td>CustomREST MongoDB</td>
+                    <td>27077(*)</td>
+                    <td>TCP</td>
+                    <td>Intermediate and cache db for CustomREST: connector results</td>
+                </tr>
+                <tr>
+                    <td>Sisense.ECMLogsPersistenceService</td>
+                    <td>5672 and 27018</td>
+                    <td>AMQP</td>
+                    <td>Reads build logs and saves them on the application database</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>(*) Indicates that the port is configurable.</p>
+    </body>
+</html>

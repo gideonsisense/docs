@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="451" MadCap:lastWidth="759">
+    <head>
+        <title>Hosting the Application Database | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Hosting the Application Database</h1>
+        <p>If you wish to host the <MadCap:variable name="Variables.CompanyName" /> application database on another server, you need to create an AppUser that Sisense can use to communicate with your application database. The AppUser you create must have two application database roles assigned to it, readWriteAnyDatabase and dbAdminAnyDatabase. These roles provide the <MadCap:variable name="Variables.CompanyName" /> AppUser read/write privileges to the application database.</p>
+        <p>In addition, the password for the AppUser should be encrypted using the same encryption mechanism <MadCap:variable name="Variables.CompanyName" /> uses. You can encrypt a plaintext password using this encryption mechanism in the <MadCap:variable name="Variables.CompanyName" /> REST API through the endpoint:</p>
+        <p>
+            <span class="code">GET /app_database/encrypt_database_password</span>
+        </p>
+        <p>This encrypted password should be included in all the relevant configuration files as described in <a href="../high-availability-in-sisense/replica-sets.htm">Connecting <MadCap:variable name="Variables.CompanyName" /> to the Replica Set</a>.</p>
+    </body>
+</html>

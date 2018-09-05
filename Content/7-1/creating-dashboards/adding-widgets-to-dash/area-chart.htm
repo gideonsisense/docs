@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Area Chart | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Area Chart</h1>
+        <p>An Area Chart is very similar to a Line Chart except that the areas under each line are filled in (colored), and it is possible to display them as stacked. The chart is recommended for displaying absolute or relative (stacked) values over a time period.</p>
+        <h2 class="notoc">Adding Data</h2>
+        <ol>
+            <li>Click <span class="bold">Add +</span> to select the field(s) whose values will be placed on the X-Axis.<br />Typically, the X-Axis of an Area Chart is used to represent time. You must add at least one item to the X-Axis. You can add at most two items. When you add two X-axis items, the chart’s two X-Axis are combined.</li>
+            <li>In the <span class="bold">Values</span> area, click <span class="bold">Add+ </span>to select the field whose value determines the height of the area in the chart. Typically, the Y-Axis of an Areas Chart is used to represent numeric data.<br />You must add at least one field to Values. When you add more than one Value, then each item is represented in the chart by its own color and area.</li>
+            <li>
+                <span class="bold">Break by</span> (optional): Click <span class="bold">Add +</span> to select a field by which to break up (group) the data represented in this chart.<br />Each field added to <span class="bold">Break By</span> is represented by its own area in the chart and is automatically added to the chart’s legend.<br />This is an optional field, and operates under the following conditions:</li>
+        </ol>
+        <ul>
+            <li>You can add at most one <span class="bold">Break by</span> field.</li>
+            <li>The <span class="bold">Break by</span> option is available only when a single field was added to Values (Y-Axis).</li>
+            <li>You can add only a single field to Values, if the <span class="bold">Break by</span> option was used.</li>
+        </ul>
+        <h2 class="notoc">Designing the Area Chart</h2>
+        <p>Fine-tune the appearance of the Area Chart widget, using the following tools:</p>
+        <ul>
+            <li>
+                <span class="bold">Area Types</span>: Select how areas are represented in the widget:<ul><li><span class="bold">Classic</span>: Areas overlap, meaning that smaller areas appear on top of larger areas and cover them. The colors indicate the distribution between the <span class="bold">Values</span>.<br /><img src="../../../Resources/Images/areaclassic.png" class="thumblarge" /></li><li><span class="bold">Stacked</span>: Areas are stacked on top of each other and do not overlap. Hover over the columns to see the percentage distribution among the <span class="bold">Values</span>.<br /><img src="../../../Resources/Images/areastacked.png" class="thumblarge" /></li><li><span class="bold">Stacked 100</span>: Areas are stacked on top of each other (but do not overlap). The combined area is stretched to the top in order to represent 100%. This option is most commonly used when the relative distribution of the values is more important than their aggregation.<br /><img src="../../../Resources/Images/areastacked100.png" class="thumblarge" /></li></ul></li>
+            <li>
+                <span class="bold">Line Type</span>: Select how the line appears in the widget: <span class="bold">Straight </span>(Default) or <span class="bold">Smooth</span>.</li>
+            <li>
+                <span class="bold">Line Width</span>: Select either <span class="bold">Thin</span>, <span class="bold">Bold</span> (Default) or <span class="bold">Thick</span>.</li>
+            <li>
+                <span class="bold">Legend</span>: Specify whether to show or hide the Legend and its position.</li>
+            <li>
+                <span class="bold">Value Labels</span>: Specify whether to show or hide labels showing values in the Area Chart.<br /><img src="../../../Resources/Images/valueLabels2.png" /></li>
+            <li>
+                <span class="bold">Markers</span>: Specify whether to show or hide markers over data points.</li>
+            <li>
+                <span class="bold">X-Axis</span>:<ul><li><span class="bold">Grid Lines</span>: Shows (Default) / hides.</li><li><span class="bold">Labels</span>: Shows (Default) / hides.</li><li><span class="bold">Title</span>: Select the checkbox to display the x-axis title. To edit the title, type in a new title. Click outside the text box to apply the new value.</li></ul></li>
+            <li>
+                <span class="bold">Y-Axis</span>
+                <ul>
+                    <li>
+                        <span class="bold">Grid Lines</span>: Shows (Default) / hides.</li>
+                    <li>
+                        <span class="bold">Logarithmic</span>: Displays using orders of magnitude.</li>
+                    <li>
+                        <span class="bold">Labels</span>: Shows (Default) / hides.</li>
+                    <li>
+                        <span class="bold">Title</span>: Select the checkbox to display the y-axis title. To edit the title, type in a new title. Click outside the text box to apply the new value.</li>
+                    <li>
+                        <span class="bold">Values on Axis</span>: To change the default minimum, maximum or interval values on the axis, type in the new values, and click outside the text boxes to apply the new values. To restore any of the values to their default states, click on the reset button. <img src="../../../Resources/Images/reset-button.png" /></li>
+                </ul>
+            </li>
+        </ul>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,33 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1149" MadCap:lastWidth="731">
+    <head>
+        <title>Connecting to Teradata | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Teradata</h1>
+        <p>You connect to a Teradata database by selecting TERADATA from the list of connectors in the <MadCap:variable name="Variables.CompanyName" /> Add Data window. The Teradata Connector is displayed in the list of Database server connectors.</p>
+        <p>
+            <img src="../../../Resources/Images/teradata_1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Importing Data from Teradata</h2>
+        <p>You can add Teradata tables to the <MadCap:variable name="Variables.ECM" /> by clicking <span class="bold">Add Data</span>.</p>
+        <p>By entering your Teradata credentials, you can easily connect to your Teradata database and import its tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <p class="bold">To add tables from Teradata:</p>
+        <ol>
+            <li>Click <span class="bold">Add data</span> on the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under Database servers, select <span class="bold">TERADATA</span>.<br /><img src="../../../Resources/Images/teradata_2-277x300.png" class="thumblarge" /></li>
+            <li>
+                <span class="bold">Database server location</span>: Enter the computer/server IP address of the database. To connect to a database running on your own computer enter <span class="bold">localhost</span>.</li>
+            <li>Select either <span class="bold">Windows Authentication</span> if configured with the database or alternatively, Use the Following <span class="bold">User Name</span> and <span class="bold">Password</span> fields, and enter the database credentials.</li>
+            <li>Click <span class="bold">Connect to server</span>.</li>
+            <li>From the <span class="bold">Select Database</span> list, select the relevant database you want to work with, and click <span class="bold">OK</span>.</li>
+            <li>All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/teradata_3-300x300.png" class="thumblarge" /></li>
+            <li>To view a preview of data contained in a particular table, highlight the table or view in the list and in click the preview pane below. To preview the table, select the <span class="bold">Preview</span> checkbox. Enable the checkbox next to each table or view you would like to use. Existing relationships between tables can be automatically replicated in the ElastiCube by selecting the <span class="bold">Automatically create relationships from database</span> option. Likewise fields with similar names can be linked by selecting the <span class="bold">Automatically create relationships for fields with the same name</span> option.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+        <h3 class="notoc">Limitations</h3>
+        <p>
+            <span class="bold">Custom tables</span>: This is a feature not yet available, only entire tables can be imported.</p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,189 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+    </head>
+    <body>
+        <MadCap:bodyProxy />
+        <div class="top-nav-menu">
+            <div id="nav-icon3" class="visible-xs"><span></span><span></span><span></span><span></span>
+            </div><a class="top-header-logo" href="/"><img src="https://cdn.sisense.com/dotcom/images/sisense-logo.png" /></a>
+            <nav class="main-menu">
+                <ul id="menu-top-main-menu" class="">
+                    <li id="menu-item-22326" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-22326"><a href="https://www.sisense.com/why-sisense/">Why Sisense</a>
+                    </li>
+                    <li id="menu-item-24614" class="menu-platform menu-item menu-item-type-custom menu-item-object-custom menu-item-24614"><a href="https://www.sisense.com/product/">Platform</a>
+                    </li>
+                    <li id="menu-item-23449" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23449"><a href="https://www.sisense.com/solutions/">Solutions</a>
+                    </li>
+                    <li id="menu-item-25402" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25402"><a href="https://www.sisense.com/get/watch-demo/">Demo</a>
+                    </li>
+                    <li id="menu-item-22347" class="hidden-sm menu-item menu-item-type-custom menu-item-object-custom menu-item-22347"><a href="https://www.sisense.com/resources/">Resources</a>
+                    </li>
+                    <li id="menu-item-22348" class="hidden-sm menu-item menu-item-type-custom menu-item-object-custom menu-item-22348"><a href="https://www.sisense.com/case-studies/">Customers</a>
+                    </li>
+                    <li id="menu-item-23451" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-23451"><a href="https://www.sisense.com/get/pricing/">Pricing</a>
+                    </li>
+                    <li id="b33197bbd" class="action-btn fbox breathe loginbutton menu-item menu-item-type-custom menu-item-object-custom menu-item-22346"><a href="https://www.sisense.com/get/watch-demo/">Watch Demo</a>
+                    </li>
+                </ul>
+            </nav>
+        </div>
+        <div class="si-top">
+            <div class="container text-center">
+                <h2 class="text-center">Sisense <strong>Documentation</strong></h2>
+            </div>
+            <div class="diag-divider white-rl">
+            </div>
+        </div>
+        <div class="si-search">
+        </div>
+        <div class="si-main-content homepage">
+            <h2>What Do You Want to <strong>Learn Today?</strong></h2>
+            <div class="text-center content-tabs no-details product-index">
+                <div class="col-xs-12 col-sm-4 info-box"><a href="../7-1/getting-started/welcome.htm"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/prepare.png" /><h4><strong>Get Started</strong></h4><span>New to Sisense? Find your way around here</span></a>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-box"><a href="../7-1/managing-data/IntroToWorkData.htm"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/analyze.png" /><h4><strong>Manage Data</strong></h4><span>Manage data from a variety of sources to support your dashboards</span></a>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-box"><a href="../7-1/creating-dashboards/dashboards.htm"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/impact.png" /><h4><strong>Dashboards &amp; Reports</strong></h4><span>Learn how to create and interact with dashboards</span></a>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-box"><a href="../7-1/sisense-pulse-and-alerting/pulse-overview.htm"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/deploy.png" /><h4><strong>Pulse &amp; Alerting</strong></h4><span>Click here if you want to learn about Sisense Pulse and send alerts</span></a>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-box"><a href="../7-1/administration/admin-overview.htm"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/embed.png" /><h4><strong>Administration</strong></h4><span>Learn how to define and change your Sisense settings</span></a>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-box"><a href="../7-1/sisense-mobile.htm"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/control.png" /><h4><strong>Sisense Mobile</strong></h4><span>Click here to learn how to interact with dashboards in SisenseMobile</span></a>
+                </div>
+                <div class="col-xs-12 col-sm-4 info-box"><a href="http://developers.sisense.com/"><img src="https://cdn.sisense.com/dotcom/images/menu/platform/embed.png" /><h4><strong>Developers</strong></h4><span>Want to know how to write or manage plugins and custom REST connectors? Click here</span></a>
+                </div>
+            </div>
+            <div class="docs-versions animarrow">
+                <h2>Looking For an <strong>Earlier Version?</strong></h2>
+                <div class="col-xs-12 col-sm-3">
+                    <h4>Version</h4> <a href="https://documentation.sisense.com/">SisenseV7.2</a><a href="https://documentation.sisense.com/7-1/getting-started/welcome.htm">SisenseV7.1</a><a href="https://documentationv6.sisense.com/">Sisense V6.7</a></div>
+                <div class="col-xs-12 col-sm-3">
+                    <h4>Online PDF</h4><a href="data.sisense.com/documentation/Sisense%20Technical%20Documentation%20V7.2.pdf">SisenseV7.2</a><a href="http://data.sisense.com/documentation/SisenseV71_user_guide.pdf">Sisense V7.1</a>
+                </div>
+                <div class="col-xs-12 col-sm-3 pop-searches">
+                    <h4>Popular Searches</h4><a href="/latest/getting-started/release-notes.htm">Release Notes</a><a href="../7-1/managing-data/DataSources.htm">Connectors</a><a href="../7-1/creating-dashboards/using-formulas/r-formulas.htm">Using R in Formulas</a>
+                </div>
+            </div>
+        </div>
+        <footer class="site-footer">
+            <div class="container footer-cols">
+                <div class="row">
+                    <div class="col-xs-12 col-lg-7">
+                        <div class="row">
+                            <div class="col-xs-12 col-sm-4">
+                                <h3 class="footerSectionToggle widget-title">Sisense <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
+                                <nav class="footer-column">
+                                    <ul id="menu-sisense" class="">
+                                        <li id="menu-item-1502" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1502"><a href="https://www.sisense.com/company/">About Us</a>
+                                        </li>
+                                        <li id="menu-item-2290" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-2290"><a href="https://www.sisense.com/press-room/">News &amp; Buzz</a>
+                                        </li>
+                                        <li id="menu-item-4522" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-4522"><a href="https://www.sisense.com/careers/">Careers</a>
+                                        </li>
+                                        <li id="menu-item-3284" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-3284"><a href="https://www.sisense.com/get/in-contact/">Contact Us</a>
+                                        </li>
+                                        <li id="menu-item-12907" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-12907"><a href="https://www.sisense.com/press-room/media-kit/">Media Kit</a>
+                                        </li>
+                                        <li id="menu-item-11650" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11650"><a href="https://www.sisense.com/get/refer-friend/">Refer a Friend</a>
+                                        </li>
+                                        <li id="menu-item-16736" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16736"><a href="https://www.sisense.com/partners/">Partners</a>
+                                        </li>
+                                        <li id="menu-item-25172" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25172"><a href="https://www.sisense.com/get/pricing/">Pricing</a>
+                                        </li>
+                                        <li id="menu-item-24119" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-24119"><a href="https://www.sisense.com/support/">Support &amp; Community</a>
+                                        </li>
+                                        <li id="menu-item-24123" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24123"><a href="https://documentation.sisense.com/">Online Documentation</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <h3 class="footerSectionToggle widget-title">Product <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
+                                <nav class="footer-column">
+                                    <ul id="menu-product" class="">
+                                        <li id="menu-item-8540" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-8540"><a href="https://www.sisense.com/product/">Product Overview</a>
+                                        </li>
+                                        <li id="menu-item-16750" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16750"><a href="https://www.sisense.com/product/analyze/add-ons/">Add-ons</a>
+                                        </li>
+                                        <li id="menu-item-24107" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24107"><a href="https://www.sisense.com/data-connectors/">Data Connectors</a>
+                                        </li>
+                                        <li id="menu-item-1508" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1508"><a href="https://www.sisense.com/product/analyze/technology/">Technology</a>
+                                        </li>
+                                        <li id="menu-item-16738" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16738"><a href="https://www.sisense.com/demo/">BI Dashboard Solution</a>
+                                        </li>
+                                        <li id="menu-item-1509" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1509"><a href="https://www.sisense.com/why-sisense/sisense-compared-to-alternatives/">Sisense vs Alternatives</a>
+                                        </li>
+                                        <li id="menu-item-16740" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-16740"><a href="https://www.sisense.com/get/one-on-one-demo/">Schedule a Demo</a>
+                                        </li>
+                                        <li id="menu-item-24126" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24126"><a href="https://www.sisense.com/business-analytics-software/">Analytics Software</a>
+                                        </li>
+                                        <li id="menu-item-24127" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24127"><a href="https://www.sisense.com/product/big-data-analytics/">Big Data Analytics</a>
+                                        </li>
+                                        <li id="menu-item-25173" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-25173"><a href="https://www.sisense.com/product/cloud-bi/">Cloud BI</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                            <div class="col-xs-12 col-sm-4">
+                                <h3 class="widget-title footerSectionToggle">Resources <i class="fa fa-chevron-down" aria-hidden="true"></i></h3>
+                                <nav class="footer-column">
+                                    <ul id="menu-resources" class="">
+                                        <li id="menu-item-7563" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-7563"><a href="https://www.sisense.com/blog/">Blog</a>
+                                        </li>
+                                        <li id="menu-item-11651" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-11651"><a href="https://www.sisense.com/whitepapers/">Whitepapers</a>
+                                        </li>
+                                        <li id="menu-item-16741" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-16741"><a href="https://www.sisense.com/webinars/">Webinars</a>
+                                        </li>
+                                        <li id="menu-item-24133" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24133"><a href="https://www.sisense.com/reporting/">Reporting Software</a>
+                                        </li>
+                                        <li id="menu-item-24134" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24134"><a href="https://www.sisense.com/dashboard-software/">Dashboard Software</a>
+                                        </li>
+                                        <li id="menu-item-16742" class="menu-item menu-item-type-post_type menu-item-object-page current-menu-item page_item page-item-4045 current_page_item menu-item-16742"><a href="https://www.sisense.com/dashboard-examples/">Dashboard Examples</a>
+                                        </li>
+                                        <li id="menu-item-24112" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24112"><a href="https://www.sisense.com/product/data-visualization/">Data Visualization Tools</a>
+                                        </li>
+                                        <li id="menu-item-24129" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-24129"><a href="https://www.sisense.com/solutions/">BI Solutions</a>
+                                        </li>
+                                        <li id="menu-item-25175" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25175"><a href="https://www.sisense.com/kpi-library/">KPI Examples</a>
+                                        </li>
+                                        <li id="menu-item-25174" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-25174"><a href="https://www.sisense.com/glossary/">Glossary</a>
+                                        </li>
+                                    </ul>
+                                </nav>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-xs-12 col-lg-5 social-container">
+                        <div class="verticalDivider visible-lg">
+                        </div>
+                        <div class="social-footer">
+                            <h3 class="social-title">Follow <strong>Us</strong></h3><a href="https://www.linkedin.com/company/sisense" class="bg-linkedin"></a><a href="https://facebook.com/Sisense" class="bg-facebook"></a><a href="https://www.instagram.com/sisense/" class="bg-instagram"></a><a href="https://www.twitter.com/sisense/" class="bg-twitter"></a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div style="clear:both;">
+            </div>
+            <div>
+                <div class="col-xs-12 col-sm-5 copyright">
+				Copyright © 2018 Sisense Inc.<br class="visible-xs" /> All rights reserved. </div>
+                <div class="hidden-xs col-sm-7">
+                    <nav class="footer-menu">
+                        <ul id="menu-footer-menu" class="">
+                            <li id="menu-item-1500" class="menu-item menu-item-type-post_type menu-item-object-page menu-item-1500"><a href="https://www.sisense.com/legal-notice/">Terms of Use</a>
+                            </li>
+                            <li id="menu-item-27995" class="menu-item menu-item-type-custom menu-item-object-custom menu-item-27995"><a href="https://www.sisense.com/privacy-policy/">Privacy Policy</a>
+                            </li>
+                            <li id="menu-item-1501" class="action-btn fbox menu-item menu-item-type-custom menu-item-object-custom menu-item-1501"><a href="https://www.sisense.com/get/free-trial/">Free Trial</a>
+                            </li>
+                        </ul>
+                    </nav>
+                </div>
+            </div>
+        </footer>
+        <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-5HRRWZ" height="0" width="0" style="display:none;visibility:hidden"></iframe>
+        </noscript>
+    </body>
+</html>

@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Optional Security Hardening for Sisense Web Pages | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Optional Security Hardening for <MadCap:variable name="Variables.CompanyName" /> Web Pages</h1>
+        <p>This topic provides additional security options that can be applied for hardening the security of Sisense web pages for your needs.</p>
+        <h2 class="notoc">Cookie Security</h2>
+        <p>You can make your <MadCap:variable name="Variables.CompanyName" /> web page cookies more secure by adding a secureFlag to your web pages. This flag instructs the browser that the cookie should only be returned to the Sisense Web Application over encrypted connections (HTTPS).</p>
+        <p>To add a secureFlag, a new property, “secureCookie”, was added to the POST /settings/security endpoint in <MadCap:variable name="Variables.CompanyName" /> REST V0.9. This boolean adds a “secureFlag” to cookies of users who connect to the <MadCap:variable name="Variables.Sisense Web Application" />. This flag instructs the browser that the cookie should only be returned to the <MadCap:variable name="Variables.Sisense Web Application" /> over encrypted connections (HTTPS).</p>
+        <h2 class="notoc">Strict Transport Security</h2>
+        <p>HTTP Strict Transport Security (HSTS) is a method for preventing any communications from being sent over HTTP to the specified domain and allows only communication over HTTPS. This is useful for preventing man-in-the-middle attacks or users with invalid certificates from accessing your dashboards.</p>
+        <p>In the Sisense web.config file, you can add a custom header that informs the browser that it should never load a site using HTTP and should automatically convert all attempts to access the site using HTTP to HTTPS requests instead.</p>
+        <p>Sisense has added the following line in the &lt;customHeaders&gt; section that is commented out by default.</p>
+        <p>&lt;!– &lt;add name=”Strict-Transport-Security” value=”max-age=31536000″ /&gt; –&gt;</p>
+        <p>You can remove the comments to restrict communication to HTTPS requests only.</p>
+        <p>For a more secure option, you can add <span class="bold">includeSubDomains</span> which restricts communication to HTTPS from all domains and their subdomains.</p>
+        <p>&lt;add name="Strict-Transport-Security" value="max-age=31536000; includeSubDomains/″&gt;</p>
+        <p class="bold">To implement HTTP Strict Transport Security:</p>
+        <ol>
+            <li>Open the web.config file located at: C:\Program Files\Sisense\PrismWeb</li>
+            <li>Remove the comments (&lt;!–  and –&gt;) from the following lines under &lt;customHeaders&gt;<br /><span class="code">&lt;!– &lt;add name=”Strict-Transport-Security” value=”max-age=31536000″ /&gt; –&gt;</span></li>
+            <li>Save the web.config file.</li>
+        </ol>
+        <h2 class="notoc">X-Frame-Options and Content-Security-Policy Headers</h2>
+        <p>If you have embedded your Sisense dashboard into your site, you can configure an X-Frame-Options header to defend against clickjacking attacks. This will prevent other web pages from framing your dashboard by indicating whether or not a browser should be allowed to render a page in a &lt;frame&gt;, &lt;iframe&gt; or &lt;object&gt;.</p>
+        <p>X-Frame-Options Header Types</p>
+        <p>There are three possible values for the X-Frame-Options header:</p>
+        <ul>
+            <li>
+                <span class="bold">DENY</span>: Prevents any domain from framing the content. If you do not embed your dashboard with iframes, use this option to prevent any domain from framing your dashboard.</li>
+            <li>
+                <span class="bold">SAMEORIGIN</span>: Allows only the current site to frame the content.</li>
+            <li>
+                <span class="bold">ALLOW-FROM uri</span>: Permits only the specified ‘uri’ to frame this page and prevents all other domains. (e.g., ALLOW-FROM http://www.example.com)</li>
+        </ul>
+        <h3 class="notoc">Browser Support</h3>
+        <p>The following browsers support X-Frame-Options headers.</p>
+        <table>
+            <thead>
+                <tr>
+                    <td>Browser</td>
+                    <td>DENY/SAMEORIGIN Support Introduced</td>
+                    <td>ALLOW-FROM Support Introduced</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Chrome</td>
+                    <td>
+                        <a href="http://blog.chromium.org/2010/01/security-in-depth-new-security-features.html">4.1.249.1042</a>
+                    </td>
+                    <td>
+                        <a href="https://code.google.com/p/chromium/issues/detail?id=129139">Doesn’t support</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Firefox</td>
+                    <td>
+                        <a href="https://developer.mozilla.org/en-US/docs/HTTP/X-Frame-Options?redirectlocale=en-US&amp;redirectslug=The_X-FRAME-OPTIONS_response_header">3.6.9 (1.9.2.9)</a>
+                    </td>
+                    <td>
+                        <a href="https://bugzilla.mozilla.org/show_bug.cgi?id=690168">18.0</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Internet Explorer</td>
+                    <td>
+                        <a href="http://blogs.msdn.com/b/ie/archive/2009/01/27/ie8-security-part-vii-clickjacking-defenses.aspx">8.0</a>
+                    </td>
+                    <td>
+                        <a href="http://erlend.oftedal.no/blog/tools/xframeoptions/">9.0</a>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Opera</td>
+                    <td>
+                        <a href="http://www.opera.com/docs/specs/presto26/#network">10.50</a>
+                    </td>
+                    <td>Not supported in Opera 26 or below</td>
+                </tr>
+                <tr>
+                    <td>Safari</td>
+                    <td>
+                        <a href="http://www.zdnet.com/blog/security/apple-safari-jumbo-patch-50-vulnerabilities-fixed/3541">4.0</a>
+                    </td>
+                    <td>
+                        <a href="https://bugs.webkit.org/show_bug.cgi?id=94836">Doesn’t support&#160;–&#160;Supports CSP frame-ancestors instead</a>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Setting X-Frame-Options</h3>
+        <p>You can set the X-Frame-Options for your dashboards in the Sisense web.config file. This file contains a section where custom headers are defined for the webpages where your dashboards are hosted.</p>
+        <p class="bold">To set the X-Frame-Options header:</p>
+        <ol>
+            <li>Open the web.config file located at: C:\Program Files\Sisense\PrismWeb</li>
+            <li>Remove the comments (&lt;!–  and –&gt;) from the following lines under &lt;customHeaders&gt;<br />&lt;!– &lt;add name=”X-Frame-Options” value=”ALLOW-FROM” /&gt; –&gt;<br />&lt;!– &lt;add name=”Content-Security-Policy” value=”frame-ancestors :host” /&gt; –&gt;<br />For IE:<br />&lt;add name=”X-Frame-Options” value=”ALLOW-FROM https://dashboardurl.com” /&gt;<br />For other browsers:<br />&lt;add name=”Content-Security-Policy” value=”frame-ancestors https://dashboardurl.com”/&gt;<br />For both:<br />&lt;!– &lt;add name=”X-Frame-Options” value=”ALLOW-FROM https://dashboardurl.com” /&gt; –&gt;<br />&lt;!– &lt;add name=”Content-Security-Policy” value=”frame-ancestors https://dashboardurl.com” /&gt; –&gt;</li>
+            <li>Save the web.config file.</li>
+        </ol>
+    </body>
+</html>

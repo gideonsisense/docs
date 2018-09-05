@@ -1,0 +1,181 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Changing Connectivity Settings for Data Sources | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Changing Connectivity Settings for Data Sources</h1>
+        <p>This topic describes how to change the connectivity settings for an existing data source.</p>
+        <p>After you have modeled your data in the ElastiCube, a data source may have changed location or you may want to change a table without importing a new table into your schema from scratch.</p>
+        <p>If this happens, you can update your connection settings to the data source.</p>
+        <p>When changing connectivity settings, you can choose one of the following:</p>
+        <ul>
+            <li>
+                <span class="bold">Change Provider</span>: This enables you to change the source of the data being accessed, for example changing a provider from SQL Server to MySQL. After you select the new provider, you need to choose the relevant database and tables from the new provider. This is useful if you want to replace a table in your schema with a new data source, but don’t want to change your schema.</li>
+            <li>
+                <span class="bold">Change Connection</span>: This enables you to use the same provider, but change your credentials to the data source or the database previously selected.</li>
+            <li>
+                <span class="bold">Change Database</span>: This enables you to use the same provider and credentials, but change the database previously selected. </li>
+        </ul>
+        <p>If a table has changed, but the source and its settings are the same, for example a new column was added, and you want to update your schema without importing the data into the schema all over again, click <span class="bold">Refresh</span> in the table’s menu.</p>
+        <p>
+            <span class="bold">Note</span>: The data source name, columns, and column types must remain the same for existing widgets in the dashboard to be able to reference the data correctly.</p>
+        <p>The table below describes which sources support changing connectivity settings in the web-based ElastiCube Manager:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Source</th>
+                    <th>Connection Settings</th>
+                    <th>Change Database</th>
+                    <th>Table Settings</th>
+                    <th>Sync Columns</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p>Excel</p>
+                    </td>
+                    <td>
+                        <p>N/A</p>
+                    </td>
+                    <td>
+                        <p>N/A</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>CSV</p>
+                    </td>
+                    <td>
+                        <p>N/A</p>
+                    </td>
+                    <td>
+                        <p>N/A</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Google Sheets</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>MySQL</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>SQL Server</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>PostgreSQL</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Oracle</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Redshift</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                    <td>
+                        <p>Yes</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>
+            <span class="bold">To change connectivity settings</span>:</p>
+        <ol>
+            <li>In your schema, select the Data Source view in the Navigation Pane.<br /><img src="../../../Resources/Images/connectset1.png" class="thumblarge" /></li>
+            <li>For the relevant data source, select <img src="../../../Resources/Images/v7menu.png" />&gt; <span class="bold">Connection Settings</span> and one of the following options:<br /><img src="../../../Resources/Images/connectset2.png" class="thumblarge" /><br /><span class="bold">Change Provider</span>: Selecting this option opens the first step of the Connection Wizard where you select the data source. In the Connection Wizard, click to select a data source connection type, for example, change MySQL to an Oracle database. When done, enter the connection credentials and select the relevant tables.<br /><span class="bold">Change Connection</span>: Selecting this option opens the second step of the Connection Wizard where you define the connection settings of the data source. In the Connection Wizard, click to edit the login details to the data source. When done, select the relevant tables.<br /><span class="bold">Change Database</span>: Selecting this option opens the third step of the Connection Wizard where you select the relevant database from a list of databases in your data source. In the Connection Wizard, select the relevant database.</li>
+            <li>After you have selected the relevant database in the Connection Wizard, click <span class="bold">Done</span>. The connection settings are updated.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Sisense Live Connect | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1> Live Connect</h1>
+        <p><MadCap:variable name="Variables.CompanyName" /> Live Connect queries are run directly against the data source. <MadCap:variable name="Variables.CompanyName" /> performs no additional caching on the data.</p>
+        <p>Having the right data available at the right time is absolutely critical to making smart business decisions. To ensure that you have the latest data available, <MadCap:variable name="Variables.CompanyName" /> provides live connections to some of the most popular data sources.</p>
+        <p>Traditionally, your data was only as fresh as your latest <MadCap:variable name="Variables.ElastiCube" /> build. With live connections, you can refresh your dashboards manually or set them to refresh automatically every few seconds.</p>
+        <p>When you add a live connection, <MadCap:variable name="Variables.CompanyName" /> creates a data set. A data set includes connection and credential details to the data source and defines the table where live data is pulled from. Each data set supports a single table from your data source. After creating a data set, it is displayed in the <MadCap:variable name="Variables.ElastiCube" /> page of the <span class="bold">Admin</span> page from where you can manage all your data sets.</p>
+        <p>
+            <img src="../../Resources/Images/Sisenselive-1-768x381.png" class="thumblarge" />
+        </p>
+        <h2>Adding Live Connections</h2>
+        <p>Each live data source has its own requirements. For documentation for the relevant live data sources, see <a href="DataSources.htm#Sisense">Sisense Live Connect</a>.</p>
+        <h2><a name="Working"></a>Working with Data Sets</h2>
+        <p>After you have added your data set, you can begin to create visualizations like you would with any other data source. See <a href="../creating-dashboards/create-dashboard.htm">Creating Dashboards</a> and <a href="../creating-dashboards/filtering-dashboards-and-widgets/introduction-to-filters.htm">Creating Filters</a> for more information.</p>
+        <p>In the <MadCap:variable name="Variables.Sisense Web Application" />, live data sources have the <img src="../../Resources/Images/liveicon.png" class="docbutton" />  icon next to their name.</p>
+        <p>
+            <img src="../../Resources/Images/diffsources.png" class="thumblarge" />
+        </p>
+        <p>While you can create dashboards from a live data set like you would an <MadCap:variable name="Variables.ElastiCube" />, you can also add data sets as a data source to a dashboard that already has a data source such as an <MadCap:variable name="Variables.ElastiCube" />. When have multiple data sources working together on a single dashboard, the data source and the widgets built on it operate independently of each other. This allows you to view widgets that visualize time sensitive information in addition to widgets that are refreshed less frequently. For more information about adding multiple data sources, see <a href="../creating-dashboards/changing-dashboard-source.htm">Changing a Dashboard’s Data Source</a>.</p>
+        <p>In terms of governance, all existing access rights settings and data security settings can be applied for live connections.</p>
+        <h3 class="notoc">Load Management</h3>
+        <p>The most significant difference between dashboards built on <MadCap:variable name="Variables.ElastiCube" />s and dashboards connected to live data sources is how the load is managed. With an <MadCap:variable name="Variables.ElastiCube" />, you refresh the data when you build an <MadCap:variable name="Variables.ElastiCube" /> and query the <MadCap:variable name="Variables.ElastiCube" />, not the data sources that define your <MadCap:variable name="Variables.ElastiCube" />. With live connections, queries are run against the data source itself. This means that you don’t have to wait for an <MadCap:variable name="Variables.ElastiCube" /> to finish building before you see the results, however, your data source must be able to handle the potential load of multiple refreshes.</p>
+        <p>When you refresh the data for a live connection, <MadCap:variable name="Variables.CompanyName" /> uses the connection settings and credentials in the data set to query the live data source. Depending on your <MadCap:variable name="Variables.CompanyName" /> role, there are several options for refreshing the data.</p>
+        <p>Administrators create the data set. They define the refresh rate in seconds and timeout for each data set. After the refresh rate is set by the Administrator, no user can set a refresh rate shorter than the rate set by the Administrator.  Administrators can manually refresh the data set from the <MadCap:variable name="Variables.ElastiCube" /> &amp; Data Set page in the <span class="bold">Admin</span> page.</p>
+        <p>Keep in mind that each time a refresh takes place, your data source is queried, so your data source needs to handle the refresh rate you define. Designers can reduce the frequency of data refreshes or stop automatic refreshes on a per widget level, but they cannot increase the frequency of refreshes beyond the threshold set by an Administrator.</p>
+        <p>
+            <img src="../../Resources/Images/addlive.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Refreshing a Data Set</h3>
+        <p>There are several ways in which you can refresh a widget build on a live data set depending on your <MadCap:variable name="Variables.CompanyName" /> role.</p>
+        <p>Administrators set the default refresh and can refresh the data manually from the Data Sources section in the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" />.</p>
+        <p>
+            <img src="../../Resources/Images/refreshadmin.png" />
+        </p>
+        <p>Designers can refresh a widget from the widget’s information window <img src="../../Resources/Images/livewidget.png" />.</p>
+        <p>
+            <img src="../../Resources/Images/refreshwidhget.png" class="thumblarge" />
+        </p>
+        <p>In addition, Designers can reset the Refresh Rate, however, the rate cannot be lower than the default rate set by the Administrator.</p>
+        <p>Like Designers, Viewers can refresh a widget from the widget’s information window , but they cannot modify the refresh rate.</p>
+        <p>
+            <img src="../../Resources/Images/viewerrefresh.png" class="thumblarge" />
+        </p>
+        <p>While any users can refresh a widget, <MadCap:variable name="Variables.CompanyName" /> has a minimum 10 second refresh limit. Any refreshes requested within 10 seconds are ignored.</p>
+        <h3 class="notoc">Canceling a Refresh</h3>
+        <p>If you have a refresh that you want to cancel, you can cancel it by clicking <span class="bold">Cancel</span> in the widget’s information box.</p>
+        <p>This button is displayed only when a refresh is in progress.</p>
+        <p>
+            <img src="../../Resources/Images/cancelrefresh.png" class="thumblarge" />
+        </p>
+        <p>In addition, any time a user leaves a query, for example, to view another page in their browser, <MadCap:variable name="Variables.CompanyName" /> pauses the query.</p>
+        <h3 class="notoc">Limitations</h3>
+        <p>The current features are not supported by live connections:</p>
+        <ol>
+            <li>Pulse alerts</li>
+            <li>Bow &amp; Whisker</li>
+            <li>R is not currently supported</li>
+            <li>Some functions are not currently supported</li>
+            <li>Changing live data sources for dashboards</li>
+        </ol>
+        <h3 class="notoc">Frequently Asked Questions</h3>
+        <p><span class="bold">Q</span>: I cannot connect to my data source?</p>
+        <p><span class="bold">A</span>: As the connection is live, the data source must be available for <MadCap:variable name="Variables.CompanyName" /> to connect. Also, if your credentials changes, you must update the Administrator must update their data set so Sisense can continue to connect and refresh the data.</p>
+        <p><span class="bold">Q</span>: No data sources are displayed when trying to add one?</p>
+        <p><span class="bold">A</span>: In Windows Services, verify that the following are running, and if not, restart them:</p>
+        <ul>
+            <li>Sisense.CLRConnectorsContainer</li>
+            <li>Sisense.Discovery</li>
+            <li>IIS</li>
+        </ul>
+        <p><span class="bold">Q</span>: If I use Windows Authentication with my SQL server, what do I enter in the Username and Password fields?</p>
+        <p><span class="bold">A</span>: Enter the Location and leave the Username and Password fields blank.</p>
+        <p><span class="bold">Q</span>: After entering a data set name, the Done button is not displayed:</p>
+        <p><span class="bold">A</span>: Make sure the data set’s name is unique. You cannot create data sets with the same name.</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

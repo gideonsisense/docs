@@ -1,0 +1,55 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3337" MadCap:lastWidth="720">
+    <head>
+        <title>Pivot | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Pivot</h1>
+        <p>Pivot tables are one of the most useful widgets for visualizing data. They enable you to quickly summarize and analyze large amounts of data.</p>
+        <h2 class="notoc">Adding Data</h2>
+        <p>Select the data to appear in the Pivot.</p>
+        <ol>
+            <li>In the <span class="bold">Rows</span> panel, click <span class="bold">Add +</span> to select the field(s) whose values will be placed in the rows of the Pivot table.<br /><img src="../../../Resources/Images/pivotrows.png" class="thumblarge" /><br />When more than one Row is selected, the Rows are broken into sub-rows (groups). For example, the following shows <span class="bold">Condition</span> added as a second Row:<br /><img src="../../../Resources/Images/pivotrows2.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">Columns</span> panel, click <span class="bold">Add +</span> to select the field(s) whose values will be placed in the columns of the Pivot table.<br />You can drag and drop the fields that you added to <span class="bold">Columns</span> to the <span class="bold">Rows</span> area and vice versa.</li>
+            <li>In the <span class="bold">Values</span> panel, select a field whose values will appear in the Rows and Columns of the Pivot table.<br /><span class="bold">Tip</span>: Right-click the value to add data bars to your pivot table.<br /><img src="../../../Resources/Images/data-bars1.png" class="thumblarge" /></li>
+        </ol>
+        <h3 class="notoc">Subtotals</h3>
+        <p>You can add subtotals to one or more rows, and define how to calculate subtotals.</p>
+        <p class="bold">To add subtotals to rows:</p>
+        <ul>
+            <li>Click on the menu of the Row in the Data Panel, or right-click on the row name (header) in the widget, and select Subtotals.<br /><img src="../../../Resources/Images/sub-totals-new.png" class="thumblarge" /></li>
+        </ul>
+        <p class="bold">To define how to calculate the subtotals:</p>
+        <ul>
+            <li>Click on the menu of the Value in the data panel, or right-click on the value name (header) in the widget, and then click <span class="bold">Subtotal by</span> and the method.<br /><img src="../../../Resources/Images/sub-totals-1024x556.png" class="thumblarge" /></li>
+        </ul>
+        <p>The default option is Auto, which aggregates all the data. The other custom options (Sum, Min, Max, etc.) calculate only the values in the rows above the subtotal.</p>
+        <p>Look at the following example:</p>
+        <p>
+            <img src="../../../Resources/Images/sub-totals-eg4.png" class="thumblarge" />
+        </p>
+        <p>In the top example, using the <span class="bold">Auto</span> option, the subtotal for average revenue aggregates all the sales and revenue data, thus representing a true subtotal of the average revenue for the Asia region.</p>
+        <p>In the bottom example, <span class="bold">Average</span> is used to calculate the subtotal, and therefore calculates the average of all the average revenue values in the rows above the subtotal.</p>
+        <h3 class="notoc">Grand Totals</h3>
+        <p>Grand totals aggregate the rows in the pivot table.</p>
+        <p class="bold">To add grand totals:</p>
+        <ul>
+            <li>Click on the menu of the row in the data panel, or right-click on the row name (header) in the widget, and then click <span class="bold">Grand total</span>.</li>
+        </ul>
+        <p class="indent">Grand totals is effected by subtotals if defined.  In the following example, the Grand total for Average Sales is 10, representing the average sales for two regions (Asia and Europe). In the example below, Average Sales has a subtotal (see above) set to Sum, and therefore the Grand total is the total of the rows above.<br /><img src="../../../Resources/Images/sub-totals-eg5.png" class="thumblarge" /></p>
+        <h2 class="notoc">Designing the Pivot Table</h2>
+        <p>Fine-tune the appearance of the PIVOT table, using the following tools.</p>
+        <ul>
+            <li>
+                <span class="bold">Page Size</span>: Specify how many rows appear in each page. Paging options are provided accordingly.</li>
+            <li>
+                <span class="bold">Colors</span>: Select the properties in the table to which you want to add color.<br /><img src="../../../Resources/Images/pivot_colors.png" class="thumblarge" /><br />Select how the rows and columns of the Pivot table are highlighted.</li>
+        </ul>
+        <h3 class="notoc">Exception Highlighting</h3>
+        <p>Conditional formatting can be used for exception highlighting in a Pivot table. For example, as shown below:</p>
+        <p>
+            <img src="../../../Resources/Images/pivotconditional.png" class="thumblarge" />
+        </p>
+        <p>See <a href="../additional-widget-designs/select-colors-widgets.htm">Defining Conditional Coloring – Condition</a> for more information.</p>
+        <span class="bold">Note</span>: For more styling options, including font style and colors, see <a href="https://sisensesupport.zendesk.com/entries/35381830-Changing-Fonts-Rows-and-Background-Styling-of-Pivots">this article</a>.<p>&#160;</p></body>
+</html>

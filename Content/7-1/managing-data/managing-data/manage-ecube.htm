@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Managing ElastiCubes from the Data Page | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Managing <MadCap:variable name="Variables.ElastiCube" />s</h1>
+        <p>From the <span class="bold">Data</span> page of <MadCap:variable name="Variables.ECM" />, you can manage your <MadCap:variable name="Variables.ElastiCube" />s and view their current states.</p>
+        <p>The <span class="bold">Data</span> page contains a list of all the <MadCap:variable name="Variables.ElastiCube" />s you have created or that have been shared with you. </p>
+        <p>
+            <img src="../../../Resources/Images/datapage.png" class="thumblarge" />
+        </p>
+        <p>To locate <MadCap:variable name="Variables.ElastiCube" />s easily, on the right side of the page, you can view <MadCap:variable name="Variables.ElastiCube" />s you recently worked on, that were created by you, or that were shared with you. In addition, on the left side, you can locate an <MadCap:variable name="Variables.ElastiCube" /> through the <span class="bold">Search</span> field.</p>
+        <p>Each <MadCap:variable name="Variables.ElastiCube" /> tile contains information about the status of the <MadCap:variable name="Variables.ElastiCube" />, its owner, and who its shared with it. You can open your <MadCap:variable name="Variables.ElastiCube" /> by clicking <img src="../../../Resources/Images/v7menu.png" /> on its tile or you can manage your <MadCap:variable name="Variables.ElastiCube" />s by clicking  and selecting one of the following options:</p>
+        <ul>
+            <li><span class="bold">Stop</span>: Click to stop the <MadCap:variable name="Variables.ElastiCube" />. <MadCap:variable name="Variables.ElastiCube" />s that have been stopped cannot be queried. This is useful for troubleshooting <MadCap:variable name="Variables.ElastiCube" />s and issues with your dashboard.</li>
+            <li><span class="bold">Restart</span>: Click to restart an <MadCap:variable name="Variables.ElastiCube" /> that you have stopped.</li>
+            <li><span class="bold">Dependencies</span>: Click to see what entities are using the <MadCap:variable name="Variables.ElastiCube" />. Entities include data security rules, drill hierarchies, dashboards, widgets (from other dashboards), and Pulse alerts.</li>
+            <li><span class="bold">Schedule Build</span>: Click to schedule builds to automatically synchronize with the underlying data source to ensure all data is up to date. See <a href="scheduling-data-loads.htm">Scheduling Builds</a> for more information. </li>
+            <li><span class="bold">Delete</span>: Click to delete an <MadCap:variable name="Variables.ElastiCube" />. If the <MadCap:variable name="Variables.ElastiCube" /> does not have any entities dependent (dependencies) on it, then you will be asked to confirm that you want to delete the <MadCap:variable name="Variables.ElastiCube" />. Otherwise, you will be prompted to remap your dependencies to another data source. See <a href="delete-ecube.htm">Deleting <MadCap:variable name="Variables.ElastiCube"></MadCap:variable></a>s for more information.</li>
+            <li><span class="bold">Cancel all Queries</span>: Click to cancel all current queries to the <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li><span class="bold">Go to Admin</span>: Opens the Data Sources section in the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" /> where you can manage your <MadCap:variable name="Variables.ElastiCube" />.</li>
+        </ul>
+        <p>Some features and functionality supported in the desktop version of the <MadCap:variable name="Variables.ECM" /> are not supported in <MadCap:variable name="Variables.ECM" /> currently. These features will be added in the near future. In the meantime, you can find workarounds for missing features at <a href="../../upgrade-v7.htm"><MadCap:variable name="Variables.CompanyName" /> V7.0 Backwards Compatibility</a>.</p>
+        <p class="bold">Related Topics</p>
+        <ul>
+            <li><a href="sisense-server-console.htm"><MadCap:variable name="Variables.CompanyName" /> Server Console</a>
+            </li>
+            <li><a href="scheduling-data-loads.htm">Scheduling Data Loads</a>
+            </li>
+            <li><a href="import-export-ecube.htm">Importing and Exporting <MadCap:variable name="Variables.ElastiCube" /> Data</a>
+            </li>
+        </ul>
+    </body>
+</html>

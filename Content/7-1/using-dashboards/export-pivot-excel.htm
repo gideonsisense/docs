@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Exporting Pivot Tables to Excel | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Exporting Pivot Tables to Excel</h1>
+        <p>You can export your pivot tables to Excel (XLSX). When you export a pivot table to Excel, the data that is exported is the data that is displayed in your widget. </p>
+        <p>Exporting to Excel maintains your pivot’s layout and structure, and values such as sub-totals, which are not maintained when you export a pivot table to CSV.</p>
+        <p>The example below shows a pivot table exported to Excel versus CSV:</p>
+        <p class="bold">Excel</p>
+        <p class="bold">
+            <img src="../../Resources/Images/pivotexcel.png" class="thumblarge" />
+        </p>
+        <p class="bold">CSV</p>
+        <p class="bold">
+            <img src="../../Resources/Images/CSV.png" class="thumblarge" />
+        </p>
+        <p class="bold">To export a widget to Excel:</p>
+        <ul>
+            <li>In Dashboard mode, click on the widget’s menu, and select <span class="bold">Download</span> &gt; <span class="bold">Excel File</span>.</li>
+            <li>In Edit mode, click on the download icon, and select <span class="bold">Download Excel File</span>.</li>
+        </ul>
+        <h2 class="notoc">Exporting to Excel via the REST API</h2>
+        <p>In addition to exporting to Excel via the Sisense Web Application, you can export binary content via the Sisense REST API through the POST /engine/excelExport endpoint. You can then convert this content to an Excel file (.xlsx).</p>
+        <p><span class="bold">Note</span>: This endpoint is not available from Sisense’s interactive REST API. For more information about the endpoint, see the POST /engine/excelExport in <a href="https://developer.sisense.com/display/API2/REST+API+Reference+-+v1.0">Version 1.0 of the REST API</a>.</p>
+    </body>
+</html>

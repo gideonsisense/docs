@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="424" MadCap:lastWidth="942">
+    <head>
+        <title>Reformatting Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Reformatting Data</h1>
+        <p>By reformatting a field, you can create a more readable, and more usable format for analysis, as well as less space consuming in some cases. For example, convert a date field to a numeric field. You can reformat fields within the <MadCap:variable name="Variables.ElastiCube" /> using a custom SQL expression. An example:</p>
+        <h2 class="notoc">
+            <a name="Numeric">
+            </a>Numeric Representation of Date Fields</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>Create a “Date” table using a numeric representation of a Date field instead of the Date field itself to improve query performances. In addition, a numeric representation of a Date can provide the ability of filtering the data by time range.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>To convert a Date (“4/21/2012 12:36:56 AM”) to an integer (20120421), use the following syntax:</p>
+        <p class="code">10000*getyear(Date)+100*getmonth(Date)+getday(Date)</p>
+        <p>To get the hours and minutes too, use a bigint numeric representation. So, “4/21/2012 12:36:56 AM” will become: 201204210036, using the following syntax:</p>
+        <p class="code">tobigint(100000000*getyear(DateTime)*+getmonth(DateTime)*1000000+getday(DateTime)*10000+100*gethour(DateTime)+getminute(DateTime))</p>
+    </body>
+</html>

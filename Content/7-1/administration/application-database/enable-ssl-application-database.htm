@@ -1,0 +1,23 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1128" MadCap:lastWidth="907">
+    <head>
+        <title>Enabling SSL for the Application Database | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Enabling SSL for the Application Database</h1>
+        <p>If the application database is hosted on another server, <MadCap:variable name="Variables.CompanyName" /> supports the SSL (Secure Sockets Layer) protocol to ensure that your connection to the application database is secure.</p>
+        <p>To establish an SSL connection with an application database hosted on another server, you must first obtain a certificate by creating your own or through a 3rd party provider and then import the certificate into both your <MadCap:variable name="Variables.CompanyName" /> and non-<MadCap:variable name="Variables.CompanyName" /> servers. Once the certificates are on both servers, you need to update <MadCap:variable name="Variables.CompanyName" /> configuration files that define the location of those files.</p>
+        <p>This procedure explains how to modify these configuration files to enable SSL.</p>
+        <p class="bold">To enable SSL for the <MadCap:variable name="Variables.CompanyName" /> application database:</p>
+        <ol>
+            <li>Open the MongoDB configuration file, mongodbconfig.conf, located at:<br /><span class="code">…\Program Files\Sisense\Infra\MongoDB\mongodb.conf</span></li>
+            <li>In the configuration file, define the locations of your PEM file and the CRT file if you are using signed certificates.<br />net:<br />ssl:<br />mode: requireSSL<br /><span class="bold">PEMKeyFile</span>: “path to mongodb.pem file”<br /><span class="bold">CAFile</span>: “path to certificate.crt file” (only if using signed certificate)</li>
+            <li>Save your changes to the mongodbconfig.con file and open the default.yaml located at:<br /><span class="code">…\Program Files\Sisense\PrismWeb\vnext\config\</span></li>
+            <li>In the default.yaml file, define the values for the following parameters under db_security:<br /><span class="bold">sslEnabled</span>: A boolean value. The default value is false. This value should be true when using SSL.<br /><span class="bold">sslValidate</span>: A boolean value. The default value is false. This value should be true when using self-signed certificates.<br /><span class="bold">certFilePath</span>: A string value that represents the location of your CRT file.<br /><span class="bold">pemKeyFilePath</span>: A string value that represents the location of your mongodb.pem file.<br /><span class="bold">caFilePath</span>:  A string value that represents the location of your CA file when using self-signed certificates.<br /><span class="code">db_security:<br></br>mongoAppUser: AppUser<br></br>mongoAppPassword: o9VacJmhgygqmnJSq4Q==<br></br>sslEnabled: true<br></br>sslValidate: false (only if using self-signed certificate)<br></br>certFilePath: 'path to certificate.crt file'<br></br>pemKeyFilePath: 'path to mongodb.pem file'<br></br>caFilePath: 'path to CA file' (only if using signed certificate)</span></li>
+            <li>Save your changes and open the Sisense.WebQueryService.exe.config file located at:<br /><span class="code">…\Program Files\Sisense\PrismWeb\Bin\</span></li>
+            <li>Edit the connection string and add the SSL flag:<br /><span class="code">&lt;connectionStrings&gt;<br></br>&lt;add name="Mongo" connectionString="mongodb://AppUser:we6jBsd0K6lvfaTmA==@localhost:27018/admin?ssl=true" /&gt;<br></br>&lt;/connectionStrings&gt;</span></li>
+            <li>Under &lt;apSettings&gt;, add two new fields:<br />&lt;add key=”SslPfxFilePath” value=”path to the PFX file”/&gt;&lt;add key=”SslPfxFilePassword” value=”PFX file password”/&gt;<br /><span class="bold">Note</span>: If you are using self-signed certificates, you can add it to the trusted root certificate authorities of your operating system by running the PFX file.</li>
+            <li>Save your changes. SSL is now enabled. If you need to connect directly to your MongoDB with an application such as RoboMongo, you can enter your SSL configuration when creating or editing a connection.<br /><img src="../../../Resources/Images/mongdossl.png" class="thumblarge" /></li>
+        </ol>
+    </body>
+</html>

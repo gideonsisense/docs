@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1893" MadCap:lastWidth="662">
+    <head>
+        <title>Adding and Removing ElastiCube Servers | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Adding and Removing <MadCap:variable name="Variables.ElastiCube" /> Servers</h1>
+        <p>This topic describes how to manage your <MadCap:variable name="Variables.ElastiCube" />s.</p>
+        <p>By default, the <MadCap:variable name="Variables.Sisense Web Application" /> is connected to the ElastiCube server that is installed with it on the same machine.</p>
+        <p>By default, all <MadCap:variable name="Variables.ElastiCube" />s on that machine are accessible to all dashboard users, and are visible under LOCALHOST.</p>
+        <h2 class="notoc">Opening an <MadCap:variable name="Variables.ElastiCube" /> in the <MadCap:variable name="Variables.ECM" /></h2>
+        <p>You have a number of ways to open your <MadCap:variable name="Variables.ElastiCube" /> in the <MadCap:variable name="Variables.ECM" />:</p>
+        <p>From the <MadCap:variable name="Variables.Sisense Web Application" />:</p>
+        <ul>
+            <li>If you have an open dashboard, click on the <MadCap:variable name="Variables.ElastiCube" /> name next to the dashboard name. Select View in <MadCap:variable name="Variables.ElastiCube" />’s Page to open the ElastiCube management page in the web app. In the <MadCap:variable name="Variables.ElastiCube" />s page, select the <MadCap:variable name="Variables.ElastiCube" /> and click Open. To open the <MadCap:variable name="Variables.ElastiCube" /> of the open dashboard, click Open in <MadCap:variable name="Variables.ECM" /> .</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/v7openecm.png" class="thumblarge" />
+        </p>
+        <ul>
+            <li>From Windows: From the Start menu, open <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ECM" />.</li>
+        </ul>
+        <h2 class="notoc">Adding Another <MadCap:variable name="Variables.EcubeServer" /></h2>
+        <p class="bold">To add another <MadCap:variable name="Variables.EcubeServer" /> to <MadCap:variable name="Variables.CompanyName" />:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Data Sources</span> tab on the left.</li>
+            <li>Click <span class="bold">Add Server</span>.<br /><img src="../../../Resources/Images/addserver1.png" class="thumblarge" /><br /></li>
+            <li>Select whether this <MadCap:variable name="Variables.EcubeServer" /> is intended for Admins only. This selection also applies to all new <MadCap:variable name="Variables.ElastiCube" />s that will be added to this <MadCap:variable name="Variables.ElastiCube" /> Server. A user that has access to an <MadCap:variable name="Variables.EcubeServer" /> can access all the <MadCap:variable name="Variables.ElastiCube" />s on it.</li>
+            <li>Add the IP of the <MadCap:variable name="Variables.EcubeServer" /> to which you want to connect and click Add Server. The new <MadCap:variable name="Variables.EcubeServer" /> is added to the list with all its<MadCap:variable name="Variables.ElastiCube" />s.</li>
+            <li>Click Save. Once a new <MadCap:variable name="Variables.EcubeServer" /> has been added, its <MadCap:variable name="Variables.ElastiCube" />s immediately become available to all designers (by default) when they create a new Dashboard.</li>
+            <li>To define which users are allowed to access the data of an <MadCap:variable name="Variables.EcubeServer" />, see <a href="../defining-security-and-access-settings/assign-security-rights.htm">Assigning Rights to an <MadCap:variable name="Variables.EcubeServer" /></a>.</li>
+            <li>To define which users are allowed to access each specific <MadCap:variable name="Variables.ElastiCube" />, see <a href="../defining-security-and-access-settings/assign-security-rights.htm">Assigning Rights to an <MadCap:variable name="Variables.ElastiCube" /></a>.</li>
+        </ol>
+        <h2 class="notoc">Removing an <MadCap:variable name="Variables.ElastiCube" /> Server</h2>
+        <p class="bold">To remove an <MadCap:variable name="Variables.ElastiCube" /> server from the list:</p>
+        <ul>
+            <li>In the Data Sources page, for the relevant server, click the Trash  <img src="../../../Resources/Images/trash3.png" class="docbutton" />button.</li>
+        </ul>
+        <span class="bold">Note</span>: The LOCAL MACHINE server cannot be removed.</body>
+</html>

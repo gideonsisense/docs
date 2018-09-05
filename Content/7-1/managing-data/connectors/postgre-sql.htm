@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="1840" MadCap:lastWidth="706">
+    <head>
+        <title>Connecting to PostgreSQL | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to PostgreSQL</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to databases, tables and views contained within PostgreSQL databases. The steps below describe how to connect to this type of data source.</p>
+        <ol>
+            <li>Click <span class="bold">Add Data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the <span class="bold">Database servers</span> category, select <span class="bold">PostgreSQL</span>.<br /><img src="../../../Resources/Images/add-postgreSQL.png" class="thumblarge" /></li>
+            <li>You will be prompted to enter the following information:</li>
+            <ul>
+                <li>
+                    <span class="bold">Database server location</span>: Enter the computer/server IP address where the database is located. To connect to a database on running on your own computer enter <span class="bold">localhost</span>.</li>
+                <li>
+                    <span class="bold">Login details</span>: Either use your Windows login details if they are configured with the database, or alternatively enter the username and password to connect to the database.</li>
+            </ul>
+            <img src="../../../Resources/Images/postgresql.png" class="thumblarge" />
+            <li>Click <span class="bold">Connect to Server</span>.</li>
+            <li>A list of available databases will appear in the list below.</li>
+            <li>Select the relevant database you want to work with and click <span class="bold">OK</span>.</li>
+            <li>All tables and views associated with the database will appear in a new window.<br /><![CDATA[
+            ]]><img src="../../../Resources/Images/postgresql2.png" class="thumblarge" /><![CDATA[
+            ]]><br />To view a preview of data contained in a particular table, highlight the table or view in the list and click the preview pane below. To preview the table, select the <span class="bold">Preview</span> checkbox.</li>
+            <li>Select the checkboxes next to each table or view you want to use.</li>
+           Existing relationships between tables can be automatically replicated in the ElastiCube by selecting the <span class="bold"> Automatically create relationships from database</span> checkbox. Likewise fields with similar names can be linked by selecting <span class="bold">Automatically create relationships for fields with the same name</span>.
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li></ol>
+        <p>
+            <span class="bold">Note</span>: The default connection timeout limit is 30 seconds to PostgreSQL data sources. In <MadCap:variable name="Variables.CompanyName" /> V6.6.1 and later, you can modify this limit by editing the Sisense.Connectors.PostgreSqlConnector.dll.config located at ...\Program Files\Sisense\DataConnectors\DotNetContainer\Connectors\PostgreSql. In the configuration file, under the section PostgreSettings, set the value of the parameter Timeout to change the connection timeout limit. This is useful in cases where you receive a TimeOut exception when trying to connect.</p>
+        <p>
+            <img src="../../../Resources/Images/postgrestimeout-768x188.png" class="thumblarge" />
+        </p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

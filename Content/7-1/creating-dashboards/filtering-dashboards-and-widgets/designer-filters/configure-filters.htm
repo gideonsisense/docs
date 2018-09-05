@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2730" MadCap:lastWidth="666">
+    <head>
+        <title>Configuring How Filters Affect the Dashboard and Widgets | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Configuring How Filters Affect the Dashboard and Widgets</h1>
+        <p>This topic explains how dashboard filters work together with widget filters, and how you can configure different filtering behaviors and their effects on the dashboard.</p>
+        <p>The following procedures are explained below:</p>
+        <ul>
+            <li>
+                <a href="#Configur">Configuring how Dashboard Filters Affect a Widget</a>
+            </li>
+            <li>
+                <a href="#Defining">Defining how a Widget Behaves when Filtered</a>
+            </li>
+            <li>
+                <a href="#Defining2">Defining how a Selection on the Widget Affects the Dashboard</a>
+            </li>
+        </ul>
+        <h2 class="notoc">
+            <a name="Configur">
+            </a>Configuring how Dashboard Filters Affect a Widget</h2>
+        <p>Dashboard filters affect all the widgets in the dashboard, except widgets that you have defined to be independent. An independent widget is not affected by dashboard filters.</p>
+        <p class="bold">To make a widget filter-independent:</p>
+        <ol>
+            <li>Open (edit) this Widget in the Widget Designer, as described in <a href="../../adding-widgets-to-dash/add-widget-to-dash.htm">Adding Widgets to a Dashboard</a>. The top part of the Widget Filters panel on the right of the Widget Designer lists the Dashboard Filters that are defined for this Dashboard.<br /><img src="../../../../Resources/Images/v7dashfilters.png" class="thumblarge" /><br /></li>
+            <li>Turn off the Dashboard filters that you do not want to affect this Widget: <br />The toggle on icon <img src="../../../../Resources/Images/v7on.png" /> (default) indicates that the Widget is affected by this Dashboard filter. <br />The toggle off  <img src="../../../../Resources/Images/v7off.png" /> icon indicates that the widget is not affected by this Dashboard filter. You also have the option to make this Widget independent of all current and future Dashboard Widgets by turning the Dashboard Filters option off, as shown below:<br /><img src="../../../../Resources/Images/v7dashfilteroff.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Defining">
+            </a>Defining how a Widget Behaves when Filtered</h2>
+        <p>When fields that are visible in a widget are filtered, it can be displayed in two ways – Slice/Filter or Highlight. For example,  this column chart shows revenue for different age categories:</p>
+        <p>
+            <img src="../../../../Resources/Images/filtermode.png" class="thumblarge" />
+        </p>
+        <p>If the chart is set to Highlight mode, filtering a subset of age categories will highlight them in the chart: </p>
+        <p>
+            <img src="../../../../Resources/Images/filtermodehighlight.png" class="thumblarge" />
+        </p>
+        <p>If the chart is set to <span class="bold">Slice/Filter</span> mode, the same filter will remove all non-selected age categories from the chart:   </p>
+        <p>
+            <img src="../../../../Resources/Images/filtermodeslice.png" class="thumblarge" />
+        </p>
+        <p class="bold">To define the filter behavior mode:</p>
+        <ul>
+            <li>Select <span class="bold">Slice/Filter</span> or <span class="bold">Highlight</span> in the Filters panel on the right side of the dashboard.<br /><img src="../../../../Resources/Images/v7dashslice.png" class="thumblarge" /></li>
+        </ul>
+        <p>&#160;</p>
+        <h2 class="notoc">
+            <a name="Defining2">
+            </a>Defining how a Selection on the Widget Affects the Dashboard</h2>
+        <p>When making a selection on a widget, a filter is added to the dashboard with the selected part of the chart as the applied filter.</p>
+        <p>To disable this option for a widget, open the widget in editing mode, and from the menu options, disable <span class="bold">Widget Affects Dashboard Filters</span>.</p>
+        <p>
+            <img src="../../../../Resources/Images/v7widgetaffects.png" class="thumblarge" />
+        </p>
+    </body>
+</html>

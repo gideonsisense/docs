@@ -1,0 +1,81 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2340" MadCap:lastWidth="979">
+    <head>
+        <title>ElastiCubes | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>
+            <MadCap:variable name="Variables.ElastiCube" />s</h1>
+        <h2 class="notoc">Introduction</h2>
+        <p>The <MadCap:variable name="Variables.ElastiCube" /> is <MadCap:variable name="Variables.CompanyName" />’s unique, high-performance analytics database with super-fast data stores that are specifically designed to withstand extensive querying typically required by business intelligence applications.</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s allow you to bring in data from multiple sources, and then merge, manipulate and query the data as if it was one consolidated data set. <MadCap:variable name="Variables.ElastiCube" />s perform so well, that in most cases the creation of dedicated OLAP cubes and/or optimized data marts are completely unnecessary – even when dealing with hundreds of millions of rows of raw data.</p>
+        <p>One of the biggest advantages of <MadCap:variable name="Variables.ElastiCube" />s is the ability to easily mash up multiple data sources. It is made up of fields where each value in one field has a corresponding value in another field. The data for an <MadCap:variable name="Variables.ElastiCube" /> can come from one source, multiple sources or even from multiple physical locations. Once the data is inside the <MadCap:variable name="Variables.ElastiCube" />, it is all the same and every field coming from every table can be analyzed in the context of any other – quickly.</p>
+        <h2 class="notoc">Benefits</h2>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" /> technology make queries over hundreds of millions of rows of raw data return in seconds, with moderate hardware requirements including standard desktop-class computers with commodity hardware. More importantly, <MadCap:variable name="Variables.ElastiCube" />s can do this without having to pre-aggregate and pre-calculate the data ahead of time and store it on the hard-drive, thus radically reducing required import/processing time and storage space.</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s are most useful when one or more of the following is true:</p>
+        <ul>
+            <li>Large amounts of data need to be analyzed</li>
+            <li>Data for analysis originates from multiple disparate sources</li>
+        </ul>
+        <h2>
+            <MadCap:variable name="Variables.ElastiCube" />s – Technical Overview</h2>
+        <p>Relational databases (RDBMS) like SQL Server, Oracle, MySQL and even Access all store tabular data row-by-row.  This structure is best for transactional/operational systems that require large numbers of concurrent insertions.  With indexes, it can also provide realistic query response times for row-based queries that do not frequently require aggregations or joining of many tables.</p>
+        <p>Data analysis often requires aggregation of data as well as merging of data located in multiple disparate tables.  When dealing with these types of queries, relational databases reach their limits pretty quickly. The only way to extend these limits is by putting in stronger hardware and pre-aggregating data to reduce the amounts of calculations that occur in real time.</p>
+        <h3 class="notoc">The <MadCap:variable name="Variables.ElastiCube" /> Columnar Database</h3>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" /> data is held in a Columnar Database Management System (CDBMS) that stores data field-by-field.  Each field is individually stored in a memory-mapped file, the same mechanism the Windows operating system pagefile uses for memory dumping and loading.</p>
+        <p>When a query is executed over an <MadCap:variable name="Variables.ElastiCube" />, only fields referenced in the query need to be loaded into memory.  This leaves enough space for actually processing the query entirely in memory without any read/write to the hard-drive – the prime reason for poor performance of queries.  Once a field is no longer used, it is removed from memory and its consumed space is freed.</p>
+        <p>This approach has several advantages:</p>
+        <p class="bold">Query Response Time</p>
+        <p>Queries over data sets containing millions of rows of data return in seconds even under modest hardware configurations such as desktop computers.</p>
+        <p class="bold">Materialization Time</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s do not require pre-aggregations and/or creation of indexes to assure fast query response, therefore the actual creation of an <MadCap:variable name="Variables.ElastiCube" /> takes a fraction of the time of a data mart or an OLAP cube.</p>
+        <p class="bold">Storage Space</p>
+        <p>Pre-aggregations and the creation of indexes are not needed to assure fast query response, making an <MadCap:variable name="Variables.ElastiCube" />’s size significantly smaller than a datamart or an OLAP cube.</p>
+        <p class="bold">High Compression</p>
+        <p>This columnar storage strategy makes the data much more suitable for high levels of compression, without loss of detail or accuracy. This means less hardware is needed; less disk space and less RAM than for an equivalent-sized, traditional Business Intelligence DB.</p>
+        <p class="bold">64-bit Support</p>
+        <p>Written and designed to natively support 64-bit processing, it vastly increases the amount of memory the system can address at any given time. 64-bit architecture means you can work with virtually unlimited amounts of data.</p>
+        <p class="bold">True Multi-User, Multi-Application Architecture</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s are not tightly coupled with the application layer of the system. This frees up a single <MadCap:variable name="Variables.ElastiCube" /> to handle multiple applications and users. Not having to reproduce your data model for every application saves significant time developing and maintaining your dashboards and reports.</p>
+        <h3 class="notoc">Just-In-Time, In-Memory Processing</h3>
+        <p class="bold">Smart Cache and Instruction Recycling</p>
+        <p>CPU cycles and RAM space are the two most precious resources in any computer, and <MadCap:variable name="Variables.ElastiCube" /> is designed to use both as efficiently and speedily as possible. Using our sophisticated caching algorithm, the data is only loaded into memory when it’s needed. As part of this algorithm, compute- and time-intense calculations are also intelligently cached to further reduce I/O calls.</p>
+        <p class="bold">Cache-aware Algorithm</p>
+        <p>Additional sophisticated algorithms further increase <MadCap:variable name="Variables.CompanyName" />’s performance. Once data is loaded into memory, the main performance bottleneck becomes CPU cache misses that naturally come with random access. The <MadCap:variable name="Variables.ElastiCube" /> is specifically designed to minimize these errors by employing a unique cache-aware algorithm, further increasing <MadCap:variable name="Variables.CompanyName" />’s performance by an additional order of magnitude.</p>
+        <p class="bold">Compressed Calculations</p>
+        <p>Every DB compresses data to save disk space and RAM. <MadCap:variable name="Variables.ElastiCube" /> is designed to work directly on this compressed data, so that the need for decompression is virtually eliminated, further increasing <MadCap:variable name="Variables.ElastiCube" />’s performance.</p>
+        <h3 class="notoc">Designed with Standard Hardware in Mind</h3>
+        <p>Just about every new computer on the market—even portables like iPhones and iPads—are built with very powerful multi-core processors, putting several CPUs into one. <MadCap:variable name="Variables.ElastiCube" /> was built specifically to take advantage of these powerful CPUs, further increasing Sisense’s performance on standard hardware, enabling you to run multiple applications and support multiple users.</p>
+        <p class="bold">Highly RAM-efficient</p>
+        <p>The thing we know for sure about DBs is that they grow. Fast. So no matter how much fancy footwork is done with completely in-memory DBs, eventually you run out of RAM space and need to upgrade—at least your RAM (best case) or your entire hardware platform (worst, very expensive, case). At <MadCap:variable name="Variables.CompanyName" /> we know this, so we spent years designing the <MadCap:variable name="Variables.ElastiCube" /> to be able to handle terabytes—billions of rows—of data efficiently and quickly, even on standard PC hardware.</p>
+        <h3 class="notoc">Unified Analytics Engine</h3>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> can execute queries against a wide variety of data sources as if they were all of the same type, essentially making the individual characteristics of each physical data source unimportant. Our Unified Analytics Engine is what makes this possible.</p>
+        <p>When <MadCap:variable name="Variables.CompanyName" /> imports data, the Unified Analytics Engine creates a metadata layer, or abstraction layer, which is then used to formulate queries across any number of tables from any number of data sources in any number of formats. It even supports the combined querying of resident and external (live) database sources without first loading data into the database!</p>
+        <p>These capabilities provide the user with unparalleled flexibility and speed in creating, executing and sharing highly complex reports, dashboards, and analytic applications, with any number and variety of data sources.</p>
+        <h3 class="notoc">Compliant with Industry Standards</h3>
+        <p class="bold">Supports SQL-92 Standard</p>
+        <p>Even with all this advanced technology, we knew that none of it would be any good if our users couldn’t access their existing data. So, we built in an SQL layer to the system, which allows users to integrate <MadCap:variable name="Variables.CompanyName" /> to external applications without needing to learn new scripting languages.</p>
+        <p class="bold">Seamless Integration with Existing Data Sources</p>
+        <p>Got an ODBC/OleDB compliant DB today? Great, we built in the ability to access those, too. <MadCap:variable name="Variables.ElastiCube" /> will seamlessly connect to those data sources so, again, there is no need to learn a new language or write special code to connect to your existing data. With <MadCap:variable name="Variables.ElastiCube" /> there’s no need to start over, you just get faster, easier, and more scalable, with minimal need for IT.</p>
+        <p>Queries over data sets containing millions of rows of data return in seconds even under modest hardware configurations such as desktop computers.</p>
+        <p class="bold">Materialization Time</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s do not require pre-aggregations and/or creation of indexes to assure fast query response, therefore the actual creation of an <MadCap:variable name="Variables.ElastiCube" /> takes a fraction of the time of a data mart or an OLAP cube.</p>
+        <p class="bold">Storage Space</p>
+        <p>Pre-aggregations and the creation of indexes are not needed to assure fast query response, making an <MadCap:variable name="Variables.ElastiCube" />’s size significantly smaller than a datamart or an OLAP cube.</p>
+        <p class="bold">High Compression</p>
+        <p>This columnar storage strategy makes the data much more suitable for high levels of compression, without loss of detail or accuracy. This means less hardware is needed; less disk space and less RAM than for an equivalent-sized, traditional Business Intelligence DB.</p>
+        <p class="bold">64-bit Support</p>
+        <p>Written and designed to natively support 64-bit processing, it vastly increases the amount of memory the system can address at any given time. 64-bit architecture means you can work with virtually unlimited amounts of data.</p>
+        <p class="bold">True Multi-User, Multi-Application Architecture</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s are not tightly coupled with the application layer of the system. This frees up a single <MadCap:variable name="Variables.ElastiCube" /> to handle multiple applications and users. Not having to reproduce your data model for every application saves significant time developing and maintaining your dashboards and reports.</p>
+    </body>
+</html>

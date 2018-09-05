@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1120" MadCap:lastWidth="953">
+    <head>
+        <title>Connecting to CSV | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to CSV</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to tables contained within CSV files.</p>
+        <p>You can add a single CSV file or multiple CSV files to your <MadCap:variable name="Variables.ElastiCube" />. A typical use case for importing multiple files is when you want to split a large csv file into multiple smaller files.</p>
+        <p>
+            <span class="bold">Notes</span>:</p>
+        <ul>
+            <li>Make sure that all the files adhere to the same structure, including the presence or absence of headers in the first row. Files will be added to the table based on their file names in alphabetical order.</li>
+            <li>When you import multiple files from a folder and build your <MadCap:variable name="Variables.ElastiCube" />, the data is combined together in a single table. To build multiple tables with separate tables for each file, you must repeat the process for each file you want to import as a table. If you have any questions about data accumulation between builds, please contact our support team.</li>
+            <li>If your CSV file contains special symbols or foreign characters, the import process may fail. To resolve this issue, convert the CSV file to the UTF-8 format. One way to do this is to open the .csv file in an application like Notepad, and then select <span class="bold">File</span> &gt; <span class="bold">Save</span> As. At the bottom of the dialog box, open the Encoding settings, select UTF-8 and save the file as a new file.</li>
+        </ul>
+        <p class="bold">To import data from your CSV files:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span>.</li>
+            <li>Under the <b>Files</b> category select <b>CSV File</b>.</li>
+            <img src="../../../Resources/Images/csv-file.png" class="thumblarge" />
+            <li>Select a file to import. If you want to import multiple files, select just a single file that will be used for previewing the configuration options. However, all files are treated with the same configuration.</li>
+            <img src="../../../Resources/Images/csv-window1.png" class="thumblarge" />
+            <li>Define the following settings in the Data Properties window:</li>
+            <ul>
+                <li>
+                    <span class="bold">What delimiter separates your sheets</span>:  Allows you to choose the character that separates values within the csv file.</li>
+                <li>
+                    <span class="bold">First Row Contains Field Names</span>: Enables you to specify table column names based on the header in the first row of the spreadsheet.</li>
+                <li>Click <span class="bold">Advanced Options</span> to reveal more options to filter rows:</li>
+                <ul>
+                    <li>
+                        <span class="bold">Ignore rows that start with</span>:  Specify rows to ignore that start with a specific symbol, value or letter.</li>
+                    <li>
+                        <span class="bold">Ignore rows that contain</span>: Specify rows to ignore that contain a specific symbol, value or letter.</li>
+                    <li>
+                        <span class="bold">Text qualifier</span>: Change the value if necessary.</li>
+                    <li>
+                        <span class="bold">Ignore first rows</span>: Specify a number of first rows to ignore.</li>
+                </ul>
+            </ul>
+            <li>To add additional files:</li>
+            <li>Click <span class="bold">Select multiple files…</span></li>
+            <li>Click <span class="bold">Select folder to import</span>. Locate and select the folder. Click <span class="bold">OK</span>.</li>
+            <li>All CSV files in the folder will be selected for import. Click <span class="bold">OK</span>.</li>
+            <img src="../../../Resources/Images/csv3.png" class="thumblarge" />
+            <li>Click <span class="bold">Add</span> to complete the import configuration.</li>
+        </ol>
+    </body>
+</html>

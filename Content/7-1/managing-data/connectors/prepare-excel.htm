@@ -1,0 +1,72 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3188" MadCap:lastWidth="958">
+    <head>
+        <title>Preparing Your Excel Files | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Preparing Your Excel Files</h1>
+        <p>Use the following guidelines to prepare and verify Excel files before connecting them with the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>Learn more about <MadCap:variable name="Variables.CompanyName" />'s Excel connector.</p>
+        <h2 class="notoc">Structure Your Excel Sheet</h2>
+        <p>All Excel data must be imported into the <MadCap:variable name="Variables.ECM" /> in a <span class="bold">tabular format</span>, to allow for accurate data categorization.</p>
+        <p>Characteristics of Tabular Data include:</p>
+        <ol>
+            <li>Each <span class="bold">sheet</span> represents a <span class="bold">class</span>, for example customers, sales, employees.</li>
+            <li>Each <span class="bold">column</span> represents a <span class="bold">variable</span>, for example revenue, name, address.</li>
+            <li>Each <span class="bold">row</span> represents a <span class="bold">single observation</span>, for example customer X’s details.<br /></li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/Excel-7.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Remove Blank Rows and Duplicate Headers</h2>
+        <p>Remove blank rows OR rows after the first column that have duplicate headers. Blank rows may return incorrect calculations and results.</p>
+        <p>
+            <img src="../../../Resources/Images/Excel-2.png" class="thumblarge" />
+        </p>
+        <p>
+            <span class="bold">Blank Rows</span>: Delete rows 4 and 8 if they contain no data.</p>
+        <p>
+            <span class="bold">Additional Headers</span>: Delete row 13 as it has the same titles as the main headers. If this heading represented a different class of data, a new sheet should be created.</p>
+        <h2 class="notoc">Remove All Unstructured Data</h2>
+        <p>Remove all unstructured data from each sheet, such as charts, images or non-data elements. Unstructured data cannot be imported, and may result in other data being obscured.</p>
+        <p>
+            <img src="../../../Resources/Images/Excel-3.png" class="thumblarge" />
+        </p>
+        <p>
+            <span class="bold">Images</span>, <span class="bold">Charts</span> and <span class="bold">Non-Data Elements</span>: All non-data elements must be removed from the sheet, such as the chart in the image above. All visualization based on Excel data can be created in a dashboard using <MadCap:variable name="Variables.CompanyName" />.</p>
+        <h2 class="notoc">Rename/Remove Duplicate Column Names</h2>
+        <p>Rename or remove columns with the same name. Ensure all columns have a unique name. Columns with the same name cannot be imported into the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>
+            <img src="../../../Resources/Images/Excel-43.png" class="thumblarge" />
+        </p>
+        <p>
+            <span class="bold">Column Names</span>: Rename columns with the same name, and ensure all columns have a unique name. For example, in the above example ‘CompanyName’ appears twice. Once column should be given a different name such as ‘Secondary CompanyName’. In the <MadCap:variable name="Variables.ElastiCube" />, you can rename any column as you wish.</p>
+        <h2 class="notoc">Modify Columns for Quicker Analysis</h2>
+        <p>Consolidate columns as much as possible into a single variable. For example, instead of having a column for each month of the year, it is best to have a single column with all dates. Unconsolidated columns limit the ability to analyze and segment data.</p>
+        <p>
+            <img src="../../../Resources/Images/Excel-5.png" class="thumblarge" />
+        </p>
+        <p>&#160;</p>
+        <p>
+            <span class="bold">Consolidate Columns</span>: Data should be consolidated into a single column for each variable. In the example above instead of having revenue reflected separately as a column for each month, it is best to consolidate the data into a single column for date and another for revenue. This logic should be applied to any other segments such as summary by country, or channel, and so forth.</p>
+        <h3 class="notoc">Additional Methods and Tools for Consolidating (Transposing) Columns</h3>
+        <p>To consolidate or transpose columns in your files, you can use one or both of the following methods:</p>
+        <ul>
+            <li>Use an Excel macro to transpose data. This is useful when your data is already in Excel or easy to put into Excel.</li>
+            <li>Create custom SQL. This method should be used if importing your data into Excel is more difficult, or the amount of data is causing poor performance in Excel. This method requires basic SQL knowledge.</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/transpose1.png" class="thumblarge" />
+        </p>
+        <p>To learn more about both of the above methods, and to download the macro, click <a href="https://support.sisense.com/entries/60647560-Data-Transpose-Guide">here</a>.</p>
+        <h2 class="notoc">Convert Scientific Formatting to Numeric Formatting</h2>
+        <p>Convert cells with scientific formatting to another number format. Data in scientific format cannot be imported correctly into the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>
+            <img src="../../../Resources/Images/Excel-61.png" class="thumblarge" />
+        </p>
+        <p>
+            <span class="bold">Scientific Format</span>: Convert all values in scientific format to another number format such as number, currency, accounting, fraction and so forth.</p>
+        <h2 class="notoc">Troubleshooting</h2>
+        <p>When importing an Excel spreadsheet with the XLSX format, if you get the error: "Unable to connect to the specified file. Corrupt OpenXML document.", try saving the file as XLS and importing it again. If this works, keep in mind that in an XLS workbook, the row limit is 65,536 (216) and 256 columns (28) which correspond to the column IV. With XLSX workbooks, limits are 1,048,576 rows (220) and 16,384 columns (214).</p>
+    </body>
+</html>

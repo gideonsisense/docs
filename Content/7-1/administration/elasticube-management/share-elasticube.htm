@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Sharing ElastiCubes | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Sharing <MadCap:variable name="Variables.ElastiCube" />s</h1>
+        <p>You can share <MadCap:variable name="Variables.ElastiCube" />s with other <MadCap:variable name="Variables.CompanyName" /> users through the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" />.</p>
+        <p>There are two types of access rights that can be assigned to a Sisense user, edit rights and query rights. Edit rights allow the user to modify the ElastiCube, while query rights allow the user to query or create a dashboard based on the shared ElastiCube, but not modify it.</p>
+        <p>The user's role determines what access they have and what access can be assigned to them when the ElastiCube is shared.</p>
+        <p>Administrators and Data Administrators have edit rights to the ElastiCube, even without sharing the ElastiCube with them. Data Designers can have edit or query rights, while Designers can only have query rights.</p>
+        <p>When an ElastiCube is created through the web-based ElastiCube Manager, it is not shared with anyone. This allows the ElastiCube’s creator to work on the model and publish it only once it's ready.</p>
+        <p>When you assign specific users/user groups access rights to this ElastiCube, then only the users/user groups that you assign can access the ElastiCube.</p>
+        <p>When an ElastiCube is shared with other users, the ElastiCube is displayed in the <span class="bold">Data</span> page with a list of the other shared users.</p>
+        <p>
+            <img src="../../../Resources/Images/sharedcubes.png" class="thumblarge" />
+        </p>
+        <p class="bold">To share an <MadCap:variable name="Variables.ElastiCube" />:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Admin</span> &gt; <span class="bold">Data Sources</span> and then the menu button for the relevant <MadCap:variable name="Variables.ElastiCube" />.<br /><img src="../../../Resources/Images/shareecube2.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Share</span>.<br /><img src="../../../Resources/Images/shareecube3.png" class="thumblarge" /></li>
+            <li>Enter the emails or groups of users with whom to share the dashboard. Selecting Everyone specifies that this <MadCap:variable name="Variables.ElastiCube" /> is shared with all <MadCap:variable name="Variables.CompanyName" /> users and user groups.</li>
+            <li>The contact information of the people you add is listed in the center of the window and is displayed the next time you open this window.</li>
+            <li>In the dropdown menu next to each user/user group select what rights the user has. (You can only select the rights for a Data Designer as all other roles have predefined permissions.) </li>
+            <li>Click <span class="bold">Save</span>.</li>
+        </ol>
+    </body>
+</html>

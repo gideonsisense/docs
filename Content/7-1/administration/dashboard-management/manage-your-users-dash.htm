@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Managing Your Users Dashboards</title>
+    </head>
+    <body>
+        <h1>Managing Your Users Dashboards</h1>
+        <p>As a Sisense Administrator, you can manage and interact with all dashboards in the system, including your own dashboards and dashboards of other users across your system from the <span class="bold">Analytics</span> page.<br /><img src="../../../Resources/Images/dashadmin.png" class="thumblarge" /></p>
+        <p>For Administrators, the <span class="bold">Analytics</span> page becomes a centralized location for managing all the dashboards in your system and performing administrative actions on them.</p>
+        <p>This option is available from the <span class="bold">All Dashboards</span> item above the Dashboard list.</p>
+        <p>As an Administrator, you can perform the following operations:</p>
+        <ul>
+            <li>Sharing the dashboard with other users in the system, or change the dashboard’s owner</li>
+            <li>Accessing a user’s dashboard as a Viewer</li>
+            <li>Copying the dashboard to another server</li>
+            <li>Downloading a PDF of the dashboard</li>
+            <li>Deleting the dashboard</li>
+        </ul>
+        <p>This is in addition to the functionality available to you for your own dashboards.</p>
+        <p>When you select the <span class="bold">All Dashboards</span> button on the <span class="bold">Analytics</span> page, you can see all your dashboards and the dashboards of your users. A yellow border displayed on the top of the dashboard tile indicates that you are looking at the dashboard version of one of your users, and not your own version of the dashboard. This can be useful to view a dashboard that the owner modified, but has not yet republished the changes.</p>
+        <p>
+            <img src="../../../Resources/Images/funnelplug.png" class="thumblarge" />
+        </p>
+        <p>You can click the dashboard tile to open the dashboard. When opening a dashboard not shared with you, you will see the dashboard as a Viewer without editing rights.  If you need to modify the dashboard, you must first make yourself the owner of the dashboard. You will then have full edit permissions for the dashboard.</p>
+        <p>The menu on the right of the dashboard tile is from where you can manage your or your users’ dashboards. The example below includes the options available to you when the dashboard belongs to another user.</p>
+        <p>
+            <img src="../../../Resources/Images/switchview.png" class="thumblarge" />
+        </p>
+        <p>Keep in mind that the <span class="bold">All Dashboards</span> button is displayed only if the grid-view area of the <span class="bold">Analytics</span> page is available to you. If you have rebranded the whole Analytics landing page, the <span class="bold">All Dashboards</span> button will not be displayed.  If you rebrand just the top part of the Analytics landing page, the <span class="bold">All Dashboards</span> button will be available. </p>
+        <p>You can rebrand the top part of the <span class="bold">Analytics</span> and <span class="bold">Data</span> pages by defining the URL&#160;of the marketingPart key, which is part of the <a href="https://developer.sisense.com/display/API2/REST+API+Reference+-+v0.9" target="_blank">POST /branding endpoint</a>. The marketingPart key is an iFrame that displays the Welcome banner and Sample dashboards and <MadCap:variable name="Variables.ElastiCube" />s.</p>
+        <p><span class="bold">Note</span>: This feature can be disabled over REST API, if you are not interested in exposing the system dashboards to Administrators. See the isAdminAccessAllDashboards key of the <a href="https://developer.sisense.com/display/API2/REST+API+Reference+-+v1.0#RESTAPIReference-v1.0-Settings">POST /settings/system</a> endpoint for more information.</p>
+    </body>
+</html>

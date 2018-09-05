@@ -1,0 +1,40 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2130" MadCap:lastWidth="647">
+    <head>
+        <title>Scatter Chart | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Scatter Chart</h1>
+        <p>The Scatter Chart displays the distribution of two variables on an X-Axis, Y-Axis, and two additional dimensions of data that are shown as colored circles scattered across the chart:</p>
+        <ul>
+            <li>
+                <span class="bold">Point</span>: A field that for each of its members a scatter point is drawn.</li>
+            <li>
+                <span class="bold">Size</span>: An optional field represented by the size of the circles. If omitted, all scatter points are equal in size. If used, the circle size is relative to their value.</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/scatter.png" class="thumblargeli" />
+        </p>
+        <h2 class="notoc">Adding Data</h2>
+        <ol>
+            <li>In the <span class="bold">X-Axis</span> panel, click <span class="bold">Add +</span> to select the field whose values will be placed on the X-Axis.<br />Typically, the X-Axis of a Scatter Chart is used to represent numeric data. Alternatively, Descriptive data is also supported. You can only add one field.</li>
+            <li>In the<span class="bold"> Y-Axis</span> panel, click <span class="bold">Add + </span>to select the field whose values will be placed on the Y-Axis.<br />Typically, the Y&#8209;Axis of a Scatter Chart is used to represent numeric data. Alternatively, descriptive data is also supported. You can only add one field.</li>
+            <li>In the <span class="bold">Point</span> panel, click <span class="bold">Add +</span> to select the point field.<br />The point area determines the field to be scattered across the chart as circles; one point (circle) appears on the chart for each member of this field. These fields must be descriptive data (not numeric data).<br />You can only add a point if either the X-Axis or the Y-Axis was defined to represent numeric data.</li>
+            <li>
+                <span class="bold">Break by/ Color</span>: Select a field by which to break (group) the fields in the chart. This must be a descriptive field. If you select descriptive data, then the points in the chart are grouped into the members of the field. Each member is represented by a different color.<br />OR<br />Select a field by which to color the fields in the chart. This must be a numeric field. If you select numeric data, then the point color is a gradient where the highest value is the darkest color and the lowest value is the lightest color.</li>
+            <li>In the <span class="bold">Size</span> panel, select the field that determines the size of the circle. It must be numeric data.</li>
+        </ol>
+        <h2 class="notoc">Designing the Scatter Chart</h2>
+        <p>Fine tune the appearance of the SCATTER CHART widget, using the following tools.</p>
+        <ul>
+            <li>
+                <span class="bold">Legend</span>: Specify whether to show or hide the Legend, and select its position.</li>
+            <li>
+                <span class="bold">Marker Size</span>: Change the size of the circles. If you are not using a Point value, the slider will change the size of all the points on the map. If you are using the Point value, drag each side of the slider to determine the relative minimum and maximum circle sizes.</li>
+            <li>
+                <span class="bold">Value Labels</span>: Specify whether to show or hide labels indicating the values of each point (circle). Select the orientation of these labels: <span class="bold">Horizontal</span> (Default), <span class="bold">Diagonal</span> or <span class="bold">Vertical</span>.</li>
+            <li>
+                <span class="bold">X-Axis</span> and <span class="bold">Y-Axis</span>:<ul><li><span class="bold">Grid Lines</span>: Shows (Default) / hides.</li><li><span class="bold">Logarithmic</span>: Displays using orders of magnitude.</li><li><span class="bold">Labels</span>: Shows (Default) / hides.</li><li><span class="bold">Title</span>: Select the checkbox to display the axis title. To edit the title, type in a new title. Click outside the text box to apply the new value. To change the default minimum, maximum or interval values on the axis, type in the new values, and click outside the text boxes to apply the new values.</li><li><span class="bold">Values on Axis</span>: To restore any of the values to their default states, click on the reset button. <img src="../../../Resources/Images/reset-button.png" /></li></ul></li>
+        </ul>
+    </body>
+</html>

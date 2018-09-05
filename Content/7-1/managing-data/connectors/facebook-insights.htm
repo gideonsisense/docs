@@ -1,0 +1,968 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="6404" MadCap:lastWidth="726">
+    <head>
+        <title>Facebook Insights | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Facebook Insights</h1>
+        <p>To retrieve data from Facebook Insights, you must make a request that contains several parameters with unique values to a specific table.</p>
+        <p>Each request includes the name of the table you want to request data from, for example, InsightsByConsumptionType, and three unique parameters described below</p>
+        <p>
+            <span class="bold">Insight Name</span>: The metric to be returned.</p>
+        <p>
+            <span class="bold">Target</span>: The element to retrieve the insights from. When requesting data from a source, all the data is returned for the authorized user who made the request. For example, target in (select ID from pages) returns all the pages for the relevant ID for the defined period of time.</p>
+        <p>
+            <span class="bold">Note</span>: When requesting data for all posts for all of your pages, you might experience performance issues. <MadCap:variable name="Variables.CompanyName" /> recommends breaking up requests in which large amounts of data are returned by Facebook.</p>
+        <p>
+            <span class="bold">Period</span>: The aggregation period. The value ‘lifetime’ includes all your data up to the time of the request. Any other values such as ‘day’, ‘month’ etc. are limited to a range of 90 days as per Facebook’s time range limitation.</p>
+        <p>This page provides example requests and lists the possible values for each table.</p>
+        <h2 class="notoc">InsightsByConsumptionType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, VideoPlay, OtherClicks, PhotoView, LinkClicks, ButtonClicks</p>
+        <p class="code">FROM InsightsByConsumptionType</p>
+        <p class="code">where target in (select ID from pages) and InsightName = 'PAGE_CONSUMPTIONS_BY_CONSUMPTION_TYPE' and Period = 'day' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <p>&#160;</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_CONSUMPTIONS_BY_CONSUMPTION_TYPE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_CONSUMPTIONS_BY_CONSUMPTION_TYPE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_CONSUMPTIONS_BY_TYPE</td>
+                    <td>Post</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_CONSUMPTIONS_BY_TYPE_UNIQUE</td>
+                    <td>Post</td>
+                    <td>day, week, days_28</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <h2 class="notoc">InsightsByFeedbackType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, [Like], Comment, Link, Answer, Claim, Rsvp, HideAllClicks, HideClicks, UnlikePageClicks, ReportSpamClicks, XButtonClicks</p>
+        <p class="code">FROM InsightsByFeedbackType</p>
+        <p class="code">where target in (select ID from pages) and InsightName = 'PAGE_NEGATIVE_FEEDBACK_BY_TYPE' and Period = 'day' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <p class="bold">&#160;</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_NEGATIVE_FEEDBACK_BY_TYPE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_NEGATIVE_FEEDBACK_BY_TYPE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSITIVE_FEEDBACK_BY_TYPE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSITIVE_FEEDBACK_BY_TYPE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_NEGATIVE_FEEDBACK_BY_TYPE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_NEGATIVE_FEEDBACK_BY_TYPE_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">&#160;</p>
+        <h2 class="notoc">InsightsByLikeSourceType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, PageSuggestion, PageTimeline, Ads, MobileAds, Registration, Mobile, WizardSuggestion, ProfileConnect, ExternalConnect,</p>
+        <p class="code">RecommendedPages, Favorites, Api, PageBrowser, MobilePageBrowser, Hovercard, Search, PageProfile, Ticker, LikeStory, FeedChaining, AllCategoryPyml,</p>
+        <p class="code">PageSuggestionsOnLiking, MobilePageSuggestionsOnLiking, FanContextStory, SponsoredStory, PageInviteEscapeHatchFinch, PageAdminNumPosts, PageAdminNumPostsByType</p>
+        <p class="code">FROM InsightsByLikeSourceType</p>
+        <p class="code">where target in (select ID from pages) and InsightName = 'PAGE_FANS_BY_LIKE_SOURCE' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_FANS_BY_LIKE_SOURCE</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FANS_BY_LIKE_SOURCE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FANS_BY_UNLIKE_SOURCE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">&#160;</p>
+        <h2 class="notoc">InsightsByPaidStatus</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, Total, Paid, Unpaid</p>
+        <p class="code">FROM InsightsByPaidStatus</p>
+        <p class="code">where target in (select ID from pages) and InsightName = 'PAGE_IMPRESSIONS_BY_PAID_NON_PAID' and Period = 'day' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_BY_PAID_NON_PAID</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_BY_PAID_NON_PAID_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_BY_PAID_NON_PAID</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_BY_PAID_NON_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_BY_PAID_NON_PAID</td>
+                    <td>Post</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_BY_PAID_NON_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>day, week, days_28</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">&#160;</p>
+        <h2 class="notoc">InsightsByReactionTotals</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, [Like], Love, Wow, Haha, Sorry, Anger, Target</p>
+        <p class="code">FROM InsightsByReactionTotals</p>
+        <p class="code">where target in (select ID from pages)</p>
+        <p class="code">and InsightName = 'PAGE_ACTIONS_POST_REACTIONS_TOTAL' and Period = 'day' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_ACTIONS_POST_REACTIONS_TOTAL</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">&#160;</p>
+        <h2 class="notoc">InsightsByStoryType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PostID, Period, InsightName, UserPost, PagePost, Checkin, Fan, Question, Coupon, Event, Mention, Other</p>
+        <p class="code">FROM InsightsByStoryType</p>
+        <p class="code">where target in (select ID from Posts where target in (select ID from pages))</p>
+        <p class="code">and InsightName = 'POST_IMPRESSIONS_BY_STORY_TYPE' and Period = 'day' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <p class="bold">&#160;</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_STORIES_BY_STORY_TYPE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_STORYTELLERS_BY_STORY_TYPE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_BY_STORY_TYPE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_BY_STORY_TYPE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_BY_STORY_TYPE</td>
+                    <td>Post</td>
+                    <td>day, week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_BY_STORY_TYPE_UNIQUE</td>
+                    <td>Post</td>
+                    <td>day, week, days_28</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">&#160;</p>
+        <h2 class="notoc">InsightsByTabType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, AllActivity, App, Info, Insights, Likes, Locations, Photos, PhotosAlbums, PhotosStream, Profile, ProfileInfo, ProfileLikes, ProfilePhotos, Timeline, Events, Videos, Wall</p>
+        <p class="code">FROM InsightsByTabType</p>
+        <p class="code">where target in (select ID from pages)</p>
+        <p class="code">and InsightName = 'PAGE_TAB_VIEWS_LOGIN_TOP_UNIQUE' and Period = 'day' and FromDateTime='Date' and ToDateTime='Date'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_TAB_VIEWS_LOGIN_TOP_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week</td>
+                </tr>
+                <tr>
+                    <td>PAGE_TAB_VIEWS_LOGIN_TOP</td>
+                    <td>Page</td>
+                    <td>day, week</td>
+                </tr>
+                <tr>
+                    <td>PAGE_TAB_VIEWS_LOGOUT_TOP</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">&#160;</p>
+        <h2 class="notoc">SimpleInsights</h2>
+        <p class="bold">Example:</p>
+        <p>
+            <span class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, Value FROM SimpleInsights where target in (select ID from pages) and InsightName = 'PAGE_ACTIONS_POST_REACTIONS_ANGER_TOTAL' and Period = 'day' and FromDateTime='@Date' and ToDateTime='@Date'</span>
+        </p>
+        <p class="bold">Mapping</p>
+        <p>&#160;</p>
+        <table>
+            <tbody>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+                <tr>
+                    <td>PAGE_STORIES</td>
+                    <td>Page</td>
+                    <td>day,week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_STORIES</td>
+                    <td>Page</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_STORYTELLERS</td>
+                    <td>Page</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_PAID</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_PAID_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_ORGANIC</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_ORGANIC_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_VIRAL</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_VIRAL_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_FREQUENCY_DISTRIBUTION</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_IMPRESSIONS_VIRAL_FREQUENCY_DISTRIBUTION</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_ENGAGED_USERS</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_CONSUMPTIONS</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_CONSUMPTIONS_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_PLACES_CHECKIN_TOTAL</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_PLACES_CHECKIN_TOTAL_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_PLACES_CHECKIN_MOBILE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_PLACES_CHECKIN_MOBILE_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_NEGATIVE_FEEDBACK</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_NEGATIVE_FEEDBACK_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FANS_ONLINE</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FANS_ONLINE_PER_DAY</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FANS</td>
+                    <td>Page</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FAN_ADDS</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FAN_ADDS_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FAN_REMOVES</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_FAN_REMOVES_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIEWS</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIEWS_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIEWS_LOGIN</td>
+                    <td>Page</td>
+                    <td>day, week</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIEWS_LOGIN_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day, week</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIEWS_LOGOUT</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_VIEWS</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_VIEWS_PAID</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_VIEWS_ORGANIC</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_VIEWS_AUTOPLAYED</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_VIEWS_CLICK_TO_PLAY</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_VIEWS_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_REPEAT_VIEWS</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S_PAID</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S_ORGANIC</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S_AUTOPLAYED</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S_CLICK_TO_PLAY</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S_UNIQUE</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_VIDEO_COMPLETE_VIEWS_30S_REPEAT_VIEWS</td>
+                    <td>Page</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_PAID</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_ORGANIC</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_ORGANIC_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_VIRAL</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>PAGE_POSTS_IMPRESSIONS_VIRAL_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_PAID</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_FAN</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_FAN_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_FAN_PAID</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_FAN_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_ORGANIC</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_ORGANIC_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_VIRAL</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_IMPRESSIONS_VIRAL_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_CONSUMPTIONS</td>
+                    <td>Post</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_CONSUMPTIONS_UNIQUE</td>
+                    <td>Post</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_ENGAGED_USERS</td>
+                    <td>Post</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_NEGATIVE_FEEDBACK</td>
+                    <td>Post</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_NEGATIVE_FEEDBACK_UNIQUE</td>
+                    <td>Post</td>
+                    <td>day,
+ week, days_28</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_AVG_TIME_WATCHED</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_COMPLETE_VIEWS_ORGANIC</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_COMPLETE_VIEWS_ORGANIC_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_COMPLETE_VIEWS_PAID</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_COMPLETE_VIEWS_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_VIEWS_ORGANIC</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_VIEWS_ORGANIC_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_VIEWS_PAID</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>POST_VIDEO_VIEWS_PAID_UNIQUE</td>
+                    <td>Post</td>
+                    <td>lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <h2 class="notoc">SimpleVideoInsights</h2>
+        <p class="bold">Example:</p>
+        <p>
+            <span class="code">SELECT Target as PostID, Period, InsightName, Value FROM SimpleVideoInsights where target in (select id from videos where target in (select ID from Pages)) and InsightName = 'TOTAL_VIDEO_VIEWS' and Period = 'lifetime'</span>
+        </p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>PAGE_VIDEO_VIEW_TIME</td>
+                    <td>Page</td>
+                    <td>day</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEWS</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEWS_UNIQUE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEWS_AUTOPLAYED</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEWS_CLICKED_TO_PLAY</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEWS_SOUND_ON</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_COMPLETE_VIEWS</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_COMPLETE_VIEWS_UNIQUE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_COMPLETE_VIEWS_AUTO_PLAYED</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_COMPLETE_VIEWS_CLICKED_TO_PLAY</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_10S_VIEWS</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_10S_VIEWS_UNIQUE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_10S_VIEWS_auto_played</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_10S_VIEWS_CLICKED_TO_PLAY</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_10S_VIEWS_SOUND_ON</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_AVG_TIME_WATCHED</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEW_TOTAL_TIME</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_IMPRESSIONS</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_IMPRESSIONS_UNIQUE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_IMPRESSIONS_VIRAL_UNIQUE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_IMPRESSIONS_VIRAL</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_IMPRESSIONS_FAN_UNIQUE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_IMPRESSIONS_FAN</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">VideoInsightsByActionType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT Target as PostID, Period, InsightName, Value</p>
+        <p class="code">FROM VideoInsightsByActionType</p>
+        <p class="code">where target in (select id from videos where target in (select ID from Pages)) and InsightName = 'TOTAL_VIDEO_STORIES_BY_ACTION_TYPE' and Period = 'lifetime'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TOTAL_VIDEO_STORIES_BY_ACTION_TYPE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">VideoInsightsByDistributionType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT EndTime as Date,Target as PageID, Period, InsightName, Page_Owned, Shared, Crossposted</p>
+        <p class="code">FROM VideoInsightsByDistributionType</p>
+        <p class="code">where target in (select ID from pages)</p>
+        <p class="code">and InsightName = 'TOTAL_VIDEO_VIEWS_BY_DISTRIBUTION_TYPE' and Period = 'lifetime'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEWS_BY_DISTRIBUTION_TYPE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+                <tr>
+                    <td>TOTAL_VIDEO_VIEW_TIME_BY_DISTRIBUTION_TYPE</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">VideoInsightsByReactionType</h2>
+        <p class="bold">Example:</p>
+        <p class="code">SELECT Target as PostID, Period, InsightName, Value</p>
+        <p class="code">FROM VideoInsightsByReactionType</p>
+        <p class="code">where target in (select id from videos where target in (select ID from Pages)) and InsightName = 'TOTAL_VIDEO_REACTIONS_BY_TYPE_TOTAL' and Period = 'lifetime'</p>
+        <p class="bold">Mapping</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Insight Name</th>
+                    <th>Target</th>
+                    <th>Period</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>TOTAL_VIDEO_REACTIONS_BY_TYPE_TOTAL</td>
+                    <td>Video</td>
+                    <td>lifetime</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

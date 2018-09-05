@@ -1,0 +1,259 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to HubSpot | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to HubSpot</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> HubSpot connector is a standalone connector that allows you to import data from HubSpot’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the HubSpot APIs. To obtain a connection string, you will need to create a HubSpot app.</p>
+        <p>Once you have connected to HubSpot, you can import a variety of tables from the HubSpot API.</p>
+        <p>This page describes how to install the HubSpot connector, how to connect to HubSpot with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the HubSpot Connector</a>
+            </li>
+            <li><a href="#Adding">Adding HubSpot Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#HubSpot">HubSpot Tables</a>
+            </li>
+            <li><a href="#Versions">Versions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the HubSpot Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the HubSpot connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the HubSpot connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/HubSpot.Connector.Installer.exe">Download</a> the HubSpot installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The HubSpot connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/hubspotconnect.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Adding"></a>Adding HubSpot Tables to Your <MadCap:variable name="Variables.ElastiCube" /></h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to HubSpot and import data into the <MadCap:variable name="Variables.ECM" />. The default connection string for HubSpot is: <span class="code">jdbc:hubspot:InitiateOAuth=GETANDREFRESH;</span></p>
+        <p>After you connect using the default connection string, <MadCap:variable name="Variables.CompanyName" /> redirects you to Hubspot’s homepage where you log in and your account is authenticated. Once the account is authenticated, the relevant tables can be added to your <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>If you want to customize your connection string, you can by creating an HubSpot app and passing additional connection string parameters. For more information, see <a href="#Creating">Creating an App</a> at the end of this page.</p>
+        <p class="bold">To add HubSpot data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click Add Data and then, HubSpot. The Connect to HubSpot window is displayed.<br /><img src="../../../Resources/Images/connecthubspot.png" class="thumblarge" /></li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter the connection string: jdbc:hubspot:InitiateOAuth=GETANDREFRESH;</li>
+            <li>Click <span class="bold">Connect to Server</span>. You are redirected to the HubSpot Login page.</li>
+            <li>Log in to your HubSpot account. HubSpot is displayed in the Select Database list in the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to HubSpot and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h3 class="notoc"><a name="HubSpot"></a>HubSpot Tables</h3>
+        <p>HubSpot’s RESTful APIs expose the following HubSpot tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> HubSpot connector:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BlogAuthors</td>
+                    <td>Retrieve the available blog authors in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>BlogPosts</td>
+                    <td>Retrieve the available blog posts in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Blogs</td>
+                    <td>Retrieve the available blogs in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>BlogTopics</td>
+                    <td>Retrieve the available blog topics in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Comments</td>
+                    <td>Retrieve the available comments from your blog in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Companies</td>
+                    <td>Companies in HubSpot represent different organizations you are interested in keeping track of for potential marketing opportunities. They are treated similarly like contacts and have a number of custom properties that will be dynamically determined and added to the Companies table from your HubSpot Hub.</td>
+                </tr>
+                <tr>
+                    <td>CompanyProperties</td>
+                    <td>Company properties are the standard and custom pieces of field data that appear in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>CompanyPropertyGroups</td>
+                    <td>Company property groups in HubSpot offer a way of organizing individual types of properties for companies. Each company property must belong to a property group.</td>
+                </tr>
+                <tr>
+                    <td>Contacts</td>
+                    <td>Contacts in HubSpot represent different contacts you are interested in keeping track of for potential marketing opportunities. Contacts are similar to companies: They both have a number of custom properties that will be dynamically determined and added to the table from your HubSpot Hub.</td>
+                </tr>
+                <tr>
+                    <td>ContactLists</td>
+                    <td>Contact lists in HubSpot can be used to group together contacts with similar characteristics.</td>
+                </tr>
+                <tr>
+                    <td>ContactListMemberships</td>
+                    <td>A list of objects that represents the memberships of a contact from their contact lists. This list may be empty if the record is not a member of any lists.</td>
+                </tr>
+                <tr>
+                    <td>ContactProperties</td>
+                    <td>Contact properties are the standard and custom pieces of field data that appear in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>ContactPropertyGroups</td>
+                    <td>Contact property groups in HubSpot offer a way of organizing individual types of properties for contacts. Each contact property must belong to a property group.</td>
+                </tr>
+                <tr>
+                    <td>DealAssociations</td>
+                    <td>The deal can be associated with either contacts or companies with each request.</td>
+                </tr>
+                <tr>
+                    <td>DealPipelines</td>
+                    <td>Allows you to programmatically access options for the 'deal stage' and 'pipeline' properties within your instance of the HubSpot CRM.&gt;br/&gt; Every portal initially contains a default pipeline with the pipelineId “default”. On portals that have only one pipeline, the pipeline property for any deal will be set to “default” automatically. On portals that have multiple pipelines, if you're setting a dealstage that is not in the default pipeline, you'll also need to set the pipeline property that lines up with the dealstage being used.</td>
+                </tr>
+                <tr>
+                    <td>DealPipelineStages</td>
+                    <td>A list of stages for this specific pipeline.</td>
+                </tr>
+                <tr>
+                    <td>DealProperties</td>
+                    <td>Deal properties are the standard and custom pieces of field data that appear in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>DealPropertyGroups</td>
+                    <td>Contact property groups in HubSpot offer a way of organizing individual types of properties for contacts. Each contact property must belong to a property group.</td>
+                </tr>
+                <tr>
+                    <td>Deals</td>
+                    <td>Deals in HubSpot represent different organizations you are interested in keeping track of for potential marketing opportunities. They are treated similarly like contacts and have a number of custom properties that will be dynamically determined and added to the Deals table from your HubSpot Hub.</td>
+                </tr>
+                <tr>
+                    <td>Domains</td>
+                    <td>Retrieve the available domains in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>EmailCampaigns</td>
+                    <td>Email campaigns in HubSpot allow you to keep track of and update email marketing campaigns. This table allows you to create, update, and delete your email campaigns in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>EmailCampaignEvents</td>
+                    <td>The events associated with an email campaign or a recipient.</td>
+                </tr>
+                <tr>
+                    <td>EmailSubscriptions</td>
+                    <td>The subscription types a given email is subscribed to. An email must be specified to return results. Subscriptions may be removed by deleting them.</td>
+                </tr>
+                <tr>
+                    <td>EmailSubscriptionTypes</td>
+                    <td>A list of email subscription types for a HubSpot hub.</td>
+                </tr>
+                <tr>
+                    <td>Engagements</td>
+                    <td>Engagements represent any of a number of different types of engagements you have in HubSpot. These can very from simple Tasks, to Emails, Calls, Meetings, or others. Due to the different types of engagements available, any individual Engagement will have several columns that come back null due to its type.</td>
+                </tr>
+                <tr>
+                    <td>Files</td>
+                    <td>Retrieves information about the available files in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Folders</td>
+                    <td>Retrieves information about the available folders in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Forms</td>
+                    <td>HubSpot Forms.</td>
+                </tr>
+                <tr>
+                    <td>Owners</td>
+                    <td>Retrieve the owners in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Pages</td>
+                    <td>Retrieve the available pages in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>SocialMediaChannels</td>
+                    <td>List available social media channels in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Settings</td>
+                    <td>HubSpot settings.</td>
+                </tr>
+                <tr>
+                    <td>SocialMediaMessages</td>
+                    <td>Social media messages.</td>
+                </tr>
+                <tr>
+                    <td>Templates</td>
+                    <td>Retrieve the available templates in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>UrlMappings</td>
+                    <td>Retrieve the available url mappings in HubSpot.</td>
+                </tr>
+                <tr>
+                    <td>Workflows</td>
+                    <td>HubSpot workflows.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">Accumulative Builds</p>
+        <p><MadCap:variable name="Variables.CompanyName" /> support accumulative builds for all numeric and dates data types. However, the data must be sorted before building the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <h3 class="notoc"><a name="Versions"></a>Versions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.0.61</td>
+                    <td>April 18, 2017</td>
+                    <td>
+                        <p>UNIX timestamp was set to local time</p>
+                        <p><span class="bold">Note</span>: HubSpot has deprecated the V1 method of retrieving the OAuth Access token. If you have problems authenticating, you will need to log into your HubSpot account with the same user you are using as your OAuth Client Id/Secret.After logging into your HubSpot account, go to your application settings and edit the Scopes. Remove any scopes that you might have selected and save the changes. Then, attempt to retrieve your OAuth token again.For more information, seeMigrating from OAuth1 to OAuth 2.0</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>6.6.0.51</td>
+                    <td>March 16, 2017</td>
+                    <td>Dates are handled as expected</td>
+                </tr>
+                <tr>
+                    <td>6.5.1.32</td>
+                    <td>January 16, 2017</td>
+                    <td>General release</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc"><a name="Creating"></a>Creating an App</h2>
+        <p>To access HubSpot’s REST API from the <MadCap:variable name="Variables.ECM" /> with a customized connection string, you must provide valid Oauth HubSpot credentials through a connection string. These credentials are provided by HubSpot when you create an application.</p>
+        <p>After you receive your credentials from HubSpot, you can create the connection string and provide <MadCap:variable name="Variables.CompanyName" /> with it to connect to your data.</p>
+        <p>Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>The following is an example of a HubSpot connection string and its mandatory parameters:</p>
+        <p class="code">jdbc:hubspot:OAuthClientId=xxxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxxxxxxx;InitiateOAuth=GETANDREFRESH;</p>
+        <p class="code">HubId=xxxxxxxxx;CallbackURL=https://localhost;Timeout=0;</p>
+        <ol>
+            <li><span class="bold">HubId</span>: Set your Hubspot account ID to HubId in the connection string.</li>
+            <li><span class="bold">OAuthClientId</span>: Set this to the client Id in the connection string.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the client Id in the connection string.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set to GETANDREFRESH.</li>
+            <li><span class="bold">CallbackURL</span>: Following HubSpot’s migration to OAuth 2.0, the CallbackURL needs to be SSL compliant so it should be https://localhost.</li>
+        </ol>
+        <p>For more information about connection strings and optional parameters, see <a href="connect-string.htm">Connection String Parameters</a>.</p>
+        <p>When you connect to HubSpot, you are redirected to HubSpot’s site where your Administrator must grant access to your account.</p>
+        <p>Follow the steps below to obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Log into your HubSpot developer account.</li>
+            <li>Click <span class="bold">Create App</span>.</li>
+            <li>In the <span class="bold">App name</span> field, enter a name and select Public or Private.</li>
+            <li>Click <span class="bold">Create</span>.</li>
+            <li>In the Apps page, click the name of your app.<br /><img src="../../../Resources/Images/hubspotapp.png" class="thumblarge" /></li>
+            <li>Copy the following values and add them to your connection described in the next procedure.<br /><img src="../../../Resources/Images/hubspotapp2.png" class="thumblarge" /><ol><li><span class="bold">HubId</span></li><li><span class="bold">OAuthClientId</span></li><li><span class="bold">OAuthClientSecret</span></li></ol></li>
+        </ol><span class="bold">Note</span>: Do not select any scopes in your account as this will prevent access to your data.<h3 class="notoc">Switching between Accounts</h3><p>When you connect to the HubSpot data source, <MadCap:variable name="Variables.CompanyName" /> saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\HubSpot Data Provider on your Sisense server. To connect to the HubSpot data source with another user on the same machine, you must delete the OAuthsettings.txt file. <MadCap:variable name="Variables.CompanyName" /> will then generate a new file for that user.</p><p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the OAuthSettingsLocation parameter. When each user connects to the data source, <MadCap:variable name="Variables.CompanyName" /> generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the HubSpot data source and for each user, <MadCap:variable name="Variables.CompanyName" /> generates a file that contains that user’s OAuth values in the location defined in the string.</p><p class="code">jdbc:hubspot:OAuthSettingsLocation=C:\hubspot\auth\john.txt;OAuthClientId=11276856774486;OAuthClientSecret</p><p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p><p class="code">jdbc:hubspot:OAuthSettingsLocation=C:\hubspot\auth\sally.txt;OAuthClientId=11276856774486;OAuthClientSecret</p><p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p><p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\hubspot\auth\.</p><p>This is useful if you support many users who each need to access the HubSpot data source.</p></body>
+</html>

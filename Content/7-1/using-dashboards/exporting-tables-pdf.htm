@@ -1,0 +1,64 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="1959" MadCap:lastWidth="704">
+    <head>
+        <title>Exporting Pivot Tables to PDF | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Exporting Pivot Tables to PDF</h1>
+        <p>You can export pivot table widgets in PDF format. Through the PDF Report Settings page, you can customize how your table is displayed in your PDF report including the table’s orientation and page size. In the PDF Report Settings, the first 14 pages of your Pivot table are displayed in the preview window, however, when you export your Pivot table to PDF, the entire table is included, up to 10,000 rows on multiple pages.<br /><img src="../../Resources/Images/pivotpdfsettings.png" class="thumblarge" /></p>
+        <p>
+            <span class="bold">Note</span>: The following plug-ins are not supported when exporting Pivot tables into PDF reports:</p>
+        <ul>
+            <li>Embed images to Pivot tables</li>
+            <li>Conditionally format Pivot foreground</li>
+            <li>Embed a sparkline chart into a Pivot</li>
+        </ul>
+        <p class="bold">To export a Pivot table widget to PDF:</p>
+        <ol>
+            <li>In the Widget menu, select <span class="bold">Download</span> &gt; <span class="bold">PDF File</span>.</li>
+            <li>The PDF Report Settings page is displayed.<br /><img src="../../Resources/Images/downloadtopdF.png" /></li>
+            <li>You can apply the following settings:</li>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Setting</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Paper Size</td>
+                        <td>The size of the email report in the PDF.</td>
+                    </tr>
+                    <tr>
+                        <td>Orientation</td>
+                        <td>The orientation of the dashboard in the PDF, landscape or portrait. Landscape orientations display the dashboard horizontally while portrait orientations display the dashboard vertically.</td>
+                    </tr>
+                    <tr>
+                        <td>Header</td>
+                        <td>
+                            <p>The design and content of your report’s header. The header is displayed on the top of each page or your PDF report.</p>
+                            <p>From the Header list, you can define how your header is to be displayed:</p>
+                            <p>Compact, Medium, Large, or No Header.</p>
+                            <p>After you have set the design, you can determine what information is included in the header.</p>
+                            <p>
+                                <span class="bold">Title</span>: Select to display the dashboard name at the top of the PDF.</p>
+                            <p>
+                                <span class="bold">Dashboard As Of</span>: Select to display the <MadCap:variable name="Variables.ElastiCube" /> name and last build time at the top of the PDF.</p>
+                            <p>
+                                <span class="bold">Dataset Name</span>: Select to display the name of the <MadCap:variable name="Variables.ElastiCube" /> that contains the dashboard’s data.</p>
+                            <p>
+                                <span class="bold">Dashboard Filters</span>: Select to display dashboard filter selections.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Footer</td>
+                        <td>The content displayed in the footer section of each page of your report. You can display the following information:<br />Page Number: Select to display the page number on each page of the report.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <li>In the Preview area, click the title to edit the text, size, and alignment of the title.<br /><img src="../../Resources/Images/pdfhead.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Download</span> to download your report.</li>
+        </ol>
+    </body>
+</html>

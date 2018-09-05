@@ -1,0 +1,67 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Sisense Security Architecture | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1><MadCap:variable name="Variables.CompanyName" /> Security Overview </h1>
+        <h2 class="notoc"><MadCap:variable name="Variables.CompanyName" /> Security Architecture</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> is built around a robust and flexible security architecture that is both comprehensive and intuitive. This architecture has been designed to ensure security processes are enforced while scaling to enterprise deployments of <MadCap:variable name="Variables.CompanyName" />. This includes the ability to secure dashboards and data as well as implement custom security requirements that suit your organization. This section provides a general overview of the main security features.</p>
+        <p>Security is based around three levels associated with sets of security features. The diagram below maps this security architecture on a system, data and object level.</p>
+        <p>
+            <img src="../../../Resources/Images/security-1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">System Level Security</h2>
+        <p>System-level security encompasses security features for role-based settings and integration options. This includes user and server management, connection to an active directory, Single Sign-On (SSO) implementation, and use of the security REST API.</p>
+        <p class="bold">User Management</p>
+        <p>You can assign five primary roles to <MadCap:variable name="Variables.CompanyName" /> users:</p>
+        <ul>
+            <li>Administrators</li>
+            <li>Data Admin</li>
+            <li>Data Designer</li>
+            <li>Designer</li>
+            <li>Viewer</li>
+        </ul>
+        <p>These roles can be defined on either a user or group level to determine sharing, access and security. To learn more about user roles, <a href="../../getting-started/user-roles.htm">click here</a>.</p>
+        <p class="bold"><MadCap:variable name="Variables.ElastiCube" /> Server Access Rights</p>
+        <p>You can assign access rights to different <MadCap:variable name="Variables.ElastiCube" /> servers for individual users, groups or to everyone. These settings allow the management of different environments such as a testing and production server, or servers for specific projects or departments. See also <MadCap:variable name="Variables.ElastiCube" /> Server and <MadCap:variable name="Variables.ElastiCube" /> Security.</p>
+        <p><span class="bold">Note</span>:&#160;Following improvements to <MadCap:variable name="Variables.ElastiCube" /> security in Sisense V7.0 and later, <MadCap:variable name="Variables.ElastiCube" />s created prior to <MadCap:variable name="Variables.CompanyName" /> V7.0 are accessible to everyone by default, unless you have defined the <MadCap:variable name="Variables.ElastiCube" />'s access rights. For <MadCap:variable name="Variables.ElastiCube" />s created after Sisense V7.0, the default access is only for the <MadCap:variable name="Variables.ElastiCube" /> owner.  When the <MadCap:variable name="Variables.ElastiCube" /> is ready, it should be shared with the relevant people, or with "Everyone" if that is the desired access policy.</p>
+        <p class="bold">Active Directory</p>
+        <p>Connect existing users and groups from your organization’s Active Directory to define security and sharing properties and reduce deployment time. This removes ‘password fatigue’ as users can rely on existing credentials while organizational policies around security credentials such as updates can be enforced. See also <a href="../user-management/integrate-active-directory.htm">Integrating Active Directory</a>.</p>
+        <p class="bold">Single Sign-On (SSO)</p>
+        <p>SSO facilitates seamless integration between <MadCap:variable name="Variables.CompanyName" /> and other systems in your organization while offering standardization of authentication policies across your organization. This can improve user productivity by avoiding password fatigue and reduce support overhead. See also Configuring SSO.</p>
+        <p class="bold">REST API</p>
+        <p>The Security REST API provide access to parameters to integrate and automate restrictions and access control based on existing settings and standards. Specify access rights and security to dashboards, <MadCap:variable name="Variables.ElastiCube" />s and data. Manage users via the API to create, edit and assign new users or groups. <a href="http://developer.sisense.com/display/API2/Welcome">Click here</a> to visit the API documentation site.</p>
+        <h2 class="notoc">Object Level Security</h2>
+        <p>Object security defines access rights for different users and groups to various components within <MadCap:variable name="Variables.CompanyName" />. The two main objects are dashboards and <MadCap:variable name="Variables.ElastiCube" />s.</p>
+        <p class="bold">Dashboards</p>
+        <p>You can share dashboards on either a user or group level.  The sharing options include the configuration of access rights for all users as well as whether users defined as designers may edit the dashboard.  The sharing options also include subscription settings that define which users and groups will receive email reports. See also <a href="../../managing-dashboards/share-dashboard.htm">Sharing Dashboards</a>.</p>
+        <p class="bold"><MadCap:variable name="Variables.ElastiCube" />s</p>
+        <p>You can define access rights to different <MadCap:variable name="Variables.ElastiCube" />s on a user or group level. This enables flexibility to create <MadCap:variable name="Variables.ElastiCube" />s for specific user or group needs while offering strict access control. See also <a href="../elasticube-management/share-elasticube.htm">Sharing <MadCap:variable name="Variables.ElastiCube" />s</a>.</p>
+        <h2 class="notoc"><a name="Data"></a>Data Level Security</h2>
+        <p>Data access must provide data to people only to the extent that they need to complete their jobs. Data Level Security provides the necessary control to enforce varying degrees of data visibility and access to support the separation of duties. A single dashboard can be shared with many users, but each viewer sees only data relevant to their needs. This reduces both development time and provides for security.</p>
+        <p class="bold">Security on the Row Level</p>
+        <p>You can grant user and group permissions to specific rows in the data. For each <MadCap:variable name="Variables.ElastiCube" />, you can apply multiple rules to enforce granular access control.</p>
+        <p class="bold">Row Level Defaults</p>
+        <p>Control which data is accessible for users or groups that do not have explicit security rules. For example, enable new employees to access a restricted data set until they are added to relevant groups. You can set defaults to include everything, nothing or view based on a security rule.</p>
+        <p>See more in Data Security below.</p>
+        <h2 class="notoc">Security Levels</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides three levels of security:</p>
+        <ul>
+            <li><a href="#Server"><MadCap:variable name="Variables.ElastiCube" /> Security</a>
+            </li>
+            <li><a href="data-security.htm">Data Security</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Server"></a><MadCap:variable name="Variables.ElastiCube" /> Security</h2>
+        <p class="bold">What is  <MadCap:variable name="Variables.ElastiCube" /> Security?</p>
+        <p><MadCap:variable name="Variables.CompanyName" /> enables you to define access rights to control which users can access which <MadCap:variable name="Variables.ElastiCube" />s, whether they are creating new dashboards or trying to access shared dashboards.</p>
+        <p class="bold"><MadCap:variable name="Variables.ElastiCube" /> Security – Use Case Example</p>
+        <p>You may have an <MadCap:variable name="Variables.ElastiCube" /> named Marketing and only want the CEO and Marketing team to have access to it. You can grant rights only to them using <MadCap:variable name="Variables.ElastiCube" /> Security, thus denying anyone else access.</p>
+        <p class="bold">How Does <MadCap:variable name="Variables.ElastiCube" /> Security Work?</p>
+        <ul>
+            <li>You can define which users/user groups have access to the <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>By default, only the <MadCap:variable name="Variables.ElastiCube" />'s creator, Administrator and Data Administrator can access an <MadCap:variable name="Variables.ElastiCube" />. Once you start assigning users/user groups access rights to an <MadCap:variable name="Variables.ElastiCube" />, then those users/user groups will have access to the <MadCap:variable name="Variables.ElastiCube" />. The type of access is determined their role and what access you assign to the user. </li>
+            <li>When a user attempts to access a dashboard using a direct link and that dashboard is based on an <MadCap:variable name="Variables.ElastiCube" /> to which that user does not have access rights, a security message is displayed.</li>
+        </ul>
+    </body>
+</html>

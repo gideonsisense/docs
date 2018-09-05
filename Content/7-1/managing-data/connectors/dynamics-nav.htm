@@ -1,0 +1,129 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="2364" MadCap:lastWidth="1254">
+    <head>
+        <title>Connecting to DynamicsNav | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to DynamicsNav</h1>
+        <p class="beta">This connector is currently in beta and subject to change.</p>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Microsoft Dynamics Nav connector is a standalone connector that allows you to import data from Microsoft Dynamics Nav into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Microsoft Dynamics Nav tables. To obtain a connection string, you will need to obtain your credentials from Microsoft Dynamics Nav.</p>
+        <p>Once you have connected to Microsoft Dynamics Nav, you can import a variety of tables from Microsoft Dynamics Nav.</p>
+        <p>This page describes how to install the Microsoft Dynamics Nav connector, how to connect to Microsoft Dynamics Nav with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li>
+                <a href="#Installi">Installing the Microsoft Dynamics Nav Connector</a>
+            </li>
+            <li>
+                <a href="#Connecti">Connecting to the Microsoft Dynamics Nav</a>
+            </li>
+            <li>
+                <a href="#Microsof">Microsoft Dynamics Nav Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc">
+            <a name="Installi">
+            </a>Installing the Microsoft Dynamics Nav Connector</h2>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> provides the Microsoft Dynamics Nav connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Microsoft Dynamics Nav connector:</p>
+        <ol>
+            <li>Contact us for the Microsoft Dynamics Nav installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p class="indent">The Microsoft Dynamics Nav connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc">
+            <a name="Connecti">
+            </a>Connecting to the Microsoft Dynamics Nav</h2>
+        <p>The connection string used to connect to the Microsoft Dynamics Nav connects to various instances you have in the Microsoft Dynamics Nav. By providing your Microsoft Dynamics Nav credentials as values in the connection string, you can add data from your Microsoft Dynamic Nav tables to the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>The connection string can be set to a series of option=value strings separated by semicolons. If a connection string property value has special characters such as semicolons, single quotes, spaces, etc., then you must quote the value using either single or double quotes.</p>
+        <p>Connection options are case insensitive.</p>
+        <p>The connection string to be passed to Dynamics Nav must contain the following parameters:</p>
+        <ul>
+            <li>
+                <span class="bold">URL</span>: URL to the DynamicsNAV server organization root. For example, http://MyServer:7048.</li>
+            <li>
+                <span class="bold">User</span>: The user who is authenticating to the Dynamics NAV server.</li>
+            <li>
+                <span class="bold">Password</span>: The password used to authenticate to the Dynamics NAV server.</li>
+            <li>
+                <span class="bold">ServerInstance</span>: The instance of the Dynamics NAV server. For example, DynamicsNAV71.</li>
+        </ul>
+        <p>In addition, when the <span class="bold">CacheLocation</span> property is set, the driver will cache metadata to the specified file, ensuring that queries execute more quickly. CacheLocation specifies the path to the cache when caching to a file.</p>
+        <p>
+            <span class="bold">Note</span>: Before the driver can connect with Dynamics NAV, OData services need to be enabled on the server. Once OData Services are enabled, the driver will be able to query any services that are published on the server.</p>
+        <p>If there is not a Service Default Company for the server, set the Company as well where Company is the company to submit queries against, for example, ‘CRONUS Canada, Inc.’. In a multitenant installation, specify the tenant Id in Tenant.</p>
+        <p>The connection string to connect to Microsoft Dynamics Nav has the following structure:</p>
+        <p class="code">jdbc:dynamicsnav:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a Microsoft Dynamics Nav connection string:</p>
+        <p class="code">jdbc:dynamicsnav:URL=http://myserver:7048;User=myserver\Administrator;Password=admin;ServerInstance=DYNAMICSNAV71;</p>
+        <p class="bold">To add Microsoft Dynamics Nav data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Microsoft Dynamics Nav</span>. The Connect to Microsoft Dynamics Nav window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Microsoft Dynamics Nav is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Microsoft Dynamics Nav and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>.</li>
+        </ol>
+        <p class="indent">The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</p>
+        <h2 class="notoc">
+            <a name="Microsof">
+            </a>Microsoft Dynamics Nav Tables</h2>
+        <p>Microsoft Dynamics Nav exposes the following Microsoft Dynamics Nav tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Microsoft Dynamics Nav connector:</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Company</td>
+                    <td>The DynamicsNAV table Company.</td>
+                </tr>
+                <tr>
+                    <td>Country</td>
+                    <td>The DynamicsNAV table Country.</td>
+                </tr>
+                <tr>
+                    <td>Currency</td>
+                    <td>The DynamicsNAV table Currency.</td>
+                </tr>
+                <tr>
+                    <td>Customer</td>
+                    <td>The DynamicsNAV table Customer.</td>
+                </tr>
+                <tr>
+                    <td>GeneralProductPosting</td>
+                    <td>The DynamicsNAV table GeneralProductPosting.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseLines</td>
+                    <td>The DynamicsNAV table PurchaseLines.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrder</td>
+                    <td>The DynamicsNAV table PurchaseOrder.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrderPurchLines</td>
+                    <td>The DynamicsNAV table PurchaseOrderPurchLines.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrders</td>
+                    <td>The DynamicsNAV table PurchaseOrders.</td>
+                </tr>
+                <tr>
+                    <td>ResourceCard</td>
+                    <td>The DynamicsNAV table ResourceCard.</td>
+                </tr>
+                <tr>
+                    <td>SalesOrder</td>
+                    <td>The DynamicsNAV table SalesOrder.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

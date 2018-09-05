@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultTarget
+  Version="2"
+  Comment="New Target"
+  Type="MsWord"
+  Destinations=""
+  PatchHeadingLevels="true"
+  EmbedImages="true"
+  OutputFolder="C:\Users\Gideon.Behrensmeyer\Desktop\MadCap Docs"
+  GetLatestBeforeCompile="true"
+  DisableAutoSync="true"
+  MasterStylesheet="/Content/Resources/Stylesheets/Modern.css"
+  MasterPageLayout="/Content/Resources/PageLayouts/PDF.flpgl"
+  MasterToc="/Project/TOCs/Viewers.fltoc"
+  ConditionTagExpression="include[Default.Whitelabeled] exclude[Default.Website] "
+  PreCompileScaledImages="true"
+  conditions="Default.Whitelabeled">
+  <PrintedOutput
+    CollapseMargins="true"
+    GenerateTOCProxy="false"
+    GenerateIndexProxy="true"
+    GenerateGlossaryProxy="true" />
+  <Destinations>
+    <Destination
+      Link="/Project/Destinations/Destination.fldes" />
+  </Destinations>
+  <Glossaries />
+  <Variables>
+    <Variable
+      Name="Variables/Sisense Web Application">ApplicationName</Variable>
+    <Variable
+      Name="Variables/CompanyName">YourCompany</Variable>
+    <Variable
+      Name="Variables/Sisense.com">YourCompany</Variable>
+  </Variables>
+</CatapultTarget>

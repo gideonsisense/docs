@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="1541" MadCap:lastWidth="704">
+    <head>
+        <title>Sending Email Dashboard Reports | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Sending Email Dashboard Reports</h1>
+        <p>After you share your dashboard, you can configure the <MadCap:variable name="Variables.CompanyName" /> Scheduler to send periodic email reports containing a static version of the dashboard that can be clicked to access the dashboard or PDFs containing images of your dashboard.</p>
+        <p>From your dashboard, you can configure how many emails the Scheduler sends and when.</p>
+        <p>To test how the report is to be displayed to your shared users, in the Shared Dashboard window, click the <span class="bold">Send me a report now</span> link, which generates an email report sent to your email address immediately.</p>
+        <p class="bold">To schedule email notifications:</p>
+        <ol>
+            <li>In your dashboard, click the Share icon to display the Share window.<br /><img src="../../Resources/Images/shareicons.png" class="docbutton" /></li>
+            <li>In the Shared Dashboard window, click the <img src="../../Resources/Images/emailreporticon.png" class="docbutton" /> tab.<br /><img src="../../Resources/Images/emailreports.png" class="thumblarge" /></li>
+            <li>Select the type of report you want to send. There are two types of email reports you can send:<br /><span class="bold">Email Report</span>: The email report is attached as an image file.<br /><span class="bold">PDF Attachment</span>: The email report is attached as a PDF. You can define how the dashboard is to be displayed in the PDF through the PDF Report Settings page by clicking Edit/View PDF Report. For more information, see <a href="custompdf-report.htm">Customizing PDF Reports</a>.</li>
+            <li>In the Schedule area, select the frequency for sending email notifications. You can select one of the following options:</li>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Option</th>
+                        <th>Description</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Every <MadCap:variable name="Variables.ElastiCube" /> update, no more than X emails per day</td>
+                        <td>Select to send a report each time you update the <MadCap:variable name="Variables.ElastiCube" /> up to the amount of emails you define in the Number box.<br />In the Number box, type or select the amount of emails that can be sent a day, regardless of the amount of builds.</td>
+                    </tr>
+                    <tr>
+                        <td>Daily</td>
+                        <td>Select to send one email report according to the time you define.<br />In the Everyday box, select the days the scheduled report is to be sent. You can select multiple days by clicking the day.<br />Select the Hour and the Time Zone that the email is to be sent on the days you selected.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <li>Click <span class="bold">Save</span>.</li>
+        </ol>
+    </body>
+</html>

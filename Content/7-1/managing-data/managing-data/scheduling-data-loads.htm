@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Scheduling Data Loads | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Scheduling Data Loads</h1>
+        <p>After you build an <MadCap:variable name="Variables.ElastiCube" />, you can schedule future builds to automatically synchronize with the underlying data source to ensure all data is up to date.</p>
+        <p>There are two options you can choose when scheduling a build, by time or by intervals. Builds scheduled by time occur according to the days and hour you define. You can configure <MadCap:variable name="Variables.CompanyName" /> to build an <MadCap:variable name="Variables.ElastiCube" /> automatically any or every day of the week at the same hour.</p>
+        <p>Builds scheduled by intervals occur after the defined intervals passes. You can set a single interval for an <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p><span class="bold">Note</span>: Only one option can be selected at a time. The last configuration you set is the configuration that will be used.</p>
+        <p>If you want to cancel a scheduled build, select <span class="bold">Disable</span> and click <span class="bold">Save</span>.</p>
+        <p>By default, scheduled builds are Entire builds unless any table within the <MadCap:variable name="Variables.ElastiCube" /> is set to Accumulative or a table is set to be ignored.</p>
+        <p>Your <MadCap:variable name="Variables.ElastiCube" />’s build configuration determines how the scheduled build is to be performed. For more information about how to build <MadCap:variable name="Variables.ElastiCube" />s click <a href="../build-ecube.htm">here</a>.</p>
+        <p class="bold">To schedule a build:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page, open the menu of the relevant <MadCap:variable name="Variables.ElastiCube" /> and select <span class="bold">Schedule Build</span>. The Schedule Build window is displayed.<br /><img src="../../../Resources/Images/schedulebuild1.png" class="thumblarge" /><br /></li>
+            <li>Select the relevant scheduling option:<br /><span class="bold">Disable</span>: Disables a schedule build.<br /><span class="bold">Daily</span>: Select the relevant days and define the hour when the build is to occur. For each selected day, the build will occur at the same hour defined.<br /><span class="bold">Interval</span>: Select the time in between automatic builds. The first automatic build begins after you save your settings and the interval passes.</li>
+            <li>Click <span class="bold">Save</span>.</li>
+        </ol>
+    </body>
+</html>

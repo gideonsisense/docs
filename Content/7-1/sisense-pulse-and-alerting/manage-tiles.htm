@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Managing Tiles in Sisense Pulse | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1 MadCap:conditions="Default.Website">Managing Tiles in <MadCap:variable name="Variables.CompanyName" /> Pulse</h1>
+        <p MadCap:conditions="Default.Website">This topic describes how to manage your Pulse tiles and notifications when an alert is triggered.</p>
+        <p MadCap:conditions="Default.Website">After you have created alerts or added tiles to <MadCap:variable name="Variables.CompanyName" /> Pulse, you can manage those tiles from <MadCap:variable name="Variables.CompanyName" /> Pulse. Through the <MadCap:variable name="Variables.CompanyName" /> <span class="bold">Pulse</span> page, you can duplicate alerts and modify them, disable notifications, and delete alerts.</p>
+        <h2 class="notoc" MadCap:conditions="Default.Website">Duplicating Tiles in <MadCap:variable name="Variables.CompanyName" /> Pulse</h2>
+        <p MadCap:conditions="Default.Website">You can create copies of alerts and modify them to quickly generate new alerts with different notification messages or notify various groups across separate channels.</p>
+        <p MadCap:conditions="Default.Website">For example, if you want to notify Group 1 via email and Group 2 via Slack when the same event occurs, you can duplicate an alert and modify the notification channel.</p>
+        <p class="bold" MadCap:conditions="Default.Website">To duplicate a tile:</p>
+        <ol>
+            <li MadCap:conditions="Default.Website">In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Pulse</span>.</li>
+            <li MadCap:conditions="Default.Website">In the relevant alert’s menu, select <span class="bold">Duplicate</span>. A copy of the alert is created and the Add to Pulse window is displayed.<br /><img src="../../Resources/Images/v7copyalert.png" class="thumblarge" /><br />You can modify the alert’s settings from the <span class="bold">Add to Pulse</span> window. For more information about these settings, click <a href="create-data-alert.htm">here</a>.</li>
+        </ol>
+        <h2 class="notoc">Deactivating Your Notifications</h2>
+        <p MadCap:conditions="Default.Website">Each time you add a tile to <MadCap:variable name="Variables.CompanyName" /> Pulse or create an alert, by default, you will receive notifications when the event is triggered. If you do not want to receive any notifications, you can disable notifications from being sent by toggling the notifications. When you toggle the notifications, you no longer receive notifications when an alert is triggered, however, other users with whom the alert was shared will continue to be notified. See <a href="#Deactiva">Deactivating Notifications for All Users</a> to turn off notifications for everyone associated with an alert.</p>
+        <p class="bold">To deactivate notifications:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Pulse</span>.</li>
+            <li>From the Tile menu of the relevant alert, toggle <span class="bold">Receive Notifications</span>.<br /><img src="../../Resources/Images/receivenote.png" class="thumblarge" MadCap:conditions="Default.Website" /></li>
+        </ol>
+        <h2 class="notoc" MadCap:conditions="Default.Website"><a name="Deactiva"></a>Deactivating Notifications for All Users</h2>
+        <p MadCap:conditions="Default.Website">If you have added an alert that is no longer relevant or you want to deactivate the alert for all users, you can turn off the alert.</p>
+        <p MadCap:conditions="Default.Website">When you turn off an alert, no users are notified when the event that triggers the alert occurs.</p>
+        <p class="bold" MadCap:conditions="Default.Website">To deactivate notifications for all users:</p>
+        <ol>
+            <li MadCap:conditions="Default.Website">In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Pulse</span>.</li>
+            <li MadCap:conditions="Default.Website">From the Tile menu of the relevant alert, select <span class="bold">Turn Off</span>. A confirmation dialog box is displayed.<br /><img src="../../Resources/Images/turnoff-300x130.png" class="thumblarge" /></li>
+            <li MadCap:conditions="Default.Website">Click <span class="bold">Yes</span> to confirm that you want to turn off all notifications for the alert. The alert is turned off.<br />Alerts that have been turned off appear in the <span class="bold">Pulse</span> page as shaded tiles. You can reactivate the alert by selecting <span class="bold">Turn On</span> from the Tile menu.</li>
+        </ol>
+        <h2 class="notoc" MadCap:conditions="Default.Website">Deleting Tiles in <MadCap:variable name="Variables.CompanyName" /> Pulse</h2>
+        <p MadCap:conditions="Default.Website">When a tile is no longer needed, you can delete the tile through the <MadCap:variable name="Variables.CompanyName" /> Pulse page.</p>
+        <p MadCap:conditions="Default.Website">Deleting an alert removes it from the <MadCap:variable name="Variables.CompanyName" /> <span class="bold">Pulse</span> page and users are no longer notified.</p>
+        <p class="bold" MadCap:conditions="Default.Website">To delete an alert:</p>
+        <ol>
+            <li MadCap:conditions="Default.Website">In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Pulse</span>.</li>
+            <li MadCap:conditions="Default.Website">In the relevant alert’s menu, select <span class="bold">Delete</span>.</li>
+        </ol>
+        <h2 class="notoc" MadCap:conditions="Default.Website">Removing <MadCap:variable name="Variables.CompanyName" /> Pulse</h2>
+        <p MadCap:conditions="Default.Website">You can remove the <MadCap:variable name="Variables.CompanyName" /> Pulse through the <MadCap:variable name="Variables.CompanyName" /> REST API. Removing <MadCap:variable name="Variables.CompanyName" /> Pulse removes the Pulse page from the <MadCap:variable name="Variables.Sisense Web Application" /> and deactivates all the alerts defined in <MadCap:variable name="Variables.CompanyName" /> Pulse.</p>
+        <p class="bold" MadCap:conditions="Default.Website">To remove <MadCap:variable name="Variables.CompanyName" /> Pulse:</p>
+        <ol>
+            <li MadCap:conditions="Default.Website">Access the <MadCap:variable name="Variables.CompanyName" /> REST API.<br /><img src="../../Resources/Images/v7rest-1024x442.png" class="thumblarge" /></li>
+            <li MadCap:conditions="Default.Website">In version 1.0 of the REST API, select the <span class="bold">PATCH Dashboard</span> endpoint, <span class="bold">/features/{key}/toggle</span>.</li>
+            <li MadCap:conditions="Default.Website">In the <span class="bold">Authorization</span> field, enter your <MadCap:variable name="Variables.CompanyName" /> authorization key.  The value of this field is the user’s API token, preceded by the keyword Bearer (with a space between it and the token). For information about how to retrieve this key, see <a href="http://developer.sisense.com/display/API2/Using+the+REST+API">Using the REST API</a>.</li>
+            <li MadCap:conditions="Default.Website">In the <span class="bold">Key</span> field, enter the name of the feature to be enabled or disabled. In the case of <MadCap:variable name="Variables.CompanyName" /> Pulse, the key is alerting. You can retrieve the available features that you can toggle from the GET /features endpoint.</li>
+            <li MadCap:conditions="Default.Website">In the <span class="bold">toggleFeature</span> field, set the active key value as true or false to enable (true) or disable (false) a feature.</li>
+            <li MadCap:conditions="Default.Website">Click <span class="bold">RUN</span> to toggle the alert.</li>
+        </ol>
+    </body>
+</html>

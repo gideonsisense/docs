@@ -1,0 +1,124 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Sisense via ODBC | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to <MadCap:variable name="Variables.CompanyName" /> via ODBC</h1>
+        <p><MadCap:variable name="Variables.CompanyName" /> has its own ODBC driver that allows you to connect your tool of choice directly to the <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>Some use case examples:</p>
+        <ul>
+            <li>Connect a 3rd party visualization tool directly to the <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>Build pixel-perfect reports using your existing reporting tools by connecting directly to the <MadCap:variable name="Variables.ElastiCube" /></li>
+            <li>Import data directly into Excel from <MadCap:variable name="Variables.ElastiCube" /> tables</li>
+            <li>Importing <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> tables from one <MadCap:variable name="Variables.ElastiCube" /> to another. Contact us through our <a href="https://support.sisense.com/hc/en-us/requests/new">Help Center</a> for more information for implementing this use case.</li>
+        </ul>
+        <p><span class="bold">Note</span>: Once installed with your Administrator’s user credentials, any user can access the <MadCap:variable name="Variables.ElastiCube" /> over ODBC. Connecting to <MadCap:variable name="Variables.CompanyName" /> via ODBC is not recommended for use cases that require data security.</p>
+        <p>This page will cover the following:</p>
+        <ul>
+            <li>Installing the <MadCap:variable name="Variables.CompanyName" /> ODBC driver</li>
+            <li>Creating a new <MadCap:variable name="Variables.CompanyName" /> ODBC connection</li>
+            <li>Use case example 1: Importing data from an <MadCap:variable name="Variables.ElastiCube" /> into Excel</li>
+            <li>Use case example 2: Importing data from an <MadCap:variable name="Variables.ElastiCube" /> into Tableau</li>
+        </ul>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> ODBC Driver is licensed for use by the number of licensed Users (Administrator, Designer or Viewer) of the Software licensed hereunder. Only the number of licensed Users of the Software are entitled to use or view data or query results produced via the <MadCap:variable name="Variables.CompanyName" /> ODBC Driver in third party tools.</p>
+        <h2 class="notoc">Installing the <MadCap:variable name="Variables.CompanyName" /> ODBC driver</h2>
+        <p>Depending on whether you will be connecting to <MadCap:variable name="Variables.CompanyName" /> through a 32 or 64 bit application, download and install the appropriate driver:</p>
+        <ul>
+            <li><a href="http://data.sisense.com/drivers/odbc/Sisense/x86/Sisense_ODBC_Driver_x86_v.1.0.0.248.exe">Download <MadCap:variable name="Variables.CompanyName" /> ODBC for 32-bit applications</a>
+            </li>
+            <li><a href="http://data.sisense.com/drivers/odbc/Sisense/x64/Sisense_ODBC_Driver_x64_v.1.0.0.248.exe">Download <MadCap:variable name="Variables.CompanyName" /> ODBC for 64-bit applications</a>
+            </li>
+        </ul>
+        <h2 class="notoc">Creating a New Sisense ODBC Connection</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> ODBC is a licensed feature.</p>
+        <p>Connections will only be accepted by the Sisense ElastiCube if the ODBC functionality has been enabled in your license and if you are using Sisense Version 6.0 or later. Please contact your customer support manager or open a request through our Help Center if your license currently does not include this. To upgrade to the latest version of Sisense, click <a href="getting-started/upgrade-sisense.htm">here</a>.</p>
+        <p>The following procedure explains how to create a new Sisense ODBC connection. Creating such a connection has to be done on every machine from which you want to connect to an ElastiCube via ODBC. Each connection is defined for a specific ElastiCube, so repeat this step for multiple ElastiCubes if necessary.</p>
+        <p class="bold">To create a new Sisense ODBC connection:</p>
+        <ol>
+            <li>From the <span class="bold">Start menu</span>, open the Windows ODBC Data Sources application. Notice that there are two different instances of it. One for 64 bit and another for 32 bit.<br />Tip for Windows 7 users: To quickly access the 32-bit ODBC window type "c:\Windows\SysWOW64\odbcad32.exe" from the Run… menu.</li>
+            <li>Under the ‘System DSN’ tab click Add…, and select “Sisense ODBC Driver”. Click <span class="bold">Finish</span>.</li>
+            <li>In the “New Sisense Datasource” window, fill in the following details:<br />In the <span class="bold">Data Source Name</span> field, enter a descriptive name for your connection.<br />(Optional) In the <span class="bold">Description</span> field, you can enter a description.<br />In the <span class="bold">Server</span> field, enter the Sisense server address.<br /><img src="../Resources/Images/localport.png" class="thumblarge" /></li>
+            <li>Click on the <span class="bold">ElastiCube</span> drop-down list. You will be prompted to enter your username and password.</li>
+            <li>From the <span class="bold">ElastiCube</span> drop-down list, select the ElastiCube.</li>
+            <li>If you are using a secured connection (SSL), select Use secure connection (SSL).</li>
+            <li>Click <span class="bold">Test</span> to verify the connection to the ElastiCube.</li>
+            <li>Click <span class="bold">OK</span> to save the connection.<br /><img src="../Resources/Images/testsource.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">Connecting to <MadCap:variable name="Variables.CompanyName" /> in Excel</h2>
+        <p>In Excel, you can use the <MadCap:variable name="Variables.ElastiCube" /> ODBC connector to import data from your <MadCap:variable name="Variables.ElastiCube" /> into your Excel worksheet or pivot, and also through Microsoft Query. After downloading and adding the ODBC connector, you can use any of the following methods to import the data from the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p class="bold">Method 1: Import data directly into a pivot table</p>
+        <ol>
+            <li>In Excel, create a Pivot Table by clicking <span class="bold">Pivot Table</span> under the <span class="bold">Insert</span> ribbon.</li>
+            <li>Select <span class="bold">Use an external data source</span>. Click <span class="bold">Choose Connection… </span>to browse and locate the source table.<br />If the connection does not appear, click <span class="bold">Browser for More…</span>, and then the <span class="bold">Connect to New Data Source</span> option.<br />Select <span class="bold">ODBC DSN</span>, and then the data source. Enter your username and password in the appropriate fields, and click <span class="bold">OK</span>.</li>
+            <li>Click <span class="bold">OK</span> to connect to the data.<br />Now you can drag and drop the fields into the relevant columns and rows, as you would for any pivot table in Excel.</li>
+        </ol>
+        <p class="bold">Method 2: Import data using the Microsoft Query option</p>
+        <ol>
+            <li>Under the <span class="bold">Data</span> ribbon, select <span class="bold">From Other Sources</span> &gt; <span class="bold">From Microsoft Query</span>.</li>
+            <li>Select the database, and click <span class="bold">OK</span>.</li>
+            <li>You can either click on the tables you want to add, or click <span class="bold">Cancel</span> to enter a visual environment and add the relevant tables.</li>
+            <li>You can now drag and drop connectors between fields from the different tables to create relationships.</li>
+            <li>Click on a field to add the data to Excel. Repeat for each field that you want to add.</li>
+            <li>You can now import the data into the worksheet. Click on the import button, and select the import options, such as where you want to import the data in the worksheet.</li>
+        </ol>
+        <h2 class="notoc">Using <MadCap:variable name="Variables.CompanyName" /> as a Live Connection in Tableau</h2>
+        <p>In Tableau, you can use the <MadCap:variable name="Variables.ElastiCube" /> ODBC connector to run your queries directly in the <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> instead of in Tableau’s in memory data engine.  After downloading and adding the ODBC connector, follow these steps:</p>
+        <ol>
+            <li>In Tableau, in the <span class="bold">Data</span> tab, click <span class="bold">Connect to Data</span> &gt; <span class="bold">Other Databases (ODBC)</span>.</li>
+            <li>From the <span class="bold">DSN</span> dropdown menu, select the <MadCap:variable name="Variables.ElastiCube" />, and click <span class="bold">Connect</span>.</li>
+            <li>You can now begin working with the data and define relationships.<br />Add tables as you would for any other data source in Tableau, and click <span>Update Now</span>.</li>
+            <li>Create a new worksheet in Tableau, and add the tables from the <MadCap:variable name="Variables.ElastiCube" /> as needed to run queries and create visualizations.</li>
+        </ol>
+        <h3 class="notoc">Accumulative Build Support</h3>
+        <p>The Sisense ODBC connector supports accumulative builds for certain data sources. Some of these are supported by default, while others, you must activate through the ODBC configuration file. The list of supported data sources is below. If you want to activate accumulative build support for a data source, open the file odbcConfig.json located in the directory:</p>
+        <p>C:\Program Files\Sisense\DataConnectors\DotNetContainer\Connectors\GenericODBC\</p>
+        <p>In the configuration file are JSON objects that represent each data source. Within each data source object is a boolean called “IsAccumulativeSupported”. When this value is true, the option to perform an accumulated build is available, and the value false removes this option. Below is an example object for MsSQL.</p>
+        <p class="code">{</p>
+        <p class="code">"Provider": "Mssql",</p>
+        <p class="code">"DriverNames": [</p>
+        <p class="code"> "SQLSRV32.DLL",</p>
+        <p class="code"> "SQLNCLI11.DLL"</p>
+        <p class="code"> ],</p>
+        <p class="code">"IsAccumulativeSupported": true</p>
+        <p class="code">},</p>
+        <p>After changing the value of IsAccumulativeSupported, save the file to update the supported build options in Sisense.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Source</th>
+                    <th>IsAccumulativeSupported</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>MySQL</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>MsSQL</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>MongoDB</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>BigQuery</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>HiveODBC</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>Snowflake</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>MapR Drill</td>
+                    <td>false</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

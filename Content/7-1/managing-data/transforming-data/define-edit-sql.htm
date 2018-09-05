@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Defining and Editing SQL Statements | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Editing SQL Statements</h1>
+        <p> <MadCap:variable name="Variables.CompanyName" /> makes it easy to edit custom tables. You can use SQL to customize the columns contained within a custom table.</p>
+        <p>When you edit a custom table, any changes you make are saved when you click <span class="bold">Save</span> unless the expression did not successfully parse. In this case, you are prompted to save a draft of the invalid expression.</p>
+        <p>
+            <img src="../../../Resources/Images/invalid.png" class="thumblarge" />
+        </p>
+        <p>If you save the invalid expression, <MadCap:variable name="Variables.CompanyName" /> continues to use the last valid expression that was saved when building an <MadCap:variable name="Variables.ElastiCube" />, but the next time you open a preview of the table, the invalid expression will be displayed. This allows you to continue building working <MadCap:variable name="Variables.ElastiCube" />s while letting you save incomplete expressions for later.</p>
+        <p>If you wish to display the last valid expression, you can click the Refresh button in the menu bar and then press Save.</p>
+        <p>
+            <img src="../../../Resources/Images/refresh.png" class="thumblarge" />
+        </p>
+        <p class="bold">To edit a custom table’s SQL:</p>
+        <ol>
+            <li>Select the custom table you want to edit and click <img src="../../../Resources/Images/v7preview.png" />.<br /><img src="../../../Resources/Images/customtable.png" class="thumblarge" /><br />The custom table area is displayed</li>
+            <li>Enter SQL statements to access tables and fields that exist in the schema. See related topics for more details on <a href="sql-reference.htm">SQL References</a> and <a href="function-reference/functions.htm">Function References</a>.</li>
+            <li>To view results based on the SQL statement, click <img src="../../../Resources/Images/v7preview3.png" class="docbutton" />. (<span class="bold">Note</span>: At least one build including the relevant base table must have been completed in order to preview results.)</li>
+            <li>Click <span class="bold">Save</span> to save your changes.</li>
+        </ol>
+        <p>
+            <span class="bold">Tips</span>
+        </p>
+        <ul>
+            <li>Press Ctrl + Space to complete an SQL statement.</li>
+            <li>To make it easier to access table fields, give the table name an alias, and reference the alias to bring up the related fields. For example Select A. From table as A.</li>
+            <li>You can add comments in expressions by using the ‘–’ for a single line or /…/ for blocks.</li>
+            <li>A good reference on compatible SQL commands is available on <a href="https://msdn.microsoft.com/en-us/library/bb510741">Microsoft MSDN</a>.</li>
+        </ul>
+    </body>
+</html>

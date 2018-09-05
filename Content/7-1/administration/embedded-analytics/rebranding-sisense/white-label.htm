@@ -1,0 +1,182 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>White Labeling Sisense | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>White Labeling <MadCap:variable name="Variables.CompanyName" /></h1>
+        <p><MadCap:variable name="Variables.CompanyName" /> enables you to rebrand (white label) the <MadCap:variable name="Variables.Sisense Web Application" /> into your native application or site by using the <MadCap:variable name="Variables.CompanyName" /> REST API to replace existing icons and images with your own.</p>
+        <p>In addition, you can rebrand the automated emails <MadCap:variable name="Variables.CompanyName" /> sends to match your company’s branding.</p>
+        <p>White labeling must be enabled in your license. To enable this feature, please contact your <MadCap:variable name="Variables.CompanyName" /> representative or open a request through our Help Center.</p>
+        <h2 class="notoc">Rebranding <MadCap:variable name="Variables.CompanyName" /></h2>
+        <p>You can rebrand the <MadCap:variable name="Variables.Sisense Web Application" /> and the automated emails sent by <MadCap:variable name="Variables.CompanyName" /> through <MadCap:variable name="Variables.CompanyName" />’s REST API.</p>
+        <p>There are two steps to rebranding the <MadCap:variable name="Variables.Sisense Web Application" />. The first step is to place your branded content into the <MadCap:variable name="Variables.CompanyName" /> branding directory where <MadCap:variable name="Variables.CompanyName" /> is installed. For a list of the files you can rebrand and their specific dimensions, see <a href="#White">White Labeling Configuration Options</a>.</p>
+        <p>The second step is to access the <MadCap:variable name="Variables.CompanyName" /> REST API, where you can embed your content directly into <MadCap:variable name="Variables.CompanyName" /> and modify text displayed to customers.</p>
+        <p class="bold">To rebrand the <MadCap:variable name="Variables.Sisense Web Application" />:</p>
+        <ol>
+            <li>Create a subfolder with your brand name in this directory (on the machine where <MadCap:variable name="Variables.CompanyName" /> is installed): “C:\Program Files\Sisense\PrismWeb\Resources\&lt;YourBrand&gt;”. <br />Put your branded files in this directory. The following files are supported:</li>
+        </ol>
+        <ul>
+            <li>Desktop Logo (for example: Logo-Desktop.png) – This is the main icon that is visible at the top left of the Sisense Web Application.</li>
+            <li>Tablet Logo (for example: Logo-Tablet.png)</li>
+            <li>Mobile Logo (for example: Logo-Mobile.png)</li>
+            <li>Favicon (for example: favicon.ico)<br /><span class="bold">Note</span>: Optimal dimensions for logo images: 92×26</li>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click <span class="bold">Admin</span>, and then <span class="bold">Rest API</span> , followed by <span class="bold">REST API Reference</span>.</li>
+        </ul>
+        <ol start="2">
+            <li>In the REST&#160;API&#160;Reference section, select version 0.9 in the top right corner. </li>
+            <li>Click /branding and then click the POST operation /branding.<br /></li>
+            <li>To get the required JSON format for the request, click the sample model schema to place the sample text in the body parameter.<br /><img src="../../../../Resources/Images/brandingpaste1.png" class="thumblarge" /><br />Replace the sample values with your required values. For an explanation of each parameter and how it modifies the <MadCap:variable name="Variables.Sisense Web Application" />, see <a href="#White">White Labeling Configuration Options</a>.</li>
+            <li>Click <span class="bold">RUN</span>. Refresh the <MadCap:variable name="Variables.Sisense Web Application" />page to view your changes.<br /><span class="bold">Note</span>: You can change just some of the parameters by leaving out those you do not want to update.</li>
+        </ol>
+        <h2 class="notoc"><a name="White"></a>White Labeling Configuration Options</h2>
+        <p>The following table provides a list of the features you can rebrand within the <MadCap:variable name="Variables.Sisense Web Application" /> and the JAQL code that must be modified to rebrand it.  Click the thumbnail image of the feature to see the default branding provided by <MadCap:variable name="Variables.CompanyName" /> and where your branding will appear.</p>
+        <table>
+            <thead>
+                <tr>
+                    <td style="font-weight: bold;">Name</td>
+                    <td style="font-weight: bold;">Description</td>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p><MadCap:variable name="Variables.CompanyName" /> Logo</p>
+                        <img src="../../../../Resources/Images/v7logo.png" class="thumblarge" />
+                    </td>
+                    <td>The <MadCap:variable name="Variables.CompanyName"></MadCap:variable> logo can be replaced with your own. You need to supply two sizes of the logo, for each device (Desktop / Tablet / Mobile). These logos affect the following screens:<p>&#160;</p><ul><li>Login Screen</li><li>Account Activation Screen</li><li>‘Forgot Password’ Screen</li></ul><p>Below is a table with the ideal logo dimensions (pixels):</p><table><tbody><tr><td>&#160;</td><td>Small</td><td>Large</td></tr><tr><td>Desktop</td><td>120x48</td><td>204×60</td></tr><tr><td>Tablet</td><td>92×24</td><td>163×74</td></tr><tr><td>Phone</td><td>92×24</td><td>198×168</td></tr></tbody></table><p><span class="bold">Important Notes:</span></p><ol><li>Images must be in URI format (web address)</li><li>No spaces are allowed in the address of the images</li><li>Transparent .png format is preferred</li></ol><p>"logo":{</p><p>"desktop":{</p><p>"small":"/resources/&lt;YourBrand&gt;/logoDesktopSmall.png",</p><p>"large":"/resources/&lt;YourBrand&gt;/logoDesktopLarge.png"</p><p>},</p><p>"phone":{</p><p>“small”:”/resources/&lt;YourBrand&gt;/logoPhoneSmall.png”,</p><p>“large”:”/resources/&lt;YourBrand&gt;/logoPhoneLarge.png”</p><p>},</p><p>“tablet”:{</p><p>“small”:”/resources/branding/logoTabletSmall.png”,</p><p>“large”:”/resources/branding/logoTabletLarge.png”</p><p>}</p><p>},</p></td>
+                </tr>
+                <tr>
+                    <td>Page Title and Favicon<br /><img src="../../../../Resources/Images/v7pagetitle.png" class="thumblarge" /></td>
+                    <td>The page title that appears in the browser tab/page and the Sisense favicon.<p>&#160;</p><p><span class="bold">Note</span>:</p><ol><li>Image must be in URI format (web address)</li><li>.ico format is preferred</li></ol><p>You can modify these images by updating the values of the following JAQL parameters in the REST API:</p><p>"favicon" : "/resources/&lt;YourBrand&gt;/fav.ico"</p><p>"pageTitle": "<MadCap:variable name="Variables.CompanyName" />",</p></td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Homepage</p>
+                        <p>
+                            <img src="../../../../Resources/Images/v7homearea.png" class="thumblarge" />
+                        </p>
+                    </td>
+                    <td>
+                        <p>The home screen when your users log into <MadCap:variable name="Variables.CompanyName" />.
+</p>
+                        <p><span class="bold">Note</span>: The prefix http:// or https:// must be included.</p>
+                        <p>
+
+“homePage” : “http://www.mysite.com”,</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Homepage Config</p>
+                        <p>
+                            <img src="../../../../Resources/Images/v7homeconfig.png" class="thumblarge" />
+                        </p>
+                    </td>
+                    <td>
+                        <p>The Welcome banner of the homepage displayed when users log into <MadCap:variable name="Variables.CompanyName" />. </p>
+                        <p>You define the following properties in the homePageConfig object:&#160;</p>
+                        <p><span class="bold">hideSearchInNavver</span>: Indicate if you want to display the Search bar below or hide it. By default, the Search bar is displayed. </p>
+                        <p><span class="bold">marketingPart</span>: The URL&#160;of the Marketing Banner iFrame. This iFrame is displayed on the top part of the <span class="bold">Analytics</span> and <span class="bold">Data</span> pages where the Welcome message and Sample Dashboards and <MadCap:variable name="Variables.ElastiCube" />s are displayed. You can replace this iFrame with your own content by defining the URL&#160;as the value of this key. </p>
+                        <p><span class="bold">tutorialsLink</span>: The Tutorials button. Enter a URL&#160;that opens your  site. </p>
+                        <p><span class="bold">documentationLink</span>: The Documentation button. Enter a URL&#160;that opens your documentation site. </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Login Page</p>
+                        <p>
+                            <img src="../../../../Resources/Images/v7loginpage.png" class="thumblarge" />
+                        </p>
+                    </td>
+                    <td>
+                        <p>The Login page title and subtitles.
+</p>
+                        <p>“loginTitle” : “WELCOME TO SISENSE”,”loginSubtitle” : “Sign in &amp; start exploring”</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Copyright Text</p>
+                        <p>
+                            <img src="../../../../Resources/Images/v7copyright.png" class="thumblarge" />
+                        </p>
+                    </td>
+                    <td>
+                        <p>The copyright text that appears in <MadCap:variable name="Variables.CompanyName" />.
+</p>
+                        <p>“copyrightText”:”Copyright © 2018 Sisense inc. All rights reserved”,</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Activation Titles<br /><img src="../../../../Resources/Images/v7activation.png" class="thumblarge" /></p>
+                    </td>
+                    <td>The titles on the activation page for new users signing in to <MadCap:variable name="Variables.CompanyName" />.<br />“activationTitle”: “First Time Activation”,”activationSubtitle”: “Please choose a password to begin using Sisense”,</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>Contact Us </p>
+                        <p>
+                            <img src="../../../../Resources/Images/contactus.png" />
+                        </p>
+                    </td>
+                    <td>The Contact Us text is displayed when you request a password and enter your email on the Recover Password page. This text displays a message  and provides a link to your Support services.<br />“contactUsText” : “For further assistance, please contact our success management team!: &lt;a href=’mailto:support@sisense.com’&gt;support@sisense.com&lt;/a&gt;”,</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>User Support</p>
+                        <p>
+                            <img src="../../../../Resources/Images/v7branding.png" />
+                        </p>
+                    </td>
+                    <td>
+                        <p>The User Support text is displayed in the top right corner of the <MadCap:variable name="Variables.Sisense Web Application" />.</p>
+                        <p>
+Be default, the links redirect customers to the <MadCap:variable name="Variables.CompanyName" /> user forums and documentation site. You can modify these URLs to redirect users to your user forums or documentation. This is useful for example when providing OEM services or if you have special forums or instructions to display to your users.
+</p>
+                        <p>
+“documentationUrl”: “string”,
+</p>
+                        <p>“forumUrl”: “string”
+
+</p>
+                        <p>Replace the string with the URL to the relevant locations to redirect your users to your support sites.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Emails</td>
+                    <td>
+                        <p>The sender information and subject line text displayed in automated emails.
+</p>
+                        <p>For further customization, see <a href="rebrand-auto.htm">Rebranding <MadCap:variable name="Variables.CompanyName"></MadCap:variable> Automated Emails</a>.</p>
+                        <p>
+
+Note: Branded emails (for example, using the senderEmail and senderName paramaters) will be used for new user/group invitation emails and password recovery emails. When sharing a dashboard report, or for subscription emails, the email will be sent without the original name and email of the dashboard’s creator.
+</p>
+                        <p><span class="code">“emails” : {“senderEmail”:”sys-admin@company.com”,”senderName”:”sys-admin”,”templates_directory” : “/resources/&lt;YourBrand&gt;/emails”,”passwordRecoverySubject” :</span>
+                        </p>
+                        <p><span class="code">
+“Sisense password recovery”,
+
+“newUserInviteSubject” :</span>
+                        </p>
+                        <p><span class="code"> “Sisense account activation”,
+
+“shareWithNewUserSubject” : </span>
+                        </p>
+                        <p><span class="code">“A Dashboard has been shared with you:”,
+
+“shareWithExistingUserSubject” : “A Dashboard has been shared with you:”</span>
+                        </p>
+                        <p><span class="code">
+
+“transferOwnership“: “string”
+
+}</span>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

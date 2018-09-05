@@ -1,0 +1,503 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Quickbooks Desktop | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Quickbooks Desktop</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Quickbooks Desktop connector is a standalone connector that allows you to import data from Quickbooks Desktop’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Quickbooks Desktop APIs. To obtain a connection string, you will need to create a Quickbooks Desktop app.</p>
+        <p>Once you have connected to Quickbooks Desktop, you can import a variety of tables from the Quickbooks Desktop API.</p>
+        <p>This page describes how to install the Quickbooks Desktop connector, how to connect to Quickbooks Desktop with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Quickbooks Desktop Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Quickbooks Desktop REST API</a>
+            </li>
+            <li><a href="#Adding">Adding Quickbooks Desktop Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Quickboo">Quickbooks Desktop Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Quickbooks Desktop Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Quickbooks Desktop connector as a standalone connector that you can download and add to your list of default Sisense connectors.</p>
+        <p class="bold">To install the Quickbooks Desktop connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/QuickBooks Desktop.Connector.Installer.exe">Download</a> the Quickbooks Desktop installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The Quickbooks Desktop connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Quickbooks Desktop REST API</h2>
+        <p>The Quickbooks Desktop connector makes requests to QuickBooks through the Remote Connector. The Remote Connector is an easy-to-use tool that enables developers to access QuickBooks data remotely.The Remote Connector runs on the same machine as QuickBooks and accepts connections through a lightweight, embedded Web server.</p>
+        <p>The server supports SSL/TLS, enabling users to connect securely from remote machines. The first time you connect, you will need to authorize the driver with QuickBooks.</p>
+        <p>The Remote Connector can be used to read and write to QuickBooks in situations where direct COM access to QuickBooks is not available (e.g., ASP.NET, Java, or QuickBooks on a remote machine).</p>
+        <p>In the Remote Connector, you can define users and their passwords and then use these credentials in the connection string that you create to connect to your QuickBooks Desktop tables.</p>
+        <p>Follow the procedure below to connect to QuickBooks for the first time through the Remote Connector:</p>
+        <ol>
+            <li>Download the Remote Connector from <a href="http://remoteconnector.com/">remoteconnector.com</a> and install the Remote Connector on the machine where QuickBooks is installed.</li>
+            <li>Open the company file you want to connect to in QuickBooks using an administrator account in single-user mode.</li>
+            <li>Open the Remote Connector from the system tray and add a user on the Users tab. Enter a User and Password and select the level of access in the Data Access menu.<br /><img src="../../../Resources/Images/remoteConnect.png" class="thumblarge" /><br /><span class="bold">Note</span>: The Remote Connector does not use the User and Password properties to access QuickBooks; the User and Password properties authenticate the user to the Remote Connector. Authentication to QuickBooks is handled based on the Application Name property.</li>
+            <li>When you first connect, a dialog will appear in QuickBooks prompting you to authorize the application. After authorizing the application, you can then execute commands to QuickBooks. Specify the URL of the Remote Connector and the User and Password. By default, the Remote Connector connects to the currently open company file.</li>
+            <li>If you want to access QuickBooks when QuickBooks is not running, save the company file information for the user. The Remote Connector will then automatically open QuickBooks in the background with the company file for that user.</li>
+        </ol>
+        <p><span class="bold">Note</span>: If the QuickBooks UI is open, you can only connect to that company file. Additionally, note that the user permissions you run the Remote Connector under must match the user permissions you run QuickBooks under. The Remote Connector installation process installs the Remote Connector as a service under the current user account.</p>
+        <h2 class="notoc"><a name="Adding"></a>Adding Quickbooks Desktop Tables to your ElastiCube</h2>
+        <p>Sisense uses connection strings to connect to Quickbooks Desktop and import data into the ElastiCube Manager.</p>
+        <p>The connection string to connect to Quickbooks Desktop has the following structure:</p>
+        <p class="code">jdbc:Quickbooks Desktop:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a Quickbooks Desktop connection string:</p>
+        <p class="code">jdbc:quickbooks:User=xxxxx;Password=xxxxxxxxxx;URL=http://xxxxxxxxxxxx;</p>
+        <ul>
+            <li><span class="bold">User</span>: Set this to username defined in Remote Connector.</li>
+            <li><span class="bold">Password</span>:  Set this to password defined in Remote Connector.</li>
+            <li><span class="bold">URL</span>: The IP address of the remote machine where Remote Connector wa installed and the port. The port is defined under Connection Settings in the Advanced tab of the Remote Connector.</li>
+            <li><span class="bold">OAuthSettingsLocation</span>: The location of the settings file where OAuth values are saved for each user when InitiateOAuth is set to GETANDREFRESH. See <a href="#Switchin">Switching between Accounts</a> for more information.</li>
+        </ul>
+        <p><span class="bold">Note</span>: To switch between accounts, you need to delete the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\QuickbooksDesktop\DataProvider.</p>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <p class="bold">To add Quickbooks Desktop data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Quickbooks Desktop</span>. The Connect to Quickbooks Desktop window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Quickbooks Desktop is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Quickbooks Desktop and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. <br />The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h3 class="notoc"><a name="Switchin"></a>Switching between Accounts</h3>
+        <p>When you connect to the Quickbooks Desktop data source, Sisense saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Quickbooks Desktop Data Provider on your Sisense server. To connect to the Quickbooks Desktop data source with another user on the same machine, you must delete the OAuthsettings.txt file. Sisense will then generate a new file for that user.</p>
+        <p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the <span class="bold">OAuthSettingsLocation</span> parameter. When each user connects to the data source, Sisense generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the Quickbooks Desktop data source and for each user, Sisense generates a file that contains that user’s OAuth values in the location defined in the string.</p>
+        <p class="code">jdbc:QuickbooksDesktop:OAuthSettingsLocation=C:\QuickbooksDesktop\auth\john.txt;OAuthClientId=11276856774486;</p>
+        <p class="code">OAuthClientSecret=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p class="code">jdbc:QuickbooksDesktop:OAuthSettingsLocation=C:\QuickbooksDesktop\auth\sally.txt;OAuthClientId=11276856774486;</p>
+        <p class="code">OAuthClientSecret=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\QuickbooksDesktop\auth\.</p>
+        <p>This is useful if you support many users who each need to access the Quickbooks Desktop data source.</p>
+        <h2 class="notoc"><a name="Quickboo"></a>Quickbooks Desktop Tables</h2>
+        <p>Quickbooks Desktop’s RESTful APIs expose the following Quickbooks Desktop tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Quickbooks Desktop connector:</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accounts</td>
+                    <td>Create, update, delete, and query QuickBooks Accounts. To update Accounts, set the QBXMLVersion to 6.0 or higher.</td>
+                </tr>
+                <tr>
+                    <td>BillExpenseItems</td>
+                    <td>Create, update, delete, and query QuickBooks Bill Expense Line Items.</td>
+                </tr>
+                <tr>
+                    <td>BillLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Bill Line Items.</td>
+                </tr>
+                <tr>
+                    <td>BillPaymentChecks</td>
+                    <td>Create, update, delete, and query QuickBooks Bill Payment Checks. QBXMLVersion must be set to 6.0 or higher to update a BillPaymentCheck.</td>
+                </tr>
+                <tr>
+                    <td>BillPaymentChecksAppliedTo</td>
+                    <td>Create, update, delete, and query QuickBooks Bill Payment AppliedTo aggregates. In a Bill Payment, each AppliedTo aggregate represents the Bill transaction to which this part of the payment is being applied.</td>
+                </tr>
+                <tr>
+                    <td>BillPaymentCreditCards</td>
+                    <td>Create, update, delete, and query QuickBooks Bill Payments.</td>
+                </tr>
+                <tr>
+                    <td>BillPaymentCreditCardsAppliedTo</td>
+                    <td>Create, update, delete, and query QuickBooks Bill Payment AppliedTo aggregates. In a Bill Payment, each AppliedTo aggregate represents the Bill transaction to which this part of the payment is being applied.</td>
+                </tr>
+                <tr>
+                    <td>Bills</td>
+                    <td>Create, update, delete, and query QuickBooks Bills.</td>
+                </tr>
+                <tr>
+                    <td>BuildAssemblies</td>
+                    <td>Insert, Update, delete, and query QuickBooks Build Assembly transactions.</td>
+                </tr>
+                <tr>
+                    <td>BuildAssemblyLineItems</td>
+                    <td>Create and query QuickBooks Build Assembly transactions.</td>
+                </tr>
+                <tr>
+                    <td>CheckExpenseItems</td>
+                    <td>Create, update, delete, and query QuickBooks Check Expense Line Items.</td>
+                </tr>
+                <tr>
+                    <td>Checks</td>
+                    <td>Create, update, delete, and query QuickBooks Check Line Items.</td>
+                </tr>
+                <tr>
+                    <td>Class</td>
+                    <td>Create, update, delete, and query QuickBooks Classes. QuickBooks requires QBXML version 8.0 or higher for updates to a Class.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardChargeExpenseItems</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Card Charge Expense Line Items.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardChargeLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Card Charge Line Items.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardCharges</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Card Charges.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardCreditExpenseItems</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Card Credit Expense Line Items.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardCreditLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Card Credit Line Items.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardCredits</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Card Credits.</td>
+                </tr>
+                <tr>
+                    <td>CreditMemoLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Memo Line Items.</td>
+                </tr>
+                <tr>
+                    <td>CreditMemos</td>
+                    <td>Create, update, delete, and query QuickBooks Credit Memos.</td>
+                </tr>
+                <tr>
+                    <td>Currency</td>
+                    <td>Create, update, delete, and query QuickBooks Currencies. This table requires QBXML version 8.0 or higher, and you will need to enable multiple Currencies in your QuickBooks company file to use it.</td>
+                </tr>
+                <tr>
+                    <td>CustomerContacts</td>
+                    <td>Create, update, delete, and query QuickBooks Customer Contacts. This table requires QBXML version 12.0 or higher, and is only available in QuickBooks editions 2016 and above.</td>
+                </tr>
+                <tr>
+                    <td>CustomerMessages</td>
+                    <td>Create, delete, and query Customer Messages.</td>
+                </tr>
+                <tr>
+                    <td>CustomerNotes</td>
+                    <td>Create, update, and query QuickBooks Customer Notes. This table requires QBXML version 12.0 or higher.</td>
+                </tr>
+                <tr>
+                    <td>Customers</td>
+                    <td>Create, update, delete, and query QuickBooks Customers.</td>
+                </tr>
+                <tr>
+                    <td>CustomerShippingAddresses</td>
+                    <td>Create, update, delete, and query QuickBooks Customer Shipping Addresses. Multiple Customer Shipping Addresses are supported in only QuickBooks 2013 and higher. Additionally, this table requires QBXML version 12.0 or higher.</td>
+                </tr>
+                <tr>
+                    <td>CustomerTypes</td>
+                    <td>Create, update, delete, and query QuickBooks Customer Types.</td>
+                </tr>
+                <tr>
+                    <td>DateDrivenTerms</td>
+                    <td>Create, delete, and query QuickBooks Date Driven Terms.</td>
+                </tr>
+                <tr>
+                    <td>DepositLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Deposit Line Items. QBXMLVersion must be set to 7.0 or higher to update a deposit.</td>
+                </tr>
+                <tr>
+                    <td>Deposits</td>
+                    <td>Create, update, delete, and query QuickBooks Deposits. QBXMLVersion must be set to 7.0 or higher to update a deposit.</td>
+                </tr>
+                <tr>
+                    <td>EmployeeEarnings</td>
+                    <td>Create, update, delete, and query QuickBooks Employee Earnings.</td>
+                </tr>
+                <tr>
+                    <td>Employees</td>
+                    <td>Create, update, delete, and query QuickBooks Employees.</td>
+                </tr>
+                <tr>
+                    <td>EstimateLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Estimate Line Items.</td>
+                </tr>
+                <tr>
+                    <td>Estimates</td>
+                    <td>Create, update, delete, and query QuickBooks Estimates.</td>
+                </tr>
+                <tr>
+                    <td>InventoryAdjustmentLineItems</td>
+                    <td>Create and query QuickBooks Inventory Adjustment Line Items.</td>
+                </tr>
+                <tr>
+                    <td>InventoryAdjustments</td>
+                    <td>Create, query, and delete QuickBooks Inventory Adjustments.</td>
+                </tr>
+                <tr>
+                    <td>InventorySites</td>
+                    <td>Create, update, delete, and query QuickBooks Inventory Sites. Inventory Sites are only available in QuickBooks Enterprise 2010 and above, and only with the Advanced Inventory add-on.</td>
+                </tr>
+                <tr>
+                    <td>InvoiceLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Invoice Line Items.</td>
+                </tr>
+                <tr>
+                    <td>Invoices</td>
+                    <td>Create, update, delete, and query QuickBooks Invoices.</td>
+                </tr>
+                <tr>
+                    <td>ItemLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Item Line Items.</td>
+                </tr>
+                <tr>
+                    <td>ItemReceiptExpenseItems</td>
+                    <td>Create, update, delete, and query QuickBooks Item Receipt Expense Line Items.</td>
+                </tr>
+                <tr>
+                    <td>ItemReceiptLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Item Receipt Line Items.</td>
+                </tr>
+                <tr>
+                    <td>ItemReceipts</td>
+                    <td>Create, update, delete, and query QuickBooks Item Receipts.</td>
+                </tr>
+                <tr>
+                    <td>Items</td>
+                    <td>Create, update, delete, and query QuickBooks Items.</td>
+                </tr>
+                <tr>
+                    <td>JobTypes</td>
+                    <td>Create and query QuickBooks JobTypes.</td>
+                </tr>
+                <tr>
+                    <td>JournalEntries</td>
+                    <td>Create, update, delete, and query QuickBooks Journal Entries. Note that while Journal Entry Lines can be created with a new Journal Entry, they cannot be added or removed from an existing Journal Entry.</td>
+                </tr>
+                <tr>
+                    <td>JournalEntryLines</td>
+                    <td>Create, update, delete, and query QuickBooks Journal Entries. Note that while Journal Entry Lines can be created with a new Journal Entry, they cannot be added or removed from an existing Journal Entry.</td>
+                </tr>
+                <tr>
+                    <td>OtherNames</td>
+                    <td>Create, update, delete, and query QuickBooks Other Name entities.</td>
+                </tr>
+                <tr>
+                    <td>PaymentMethods</td>
+                    <td>Create, update, delete, and query QuickBooks Payment Methods.</td>
+                </tr>
+                <tr>
+                    <td>PayrollNonWageItems</td>
+                    <td>Query QuickBooks Non-Wage Payroll Items.</td>
+                </tr>
+                <tr>
+                    <td>PayrollWageItems</td>
+                    <td>Create and query QuickBooks Wage Payroll Items.</td>
+                </tr>
+                <tr>
+                    <td>PriceLevelPerItem</td>
+                    <td>Create and query QuickBooks Price Levels Per Item. Only QuickBooks Premier and Enterprise support Per-Item Price Levels. Note that while Price Levels can be added from this table, you may only add Per-Item Price Levels from this table. Price Levels may be deleted from the PriceLevels table. This table requires QBXML version 4.0 or later.</td>
+                </tr>
+                <tr>
+                    <td>PriceLevels</td>
+                    <td>Create, delete, and query QuickBooks Price Levels. Note that while Price Levels can be added and deleted from this table, you may add only fixed-percentage Price Levels from this table. Per-Item Price Levels may be added via the PriceLevelPerItem table. This table requires QBXML version 4.0 or higher.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrderLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Purchase Order Line Items.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrders</td>
+                    <td>Create, update, delete, and query QuickBooks Purchase Orders.</td>
+                </tr>
+                <tr>
+                    <td>ReceivePayments</td>
+                    <td>Create, update, delete, and query QuickBooks Receive Payment transactions. QBXMLVersion must be set to 6.0 or higher to update a ReceivePayment.</td>
+                </tr>
+                <tr>
+                    <td>ReceivePaymentsAppliedTo</td>
+                    <td>Create, update, and query QuickBooks Receive Payment AppliedTo aggregates. In a Receive Payment, each AppliedTo aggregate represents the transaction to which this part of the payment is being applied. QBXMLVersion must be set to 6.0 or higher to update a ReceivePayment.</td>
+                </tr>
+                <tr>
+                    <td>SalesOrderLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Order Line Items.</td>
+                </tr>
+                <tr>
+                    <td>SalesOrders</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Orders.</td>
+                </tr>
+                <tr>
+                    <td>SalesReceiptLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Receipt Line Items.</td>
+                </tr>
+                <tr>
+                    <td>SalesReceipts</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Receipts.</td>
+                </tr>
+                <tr>
+                    <td>SalesReps</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Rep entities.</td>
+                </tr>
+                <tr>
+                    <td>SalesTaxCodes</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Tax Codes.</td>
+                </tr>
+                <tr>
+                    <td>SalesTaxItems</td>
+                    <td>Create, update, delete, and query QuickBooks Sales Tax Items.</td>
+                </tr>
+                <tr>
+                    <td>ShippingMethods</td>
+                    <td>Create, update, delete, and query QuickBooks Shipping Methods.</td>
+                </tr>
+                <tr>
+                    <td>StandardTerms</td>
+                    <td>Create, update, delete, and query QuickBooks Standard Terms.</td>
+                </tr>
+                <tr>
+                    <td>StatementCharges</td>
+                    <td>Create, update, delete, and query QuickBooks Statement Charges.</td>
+                </tr>
+                <tr>
+                    <td>TimeTracking</td>
+                    <td>Create, update, delete, and query QuickBooks Time Tracking events.</td>
+                </tr>
+                <tr>
+                    <td>ToDo</td>
+                    <td>Create, update, delete, and query QuickBooks To Do entries.</td>
+                </tr>
+                <tr>
+                    <td>TransferInventory</td>
+                    <td>Query and delete QuickBooks Transfer Inventory transactions. Transfer Inventory is available in only QuickBooks Enterprise 2010 and above, and only with the Advanced Inventory add-on.</td>
+                </tr>
+                <tr>
+                    <td>TransferInventoryLineItems</td>
+                    <td>Create and query QuickBooks Transfer Inventory Line Items. Transfer Inventory is available in only QuickBooks Enterprise 2010 and above, and only with the Advanced Inventory add-on.</td>
+                </tr>
+                <tr>
+                    <td>Transfers</td>
+                    <td>Create, update, and query QuickBooks transfers. Requires QBXML version 12.0 or higher.</td>
+                </tr>
+                <tr>
+                    <td>UnitOfMeasure</td>
+                    <td>Create, update, delete, and query QuickBooks units of measure. QuickBooks requires QBXML version 7.0 or higher to use this table.</td>
+                </tr>
+                <tr>
+                    <td>UnitOfMeasureDefaultUnits</td>
+                    <td>Create and query QuickBooks unit-of-measure default units. QuickBooks requires QBXML version 7.0 or higher to use this table.</td>
+                </tr>
+                <tr>
+                    <td>UnitOfMeasureRelatedUnits</td>
+                    <td>Create and query QuickBooks unit-of-measure related units. QuickBooks requires QBXML version 7.0 or higher to use this table.</td>
+                </tr>
+                <tr>
+                    <td>VehicleMileage</td>
+                    <td>Create, update, delete, and query QuickBooks Vehicle Mileage entities. QuickBooks requires QBXML version 6.0 or higher to use this table.</td>
+                </tr>
+                <tr>
+                    <td>VendorCreditExpenseItems</td>
+                    <td>Create, update, delete, and query QuickBooks Vendor Credit Expense Line Items.</td>
+                </tr>
+                <tr>
+                    <td>VendorCreditLineItems</td>
+                    <td>Create, update, delete, and query QuickBooks Vendor Credit Line Items.</td>
+                </tr>
+                <tr>
+                    <td>VendorCredits</td>
+                    <td>Create, update, delete, and query QuickBooks Vendor Credits.</td>
+                </tr>
+                <tr>
+                    <td>Vendors</td>
+                    <td>Create, update, delete, and query QuickBooks Vendors.</td>
+                </tr>
+                <tr>
+                    <td>VendorTypes</td>
+                    <td>Create, update, delete, and query QuickBooks Vendor Types.</td>
+                </tr>
+                <tr>
+                    <td>WorkersCompCodeLines</td>
+                    <td>Query QuickBooks Workers Comp Code entries by line. Requires QBXML Version 7.0 or higher.</td>
+                </tr>
+                <tr>
+                    <td>WorkersCompCodes</td>
+                    <td>Query QuickBooks Workers Comp Code entries. Requires QBXML Version 7.0 or higher.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Available Views</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>BillLinkedTransactions</td>
+                    <td>Query QuickBooks Bill Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>CompanyInfo</td>
+                    <td>Query the company information from QuickBooks.</td>
+                </tr>
+                <tr>
+                    <td>CreditMemoLinkedTransactions</td>
+                    <td>Query QuickBooks Credit Memo Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>DeletedEntities</td>
+                    <td>Query deleted Entities.</td>
+                </tr>
+                <tr>
+                    <td>DeletedTransactions</td>
+                    <td>Query deleted Transactions.</td>
+                </tr>
+                <tr>
+                    <td>EstimateLinkedTransactions</td>
+                    <td>Query QuickBooks Estimate Linked transactions.</td>
+                </tr>
+                <tr>
+                    <td>Host</td>
+                    <td>Query the QuickBooks host process. The Host represents information about the QuickBooks process currently being executed.</td>
+                </tr>
+                <tr>
+                    <td>InvoiceLinkedTransactions</td>
+                    <td>Query QuickBooks Invoice Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>ItemReceiptLinkedTransactions</td>
+                    <td>Query QuickBooks Item Receipt Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>ItemSites</td>
+                    <td>Create, update, delete, and query QuickBooks Item Sites. Item sites are only available in QuickBooks Enterprise 2010 and above, and only with the Advanced Inventory add-on. This table requires a minimum of QBXML version 10.0.</td>
+                </tr>
+                <tr>
+                    <td>Preferences</td>
+                    <td>Query information about many of the preferences the QuickBooks user has set in the company file.</td>
+                </tr>
+                <tr>
+                    <td>PurchaseOrderLinkedTransactions</td>
+                    <td>Query QuickBooks Purchase Order Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>SalesOrderLinkedTransactions</td>
+                    <td>Query QuickBooks Sales Order Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>StatementChargeLinkedTransactions</td>
+                    <td>Query QuickBooks Statement Charge Linked Transactions.</td>
+                </tr>
+                <tr>
+                    <td>Templates</td>
+                    <td>Query QuickBooks templates.</td>
+                </tr>
+                <tr>
+                    <td>Transactions</td>
+                    <td>Query QuickBooks transactions. You may search the Transactions using a number of values including Type, Entity, Account, ReferenceNumber, Item, Class, Date, and TimeModified.</td>
+                </tr>
+                <tr>
+                    <td>VendorCreditLinkedTransactions</td>
+                    <td>Query QuickBooks Vendor Credit Linked Transactions.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

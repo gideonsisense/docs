@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1310" MadCap:lastWidth="903">
+    <head>
+        <title>K-Means | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>K-Means</h1>
+        <p>The K-means add-on enables you to perform K-Means clustering on your data within the Sisense Web Application. K-means clusters are partitioned into statistically significant groups according to measures you define by the k-means method.</p>
+        <p>The K-means add-on requires that you have an R server installed and it is configured to work with Sisense. For more information, see <a href="https://documentation.sisense.com/using-r-in-formulas/#connecting">Connecting Sisense to your R Server</a>.</p>
+        <p>
+            <img src="../../Resources/Images/kmeans-1.png" class="thumblarge" />
+        </p>
+        <p>Through the K-Means add-on, you can identify distinct groups in your data based on how close they are to each other.</p>
+        <p class="bold">To install the K-means add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/kmeans.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\</span> folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>In the Sisense Web Application, create a scatter chart by selecting <span class="bold">New Widget &gt; Advanced Configuration &gt; Scatter Chart</span>.</li>
+            <li>Define the relevant measures for your scatter chart.</li>
+            <li>From the widget menu, select K-means.<br /><img src="../../Resources/Images/kmeans.png" class="thumblarge" /><br />The Clustering window is displayed.<br /><img src="../../Resources/Images/clustering.png" class="thumblarge" /></li>
+            <li>In the Clustering window, add up to four measures. Measures represent numeric matrices of data, or an object that can be coerced to such a matrix (such as a numeric vector or a data frame with all numeric columns).</li>
+            <li>Select the number of clusters. For each cluster, Sisense assigns a color to represent the cluster as a statistically significant group within the chart.</li>
+            <li>Click <span class="bold">Apply</span>, then click <span class="bold">Apply</span> in the Widget Editor.  The k-means clustering widget is displayed in the dashboard.</li>
+        </ol>
+    </body>
+</html>

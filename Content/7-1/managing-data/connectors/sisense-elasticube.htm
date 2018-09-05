@@ -1,0 +1,137 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="6932" MadCap:lastWidth="704">
+    <head>
+        <title>Connecting to Sisense ElastiCubes | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Sisense ElastiCubes</h1>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" />s can also be connected to a data source using the <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> connector or the <MadCap:variable name="Variables.CompanyName" /> ODBC, allowing you to import tables across different <MadCap:variable name="Variables.ElastiCube" />s. This can be useful for several use cases, such as:</p>
+        <ul>
+            <li>Separating custom SQL logic that is used for heavy data transformation from the main <MadCap:variable name="Variables.ElastiCube" /> for easier management and shorter build times.</li>
+            <li>Combining tables that are based on different refresh schedules. As every  <MadCap:variable name="Variables.ElastiCube" /> has its own build schedule, it is possible to import a table from an ElastiCube that doesn’t refresh as often.</li>
+        </ul>
+        <p>This page describes how to connect to your <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" />s through both methods:</p>
+        <ul>
+            <li>
+                <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> Connector</li>
+            <li>ODBC Driver</li>
+        </ul>
+        <h2 class="notoc">
+            <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> Connector</h2>
+        <p>The native <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> Connector enables you to import data from other running <MadCap:variable name="Variables.ElastiCube" />s and provides faster performance over the <MadCap:variable name="Variables.CompanyName" /> ODBC. The <MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> Connector does not support SSL connections, however, you can import <MadCap:variable name="Variables.ElastiCube" /> through SSL connections via the ODBC driver described below.</p>
+        <p>
+            <span class="bold">Note</span>: The first time you connect to an <MadCap:variable name="Variables.ElastiCube" />, the <MadCap:variable name="Variables.ElastiCube" /> must be running. For subsequent connections, the connector automatically activates the <MadCap:variable name="Variables.ElastiCube" />. You can verify and activate your <MadCap:variable name="Variables.ElastiCube" />s from the <MadCap:variable name="Variables.CompanyName" /> Server Console in the <MadCap:variable name="Variables.ECM" /> Admin.</p>
+        <p>
+            <img src="../../../Resources/Images/server-console.png" class="thumblarge" />
+        </p>
+        <p class="bold">To import data from ElastiCubes:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Ecube Database</span>. The Connect to <MadCap:variable name="Variables.ElastiCube" /> window is displayed.<br /><img src="../../../Resources/Images/ec2ec.png" class="thumblarge" /></li>
+            <li>From the <span class="bold">Database server location</span> list, enter the address of your <MadCap:variable name="Variables.ElastiCube" />. If your <MadCap:variable name="Variables.ElastiCube" /> is hosted locally, the address is localhost:8081, unless you have changed your port in which case, the address will be localhost:(XXXX) where X is the port you defined. If your <MadCap:variable name="Variables.ElastiCube" /> is hosted on a remote server, the address is the IP address followed by the port (XX.XX.XX.XX:port). For remote connections, open the <MadCap:variable name="Variables.CompanyName" /> Server Console and click <img src="../../../Resources/Images/remoteconnection.png" class="docbutton" />to display the remote <MadCap:variable name="Variables.ElastiCube" />’s IP address.<br />OR<br />If you have previously entered the address, select the relevant address.</li>
+            <li>In the <span class="bold">User Name</span> and <span class="bold">Password</span> fields, enter your Sisense credentials that you use when logging into <MadCap:variable name="Variables.CompanyName" />.</li>
+            <li>Click <span class="bold">Connect to Server</span>. The running ElastiCubes at the location you defined are displayed in the Select (Running) ECube list.</li>
+            <li>Select the relevant <MadCap:variable name="Variables.ElastiCube" />. The Add table from <MadCap:variable name="Variables.ElastiCube" /> Tables is displayed.<br /><img src="../../../Resources/Images/ec2ec1.png" class="thumblarge" /></li>
+            <li>Select the relevant tables to import and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc">Sisense ODBC Driver</h2>
+        <p>The following topics explain how you can import ElastiCube data from another ElastiCube.</p>
+        <p class="bold">Downloading and Connecting the <MadCap:variable name="Variables.CompanyName" /> ODBC Driver</p>
+        <ol>
+            <li>Download and install the Sisense ODBC Driver <a href="odbc.htm">as described here</a>.</li>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Generic ODBC Driver</span>.</li>
+            <li>Select <span class="bold">DSN</span>. If a DSN file has already been created, select it in the dropdown list, and click Test Connection. If you need to add a DSN, see Adding a DSN. If your connection has been set up, you can click OK and review the tables generated by the <MadCap:variable name="Variables.CompanyName" /> ODBC driver.<br /></li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/dsnsettings.png" class="thumblargeli" />
+        </p>
+        <h3 class="notoc">Adding a DSN</h3>
+        <p>If a DSN has not yet been created, you must add the DSN manually.</p>
+        <p>
+            <span class="bold">Note</span>: To add a DSN you must run the Sisense ElastiCube Manager as an administrator.</p>
+        <p class="bold">To add a DSN:</p>
+        <ol>
+            <li>Click <span class="bold">Add DSN</span>.<br /><img src="../../../Resources/Images/CreateNewDataSource3.png" class="thumblarge" /></li>
+            <li>Select the System Data Source option. The created file will apply to all users in a specific machine only. Click <span class="bold">Next</span>.</li>
+            <li>Select the <MadCap:variable name="Variables.CompanyName" /> ODBC Driver and click <span class="bold">Next</span>.<br /><img src="../../../Resources/Images/sisenseodbc.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Finish</span>.</li>
+            <li>In the New <MadCap:variable name="Variables.CompanyName" /> Data Source window, do the following:
+				                 <table><thead><tr><th>Field</th><th>Procedure</th></tr></thead><tbody><tr><td>Data Source Name</td><td>Enter your name for the DSN that is to be displayed in the DSN dropdown list.</td></tr><tr><td>Description</td><td>Enter your description of the DSN.</td></tr><tr><td>Server</td><td>Enter the IP address of your <MadCap:variable name="Variables.ElastiCube" /> server.</td></tr><tr><td>Use secure connection (SSL)</td><td>Select to enable a secure SSL connection.</td></tr><tr><td>ElastiCube</td><td><p>Select the <MadCap:variable name="Variables.ElastiCube" /> you want to export.</p><p>OR</p><p>If this is your first time configuring a DSN for the Sisense ODBC, click the ElastiCube list. The Login to Sisense window is displayed.</p><p>Enter your credentials and click <span class="bold">OK</span>. Wait several seconds while Sisense returns a list of your ElastiCubes.</p><p>After the list is displayed in the ElastiCube list, select the ElastiCube you want to import</p></td></tr><tr><td>Log</td><td>(Optional) To configure logging behavior for the driver, click <span class="bold">Logging Options</span>. For more information, see Logging Options.</td></tr></tbody></table></li>
+            <li>Click <span class="bold">Tes</span>t. A pop window is displayed that indicates the connection was successful.</li>
+            <li>Click <span class="bold">OK</span>.</li>
+            <li>In the ODBC Connectivity Properties window, click <span class="bold">Test Connection</span>.</li>
+            <li>Click <span class="bold">OK</span> to save and close the ODBC Connectivity Properties window.</li>
+        </ol>
+        <h3 class="notoc">Logging Options</h3>
+        <p>You can configure logging options by clicking <span class="bold">Log</span> in the New <MadCap:variable name="Variables.CompanyName" /> Data Source window. This displays the Logging Options window.</p>
+        <p>
+            <img src="../../../Resources/Images/logerror.png" class="thumblarge" />
+        </p>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> ODBC driver provides tracing functionality, which you can activate to help troubleshoot issues.</p>
+        <p>
+            <span class="bold">Important</span>: Only enable logging long enough to capture an issue. Logging decreases performance</p>
+        <p>and can consume a large quantity of disk space.</p>
+        <p>The driver allows you to set the amount of detail included in log files. The table below lists the logging levels provided by the <MadCap:variable name="Variables.CompanyName" /> ODBC Driver, in order from least verbose to most verbose.</p>
+        <p>In the Logging Options window, you can configure the following information:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Field</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Log Level</td>
+                    <td>
+                        <p>Select the Log Level. There are seven possible options:</p>
+                        <p>
+                            <span class="bold">LOG_OFF</span>: Disables all logging.</p>
+                        <p>
+                            <span class="bold">LOG_FATAL</span>: Logs very severe error events that lead the driver to abort.</p>
+                        <p>
+                            <span class="bold">LOG_ERROR</span>: Logs error events that might still allow the driver to continue running.</p>
+                        <p>
+                            <span class="bold">LOG_WARNING</span>:Logs potentially harmful situations.</p>
+                        <p>
+                            <span class="bold">LOG_INFO</span>: Logs general information that describes the progress of the driver.</p>
+                        <p>
+                            <span class="bold">LOG_DEBUG</span>: Logs detailed information that is useful for debugging the driver.</p>
+                        <p>
+                            <span class="bold">LOG_TRACE</span>: Logs more detailed information than the DEBUG level.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Log Path</td>
+                    <td>Enter the full path to the folder where you want to save log files.<br />OR<br />Click Browse and select the folder where you want to save log files.</td>
+                </tr>
+                <tr>
+                    <td>Log Namespace</td>
+                    <td>Enter the filename for your log.</td>
+                </tr>
+                <tr>
+                    <td>Max Number Files</td>
+                    <td>Enter the maximum number of logs that can be created before the oldest log files are overwritten by newer logs.</td>
+                </tr>
+                <tr>
+                    <td>Max File Size (MB)</td>
+                    <td>Enter the maximum number of megabytes your log can reach before the log is overwritten by a newer log.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">Adding <MadCap:variable name="Variables.ElastiCube" />s Tables to your Project</h2>
+        <p>After setting up the DSN, the Add table from <MadCap:variable name="Variables.ElastiCube" /> Tables window is displayed.</p>
+        <p>
+            <img src="../../../Resources/Images/ectable.png" class="thumblarge" />
+        </p>
+        <p>From this window, you add your <MadCap:variable name="Variables.ElastiCube" /> tables to your <MadCap:variable name="Variables.ECM" />. In addition, you can view the SQL syntax in the Query Preview section and click Edit to customize it.</p>
+        <p class="bold">To add <MadCap:variable name="Variables.ElastiCube" /> Tables to your Project:</p>
+        <ol>
+            <li>Connect to your <MadCap:variable name="Variables.ElastiCube" /> tables via the <MadCap:variable name="Variables.CompanyName" /> ODBC Tool.</li>
+            <li>Add your data source.</li>
+            <li>In the Add table from <MadCap:variable name="Variables.ElastiCube" /> Tables window, select the table you want to add to the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Click <span class="bold">Add</span>. The selected tables are added to your <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>&#160;</p>
+    </body>
+</html>

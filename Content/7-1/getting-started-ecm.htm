@@ -1,0 +1,119 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Getting Started: New ElastiCube Manager | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Getting Started: New ElastiCube Manager</h1>
+        <p>In Sisense V7.0, you can now manage your ElastiCubes and dashboards anytime, anywhere from a centralized location inside the Sisense Web Application.</p>
+        <p>During the initial phases of the move to a browser-based ElastiCube Manager there are a few functions only supported in the desktop version of the ElastiCube Manager. All features will be available on the web by early Q2 2018.</p>
+        <p>In the meantime, to fully support your workflows, Sisense V7.0 includes both the desktop version of the ElastiCube Manager and the browser-based version of the ElastiCube Manager.</p>
+        <p>This page describes the implications of working with two versions of the ElastiCube Manager and how both versions of the ElastiCube Manager can work together to support backwards compatible features.</p>
+        <h2 class="notoc">Tips to Start</h2>
+        <p>Below are recommendations to work with the new browser-based ElastiCube Manager.</p>
+        <ol>
+            <li>Familiarize yourself with the new ElastiCube Manager features and backwards compatibility.</li>
+            <li>If available, install in a development environment to review and then move to production. Alternatively, upgrade your production environment.</li>
+            <li>(Initially the browser based ElastiCube Manager is only shown to Administrators.)</li>
+            <li>To understand new features first create a new ElastiCube in the browser-based ElastiCube Manager.  A good example to follow is our <a href="getting-started/tutorial.htm">product walk-through</a> and <a href="tutorials.htm">video tutorials</a>.</li>
+            <li>Once comfortable with the features, duplicate an existing ElastiCube and open it in the browser based ElastiCube Manager. To open the cube in the browser simply refresh the Data Page.Make any changes in the cube such as creating or editing relationships, custom columns/tables, metadata and build these changes.Review the impact of these changes in the desktop. To do this open the server console and open the cube.</li>
+            <li>Determine which cubes to use in the new browser environment. The browser-based Manager supports all existing data sources to view and edit. However, adding new tables is only supported from CSV files, Excel spreadsheets, Oracle, SQL Server, MySQL, RedShift, Google Sheets and Postgres SQL (additional connectors are released monthly).How frequently data needs to be added from currently unsupported data sources is the main factor to determine which cubes to base in the new browser environment. Learn more about <a href="#Sisense">compatibility</a> below.</li>
+        </ol>
+        <p>For additional advice, consult your Customer Success Manager and onboarding consultants.</p>
+        <h2 class="notoc">Working Side-by-Side FAQs</h2>
+        <ul>
+            <li><span class="bold">Can I open my existing ElastiCubes in the Web?</span>
+                <br />Yes, your existing ElastiCubes will be displayed in the desktop version of the ElastiCube Manager as well as the web-based version of the ElastiCube Manager.</li>
+            <li><span class="bold">What are the new user roles?</span>
+                <br /><span class="bold">Data Admin</span>: Has full administrative rights to all ElastiCubes, but does not have rights to any other administrative features in the <span class="bold">Admin</span> page.<br /><span class="bold">Data Designer</span>: Can create, share, and manage ElastiCubes, including ElastiCubes that have been shared with them.<br />For more information about all Sisense user roles, see <a href="getting-started/user-roles.htm">Sisense User Roles</a>.</li>
+            <li><span class="bold">How are the new roles reflected in licensing?</span>
+                <br />Defining a user as a Data Designer will count as 1 existing Designer license.<br />Defining a user as a Data Admin will count as 1 existing Admin license.</li>
+            <li><span class="bold">Do changes in the Web affect my ElastiCube on the Desktop and vice versa?</span>
+                <br />Any changes you make from either version of the ElastiCube Manager will be reflected in the other version only after you build the ElastiCube.</li>
+            <li><span class="bold">Can I save a copy of my ElastiCube in the Web?</span>
+                <br />In the new web-based version of the ElastiCube Manager, your work is saved automatically. However, your changes are not reflected in your dashboard or the desktop version of the ElastiCube Manager until the ElastiCube is built.</li>
+            <li><span class="bold">How do I share an ElastiCube?</span>
+                <br />Go to <span class="bold">Admin&gt; Data Management &gt; Data Sources</span>. Find the relevant ElastiCube, click on the menu to the far right and select <span class="bold">Share</span>.</li>
+            <li><span class="bold">What functionality in the desktop version of the ElastiCube Manager is not supported in the Web?</span>
+                <br />Most features and functionality included in the desktop version of the ElastiCube Manager are supported on the web, however, are few features have not yet been migrated.<br />For a full list of features not currently supported and how to overcome these gaps, see Sisense V7.0 Backwards Compatibility below.</li>
+            <li><span class="bold">When will all desktop functionality be available in the Web?</span>
+                <br />All functionality available in the desktop version of the ElastiCube Manager will be available online by the end of the first quarter, 2018.</li>
+            <li><span class="bold">Is the desktop ECM going to be discontinued?</span>
+                <br />No, the desktop version of the ElastiCube Manager will continue to be installed with Sisense throughout 2018. If there are any plans to depreciate the desktop version after 2018, these will be communicated well in advanced.</li>
+        </ul>
+        <h2 class="notoc"><a name="Sisense"></a>Sisense V7.0 Backwards Compatibility</h2>
+        <p>While most functionality is included in the web-based version of the ElastiCube Manager, the following features will be available on the web from early Q1 2018:</p>
+        <ul>
+            <li>Plugins</li>
+            <li>Import/Export ElastiCubes</li>
+            <li>Attach/Detach ElastiCubes</li>
+            <li>Change connectivity</li>
+            <li>Add Data from Unsupported Data Sources</li>
+        </ul>
+        <p>This section provides solutions to help you complete your tasks by working with two versions of the ElastiCube Manager.</p>
+        <h3 class="notoc">Plugins</h3>
+        <p>When you create an ElastiCube in the web-based version of the ElastiCube Manager, all pre-post plugins are disabled.</p>
+        <p class="bold">To enable plugins to work with ElastiCubes created online:</p>
+        <ol>
+            <li>In Windows, open the Sisense Server Console.</li>
+            <li>Open the relevant ElastiCube and select <span class="bold">Edit</span>. The ElastiCube is opened in the desktop version of the ElastiCube Manager.</li>
+            <li>Add your pre or post-plugins. For more information, see <a href="http://developer.sisense.com/display/API2/ElastiCube+Plugins">Pre- and Post-Build Plugins</a>.</li>
+            <li>Build the ElastiCube in the desktop version of the ElastiCube Manager. <br /><span class="bold">Note</span>: Any unbuilt changes in the ElastiCube on the web-based version of the ElastiCube Manager will be discarded.</li>
+        </ol>
+        <h3 class="notoc">Import/Export ElastiCubes</h3>
+        <p>Import or Exporting ElastiCubes can only be done through the desktop version of the ElastiCube Manager in the ElastiCube Server Console.</p>
+        <p class="bold">To export:</p>
+        <ol>
+            <li>In Windows, open the Sisense Server Console.</li>
+            <li>Select the relevant ElastiCube, stop it, and then select <span class="bold">Export</span>.<br /><img src="../Resources/Images/v7export1.png" class="thumblarge" /><br /></li>
+        </ol>
+        <p class="bold">To import:</p>
+        <ol>
+            <li>In Windows, open the Sisense Server Console.</li>
+            <li>Click the <span class="bold">Import</span> button and select the relevant file ElastiCube to import. <br /><span class="bold">Note</span>: ElastiCubes with the same name will be overwritten and replaced. Any unbuilt changes in the ElastiCube in the web-based version of the ElastiCube Manager will be discarded.<br /><img src="../Resources/Images/v7import1.png" class="thumblarge" /><br /></li>
+            <li>Refresh the <span class="bold">Data</span> page in the web-based version of the ElastiCube Manager to access the imported ElastiCube.</li>
+        </ol>
+        <h3 class="notoc">Attach-Detach ElastiCube</h3>
+        <p>Attaching or detaching ElastiCubes can only be done through the desktop version of the ElastiCube Manager in the ElastiCube Server Console.</p>
+        <p class="bold">To detach an ElastiCube:</p>
+        <ol>
+            <li>In Windows, open the Sisense Server Console.</li>
+            <li>Select the relevant ElastiCube and select <span class="bold">Detach</span>.</li>
+            <li>Refresh the Data Page in your browser and continue to work if needed. Any dashboards using the detached ElastiCube will not function.</li>
+        </ol>
+        <p class="bold">To attach an ElastiCube:</p>
+        <ol>
+            <li>Refresh the Sisense Server Console.</li>
+            <li>In the Sisense Server Console, click the Attach button <img src="../Resources/Images/v7attach1.png" class="docbutton" /> and the relevant file ElastiCube to attach. <br /><span class="bold">Note</span>: ElastiCubes with the same name will be overwritten and replaced. Any unbuilt changes in the ElastiCube in the web-based version of the ElastiCube Manager will be discarded.</li>
+            <li>Refresh the Data Page in your browser to access the attached ElastiCube and continue to work if needed.</li>
+        </ol>
+        <h3 class="notoc">Change Connectivity</h3>
+        <p>Change connectivity is not available for ElastiCubes built in the web-based version of the ElastiCube Manager.</p>
+        <p class="bold">To change connectivity settings for an ElastiCube build in the web-based version of the ElastiCube Manager:</p>
+        <ol>
+            <li>In Windows, open the Sisense Server Console.</li>
+            <li>Select the relevant ElastiCube and select <span class="bold">Edit</span>. The ElastiCube is opened in the desktop version of the ElastiCube Manager.</li>
+            <li>In the ElastiCube Manager select <span class="bold">ElastiCubes &gt; Change connectivity</span>.</li>
+            <li>Change the relevant connectivity settings. For more information see <a href="managing-data/connectors/change-connect.htm">Changing Connectivity Settings for Data Sources</a>.</li>
+            <li>Perform a build from the desktop ElastiCube Manager. <br /><span class="bold">Note</span>: Any unbuilt changes on the ElastiCube in the web-based version of the ElastiCube Manager will be discarded.</li>
+            <li>Refresh the Data Page in your browser and continue to work as needed.</li>
+        </ol>
+        <h3 class="notoc">Add Data from an Unsupported Data Source</h3>
+        <p>Currently, the web-based version of the ElastiCube Manager supports data from CSV files, Excel spreadsheets, Oracle, SQL Server, MySQL, Google Sheets, RedShift and Postgres SQL (support for additional connectors will be released monthly), however, the web-based version of the ElastiCube Manager supports all existing data sources to view and edit. This includes the ability to:</p>
+        <ul>
+            <li>Add/edit/delete new columns and custom SQL tables</li>
+            <li>Create/edit/delete relationships</li>
+            <li>Perform any table and field operations: rename, duplicate, delete, preview</li>
+            <li>Hide, import, or index fields</li>
+            <li>Set table level build settings</li>
+        </ul>
+        <p>If you need to work with data from a source that is not currently supported, you can import the data into the desktop version of the ElastiCube Manager and continue to work on the ElastiCube online after the data has been added.</p>
+        <p class="bold">To add data from unsupported data sources:</p>
+        <ol>
+            <li>In Windows, open the Sisense Server Console.</li>
+            <li>Select the relevant ElastiCube and select <span class="bold">Edit</span>. The ElastiCube is opened in the desktop version of the ElastiCube Manager.</li>
+            <li>In the desktop version of the ElastiCube Manager, add the relevant tables from any of the data sources supported in the desktop version of the ElastiCube Manager.</li>
+            <li>Perform a build from the desktop ElastiCube Manager. <br /><span class="bold">Note</span>: Any unbuilt changes in the ElastiCube on the web-based version of the ElastiCube Manager will be discarded.</li>
+            <li>Refresh the Data Page in your browser and continue to work as needed.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1754" MadCap:lastWidth="979">
+    <head>
+        <title>Changing the Elasticube Before Loading a Dashboard</title>
+    </head>
+    <body>
+        <h1>Changing the ElastiCube Before Loading a Dashboard</h1>
+        <p>This topic explains how to dynamically set an ElastiCube before loading a dashboard with the Dynamic <MadCap:variable name="Variables.ElastiCube" /> add-on.</p>
+        <p>If you have multiple ElastiCubes with the same schema (perhaps split by customer), you may want to create a set of dashboards and pick which ElastiCube to query against according to which user logs in.  Normally, you would have to create a dashboard for each ElastiCube to accomplish this, but this add-on allows you to create a single dashboard (or set of dashboards) and dynamically set the ElastiCube when the user loads the web page. </p>
+        <p>
+            <span class="bold">Note</span>:&#160;All ElastiCubes used must have the same schema.</p>
+        <p class="bold">To change your <MadCap:variable name="Variables.ElastiCube" />s dynamically:&#160;</p>
+        <ol>
+            <li>
+                <a href="http://data.sisense.com/Product/addons/dynamicElastiCube.zip">Download</a> the attachment and unzip the contents into your C:\Program Files\Sisense\PrismWeb\plugins\ folder. If the plugins folder doesn't exist, just create it. </li>
+            <li>Open up C:\Program Files\Sisense\PrismWeb\plugins\dynamicElasticube\settings.js and replace the default information.
+          <ul><li><span class="bold">server</span>:&#160;This should be the URL of your Sisense server.</li><li><span class="bold">dashboards</span>:&#160;This should be either a list of dashboards where this add-on will be applied, or enter ["all"] to apply this add-on to every dashboard.</li><li><span class="bold">elasticubes</span>:&#160; This should be a list of ElastiCubes that have an identical schema, such as ["Customer-A-Cube", "Customer-B-Cube", "Customer-C-Cube"].</li></ul><pre xml:space="preserve">var dynamicElasticubeSettings = {
+      //	Server info 
+       server: "http://localhost:8081",
+      //	Provide a list of dashboards to apply this plugin to
+      dashboards: ["Dynamic Elasticubes"],	//	Apply to a specific list of dashboards
+     //dashboards: ["all"]			//	Apply to all dashboards
+     //	Provide a list of elasticubes that are available for switching
+     //	Note that all elasticubes in this list must have the exact same schema
+     elasticubes: ["Northwind2", "Northwind3"],
+     //	Leave as is
+     allElasticubes: []
+};</pre></li>
+            <li>Create a set of dashboards built from one of the Elasticubes in the above list.  If you specified a list of dashboards in settings.js, make sure the dashboards you create are in that list.</li>
+            <li>Access the dashboards. When accessing your dashboards, append the new <MadCap:variable name="Variables.ElastiCube" /> name to the end of the URL. The add-on will look for the <MadCap:variable name="Variables.ElastiCube" /> name and switch the dashboard to use the new <MadCap:variable name="Variables.ElastiCube" /> instead.</li>
+        </ol>
+        <pre>http://localhost:8081/app/main#/dashboards/5575cfac627dc10c2700001e?elasticube=Northwind3</pre>
+        <p>This dashboard is built from an <MadCap:variable name="Variables.ElastiCube" /> named Northwind3, which has data for North America.</p>
+        <p>
+            <img src="../../Resources/Images/B3QjSivk2yWJ9DQtV0AE1A41G.png" class="thumblarge" />
+        </p>
+        <p>The same dashboard is now querying against an <MadCap:variable name="Variables.ElastiCube" /> named Northwind2, which has data for South America.</p>
+        <p>
+            <img src="../../Resources/Images/m1Tu6KeDYqnabzPOUbkJO0a2k.png" class="thumblarge" />
+        </p>
+    </body>
+</html>

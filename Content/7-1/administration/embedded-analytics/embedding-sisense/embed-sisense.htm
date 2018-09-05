@@ -1,0 +1,83 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="3494" MadCap:lastWidth="1022">
+    <head>
+        <title>Embedding Dashboards and Widgets | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Embedding Dashboards and Widgets</h1>
+        <p>This article is about getting started with embedded <MadCap:variable name="Variables.CompanyName" /> dashboards. If you’re new to <MadCap:variable name="Variables.CompanyName" />, check out our <a href="http://sisense.com/embedded-analytics/">embedded analytics solutions</a>.</p>
+        <p>You can embed <MadCap:variable name="Variables.CompanyName" /> dashboards and widgets in non-<MadCap:variable name="Variables.CompanyName" /> environments, such as in your own websites or applications by concatenating parameters to the URL of your dashboard or widget.</p>
+        <p>In addition, you can customize what aspects of the dashboard and widget are displayed in your environment.</p>
+        <p>For example, if you want to remove the <MadCap:variable name="Variables.CompanyName" /> header from the dashboard, you can concatenate the “?embed=true&amp;h=false” parameter in the URL of the dashboard to hide the header.</p>
+        <p>
+            <span class="code">mysite.com/app/main#/dashboards/5541dc7a80a4e2181e00011a?<span class="bold">embed=true&amp;h=false</span></span>
+        </p>
+        <p>In this example, the “embed=true” embeds the dashboard into your environment. When you embed a dashboard or widget, viewers can only view the dashboard or widget and do not have any editing privileges. The “h=false” parameter hides the <MadCap:variable name="Variables.CompanyName" /> header allowing you to whitelabel the dashboard.</p>
+        <p>This article provides a full list of the parameters you can concatenate, their functionality, and examples.</p>
+        <h2 class="notoc">Embedding Dashboards</h2>
+        <p>To embed a dashboard, add “?embed=true” to the URL of the dashboard, and refresh the page. If your dashboard is within a folder, then first delete “?folder=” and everything that follows, before adding “?embed=true”.</p>
+        <p>This will open the dashboard without the surrounding <MadCap:variable name="Variables.CompanyName" /> environment.</p>
+        <p>For example:</p>
+        <p>Dashboard URL:</p>
+        <p>mysite.com/app/main#/dashboards/5541dc7a80a4e2181e00011a</p>
+        <p>Embedded URL:</p>
+        <p>mysite.com/app/main#/dashboards/5541dc7a80a4e2181e00011a?embed=true</p>
+        <p>Dashboard URL for dashboard within folder:</p>
+        <p>mysite.com/app/main#/dashboards/550952417404b2981a000029?folder=550955a27404b2981a00003b</p>
+        <p>Embedded URL for dashboard within folder:</p>
+        <p>http://localhost:8081/app/main#/dashboards/550952417404b2981a000029?folder=550955a27404b2981a00003b</p>
+        <p>You can use this URL to embed the dashboard in an iframe, for example:</p>
+        <p class="code">&lt;iframe id="ifm" name="ifm" width="100%" height="100%" frameborder="0" src="http://mysite.com/app/main#/dashboards/536f2b70d093e26c280000d5?embed=true" scrolling="auto"&gt;&lt;/iframe&gt;</p>
+        <h3 class="notoc">Dashboard Embedding Configuration Options</h3>
+        <p>You can control which aspects of the <MadCap:variable name="Variables.CompanyName" /> environment are available when embedding by concatenating the following parameters to the embedded URL:</p>
+        <p class="bold">Show/Hide the left navigation panel</p>
+        <p>Parameter: "l" (left) or "i" to hide it completely</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;l=true</p>
+        <p class="bold">Show/Hide the right filter panel</p>
+        <p>Parameter: “r” (right)</p>
+        <p>Default: true</p>
+        <p>Example: ?embed=true&amp;r=false</p>
+        <p class="bold">Show/Hide the toolbar</p>
+        <p>Parameter: “t” (toolbar)</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;t=true</p>
+        <p class="bold">Show/Hide the environment header</p>
+        <p>Parameter: “h” (header)</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;h=true</p>
+        <p>
+            <img src="../../../../Resources/Images/v7embed1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Embedding Widgets</h2>
+        <p>To embed a single widget, add “?embed=true” to the URL of the widget when it edit mode.</p>
+        <p>This will open the widget without the surrounding Sisense environment.</p>
+        <p>For example:</p>
+        <p>
+            <span class="bold">Dashboard URL</span>: http://mysite.com/app/main#/dashboards/536f3a54d093e26c28000114/widgets/536f3a54d093e26c2800011b</p>
+        <p>
+            <span class="bold">Embedded URL</span>: http://mysite.com/app/main#/dashboards/536f3a54d093e26c28000114/widgets/536f3a54d093e26c2800011b?embed=true</p>
+        <p>You can use this URL to embed the widget in and iframe, for example:</p>
+        <p>&lt;iframe id="ifm" name="ifm" width="100%" height="100%" frameborder="0″ src="http://mysite.com/app/main#/dashboards/536f3a54d093e26c28000114/widgets/536f3a54d093e26c2800011b?embed=true" scrolling="auto"&gt;&lt;/iframe&gt;</p>
+        <h3 class="notoc">Widget Embedding Configuration Options</h3>
+        <p>You can control which aspects of the <MadCap:variable name="Variables.CompanyName" /> environment are available when embedding by concatenating the following parameters to the embedded URL:</p>
+        <p class="bold">Show/Hide the left data panel</p>
+        <p>Parameter: “l” (left)</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;l=true</p>
+        <p class="bold">Show/Hide the right design panel</p>
+        <p>Parameter: “r” (right)</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;r=false</p>
+        <p class="bold">Show/Hide the toolbar</p>
+        <p>Parameter: “t” (toolbar)</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;t=true</p>
+        <p class="bold">Show/Hide the environment header</p>
+        <p>Parameter: “h” (header)</p>
+        <p>Default: false</p>
+        <p>Example: ?embed=true&amp;h=true</p>
+        <h3 class="notoc">Authentication in Embedded Dashboards and Widgets</h3>
+        <p>All <MadCap:variable name="Variables.CompanyName" /> dashboards and widgets require authentication. When embedding dashboards and widgets outside of the <MadCap:variable name="Variables.CompanyName" /> environment, usually the use case is to not enforce the <MadCap:variable name="Variables.CompanyName" /> environment authentication, but rather use SSO (Single Sign On) with existing corporate authentication. To read more on configuring Single Sign On in <MadCap:variable name="Variables.CompanyName" />, <a href="../../user-management/single-sign-on/introduction-sso.htm">click here</a>.</p>
+    </body>
+</html>

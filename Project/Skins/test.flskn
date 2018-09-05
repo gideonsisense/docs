@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultSkin
+  Version="2"
+  SkinType="WebHelp2"
+  ComponentType="MasterPage"
+  TemplateName="Fluid"
+  Comment="HTML5 Top Navigation skin"
+	Tabs="TOC"
+	DefaultTab="TOC"
+  EnableResponsiveOutput="True">
+  
+  <WebHelpOptions
+    NavigationPanePosition="Left"
+    EnableSticky="None"
+    OffCanvasMenuStyle="Accordion"
+    TopMenuDepth="3" />
+  <Stylesheet />
+  <Strings />
+</CatapultSkin>

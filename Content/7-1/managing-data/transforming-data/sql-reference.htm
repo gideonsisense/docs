@@ -1,0 +1,203 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>SQL Reference | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>SQL Reference</h1>
+        <p>You can use SQL to create new tables and fields in the ElastiCube Manager.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>SQL Structure</th>
+                    <th>SQL Example</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>
+                        <p class="code">SELECT  FieldName(s),Function(),  *
+</p>
+                        <p class="code">FROM TableName 1
+</p>
+                        <p class="code">INNER JOIN\ LEFT JOIN\RIGHT JOIN\FULL JOIN  TableName 2
+</p>
+                        <p class="code">ON TableName 1. JoinField =  TableName 2. JoinField
+</p>
+                        <p class="code">WHERE FieldName Condition
+</p>
+                        <p class="code">AND\OR FieldName Condition
+</p>
+                        <p class="code">GROUP BY FieldName(s)
+</p>
+                        <p class="code">ORDER BY FieldName(s)
+</p>
+                        <p class="code">HAVING FieldName(s) Condition</p>
+                    </td>
+                    <td>
+                        <p class="code">SELECT CustomerName, ContactEmail,Count(Orders)
+FROM Customer
+</p>
+                        <p class="code">INNER JOIN Order
+ON Customer.CustomerID = Order.CustomerID
+WHERE Order.OrderId  BETWEEN 10 AND 100
+</p>
+                        <p class="code">AND Customer.CustomerName IN (‘John’,’Mary’,’David’)
+OR Customer.CustomerLastName  LIKE ‘Harrison’
+</p>
+                        <p class="code">GROUP BY Customer.CustomerName
+</p>
+                        <p class="code">ORDER BY Customer.CustomerLastName
+HAVING Count(Orders) &gt; 3</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <h3 class="notoc">Basic SQL Syntax Guide</h3>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <p>  SELECT STATEMENT&#160;</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>SELECT</td>
+                    <td>SELECT column_name(s)<br />FROM table_name&#160;</td>
+                </tr>
+                <tr>
+                    <td>&#160;SELECT *&#160;</td>
+                    <td>SELECT *FROM table_name&#160;</td>
+                </tr>
+                <tr>
+                    <td>SELECT DISTINCT&#160;</td>
+                    <td>SELECT DISTINCT column_name(s)<br />FROM table_name &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160; &#160;</td>
+                </tr>
+                <tr>
+                    <td colspan="2"><span class="bold">Note</span>: Nested SELECT statements will not&#160;work with an AND clause in&#160;the&#160;ElastiCube Manager.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <p>FUNCTIONS AFTER SELECT CLAUSE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>FUNCTIONS &#160; &#160; &#160; &#160; &#160;&#160;</td>
+                    <td>AVG()&#160;– Returns the average value<br />COUNT()&#160;– Returns the number of rows<br />MAX()&#160;– Returns the largest value<br />MIN()&#160;– Returns the smallest value<br />SUM()&#160;– Returns the sum&#160;&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <p>TABLE JOIN FUNCTIONS</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&#160;INNER JOIN &#160; &#160; &#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name1 T1<br />INNER JOIN table_name2 &#160;T2<br />ON T1.column_name=T2.column_name</td>
+                </tr>
+                <tr>
+                    <td>&#160;LEFT JOIN&#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name1 T1<br />LEFT JOIN table_name2 &#160;T2<br />ON&#160;T1.column_name=T2.column_name&#160;</td>
+                </tr>
+                <tr>
+                    <td>&#160;RIGHT JOIN</td>
+                    <td>SELECT column_name(s)<br />FROM table_name1 T1<br />RIGHT JOIN table_name2 &#160;T2<br />ON&#160;T1.column_name=T2.column_name&#160;</td>
+                </tr>
+                <tr>
+                    <td>FULL JOIN&#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name1 T1<br />FULL JOIN table_name2 &#160;T2<br />ON&#160;T1.column_name=T2.column_name&#160;</td>
+                </tr>
+                <tr>
+                    <td>AS (alias)&#160;&#160;</td>
+                    <td>SELECT column_name AS column_alias<br />FROM table_name or<br />SELECT column_name<br />FROM table_name &#160;AS table_alias</td>
+                </tr>
+                <tr>
+                    <td>WHERE&#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name<br />WHERE column_name operator value&#160;&#160;&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <p>FUNCTIONS AFTER THE&#160;WHERE CLAUSE</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&#160;AND / OR &#160; &#160; &#160; &#160; &#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name<br />WHERE condition<br />AND|OR condition</td>
+                </tr>
+                <tr>
+                    <td>&#160;BETWEEN&#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name<br />WHERE column_name<br />BETWEEN value1 AND value2</td>
+                </tr>
+                <tr>
+                    <td>&#160;IN</td>
+                    <td>SELECT column_name(s)<br />FROM table_name<br />WHERE column_name<br />IN (value1,value2,..)</td>
+                </tr>
+                <tr>
+                    <td>LIKE&#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name<br />WHERE column_name <br />LIKE pattern &#160; &#160; &#160; &#160; &#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <p>ORDERING AND GROUPING AFTER WHERE CONDITIONS</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&#160;GROUP BY&#160;&#160;</td>
+                    <td>SELECT column_name,aggregate_function(column_name)<br />FROM table_name<br />WHERE column_name operator value<br />GROUP BY column_name</td>
+                </tr>
+                <tr>
+                    <td>ORDER BY&#160;&#160;</td>
+                    <td>SELECT column_name(s)<br />FROM table_name<br />ORDER BY column_name [ASC|DESC]</td>
+                </tr>
+                <tr>
+                    <td>&#160;HAVING&#160;&#160;</td>
+                    <td>SELECT column_name,aggregate_function(column_name)<br />FROM table_name<br />WHERE column_name operator value<br />GROUP BY column_name<br />HAVING aggregate_function(column_name) operator value&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td colspan="2">
+                        <p>CLAUSES TO COMBINE TABLES</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>&#160;UNION &#160;&#160; &#160; &#160; &#160; &#160; &#160; &#160;</td>
+                    <td>SELECT column_name(s) <br />FROM table_name1<br />UNION SELECT column_name(s) <br />FROM table_name2</td>
+                </tr>
+                <tr>
+                    <td>UNION ALL&#160;&#160;</td>
+                    <td>SELECT column_name(s) <br />FROM table_name1<br />UNION ALL<br />SELECT column_name(s) <br />FROM table_name2&#160;</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">See Also</h3>
+        <p><a href="https://msdn.microsoft.com/en-us/library/bb264565(v=sql.90).aspx">Basic SQL Guide</a>
+        </p>
+        <p><a href="https://msdn.microsoft.com/en-us/library/bb510741">MSDN SQL Reference</a>
+        </p>
+    </body>
+</html>

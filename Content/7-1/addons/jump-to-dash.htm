@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="6949" MadCap:lastWidth="890">
+    <head>
+        <title>Jump to Dashboard | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Jump to Dashboard</h1>
+        <p>The Jump to Dashboard add-on creates shortcuts from a widget in one dashboard to another widget in another dashboard via a new browser tab or a popup window.</p>
+        <p>The Jump to Dashboard add-on supports charts, pivots and indicators. This add-on is useful for presenting additional information about specific series on demand by jumping across dashboards without the need to present all of the data in a single dashboard.</p>
+        <p>After you have installed the add-on, you can right-click a value in the widget and jump to the relevant dashboard or depending on your configuration, click the widget to automatically jump to a default dashboard.</p>
+        <p>Learn more about Sisense’s <a href="https://www.sisense.com/product/">data analytics software</a>.</p>
+        <p class="bold">To install the Jump to Dashboard add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/jumpToDashboard.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\</span> folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Create the new dashboards that you want to jump to. When naming the new dashboard, add the prefix “_drill_” to the title to indicate this is a target dashboard. The default settings define that target dashboards won’t appear to the users in the dashboards list, and are accessible only when jumping to them.</li>
+            <li>Define the target dashboard in a widget. Enter the editing mode of the desired widget, click on the settings icon, and choose the target dashboard from the possible target dashboards created.<br /><img src="../../Resources/Images/jum3.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Apply</span> to save the changes.</li>
+        </ol>
+        <h2 class="notoc">Customizing the JumptoDashboard Add-on</h2>
+        <p>While the default settings of the JumpToDashboard add-on do not require any  JavaScript configuration, you can change the settings per widget by editing the widget’s script. This allows you to modify the add-ons default behavior such as how to navigate to your target dashboards or what prefix determines which dashboards can be targets.</p>
+        <p>Default settings can be changed by editing the widget’s script or from the config file located in the plugin folder:</p>
+        <p>…Program Files\Sisense\PrismWeb\plugins\jumpToDashboard\js\config.js</p>
+        <p>For a full list of all the changes you can make, see the Parameters table below.</p>
+        <p class="bold">To customize the JumptoDashboard Add-on:</p>
+        <ol>
+            <li>Inside a widget’s edit mode, click on <span class="bold">Edit Script</span>.<br /><img src="../../Resources/Images/scripted1.png" class="thumblarge" /></li>
+            <li>Paste the code below (after editing the required parameters).<br /><span class="code">prism.jumpToDashboard(widget, { &lt;parameter&gt; :&lt;Value&gt;});</span></li>
+            <li>Click <span class="bold">Save</span> and refresh the widget.</li>
+            <li>Click <span class="bold">Apply</span>.</li>
+        </ol>
+        <h3 class="notoc">Parameters</h3>
+        <p>The following table provides a list of parameters you can modify in the configuration JavaScript file.</p>
+        <p>The code below can be modified Paste the code below (after editing the required parameters)</p>
+        <p class="code">prism.jumpToDashboard(widget, { &lt;parameter&gt; :&lt;Value&gt;});</p>
+        <p>When changing few parameters, the below syntax should be used:</p>
+        <p class="code">prism.jumpToDashboard(widget, { &lt;parameter&gt; :&lt;Value&gt;,&lt;parameter&gt; :&lt;Value&gt;,&lt;parameter&gt; :&lt;Value&gt;});</p>
+        <p>To remove all setting defined (erasing the script will still keep the previous settings):</p>
+        <p class="code">prism.jumpToDashboard(widget, { });</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                    <th>Configured In</th>
+                    <th>Value Types</th>
+                    <th>Values</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>drilledDashboardDisplayType</td>
+                    <td>Defines how to display the drilled dashboard.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>DisplayTypeId</td>
+                    <td>Default Value: 1Possible Values:1 New tab2 Popup window3 Current tab</td>
+                </tr>
+                <tr>
+                    <td>drilledDashboardPrefix</td>
+                    <td>The prefix of the drilled dashboards name.</td>
+                    <td>Configuration File</td>
+                    <td>String</td>
+                    <td>Default Value: "_drill_"Possible Values: An prefix</td>
+                </tr>
+                <tr>
+                    <td>drilledDashboardsFolderPrefix</td>
+                    <td>The prefix of the folder, the dashboards inside which can be drilled to.</td>
+                    <td>&#160;</td>
+                    <td>String</td>
+                    <td>""</td>
+                </tr>
+                <tr>
+                    <td>displayFilterPane</td>
+                    <td>Determines if to display filter pane in the target dashboard window.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Boolean</td>
+                    <td>Default Value: TruePossible Values: True/False</td>
+                </tr>
+                <tr>
+                    <td>displayDashboardsPane</td>
+                    <td>Determines if to display dashboards pane in the target dashboard window.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Boolean</td>
+                    <td>Default Value: TruePossible Values: True/False</td>
+                </tr>
+                <tr>
+                    <td>displayHeaderRow</td>
+                    <td>Display header in the drilled dashboard window.</td>
+                    <td>&#160;</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>displayToolbarRow</td>
+                    <td>Determines if to display toolbar in the drilled dashboard window.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Boolean</td>
+                    <td>Default Value: TruePossible Values: True/False</td>
+                </tr>
+                <tr>
+                    <td>volatile</td>
+                    <td>Volatile for the drilled dashboard window.</td>
+                    <td>&#160;</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                </tr>
+                <tr>
+                    <td>hideDrilledDashboards</td>
+                    <td>Hides drilled dashboards from the dashboards navigator for non-dashboard owner users.</td>
+                    <td>Configuration File</td>
+                    <td>Boolean</td>
+                    <td>Default Value: TruePossible Values: True/False</td>
+                </tr>
+                <tr>
+                    <td>drillToDashboardMenuCaption</td>
+                    <td>The caption for the drill to dashboard menu.</td>
+                    <td>Configuration File</td>
+                    <td>String</td>
+                    <td>Default Value: Jump to DashboardPossible Values: Any</td>
+                </tr>
+                <tr>
+                    <td>drillToDashboardRightMenuCaption</td>
+                    <td>The caption for the drill to dashboard right menu.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>String</td>
+                    <td>Default Value: Jump to DashboardPossible Values: Any</td>
+                </tr>
+                <tr>
+                    <td>drillToDashboardNavigateType<br />drillToDashboardNavigateTypePivot<br />drillToDashboardNavigateTypeCharts<br />drillToDashboardNavigateTypeOthers</td>
+                    <td>Determines how to navigate to the configured drilled dashboard.</td>
+                    <td>Widget</td>
+                    <td>NavigateTypeId</td>
+                    <td>Default Value: 2Possible Values:1 Right-click on a pivot cell/ point or indicator Pivot, Indicator, Charts.2 Link on pivot measured cells Pivot.3 Click on Indicator widget, RichTextEditor, Image. Widget,</td>
+                </tr>
+                <tr>
+                    <td>modalWindowWidth</td>
+                    <td>Modal window width when the selected display type is modal window.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Number</td>
+                    <td>Null</td>
+                </tr>
+                <tr>
+                    <td>modalWindowHeight</td>
+                    <td>Modal window height whenhe selected display type is modal window.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Number</td>
+                    <td>Null</td>
+                </tr>
+                <tr>
+                    <td>modalWindowResize</td>
+                    <td>Enable resize for modal window, In case the selected display type is modal window.</td>
+                    <td>&#160;</td>
+                    <td>boolean</td>
+                    <td>false</td>
+                </tr>
+                <tr>
+                    <td>excludeFilterDims</td>
+                    <td>Dimensions to exclude from the drilled dashboard filter.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Array of DIM</td>
+                    <td>Default Value: []Possible Values: "[table.dimension]"</td>
+                </tr>
+                <tr>
+                    <td>includeFilterDims</td>
+                    <td>Dimensions to include in the drilled dashboard filter.</td>
+                    <td>Configuration File/Widget</td>
+                    <td>Array of DIM</td>
+                    <td>Default Value: []Possible Values: "[table.dimension]"</td>
+                </tr>
+                <tr>
+                    <td>showFolderNameOnMenuSelection</td>
+                    <td>Determines if to show the folder name or not inside the dashboards menu on edit widget mode.</td>
+                    <td>Configuration File</td>
+                    <td>Boolean</td>
+                    <td>Default Value: TruePossible Values: True/False</td>
+                </tr>
+                <tr>
+                    <td>showJTDIcon</td>
+                    <td>Determines if you show an icon for widgets that have JTD in the widget title.</td>
+                    <td>Widget</td>
+                    <td>Boolean</td>
+                    <td>Default Value: True</td>
+                </tr>
+                <tr>
+                    <td>dashboardId</td>
+                    <td>Drilled dashboard ID. When set to null, a drilled dashboard menu will be available in the widget editor.</td>
+                    <td>Widget</td>
+                    <td>String</td>
+                    <td>Default Value: NullPossible Values: Dashboard ID</td>
+                </tr>
+                <tr>
+                    <td>dashboardIds</td>
+                    <td>Multiple target Dashboards.</td>
+                    <td>&#160;</td>
+                    <td>Array of objects</td>
+                    <td>[]{id:"", caption:""}</td>
+                </tr>
+                <tr>
+                    <td>dashboardCaption</td>
+                    <td>Drilled dashboard caption.</td>
+                    <td>&#160;</td>
+                    <td>String</td>
+                    <td>null</td>
+                </tr>
+                <tr>
+                    <td>sameCubeRestriction</td>
+                    <td>Use same ecube for the drilled dashboards</td>
+                    <td>&#160;</td>
+                    <td>Boolean</td>
+                    <td>true</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">Release Notes</h2>
+        <p>
+            <span class="bold">April 4, 2018</span>
+        </p>
+        <p>The following issues were fixed:&#160;</p>
+        <ul>
+            <li>jumpToDashboard plugin doesn't set filter from formula in target dashboard</li>
+            <li>Jumping to a dashboard from a Pivot table -  _drill don't get the filters of the measured value</li>
+            <li>jumpToDashboard does not support the Base URL feature</li>
+            <li>jumpToDashboard uses unwanted dashboard filters</li>
+        </ul>
+    </body>
+</html>

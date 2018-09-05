@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Minimum Requirements | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Minimum Requirements and Supported Platforms</h1>
+        <p>The following prerequisites and supported platforms are required for working with <MadCap:variable name="Variables.CompanyName" />.</p>
+        <h2>Supported Web Browsers</h2>
+        <p>The <MadCap:variable name="Variables.Sisense Web Application" /> runs in the following HTML5 supported browsers:</p>
+        <ul>
+            <li>
+                <p>Internet Explorer 10 and higher</p>
+            </li>
+            <li>
+                <p>Google Chrome</p>
+            </li>
+            <li>
+                <p>Firefox</p>
+            </li>
+            <li>
+                <p>Safari version 7 and higher</p>
+            </li>
+        </ul>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website"><span class="bold">Note</span>: When embedding iFrames, <MadCap:variable name="Variables.CompanyName" /> supports Safari 10 and higher</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">The <MadCap:variable name="Variables.CompanyName" /> Web Application also works in mobile phone and tablet browsers that support HTML5. Click <a href="../sisense-mobile.htm">here</a> to learn more about mobile compatibility.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">Microsoft Edge is not currently supported. </p>
+        <h2 MadCap:conditions="Default.Whitelabeled,Default.Website">Supported Operating Systems</h2>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website"><MadCap:variable name="Variables.EcubeServer" /> and <MadCap:variable name="Variables.ECM" /> can be installed on the following 64-bit operating systems:</p>
+        <ul>
+            <li MadCap:conditions="Default.Whitelabeled,Default.Website">Windows 7 and higher</li>
+            <li MadCap:conditions="Default.Whitelabeled,Default.Website">Windows Server 2008 R2 through Windows Server 2016</li>
+        </ul>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website"><span class="bold">Note</span>: While <MadCap:variable name="Variables.CompanyName" /> supports Windows 7, it is highly recommended that production environments use Windows Server 2008 R2 and later.</p>
+        <h2 MadCap:conditions="Default.Whitelabeled,Default.Website">Capacity and Hardware Requirements</h2>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website"><MadCap:variable name="Variables.CompanyName" /> easily scales up to billions of records with typical query response times of split seconds.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">This section suggests system requirements for various performance capacities of the <MadCap:variable name="Variables.EcubeServer" />. Actual capacity requirements are provided after consultation with a <MadCap:variable name="Variables.CompanyName" /> technical representative at support@<MadCap:variable name="Variables.CompanyName" />.com. Extreme scenarios may require additional resources.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website"><MadCap:variable name="Variables.CompanyName" /> Dashboard viewers only require an HTML5 compliant Web browser.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">These hardware requirements are also true for cloud deployments. Whether you are using AWS/Azure/Rackspace/etc., you must choose a machine that meets the recommended hardware configuration.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">* Users are defined as concurrent users of the system regardless of licenses.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">
+            <img src="../../Resources/Images/minrequirements.png" />
+        </p>
+        <h2 class="notoc" MadCap:conditions="Default.Whitelabeled,Default.Website"><MadCap:variable name="Variables.CompanyName" /> Recommendations</h2>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website"><MadCap:variable name="Variables.CompanyName" /> recommends that your <MadCap:variable name="Variables.CompanyName" /> server meets or exceeds the minimum requirements listed above. The actual requirements of your <MadCap:variable name="Variables.CompanyName" /> server may vary depending on the number of concurrent users, builds running in parallel, <MadCap:variable name="Variables.ElastiCube" />s hosted on a server, and additional factors specific to your server, for example, non-<MadCap:variable name="Variables.CompanyName" /> applications running on the same server.</p>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">For optimal performance, <MadCap:variable name="Variables.CompanyName" /> recommends:</p>
+        <ul>
+            <li>
+                <p MadCap:conditions="Default.Whitelabeled,Default.Website">No more than 40 <MadCap:variable name="Variables.ElastiCube" />s on a single <MadCap:variable name="Variables.CompanyName" /> server</p>
+            </li>
+            <li>
+                <p MadCap:conditions="Default.Whitelabeled,Default.Website">No more than 4 concurrent builds at a time</p>
+            </li>
+            <li>
+                <p MadCap:conditions="Default.Whitelabeled,Default.Website">No more than  150 concurrent users</p>
+            </li>
+        </ul>
+        <p MadCap:conditions="Default.Whitelabeled,Default.Website">For optimal performance, <MadCap:variable name="Variables.CompanyName" /> highly recommends that your servers have a processor that supports AVX (Advanced Vector Extensions), which is leveraged by <MadCap:variable name="Variables.CompanyName" /> for improved query performance and user concurrency.</p>
+        <h2>Supported Locales</h2>
+        <p>The formats for dates, times and numbers in your dashboards are based on your computer’s operating system or browser’s locale settings (depending on your browser).</p>
+        <p>Locales from the following countries are supported:</p>
+        <ul>
+            <li>
+                <p>Unites States</p>
+            </li>
+            <li>
+                <p>United Kingdom</p>
+            </li>
+            <li>
+                <p>Israel</p>
+            </li>
+            <li>
+                <p>Canada</p>
+            </li>
+            <li>
+                <p>South Africa</p>
+            </li>
+            <li>
+                <p>Australia</p>
+            </li>
+            <li>
+                <p>Netherlands</p>
+            </li>
+            <li>
+                <p>Germany</p>
+            </li>
+            <li>
+                <p>Ireland</p>
+            </li>
+            <li>
+                <p>Mexico</p>
+            </li>
+            <li>
+                <p>France</p>
+            </li>
+            <li>
+                <p>China</p>
+            </li>
+            <li>
+                <p>Brazil</p>
+            </li>
+        </ul>
+        <p MadCap:conditions="Default.Whitelabeled"><span class="bold">Notes</span>
+        </p>
+        <ul>
+            <li>
+                <p MadCap:conditions="Default.Whitelabeled">You can override the default locale settings for all users by updating a parameter via the Rest API. Click here to learn how to override default locale settings.</p>
+            </li>
+            <li>
+                <p MadCap:conditions="Default.Whitelabeled">To use a locale file that is not included in the above list of countries, you can manually add a locale file in the following location: C:\Program Files\<MadCap:variable name="Variables.CompanyName" />\PrismWeb\client\resources\base\localization. Click here to access locale files and view their their codes.</p>
+            </li>
+        </ul>
+    </body>
+</html>

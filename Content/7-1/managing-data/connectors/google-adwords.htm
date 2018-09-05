@@ -1,0 +1,65 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Google Ads | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Google Ads</h1>
+        <p>The <MadCap:variable name="Variables.ECM" />enables easy and quick access to tables contained within Google Ads. The steps below describe how to connect to this type of data source.</p>
+        <p><span class="bold">Note</span>:&#160;Importing data from Google Ads is performed using the Sisense developer key and Sisense pays for the data imported from AdWords. For this reason your AdWords account must have access to the ‘Campaign Service’ and the user needs to have Standard Access. To check the type of access, log into your AdWords account, then go to My Account &gt; Account Access. A list of all associated campaigns and permission levels will be displayed. Increasing the permission level can only be performed by a campaign administrator using the “invite user functionality”. See <a href="https://support.google.com/adwords/answer/1704346?rd=1">Campaign Management and Users</a> for more details. In addition, you will need an MCC account. For more information, <a href="https://support.google.com/adwords/answer/15235?hl=en">click here</a>.</p>
+        <ol>
+            <li>Click<span class="bold"> Add Data</span> in the top menu of the ElastiCube Manager.</li>
+            <li>Under the <span class="bold">Web Services</span> category, select <span class="bold">Google AdWords</span>.</li>
+            <li>You will be prompted to enter the following information:</li>
+            <ul>
+                <li><span class="bold">Email</span>: Enter email associated with your Google Analytics account.</li>
+                <li><span class="bold">Auth Code</span>: Google requires an authentication code to enable access from the ElastiCube to data associated with a Google Analytics account (site name and profile IDs). To attain the Auth code click on the link <span class="bold">Get Auth Code</span>. The browser will open and you will need to sign in to your Google Analytics account. After signing in, click on the ‘Allow access’ button. This will generate a temporary code that you must paste into the <span class="bold">Auth Code</span> text box in the connection window.</li>
+                <li><span class="bold">Customer ID</span>:  Enter your Google AdWords Customer ID. Your Customer ID appears at the top corner of your AdWords screen (after logging into your AdWords account).adwords1</li>
+            </ul>
+            <li>Click <span class="bold">Connect</span>.</li>
+            <p>
+                <img src="../../../Resources/Images/adwords1b.png" class="thumblargeli" />
+            </p>
+            <li>Select the relevant client email associated with Ads you want to work with and click <span class="bold">OK.</span> All tables and views associated with the website will appear in a new window.<br /><img src="../../../Resources/Images/adwords2.png" class="thumblarge" /></li>
+            <li>Select the checkbox next to each table you want to use.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+        <p><span class="bold">Note about possible build failures</span>: If you upgrade your version of Sisense to 5.8.1, and the build fails, it may be due to the fact that the newer Sisense version is using a newer version of the Google AdWords API (v201506). If this is the case, then this API version includes changes to some of the AdWords predefined columns. Consequently, it is required for you to click refresh in the ‘Change Connectivity Settings…‘ window next to your AdWords data source and rebuild your ElastiCube. Unless this action is taken, your ElastiCube build will fail due to the change in Google AdWords schema.</p>
+        <p>See also Customizing Google Analytics and AdWords Tables.</p>
+        <h2 class="notoc">Google Ads Connector Updates</h2>
+        <p>Google Adwords announced that v201710 of their GoogleAdwords API was sunset on July 23, 2018. This version was used by Sisense V7.1.3 and earlier.</p>
+        <p>The Sisense Google Ads connector was updated to v201802. If you are importing data from Google Ads, you need to upgrade your Google Ads connector.</p>
+        <p>The updated connector will be included as part of the Sisense V7.2 release.</p>
+        <p class="bold">To update your connector:</p>
+        <ol>
+            <li>Download the latest <a href="http://data.sisense.com/Product/Connectors/Sisense.Google.AdwordsConnector.CLR.zip">Google Ads connector</a>.</li>
+            <li>Stop the Sisense.CLRConnectorsContainer service.</li>
+            <li>Back up the following directory:<br />C:\Program Files\Sisense\DataConnectors\DotNetContainer\Connectors\GoogleAdwords</li>
+            <li>Delete the contents of the Adwords directory:<br />C:\Program Files\Sisense\DataConnectors\DotNetContainer\Connectors\GoogleAdwords</li>
+            <li>Extract the downloaded files to the GoogleAdwords directory.</li>
+            <li>Start Sisense.CLRConnectorsContainer service.</li>
+        </ol>
+        <h3 class="notoc">Versions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>7.1.3</td>
+                    <td>July 23, 2018</td>
+                    <td>Google Adwords announced that v201710 of their GoogleAdwords API was sunset</td>
+                </tr>
+                <tr>
+                    <td>6.5.1.15</td>
+                    <td>Apirl 19, 2017</td>
+                    <td>Google Ads API v201607 supported by Sisense v6.5.1 and earlier has been deprecated</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>&#160;</p>
+    </body>
+</html>

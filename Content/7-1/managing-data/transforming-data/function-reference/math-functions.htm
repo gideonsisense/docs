@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Mathematical Functions | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Mathematical Functions</h1>
+        <p>You can use mathematical functions in custom tables and fields. See <a href="../add-custom-table.htm">Adding a New Custom Table</a> and <a href="../define-edit-field-formulas.htm">Defining and Editing Field Formula</a> for further details. Below are explanations of available mathematical functions.</p>
+        <p class="bold">ACOS(number)</p>
+        <p>Returns the angle, in radians, whose cosine is the given number. Also referred to as arccosine.</p>
+        <p class="bold">ASIN(number)</p>
+        <p>Returns the angle, in radians, whose sine is a given number. Also referred to as arcsine.</p>
+        <p class="bold">ATAN(number) </p>
+        <p>Returns the angle in radians whose tangent is a given number. Also referred to as arctangent.</p>
+        <p class="bold">CEILING(number)</p>
+        <p>Returns the smallest integer that is greater than, or equal to, the a given number.</p>
+        <p class="bold">COS(number)</p>
+        <p>Returns the trigonometric cosine of a given angle, in radians.</p>
+        <p class="bold">COSH(number)</p>
+        <p>Returns the hyperbolic cosine of a given number.</p>
+        <p class="bold">COT(number)</p>
+        <p>Returns the contangent of a given number.</p>
+        <p class="bold">DIV(number1, number2)</p>
+        <p>Returns the number of times number2 fits completely in number1.</p>
+        <p class="bold">EXP(number)</p>
+        <p>Returns the exponential value of a given number.</p>
+        <p class="bold">FLOOR(number)</p>
+        <p>Returns the largest integer less than or equal to the given numeric expression.</p>
+        <p class="bold">ISINFINITY(number)</p>
+        <p>Returns -1 if the number evaluates to negative infinity, 1 if it evaluates to positive infinity, and 0 otherwise.</p>
+        <p class="bold">ISINTEGER(number)</p>
+        <p>Returns whether a given number is a whole number.</p>
+        <p class="bold">LOG(number)</p>
+        <p>Returns the natural logarithm of a given number.</p>
+        <p class="bold">LOG10(number)</p>
+        <p>Returns the base-10 logarithm of the given float expression</p>
+        <p class="bold">MAXVAL(number1,number2)</p>
+        <p>Returns the highest of two numbers.</p>
+        <p class="bold">MINVAL(number1,number2)</p>
+        <p>Returns the smallest of two numbers.</p>
+        <p class="bold">MOD(number1,number2)</p>
+        <p>Returns the remainder of dividing number1 by number2 (modulo).</p>
+        <p class="bold">PI()</p>
+        <p>Returns the constant value of the mathematical PI.</p>
+        <p class="bold">POWER(number1,number2)</p>
+        <p>Returns the value of the given number raised to a specified power.</p>
+        <p class="bold">RAND()</p>
+        <p>Returns a random number between 0 and 32767</p>
+        <p class="bold">RANK()</p>
+        <p>Returns the rank (i.e. row number) of the current record in a table.</p>
+        <p class="bold">RANKASC(order_by_field)</p>
+        <p>Returns the row number ordered by given field in ascending manner.</p>
+        <p>You can also sort by multiple columns: </p>
+        <p class="code">RANKASC([partitionA],[paritionB]…[partitionN],[orderByField])</p>
+        <p>Example: <span class="code">RANKASC([EmployeeID],[CategoryID],[Quantity])</span></p>
+        <p class="bold">RANKDESC(order_by_field)</p>
+        <p>Returns the row number ordered by given field in descending manner.</p>
+        <p>You can also sort by multiple columns: </p>
+        <p class="code">RANKDESC([partitionA],[paritionB]…[partitionN],[orderByField])</p>
+        <p>Example: <span class="code">RANKDESC([EmployeeID],[CategoryID],[Quantity])</span></p>
+        <p class="bold">ROUND(number,precision)</p>
+        <p>Returns the given number, rounded to a specified precision.</p>
+        <p class="bold">SIN(number)</p>
+        <p>Returns the trigonometric sine of a given angle, in radians.</p>
+        <p class="bold">SINH(number)</p>
+        <p>Returns the hyperbolic sine of a given number.</p>
+        <p class="bold">SQRT(number)</p>
+        <p>Returns the square root of a given number.</p>
+        <p class="bold">TAN(number)</p>
+        <p>Returns the tangent of a given number.</p>
+        <p class="bold">TANH(number)</p>
+        <p>Returns the hyperbolic tan of a given number.</p>
+        <p class="bold">TOBIGINT(string)</p>
+        <p>Converts a string representing a valid BigInt value to BigInt type.</p>
+        <p class="bold">TODOUBLE(string)</p>
+        <p>Converts a string representing a valid double value to Double type.</p>
+        <p class="bold">TOINT(string)</p>
+        <p>Converts a string representing a valid Int value to Int type.</p>
+    </body>
+</html>

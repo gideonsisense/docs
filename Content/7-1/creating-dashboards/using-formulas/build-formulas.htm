@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="2793" MadCap:lastWidth="949">
+    <head>
+        <title>Building Formulas with Functions | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Building Formulas with Functions</h1>
+        <p>Functions are operations that perform common types of calculations, and can be used to build formulas. In this topic, you can read about four types of functions. The functions’ syntax is explained and examples are provided.</p>
+        <h2 class="notoc">Combine Data: Aggregate Functions</h2>
+        <p>Aggregations are used to perform mathematical calculations on data. Although this is an essential function <MadCap:variable name="Variables.CompanyName" /> offers an advantage in the ability to run multiple aggregations on several fields simultaneously – this makes it easy to summarize data based on multiple factors.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-3.png" class="thumblarge" />
+        </p>
+        <p>An example <span class="bold">simple aggregation</span> is a sales manager who wants to calculate the average sales revenue for each sales rep. They can create a pivot table which shows the sales rep and their average sales revenue.</p>
+        <p>A more complex example is a <span class="bold">multi-pass aggregation</span> (or grouping) that is an aggregation that performs multiple calculations simultaneously. Following our first example let’s assume the sales manager wants to also see average sales per day for each sales rep. Instead of having to add an additional column for day in the pivot table the manager can create a multi-pass aggregation that first performs a sum of sales per day and then averages the results for each rep. This requires two fields – a day from a date field and the revenue field, as well as two aggregations, sum of sales and average. This result is the sales manager does not need to add a column for days in the pivot.</p>
+        <p>
+            <img src="../../../Resources/Images/syntax11.png" class="thumblarge" />
+        </p>
+        <p>The above example as shown in the formula editor.</p>
+        <p>
+            <img src="../../../Resources/Images/syntax12.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Summarize Data: Statistical Functions</h2>
+        <p>Descriptive statistics provide meaningful summaries of data and help make more informed decisions. This is particularly important for large data sets where descriptive statistics can help to focus analysis.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-4b.png" class="thumblarge" />
+        </p>
+        <p>An example of statistical functions is a marketing team that has a large data set on leads generated from various channels and want to understand where to focus their budget. Descriptive statistics can be used to summarize valuable insight about each channel such as the central tendency or median leads generated along with standard deviations to assess typical lead volume.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-5.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Accumulate Data: Running Total and Average</h2>
+        <p>Often to measure performance data must be viewed in a continuous and accumulative format over extended periods such as years, quarters or months. <MadCap:variable name="Variables.CompanyName" /> provides functions to create running totals and averages over standard or custom time periods.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-6.png" class="thumblarge" />
+        </p>
+        <p>For example, a support team has a goal to reduce the average monthly cost to resolve open issues. A Year to Date Average can be used to track progress towards reducing the average cost of support.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-7.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Change over Time: Time Functions</h2>
+        <p>Time is critical for business decisions, <MadCap:variable name="Variables.CompanyName" /> time functions make it easy to compare outcomes at different points in time, determine growth rates and calculate the time differences. Functions can be set for common time periods such as year, month or day as well as for custom periods.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-8.png" class="thumblarge" />
+        </p>
+        <p>For example, an executive team wants to compare growth in revenue to the same period in the previous year. A Difference in Past Year function can be used to compare past values based on the current month to the same month in the previous year.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-9.png" class="thumblarge" />
+        </p>
+    </body>
+</html>

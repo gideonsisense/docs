@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1048" MadCap:lastWidth="1226">
+    <head>
+        <title>Backing Up the Sisense Application Database | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Backing Up the Sisense Application Database</h1>
+        <p>The Sisense application database installed with Sisense contains metadata for ElastiCubes, dashboards, and users. As your metadata can change frequently, Sisense recommends backing up your application database regularly.</p>
+        <p>Sisense provides scripts that will back up your application database and restore it if necessary. To back up your application database, you need to create an application database user with WriteUser access and then replace the credentials in the script. Once the credentials have been updated, you can schedule the scripts to back up your database with the Windows Task Scheduler.</p>
+        <p>This page describes how to back up the application database with scripts prepared by Sisense and schedule the back up with Windows Tasks Manager.</p>
+        <p>
+            <span class="bold">Note</span>: This page is relevant for Sisense V6.7 and later.</p>
+        <h2 class="notoc">Downloading the Scripts</h2>
+        <p>There are two scripts Sisense provides one for backing up the application database and a second for restoring a back up copy of your application database. You can download the scripts below:</p>
+        <p>
+            <a href="http://data.sisense.com/Product/metadata/MongoBackup.bat">MongoBackup.bat</a>: This script is used for backing up your application database.</p>
+        <p>
+            <a href="http://data.sisense.com/Product/metadata/MongoRestore.bat">MongoRestore.bat</a>: This script is used in case you need to restore the backed up information.</p>
+        <h2 class="notoc">Activating a WriteUser</h2>
+        <p>To be able to access the application database, you need to have a WriteUser to your application database. See <a href="../administration/application-database/access-sisense-application-database.htm">Accessing the Sisense Application Database</a> for instructions on how to activate a user with WriteUser access to your Sisense application database.</p>
+        <h2 class="notoc">Changing the Credentials</h2>
+        <p>After you have activated a WriteUser for the Sisense application database, you need to replace the credentials in the relevant script file.</p>
+        <p>The example below displays where you need to add your WriteUser’s credentials.</p>
+        <p>Following <span class="bold">-u</span>, replace <span class="bold">WriteUser</span> with your application database user’s username and after -p, replace <span class="bold">Sisense</span> with your password.<br /><img src="../../Resources/Images/HaRXyemLGAOhCOCoQ69-vQ1.png" class="thumblarge" /></p>
+        <h2 class="notoc">Scheduling Back Ups</h2>
+        <p>The <span class="bold">MongoBackup.bat</span> is the script you should use to schedule periodic backups of your application database.  The <span class="bold">MongoRestore.bat</span> should not be scheduled as you use it only to restore a back up file.</p>
+        <p>The easiest way to schedule a back up is with Windows Task Scheduler. For information, see Schedule a Task.</p>
+    </body>
+</html>

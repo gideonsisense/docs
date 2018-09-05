@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1174" MadCap:lastWidth="719">
+    <head>
+        <title>Importing Data with Custom Queries | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Importing Data with Custom Queries</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> allows you to import data from a variety of data sources and manipulate the data that is imported by running custom SQL queries against the database, for example:</p>
+        <ul>
+            <li>Import selected data only to reduce import and build times when you do not require all the data.</li>
+            <li>Perform various procedures in the database such as table joins.</li>
+        </ul>
+        <p>After running your custom query, you can preview the updated tables before importing the data into the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>
+            <span class="bold">Notes</span>:</p>
+        <ul>
+            <li>This feature is available for the following relational databases: Microsoft SQL Server, MySQL, PostgreSQL, Oracle, and Amazon Redshift.</li>
+            <li>This feature runs a query in the source database, which may require a lot of processing power from your database, especially for complex queries.</li>
+        </ul>
+        <p class="bold">To add tables with custom queries:</p>
+        <ol>
+            <li>After selecting your database, click + at the bottom the list of tables and views in the database.<br /><img src="../../../Resources/Images/ImportCustom.png" class="thumblarge" /><br />An empty custom table is added and the Settings area is displayed. <br /><img src="../../../Resources/Images/customquery.png" class="thumblarge" /><br />Click +&#160;to add additional custom tables. </li>
+            <li>In the Settings area, enter your custom SQL&#160;query. <br /></li>
+            <li>Click <b>Preview Table</b> to preview the results of your custom query.<br />OR<br />Click <span class="bold">Done</span> to import your custom data into the <MadCap:variable name="Variables.ECM" />. <br /></li>
+        </ol>
+    </body>
+</html>

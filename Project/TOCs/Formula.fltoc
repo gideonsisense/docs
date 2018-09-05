@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultToc
+  Version="1">
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/7-1/creating-dashboards/using-formulas/introduction-to-forumlas.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/7-1/creating-dashboards/using-formulas/using-formula-editor.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/7-1/creating-dashboards/using-formulas/create-formulas.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/7-1/creating-dashboards/using-formulas/build-formulas.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/7-1/creating-dashboards/using-formulas/quick-functions.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+</CatapultToc>

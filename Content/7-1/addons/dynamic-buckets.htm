@@ -1,0 +1,80 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="3329" MadCap:lastWidth="716">
+    <head>
+        <title>Dynamic Buckets | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Dynamic Buckets</h1>
+        <p>The Dynamic Buckets add-on supports aggregating a column chart’s results into buckets. This enables you to dynamically or manually segment the result population into groups while still retaining the filtering functionality.</p>
+        <p>
+            <img src="../../Resources/Images/dynamic1.png" class="thumblarge" />
+        </p>
+        <p>Clicking on a column in the chart selects the specific members that make up the bucket.  In the example above, clicking on the column for Customers &gt; $40k will set a filter on the customer dimension and set the selection to each customer that falls within this bucket.</p>
+        <p class="bold">To install the Dynamic Buckets add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/dynamicBuckets.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\</span> folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Create a column chart widget. When creating a column chart widget:</li>
+        </ol>
+        <ul>
+            <li>Choose only one category.</li>
+            <li>In the first value define the measure by which the bucket will be calculated, for example sum(revenue).</li>
+            <li>In the second measure define the aggregation per bucket, for example count(client) / sum(revenue) / avg(revenue). You can define additional measures. <br /><img src="../../Resources/Images/categoies.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Apply</span> to save the widget.</li>
+        </ul>
+        <ol start="3">
+            <li>In the Widget Editor, enter the script that defines your bucket ranges. There are 2 type of bucket ranges you can define:</li>
+        </ol>
+        <ol style="list-style-type: upper-alpha;">
+            <li>Manual Ranges: Allows you to manually define the buckets ranges. <br /><span class="bold">Example</span>: The sample below creates the following bucket ranges:<ol><li>less than 0</li><li>greater equal 0 less than 15</li><li>greater equal 15 less than 30</li><li>greater equal 30</li></ol></li>
+        </ol>
+        <p>In this example, the following objects are defined as:</p>
+        <p>&lt;type&gt;: The Range definition. Set it as ‘manual’.</p>
+        <p>&lt;separator&gt;: Type of separator. Define the separator between the ranges, for example ‘ – ’.</p>
+        <p>&lt;clickBucketOption&gt;: Define the click bucket option. Set dashboard filters or to export to CSV file. Optional values: 1 or 2.</p>
+        <p>&lt;ranges&gt;: List of buckets to use.</p>
+        <p>&lt;bucket&gt;: Provide an object with properties for name, color, min, and max.</p>
+        <p class="code">var options = {</p>
+        <p class="code">type: "manual", // (required) Can be 'auto' or 'manual'</p>
+        <p class="code">separator: " - ", // (optional)</p>
+        <p class="code">clickBucketOption: 1, // (optional) Can be 1 (default) or 2. 1- sets column categories as filters,</p>
+        <p class="code">// 2- exports column categories to CSV file.</p>
+        <p class="code">ranges: [ // Manually define the buckets you want to use</p>
+        <p class="code">// This will group any values less than 0</p>
+        <p class="code">{</p>
+        <p class="code">name: "&lt; $0", // Label for the bucket</p>
+        <p class="code">color: "#3471AD", // Color can be text or a hex code</p>
+        <p class="code">min: null, // The lower limit for the bucket, put null for no lower limit</p>
+        <p class="code">max: 0 // The upper limit for the bucket, put null for no upper limit</p>
+        <p class="code">},</p>
+        <p class="code">// This will group any values between 1 &amp; 15</p>
+        <p class="code">{</p>
+        <p class="code">name: "$0 - $15",</p>
+        <p class="code">color: "#F66500",</p>
+        <p class="code">min: 0,</p>
+        <p class="code">max: 15</p>
+        <p class="code">},</p>
+        <p class="code">// This will group any values between 15 &amp; 30</p>
+        <p class="code">{</p>
+        <p class="code">name: "$15 - $30",</p>
+        <p class="code">color: "#FFC400",</p>
+        <p class="code">min: 15,</p>
+        <p class="code">max: 30</p>
+        <p class="code">},</p>
+        <p class="code">// This will group any values greater than 30</p>
+        <p class="code">{</p>
+        <p class="code">name: "&gt; $30",</p>
+        <p class="code">color: "#42BC39",</p>
+        <p class="code">min: 30,</p>
+        <p class="code">max: null</p>
+        <p class="code">}</p>
+        <p class="code">] };</p>
+        <ol style="list-style-type: upper-alpha;" start="2">
+            <li>Dynamic Ranges: Allows you to define the number of buckets. Ranges will be calculated automatically by the Min and Max of the widget values.<br />In this example, the following objects are defined as:<br />&lt; type&gt;: The Range definition.Type of Range. Set as ‘auto’.<br />&lt;separator&gt;: Type of separator. Define the separator between the ranges, for example ‘-’, ‘to’.<br />&lt;clickBucketOption&gt;: Define the click bucket option. Set dashboard filters or to export to CSV file. Optional values: 1 or 2.<br />&lt;numberOfBuckets&gt;: Define the number of buckets.<br /><span class="bold">Example</span>: To define five buckets with dynamic ranges, use this script:<br /><span class="code">var options = {<br></br>type: "auto", // (required) Can be 'auto' or 'manual'<br></br>separator: " - ", // (optional)<br></br>clickBucketOption: 1, // (optional) Can be 1 (default) or 2. 1- sets column categories as dashboard filters<br></br>// 2- exports column categories to CSV file."<br></br>numberOfBuckets: 5 // (required) How many buckets should we calculate<br></br>};</span><br /></li>
+        </ol>
+        <ol start="4">
+            <li>Add the following code to the end of the script to create the buckets:<br /><span class="code">prism.dynamicBuckets(widget, options )</span></li>
+            <li>Save the script, click Apply and refresh the page. The widget now displays the data divided into buckets you defined.</li>
+        </ol>
+    </body>
+</html>

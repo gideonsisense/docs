@@ -1,0 +1,133 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="8746" MadCap:lastWidth="3564">
+    <head>
+        <title>Replicating the Application Database | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Replicating the Application Database</h1>
+        <p>This information is relevant for versions of <MadCap:variable name="Variables.CompanyName" /> V6.7 and later. For earlier versions, click <a href="https://documentation.sisense.com/replica-sets/">here</a>.</p>
+        <p>When you install <MadCap:variable name="Variables.CompanyName" />, an application database is installed locally on your machine that contains metadata for <MadCap:variable name="Variables.ElastiCube" />s, dashboards, and users. If you have several application databases across multiple servers, you can combine them to form a replica set. The goal of a replica set is to ensure that each application database has the same metadata about <MadCap:variable name="Variables.ElastiCube" />s, dashboards, and filters. If one database fails on one server, the next available database can replace it. To maintain consistency throughout your configuration and support high availability, each database must be identical with the other databases in your configuration.</p>
+        <p>There are two types of nodes within a replica set. The primary node, which supports write operations and the secondary nodes, which replicate the primary database’s operations log and syncs the data to reflect that of the primary. The primary and secondary nodes can be hosted on the build or query nodes in a high availability configuration.</p>
+        <p>There are four steps to support high availability in <MadCap:variable name="Variables.CompanyName" />:</p>
+        <ol>
+            <li>
+                <span class="bold">Setting Up Replica Nodes</span>: Each database must be configured to connect to other instances in the replica set and share a KeyFile that is used for authentication.</li>
+            <li>
+                <span class="bold">Creating a Replica Set</span>: After setting up your nodes, you need to set one as the primary, which has write access to the other nodes in the replica set.</li>
+            <li>
+                <span class="bold">Connecting to the Replica Set</span>: Once you have created the replica set, now it’s time to connect it to <MadCap:variable name="Variables.CompanyName" />.</li>
+            <li>
+                <span class="bold">Connecting Additional Web Servers to Your Replica Set</span>: Your replica set can support your <MadCap:variable name="Variables.Sisense Web Application" />. To do so, you need to connect it to the replica set instead of the localhost that it is connected to be default. This way, if your server’s database fails, the <MadCap:variable name="Variables.Sisense Web Application" /> is supported by another database within the replica set.</li>
+        </ol>
+        <p>This page describes how to set up your databases in a replica set and connect it to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p class="bold">Prerequisites</p>
+        <ol>
+            <li>Servers with port 27018 open.</li>
+            <li>RoboMongo installed on a machine that has access to those servers on port 27018 (any node can be on one of the servers).</li>
+            <li>MongoDB installed on the machine. By default, this is installed when <MadCap:variable name="Variables.CompanyName" /> is installed. If <MadCap:variable name="Variables.CompanyName" /> is not installed, download the MongoDB version 3.4.5 zip file on the secondary servers from <a href="https://www.mongodb.com/dr/fastdl.mongodb.org/win32/mongodb-win32-x86_64-2008plus-ssl-3.4.5-signed.msi/download">here</a>.</li>
+        </ol>
+        <h2 class="notoc">Setting Up Replica Nodes</h2>
+        <p>
+            <span class="bold">Note</span>: For each machine that you have installed <MadCap:variable name="Variables.CompanyName" />, you must stop the <MadCap:variable name="Variables.CompanyName" />-related services from running to prepare the primary database that will be replicated to the other secondary nodes.</p>
+        <p>This procedure describes how to set up a replica node.</p>
+        <p>Each node in your replica set must have a MongoDB configuration file. The configuration file contains information about the database such as its open port and the name of the replica set the application database belongs to. When <MadCap:variable name="Variables.CompanyName" /> is installed on the node, this configuration file is created for you. For nodes in which <MadCap:variable name="Variables.CompanyName" /> is not installed, you must create this configuration file as described in the procedure below. In addition, each database must share a KeyFile used for authentication. This KeyFile must be the same on each instance, whether <MadCap:variable name="Variables.CompanyName" /> is installed or not.</p>
+        <p class="bold">To set up a replica node:</p>
+        <ol>
+            <li>Create a KeyFile. See <a href="../application-database/key-file.htm">Creating KeyFiles</a> for more information.</li>
+            <li>Create a MongoDB user with "write access". See <a href="../application-database/access-sisense-application-database.htm">Accessing the Application Database</a> for more information.</li>
+            <li>
+                <span class="bold">When <MadCap:variable name="Variables.CompanyName" /> is installed:</span>
+                <ol>
+                    <li>Stop the Sisense.Repository service.<br /><img src="../../../Resources/Images/reposit.png" class="thumblarge" /></li>
+                    <li>Copy the KeyFile you prepared above as described in Step 1 and add it to the directory <span class="code">…\Program Files\Sisense\Infra\MongoDB</span>.</li>
+                    <li>In the directory, <span class="code">…\Program Files\Sisense\Infra\MongoDB\mongodbconfig.conf</span>, backup the MongoDB configuration and save the backup copy in another directory.</li>
+                    <li>In the MongoDB directory, open the mongodbconfig.conf file and uncomment the commented lines by removing # from the beginning of the row.<br /><pre>storage:<br />dbPath: “C:/ProgramData/Sisense/PrismWeb/Repository/DB”<br />journal:<br />enabled: true<br />systemLog:<br />destination: file<br />path: “C:/ProgramData/Sisense/PrismWeb/Repository/Logs/sisenseRepository.log”<br />net:<br />bindIp: 127.0.0.1<br />port: 27018<br /># ssl:<br />#   mode: requireSSL<br />#   PEMKeyFile: keyFile path<br />#   PEMKeyPassword: keyFile password<br />security:<br />authorization: “enabled”<br />#keyFile: “C:/Program Files/Sisense/Infra/MongoDB/keyfile”<br /># replication:<br />#   replSetName: replica set name</pre></li>
+                    <li>Bind each of your servers in your high availability configuration together by adding their IP addresses and separating them with a comma:<br /><span class="bold">For Sisense V6.7 and earlier</span>:<br /><span class="code">net:</span><br /><span class="code">bindIp: [127.0.0.1, XX.XX.XX.XX, XX.XX.XX.XX]</span><br /><span class="bold">For Sisense V6.7.1 and later</span><br /><span class="code">net:</span><br /><span class="code">bindIp: 127.0.0.1,XX.XX.XX.XX</span><br /><span class="bold">Note</span>: The value of bindIp has been changed from an array to a string. As a string, the IP addresses should be separated by a comma with no space in between. In addition, the only IP addresses to be included in the string are 127.0.0.1 and the public IP of your local server.<br /></li>
+                    <li>Under <span class="bold">security</span>, define the location of your KeyFile created in Step 1.<br /><span class="code">security:</span><br /><span class="code">authorization: “enabled”</span><br /><span class="code">keyFile: “C:/Program Files/Sisense/Infra/MongoDB/keyfile”</span></li>
+                    <li>Set a name for the replica set.<br /><span class="code">replication:</span><br /><span class="code">replSetName: replicasetname</span><br /><span class="code">Save and close the mongodbconfig.conf file.</span></li>
+                    <li>Start the Sisense.Repository service.</li>
+                </ol>
+            </li>
+            <li>
+                <span class="bold">When <MadCap:variable name="Variables.CompanyName" /> is not installed:</span>
+                <ol>
+                    <li>Copy the KeyFile you prepared above as described in Step 1 to your MongoDb’s configuration file folder.</li>
+                    <li>In the MongoDB configuration folder, open the mongodbconfig.conf file.</li>
+                    <li>Bind each of your servers in your high availability configuration together by adding their IP addresses and separating them with a comma:<br /><span class="code">net:</span><br /><span class="code">bindIp: [127.0.0.1, XX.XX.XX.XX, XX.XX.XX.XX]</span><br /><span class="bold">Note</span>: You can add your PC’s IP address as well to allow you connect to the MongoDB with an application such as RoboMongo.</li>
+                    <li>Under <span class="bold">security</span>, define the location of your KeyFile created in Step 1.<br /><span class="code">security:</span><br /><span class="code">authorization: “enabled”</span><br /><span class="code">keyFile: “C:/MongoDB/keyfile”</span></li>
+                    <li>Set a name for the replica set.<br /><span class="code">replication:</span><br /><span class="code">replSetName: &lt;replicasetname&gt;</span></li>
+                    <li>Save and close the mongodbconfig.conf file.</li>
+                </ol>
+            </li>
+        </ol>
+        <h2 class="notoc">Creating a Replica Set</h2>
+        <p>After you have prepared the MongoDB configuration file for each of your nodes, you must create a replica set with these nodes. With a replica set, each member has the same <MadCap:variable name="Variables.CompanyName" /> data but is otherwise independent. If the primary becomes unavailable, the replica set holds an election to select a new primary from one of the secondary nodes.</p>
+        <p>You should perform this procedure on your primary node. It sets the server as the primary node, and connects the secondary nodes to it.</p>
+        <p class="bold">To create replica set:</p>
+        <ol>
+            <li>Open Robomongo with a WriteUser account as described in <a href="../application-database/access-sisense-application-database.htm">Accessing the <MadCap:variable name="Variables.CompanyName" /> Application Database</a> and select <span class="bold">Open Shell</span> to connect to the primary node.<br /><img src="../../../Resources/Images/roboshell1.png" class="thumblarge" /></li>
+            <li>In the new shell, run the command <span class="bold">rs.initiate()</span> to create a replica set.</li>
+            <li>Run the following commands:<br /><span class="code">cfg = rs.conf()<br></br>cfg.members[0].host = "XX.XX.XX.XX:27018" (Enter your IP address of the primary node and the MongoDB port, by default 27018).<br></br>rs.reconfig(cfg)</span></li>
+            <li>Run the command <span class="bold">rs.add</span>(“XX.XX.XX.XX:27018”), where the XX is the IP address of your secondary node. Run this command to add the unique IP address for each secondary node. For example:<br /><span class="code">rs.initiate()<br />cfg = rs.conf()<br />cfg.members[0].host = "10.50.1.199:27018"<br />rs.reconfig(cfg)<br />rs.add("10.20.1.196:27018")<br />rs.add("10.20.1.197:27018")</span></li>
+            <li>Run the command <span class="bold">rs.status()</span> to verify that the replica set was configured properly. Run this command every couple of minutes to check the progress until stateStr of the secondaries service displays <span class="bold">SECONDARY</span>.<br /><img src="../../../Resources/Images/secondary.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">Connecting <MadCap:variable name="Variables.CompanyName" /> to the Replica Set</h2>
+        <p>After you have created the replica set, you must connect the primary web application server to your replica set to support your high availability configuration.</p>
+        <p>To connect your replica set with your primary web server, you need to configure the db.config and default.yaml files with the name of your replica set and the IP addresses of each of the servers in the set.</p>
+        <p class="bold">To modify the primary server’s configuration files:</p>
+        <ol>
+            <li>In the directory <span class="code">…\Program Files\Sisense\PrismWeb\App_Data\Configurations</span> backup the file <span class="bold">db.config</span>.</li>
+            <li>In the original db.config file of the primary server, modify the value of the parameter <span class="bold">connectionString</span> to:<br /><span class="code">"mongodb://AppUser:we6jBUYGoOrh0K6l+XpTmA==@XX.XX.XX.XX:27018,XX.XX.XX.XX:27018,XX.XX.XX.XX:27018/admin?replicaset=&lt;replicasetname&gt;&amp;amp;readPreference=primaryPreferred"</span><br />replacing ‘@localhost:27018/admin’ with the IP addresses of each of your nodes in the replica set separated by a comma and replacing replicasetname with the name of your replica set. After you have added the IP addresses and your replica set name, your connection string should look like this:<br /><span class="code">&lt;add name="MongoProvider" connectionString="mongodb://AppUser:we6jBUYGoOrh0K6l+XpTmA==@XX.XX.XX.XX:27018,XX.XX.XX.XX:2<br></br>018,XX.XX.XX.XX:27018/admin?<br></br>replicaset=&lt;replicasetname&gt;&amp;amp;readPreference=primaryPreferred" mongoAppIV="ePtH5UDfff6YvSR0ihwkcQ==" mongoAppKey="dDRRM1p3SSS85N0JlQ3g4Mg=="SslPfxFilePath="" SslPfxFilePassword=""/&gt;&lt;/connectionStrings&gt;</span><br /><span class="bold">For example</span>:<br /><img src="../../../Resources/Images/dbconfig2.png" class="thumblarge" /><br /><br /><span class="bold">Note</span>: The only values that should be changed are the IP addresses in the connectionString and replicatesetname.</li>
+            <li>In the directory “<span class="code">…\Program Files\Sisense\PrismWeb\vnext\config</span>”, back up the file default.yaml. </li>
+            <li>In the original default.yaml file, uncomment the section replica_set replacing the value of the parameter name with the name of your replica set and XX.XX.XX.XX with the IP addresses of each of the nodes in your replica set:<br /><pre>replica_set:<br />name: &lt;replicasetname&gt;<br />servers:<br />- host: XX.XX.X.XX<br />port: 27018<br />- host: XX.XX.X.XX<br />port: 27018<br />- host: XX.XX.X.XX<br />port: 27018</pre><br /><span class="bold">For example</span>:<br /><img src="../../../Resources/Images/defaultyaml.png" class="thumblarge" /><br /></li>
+            <li>Depending on your <MadCap:variable name="Variables.CompanyName" /> installation,<br /><span class="bold">Full IIS</span>: Open the IIS Manager and start the website SisenseWeb.<br /><span class="bold">IIS Express</span>: Open Windows Services and start the service Sisense.WebExpress.</li>
+        </ol>
+        <h2 class="notoc">Connecting Additional Web Servers to Your Replica Set</h2>
+        <p>To add additional nodes to support your primary web server, each additional server must be configured with the IP address of the primary and its AppUser credentials. The AppUser defines who can access the application database. For more information about AppUsers, see <a href="../application-database/access-sisense-application-database.htm">Accessing the Sisense Application Database</a>.</p>
+        <p>This procedure describes how to configure additional nodes for high availability.</p>
+        <p class="bold">To configure your nodes:</p>
+        <ol>
+            <li>In the directory <span class="code">..\Program Files\Sisense\PrismWeb\App_Data\Configurations</span> back up the file db.config.</li>
+            <li>In the original db.config file for each of your query nodes, replace the following line with the lines from the same file in the primary node.<br /><span class="code">&lt;add name="MongoProvider" connectionString="mongodb://AppUser:we6jBUYGoOrh0K6l+XpTmA==@XX.XX.XX.XX:27018,XX.XX.XX.XX:27018,XX.XX.XX.XX:27018/admin?replicaset=&lt;replicasetname&gt;&amp;amp;readPreference=primaryPreferred" mongoAppIV="ePtH5UDfff6YvSR0ihwkcQ==" mongoAppKey="dDRRM1p3SSS85N0JlQ3g4Mg==" SslPfxFilePath="" SslPfxFilePassword=""/&gt;&lt;/connectionStrings&gt;</span><br />Where XX.XX.XX.XX:27018 is the IP address and port of your primary node and &lt;replicasetname&gt; with your replica set name. All the content from the parameter connectionString should be included including mongoAppIV and mongoAppKey as this information is essential to enabling a connection between the primary and secondary nodes.</li>
+            <li>Open the default.yaml file located in <span class="code">C:\Program Files\Sisense\PrismWeb\vnext\config\</span>. </li>
+            <li>Edit the file replacing the db_security, replica_set and db_users sections with your parameters from the default.yaml file stored on the primary node.<br /><pre>db_security:<br />mongoAppUser: AppUser<br />mongoAppPassword: we6jBUsdrh0K6l+XpTmA==<br />mongoAppKey: dDRsdm85N0JlQ3g4Mg==<br />mongoAppIV: ePtH5ds6YvSR0ihwkcQ==<br />replica_set:<br />name: ‘replicaSet name’<br />servers:<br />– host: hostHame<br />port: port<br />– host: hostHame<br />port: port<br />– host: hostHame<br />port: port</pre></li>
+            <li>Open the default.yaml file located in <span class="code">C:\Program Files\Sisense\PrismWeb\ECMNext\GraphQL\src\config</span>. This file is used to support the web-based <MadCap:variable name="Variables.ECM" />. </li>
+            <li>Edit the file replacing the same parameters modified in the default.yaml in Step 4. The naming used in this default.yaml file closely resembles that used in the default.yaml described in&#160;Step 4, but there are some differences. The table below maps out the relevant parameters that need to be changed and what sections they are located in within their file:&#160;
+               <table style="width: 100%;"><col /><col /><col /><col /><thead><tr><th colspan="2">Step 4 default.yaml</th><th colspan="2">Step 6 default.yaml</th></tr></thead><tbody><tr><td style="text-align: center;"><span class="bold">Parameter</span></td><td style="text-align: center;"><span class="bold">Section</span></td><td style="text-align: center;"><span class="bold">Parameter</span></td><td style="text-align: center;"><span class="bold">Section</span></td></tr><tr><td>host</td><td>db_server</td><td>host</td><td>mongo</td></tr><tr><td>port</td><td>db_server</td><td>port</td><td>mongo</td></tr><tr><td>mongoAppUser</td><td>db_security</td><td>user</td><td>mongo</td></tr><tr><td>mongoAppPassword</td><td>db_security</td><td>password</td><td>mongo</td></tr><tr><td>mongoAppKey</td><td>db_security</td><td>key</td><td>mongo</td></tr><tr><td>mongoAppIV</td><td>db_security</td><td>IV</td><td>mongo</td></tr><tr><td>sslEnabled</td><td>db_security</td><td>sslEnabled</td><td>dbSecurity</td></tr><tr><td>certFilePath</td><td>db_security</td><td>certFilePath</td><td>dbSecurity</td></tr><tr><td>pemKeyFilePath</td><td>db_security</td><td>pemKeyFilePath</td><td>dbSecurity</td></tr><tr><td>pemKeyFilePassword</td><td>db_security</td><td>pemKeyFilePassword</td><td>dbSecurity</td></tr><tr><td>caFilePath</td><td>db_security</td><td>caFilePath</td><td>dbSecurity</td></tr><tr><td>name</td><td>replica_set</td><td>name</td><td>replicaSet</td></tr><tr><td>servers<br />host: hostName<br />port: port</td><td>replica_set</td><td>servers<br />host: hostName<br />port: port</td><td>replicaSet</td></tr></tbody></table></li>
+            <li>Depending on your <MadCap:variable name="Variables.CompanyName" /> installation:<br /><span class="bold">Full IIS</span>: Open the IIS Manager and start the website SisenseWeb.<br /><span class="bold">IIS Express</span>: Open Windows Services and start the service Sisense.WebExpress.<br /><span class="bold">Note</span>:&#160;If you want to use the web-based <MadCap:variable name="Variables.ECM" /> in a high availability configuration, the build node needs to be included in the replica set. For more information, see <a href="ecm_ha.htm">Supporting the Web-Based ElastiCube Manager in High Availability Environments</a>.</li>
+        </ol>
+        <h2 class="notoc">Defining the Application Database’s Read Preferences</h2>
+        <p>Read preferences specify where each member of a replica set should direct its read operations.</p>
+        <p>If you have implemented high availability with replica sets to support your Sisense implementation, and your application databases are geographically spread out, you may want to define different read preferences to different nodes within the set.</p>
+        <p>Defining your own read preferences is useful in cases such as preventing a secondary node which has fallen behind a primary node from giving old data.</p>
+        <p>You can define the following read preferences for the application database:</p>
+        <ul>
+            <li>
+                <span class="bold">primary</span>: This preference routes all reads to the replica set primary. If the primary is unavailable for some reason a read operation would produce an error or exception. This preference is useful to never return stale data.</li>
+            <li>
+                <span class="bold">(Sisense Default) primaryPrefered</span>: Reads are sent to the primary, but if it is unavailable, the reads come from secondary members instead.</li>
+            <li>
+                <span class="bold">secondary</span>:  Reads are only allowed on secondary members of the replica set. When no secondaries are available, an error or exception is returned.</li>
+            <li>
+                <span class="bold">secondaryPrefered</span>: Reads are routed to a secondary, but if no secondary is available read operations are sent to the primary.</li>
+            <li>
+                <span class="bold">Nearest</span>: Reads are performed on the nearest available node, disregarding if it is a primary or secondary member. The nearest node is determined by sending pings to all members and measuring the response time.</li>
+        </ul>
+        <p>For additional information about read preferences, <a href="https://docs.mongodb.com/manual/core/read-preference/">click here</a>.</p>
+        <p>To modify the application database’s read preferences, you must update two files located in your Sisense server, the db.config file and the default.yaml file.</p>
+        <p>The db.config file is located in the following directory:</p>
+        <p class="code">C:\Program Files\Sisense\PrismWeb\App_Data\Configurations</p>
+        <p>Open the db.config in a text editor and add the property readPreference=”yourPreferenceType” to the MongoProvider connection string.</p>
+        <p class="code">
+            <pre>&lt;add name="MongoProvider" connectionString="mongodb://AppUser:mzfsb/DqUHAu+fsdAg==@10.60.22.54:27018,10.60.22.64:27018,10.60.22.74:27018/admin?replicaset=sisense;readPreference=primaryPreferred" mongoAppIV="ePtHfsdvvSR0ihwkcQ=="  mongoAppKey="ZzJBOFhfsdTW02aw==" SslPfxFilePath="" SslPfxFilePassword=""/&gt;&lt;/connectionStrings&gt;</pre>
+        </p>
+        <p>The default.yaml file is located in the following directory:</p>
+        <p class="code">C:\Program Files\Sisense\PrismWeb\vnext\config</p>
+        <p>Open the default.yaml file in a text editor and add the property readPreference: ‘yourPreferenceType’ to the replica set object.</p>
+        <p class="code">
+            <pre>replica_set:<br />name: ‘replicaSet name’<br />readPreference: 'primaryPrefered'<br />servers:<br />– host: hostHame<br />port: port<br />– host: hostHame<br />port: port<br />– host: hostHame<br />port: port<br /></pre>
+        </p>
+        <p>
+            <span class="bold">Note</span>: Remember, the comments '#' must be removed from each row of the replica_set object.</p>
+    </body>
+</html>

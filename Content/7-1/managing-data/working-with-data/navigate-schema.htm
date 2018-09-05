@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Navigating the Schema Editor | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Navigating the <MadCap:variable name="Variables.ECM" /></h1>
+        <p>The first time you create an <MadCap:variable name="Variables.ElastiCube" />, its empty until you start adding some data. Once you move some data into the <MadCap:variable name="Variables.ElastiCube" />, its represented in the <MadCap:variable name="Variables.ECM" /> in circular nodes. Each node is a table. The color of a node is determined by its data source, for example, data imported from a CSV&#160;file is one color while data imported via SQL&#160;is another. The colors of the data source are described in the legend on the bottom right of the editor. </p>
+        <p>The size of the table reflects the number of relations and the number of columns the table has.  So, a table with several relations and a lot of columns will be larger than a table with a single relation and fewer columns. For example:</p>
+        <p>
+            <img src="../../../Resources/Images/tablecomparison.png" class="thumblarge" />
+        </p>
+        <p>The ‘Conditions time of stay’ table is a custom table with a single relation and the ‘Admissions’ table contains data from a CSV file and has four relations.</p>
+        <p>The ElastiCube Manager contains a variety of information and functionality that lets you prepare your data model as needed. A sample screen is shown below.</p>
+        <p>
+            <img src="../../../Resources/Images/schemaeditor.png" class="thumblarge" />
+        </p>
+        <ol>
+            <li>
+                <span class="bold">Navigation Pane</span>: This area contains a list of your tables and their columns. On the left side of the table name is an icon that indicates what type of data is included, Date, Numeric or Text. On the right side is a join icon <img src="../../../Resources/Images/joinicon.png" /> when the column is connected to another table.<br />See <a href="searching-tables-fields.htm">Finding Tables and Fields</a> more information.</li>
+            <li>
+                <span class="bold">Schema</span>: The schema contains your data model that represents all the data to be added to the <MadCap:variable name="Variables.ElastiCube" /> and the relationships between the table. Some of your tables might appear with icon attached them. These indicate the status of your build and table. For example, <img src="../../../Resources/Images/notbuildicon.png" class="docbutton" /> indicates that the table has changed since the last <MadCap:variable name="Variables.ElastiCube" /> build while <img src="../../../Resources/Images/pendingcustom.png" /> indicates that a custom expression is currently in draft mode. See <a href="working-with-data.htm">Working with Data</a> for more information.</li>
+            <li>
+                <span class="bold">Schema Menu</span>: This menu lists the following buttons:<br /><span class="bold">Data</span>: Click to add a new table to your <MadCap:variable name="Variables.ElastiCube" />. <br /><span class="bold">Custom</span>: Click to add a custom table to your <MadCap:variable name="Variables.ElastiCube" />. <br /><span class="bold">Relationships</span>: Click to open a preview window where you can join two tables. See <a href="create-relations.htm">Creating Relationships</a> for more information. <br /><span class="bold">Build</span>: Click <span class="bold">Build </span> to initiate an <MadCap:variable name="Variables.ElastiCube" /> build. <br /><span class="bold">Undo/Redo</span>: Click these buttons to undo or redo any recent changes to your schema. </li>
+            <li>
+                <span class="bold">Legend</span>: The legend lists a description of all your data sources in the ElastiCube and the color that represents them in your schema.</li>
+        </ol>
+    </body>
+</html>

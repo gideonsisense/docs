@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="2649" MadCap:lastWidth="990">
+    <head>
+        <title>Connecting to Google Analytics | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Google Analytics</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to tables contained within Google Analytics. The steps below describe how to connect to this type of data source.</p>
+        <p>
+            <span class="bold">Note</span>: Google Analytics provides a quota on the free daily API requests. For this reason a developer key must be supplied. Read more details about <a href="https://developers.google.com/analytics/devguides/config/mgmt/v3/limits-quotas">Quota Limits</a>.</p>
+        <ol>
+            <li>Click <span class="bold">Add Data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the <span class="bold">Web Services</span> category, select <span class="bold">Google Analytics</span>.
+<br /><img src="../../../Resources/Images/add-google-Analytics.png" class="thumblarge" /><![CDATA[            ]]></li>
+            <li>You will be prompted to enter the following information:</li>
+            <ul>
+                <li>
+                    <span class="bold">Email</span>: Enter email associated with your Google Analytics account.</li>
+                <li>
+                    <span class="bold">Auth Code</span>: Google requires an authentication code to enable access from the <MadCap:variable name="Variables.ElastiCube" /> to data associated with a Google Analytics account (site name and profile IDs). To attain the Auth code click on the link <span class="bold">Get Auth Code</span>. The browser will open and you will need to sign in to your Google Analytics account. After signing in, click on the ‘Allow access’ button. This will generate a temporary code that you must paste into the <span class="bold">Auth Code</span> text box in the connection window.</li>
+                <li>
+                    <span class="bold">Date Range</span>: Select the date range of the analytics data you require.<br /><img src="../../../Resources/Images/add-google-Analytics_2.png" class="thumblarge" /></li>
+            </ul>
+            <li>Click <span class="bold">Connect </span>to display a  list of available websites the list box below.</li>
+            <li>Select the relevant website that you want to work with, and click <span class="bold">OK</span>.</li>
+            <li>All tables and views associated with the website appear in a new window.</li>
+            <li>Select the checkbox next to each table you want to use.
+            Existing relationships between tables can be automatically replicated in the ElastiCube by selecting the <span class="bold">Automatically create relationships from database</span> checkbox. Likewise fields with similar names can be linked by selecting the <span class="bold">Automatically create relationships for fields with the same name</span> checkbox.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+        <p>See <a href="custom-google-tables.htm">Customizing Google Analytics and AdWords Tables</a> for in-depth info on controlling your Google Analytics tables.</p>
+        <h3 class="notoc">Avoiding Sampling in Google Analytics</h3>
+        <p>Google Analytics applies sampling whenever more than 500,000 sessions are returned within a given query. For example, if we are asking for a 1-month time period that had 1,000,000 session in it, Google will apply sampling and we will only get 50% of the actual sessions. Whereas in some cases sampling might only slightly affect the results accuracy, it many cases it is crucial.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> supports three configuration options to reduce the chances of sampling:</p>
+        <p>While these configuration options may reduce the chances that Google samples your data, Sisense cannot guarantee that your data will not be sampled as the data is extracted from Google.</p>
+        <ol>
+            <li>
+                <span class="bold">Split Intervals</span>:&#160;A Google Analytics table can be configured to be split into a number of given intervals. For example, if intervals=4, then a one month period will be split into 4 query requests equal in days.</li>
+            <li>
+                <span class="bold">Day Intervals</span>:&#160;A Google Analytics table can be configured to be split into multiple intervals where each is the size of the given number of days. For example, if day_intervals=10, then a 30 day time period will be split into 3 intervals.</li>
+            <li>
+                <span class="bold">Segmenting Data</span>:&#160;A segment is a subset of your data. You can use predefined segments to work around Google’s sampling limitations. For more information, see <a href="segment-google.htm">Segment Google Analytics Data</a>.</li>
+        </ol>
+        <p>Since Google limitations are applied separately per request, this reduces the risk of overall sampling.</p>
+        <h4 class="notoc">Configuring Google Analytics Sampling Intervals</h4>
+        <p>Edit the following XML file (if it doesn’t exist, create it):</p>
+        <p class="code">%appdata%\Sisense\PrismServer\LocalRepository2.0\Resources\Analytics\GAnalytics.Tables.xml</p>
+        <p>The xml file needs to have a table node for each table, under a tables root:</p>
+        <p class="code">&lt;?xml version="1.0" encoding="utf-8" ?&gt;</p>
+        <p class="code">&lt;tables&gt;</p>
+        <p class="code">&lt;table name="MyGoogleAnalyticsTable" days_interval="2" split_by="10"/&gt;</p>
+        <p class="code">&lt;/tables&gt;</p>
+        <p>For Split Intervals as described above use the “<span class="bold">split_by</span>” attribute. For Day Intervals use the “<span class="bold">days_interval</span>” attribute.</p>
+        <p>Note that only one of these attributes should be used. “split_by” will be used in case both are available.</p>
+        <p>It is easy to estimate the amount of sessions your account generates from your Google Analytics account:</p>
+        <p>
+            <img src="../../../Resources/Images/ga_sessions-1024x532.png" class="thumblarge" />
+        </p>
+    </body>
+</html>

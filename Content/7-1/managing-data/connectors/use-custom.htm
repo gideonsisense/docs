@@ -1,0 +1,14 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="700" MadCap:lastWidth="878">
+    <head>
+        <title>Using Custom SQL to Import Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Using Custom SQL to Import Data</h1>
+        <p>Create custom SQL queries to manipulate the data that you want to import, for example:</p>
+        <ul>
+            <li>Import selected data only, to save import and build times in cases where you do not require all the data.</li>
+            <li>Perform various procedures in the database such as table joins.</li>
+        </ul>
+        <p>After pushing your custom query, you can preview the updated tables before importing the data into the <MadCap:variable name="Variables.ElastiCube" />.</p>Notes:<ul>This feature is available for the following relational databases: Microsoft SQL Server, MySQL, PostgreSQL, Oracle, and Amazon Redshift. This feature runs a query in the source database, which may require a lot of processing power from your database, especially for complex queries.</ul><p class="bold">To create a custom SQL query:</p><ol><li>After connecting to your data, click <span class="bold">Edit</span>.</li><li>Select <span class="bold">Manual Query Input</span>, and type in your query.</li><li>Click <span class="bold">Apply Table</span>. Your preview will update to reflect the query.</li><li>You can now click <span class="bold">Add</span> to import the data based on your SQL query.</li></ol><p><img src="../../../Resources/Images/query.png" class="thumblarge" /></p></body>
+</html>

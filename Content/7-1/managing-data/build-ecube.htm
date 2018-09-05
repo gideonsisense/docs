@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Building ElastiCubes | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Building <MadCap:variable name="Variables.ElastiCube" />s</h1>
+        <p>After defining a schema, you need to build your ElastiCube. Building an ElastiCube imports the data from your data sources that you added to your schema. You must build an ElastiCube at least once before the ElastiCube data can be used in a dashboard.</p>
+        <p>
+            <object MadCap:HTML5Video="true" src="../../Resources/Multimedia/Builds.mp4" MadCap:Param_controls="true" MadCap:Param_muted="true" MadCap:Param_loop="true" MadCap:Param_autoplay="true">
+            </object>
+        </p>
+        <p class="bold">To build an <MadCap:variable name="Variables.ElastiCube" />:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page, open the relevant <MadCap:variable name="Variables.ElastiCube" /> and click <img src="../../Resources/Images/v7build.png" class="docbutton" /> . The Build Options dialog box is displayed.<br /><img src="../../Resources/Images/buildoptions.png" class="thumblarge" /><br /></li>
+            <li>Select <span class="bold">Replace All</span>, <span class="bold">By Table</span>, or <span class="bold">Changes Only</span>. Replace All builds the <MadCap:variable name="Variables.ElastiCube" /> from scratch with the current data from all the sources in the schema. <span class="bold">By Table</span> builds the ElastiCube as defined on the table level with all tables not defined are built from scratch. <span class="bold">Changes Only</span> builds the ElastiCube with data for tables that were added to the schema or modified since the last build. For an in-depth description of these settings and the implications of each setting, see <a href="build-settings.htm">ElastiCube Build Settings</a>.</li>
+            <li>Toggle the switch below to limit the amount of rows imported for each table.<br /><img src="../../Resources/Images/limitbuild.png" class="thumblarge" /><br />This is useful for building samples of your data and reduces the overall amount of time it takes to build an <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>Click <span class="bold">Build</span>.<br />A log is displayed that describes the build process. When the build is complete, the following message appears in the logs: Build successfully ended.</li>
+        </ol>
+        <h3 class="notoc">Building <MadCap:variable name="Variables.ElastiCube" />s Remotely</h3>
+        <p>
+            <span class="bold">Note</span>: This functionality is only available in the desktop version of the <MadCap:variable name="Variables.ECM" />. This functionality will be available in <MadCap:variable name="Variables.ECM" /> in the near future.</p>
+        <p>You can build the <MadCap:variable name="Variables.ElastiCube" /> locally on your machine or build the <MadCap:variable name="Variables.ElastiCube" /> remotely from another machine in which <MadCap:variable name="Variables.CompanyName" /> is installed. This is useful for example when your configuration supports test and production environments. For more information on setting up production environments, click <a href="../getting-started/setup-production.htm">here</a>.</p>
+        <p>When connecting remotely to your <MadCap:variable name="Variables.ElastiCube" /> server must have <MadCap:variable name="Variables.CompanyName" /> installed and a unique <MadCap:variable name="Variables.CompanyName" /> license. While you can have multiple Administrators working on and building an <MadCap:variable name="Variables.ElastiCube" />, only one Administrator can work on an <MadCap:variable name="Variables.ElastiCube" /> at a time to prevent data corruption. In addition, the machine in which the build is performed, must have sufficient resources to be able handle all of your data. See <MadCap:variable name="Variables.CompanyName" />’s <a href="../getting-started/minimum-requirements.htm">minimum requirements</a> for more information.</p>
+        <p class="bold">To build an <MadCap:variable name="Variables.ElastiCube" /> remotely:</p>
+        <ol>
+            <li>On the <MadCap:variable name="Variables.ElastiCube" /> server where the <MadCap:variable name="Variables.ElastiCube" /> is to be built, open ports 811 and 812 for inbound and outbound access.</li>
+            <li>In the <MadCap:variable name="Variables.ECM" />, open the <MadCap:variable name="Variables.CompanyName" /> Server Console by clicking <span class="bold">+</span>.</li>
+            <li>In the <span class="bold">Connection Settings</span> window, enter a name for the server and its IP address.</li>
+            <li>Click <span class="bold">Connect</span>. The list of <MadCap:variable name="Variables.ElastiCube" />s for that server are displayed in the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>In the <MadCap:variable name="Variables.ECM" />, click <span class="bold">Build</span>.</li>
+            <li>Under Target Server, select the new server you have just added.</li>
+            <li>Define your build settings and click <span class="bold">Build</span>.</li>
+        </ol>
+    </body>
+</html>

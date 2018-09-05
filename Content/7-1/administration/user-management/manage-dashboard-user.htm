@@ -1,0 +1,52 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Managing Dashboard Users | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Managing Dashboard Users</h1>
+        <p>This section describes how to add and manage <MadCap:variable name="Variables.CompanyName" /> users that can access <MadCap:variable name="Variables.CompanyName" /> dashboards.</p>
+        <p>You can add users using the following methods:</p>
+        <ul>
+            <li>Add new users by entering them one by one or in bulk</li>
+            <li>Add new users from your Active Directory database. <a href="integrate-active-directory.htm">Click here</a> to learn how to configure your Active Directory in <MadCap:variable name="Variables.CompanyName" /></li>
+        </ul>
+        <p class="bold">To access the user management settings:</p>
+        <ul>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Users</span> tab on the left. By default, the only available user after installing <MadCap:variable name="Variables.CompanyName" /> is the user that installed <MadCap:variable name="Variables.CompanyName" />. By default, this user is an System Administrator.</li>
+        </ul>
+        <h2 class="notoc">Adding a New User</h2>
+        <p class="bold">To add a new user:</p>
+        <ol>
+            <li>Click <img src="../../../Resources/Images/v7addusers.png" />. If a connection with Active Directory also exists, an additional Import Many option is available. Click it to select a user from Active Directory.<br /><img src="../../../Resources/Images/v7addusers1-251x300.png" class="thumblarge" /></li>
+            <li>Fill in the user’s details in the window.</li>
+            <li>(Optional) The <span class="bold">Language</span> for your account is the language set by an Administrator for your group or server. From the Language list, you can override those settings and select the language you prefer to be displayed in the <MadCap:variable name="Variables.Sisense Web Application" />.</li>
+            <li>Select the <span class="bold">Role</span> of the user:
+          <ul><li><span class="bold">Admin</span>: Admins can access the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" /> from where they can manage <MadCap:variable name="Variables.ElastiCube" />s, users, user groups and more. <MadCap:variable name="Variables.CompanyName" /> supports multiple Admin users.</li><li><span class="bold">Data Admin</span>: Data Admins can manage all data sources in the system. They have access to the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" /> from where they can manage <MadCap:variable name="Variables.ElastiCube" />s and Live connections. Data Admins can also add and manage servers. This is useful for migrating <MadCap:variable name="Variables.CompanyName" /> across environments. Data Admins do not have access to User Management and System Configuration.</li><li><span class="bold">Data Designers</span>: Data Designers can create and edit <MadCap:variable name="Variables.ElastiCube" />s they created or were shared with them. Data Designers can access the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" /> from where they can manage the <MadCap:variable name="Variables.ElastiCube" />s and Live Connections they have access to in the Data Sources section. In addition, Data Designers can see servers, but can not add new servers. Data Designers do not have access to User Management and System Configuration.</li><li><span class="bold">Designers</span>: Designers can create, design, edit and share Dashboards. <MadCap:variable name="Variables.CompanyName" /> Designers determine whether the user with who they share a Dashboard has editing rights (is a Designer) or only viewing rights (Viewer).</li><li><span class="bold">Viewers</span>: Viewers can view, explore, drill down, make selections and filter the Dashboards that Designers share with them. Viewers only need a standard web browser; no plugins or downloads. They cannot create new Dashboards or edit existing ones.</li></ul></li>
+            <li>Click <span class="bold">Save</span>. The user then receives an email from <MadCap:variable name="Variables.CompanyName" /> that redirects the user to activate their account and set a password.</li>
+        </ol>
+        <p class="bold">To manually set a password for the new user:</p>
+        <ul>
+            <li>Set the <span class="bold">Define Password</span> option to <span class="bold">ON</span> and enter a password before saving.<br /><img src="../../../Resources/Images/v7definepass-300x102.png" class="thumblarge" /><br />In this case, the user receives an invitation email. You must personally notify the user of the password that you set for them.</li>
+        </ul>
+        <h2 class="notoc">Adding Multiple Users</h2>
+        <p class="bold">To add multiple users:</p>
+        <ol>
+            <li>Click the <span class="bold">Import Many</span> option at the top right of the Add users window.</li>
+            <li>In the displayed text box, paste a comma separated list of emails and click <span class="bold">Next</span>.</li>
+            <li>The next screen enables you to assign User rights to the users that you entered and to verify that the user count and permissions match your license.</li>
+            <li>After you click <span class="bold">Add</span>, each user receives an activation email.</li>
+        </ol>
+        <h2 class="notoc">Editing an Existing User</h2>
+        <p class="bold">To edit an existing user:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Users</span> tab on the left.</li>
+            <li>Click <img src="../../../Resources/Images/pencilv7.png" class="docbutton" /> on the right of the user’s entry in the list.</li>
+        </ol>
+        <h2 class="notoc">Deleting a User</h2>
+        <p class="bold">To delete an existing user:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> in the upper right corner and select the <span class="bold">Users</span> tab on the left.</li>
+            <li>Click  <img src="../../../Resources/Images/trash.png" class="docbutton" />at the right of the user’s entry in the list.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Adding Drill Hierarchies to Widgets | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Adding Drill Hierarchies to Widgets</h1>
+        <p>Dashboard Viewers have the option to drill down in a widget, and get an in-depth view of a selected value.</p>
+        <p>While Viewers can select a drill-down path from the complete list of fields, it’s easier to select a commonly needed drill hierarchy from a short list.  This is especially true when there is a lot of data, and the Viewer needs to remember specific fields, and select them each time.</p>
+        <p>As a Designer, you can add predefined drill hierarchies to widgets.</p>
+        <p><span class="bold">Note</span>: Your <MadCap:variable name="Variables.CompanyName" /> Administrator must first create the drill hierarchies before you can select and add them in the Widget Designer. Click <a href="../../administration/elasticube-management/manage-drill-hiearchy.htm">here</a> to learn more.</p>
+        <p class="bold">To enable drill hierarchies in a widget:</p>
+        <ol>
+            <li>In the Widget Designer, click on the menu of the value (dimension), and select Hierarchies…</li>
+            <li>Select the checkboxes next to the drill hierarchies that you want to make available to dashboard viewers.<br /><span class="bold">Note</span>: Hierarchies with a lock icon will always appear in the widget. To unlock this option, please contact your <MadCap:variable name="Variables.CompanyName" /> Administrator.<br /><img src="../../../Resources/Images/drill-flow-2.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">Disabling the Drill to Anywhere Option</h2>
+        <p>As a Designer, you can restrict viewers to predefined hierarchies only, by disabling the option to drill down freely to any field.</p>
+        <p>The drill-to-anywhere option is enabled by default for all users and widgets. You can disable the drill-to-anywhere option in the <MadCap:variable name="Variables.CompanyName" /> web app per widget (see below), or by user role in the REST API.</p>
+        <p class="bold">To disable the drill-to-anywhere option:</p>
+        <ul>
+            <li>In the widget menu, deselect the Enable Drill to Anywhere option.<br /><img src="../../../Resources/Images/v7deselect.png" class="thumblarge" /><br />As a result, the Choose Another… option is removed from the widget’s Drill options.<br />The left image below displays the widget with the option to drill to anywhere. The image on the right displays the widget with only predefined drill hierarchies.<br /><img src="../../../disable-drill.png" class="thumblarge" /></li>
+        </ul>
+    </body>
+</html>

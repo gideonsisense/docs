@@ -1,0 +1,37 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2447" MadCap:lastWidth="930">
+    <head>
+        <title>Creating Formulas Based on Criteria and Conditions (Filters) | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating Formulas Based on Criteria and Conditions (Filters)</h1>
+        <p>Often formulas must take into account specific criteria. To do this <MadCap:variable name="Variables.CompanyName" /> provides a feature called <span class="bold">Measured Value</span>, which like the SUMIF function in Excel, only performs a calculation when the values meet a set of criteria.</p>
+        <p>Criteria for Measured Values may be based on any logical operators in a filter.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-10.png" class="thumblarge" />
+        </p>
+        <p class="bold">To filter the formula:</p>
+        <ol>
+            <li>In the Data Browser, create your formula from the Data Browser and Functions, as explained in <a href="using-formula-editor.htm">Formula Editor</a>.</li>
+            <li>Add the field (criteria) by which you want to filter the formula. Right-click the field and select <span class="bold">Filter</span>.</li>
+            <li>You can then filter the formula by listed items, text options, ranking, etc. When done, click <span class="bold">OK</span>.<br /><img src="../../../Resources/Images/browserdata2.png" class="thumblarge" /></li>
+        </ol>
+        <p>A simple example of Measured Value is the use of a list filter. A marketing team may need to count leads generated for a specific region such as North America. Even if leads come from many different countries, the measured value calculates leads generated only when the lead originates from the United States or Canada.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-1.png" class="thumblarge" />
+        </p>
+        <p>The above example as defined in the Formula Editor.</p>
+        <p>
+            <img src="../../../Resources/Images/syntax2.png" class="thumblarge" />
+        </p>
+        <p>A more sophisticated case is the <span class="bold">use of a ranking filter</span>, for example a sales team may want to track the contribution of best-selling products to total revenue. However, what constitutes a popular product may change over time. A measured value can be created for sales which includes a condition that only shows sales for the top products for any month. This simultaneously filters the data but also takes into account changes in what classifies as a top product over time.</p>
+        <p>
+            <img src="../../../Resources/Images/formula-2.png" class="thumblarge" />
+        </p>
+        <p>The above example as defined in the Formula Editor.</p>
+        <p>
+            <img src="../../../Resources/Images/syntax3.png" class="thumblarge" />
+        </p>
+        <p>Measured Values are a powerful feature to take into account business logic and quickly perform calculations only when a specific set of criteria is met.</p>
+        <span class="bold">Note</span>:&#160;If your widget is filtered using measured values, then the measured value will override any other widget or dashboard filters you have for the same fields.<h3 class="notoc">Calculating Contributions Using the ALL Function</h3><p>The All() function returns the total amount for a dimension, and can be used for various use cases. In the following example, we will use the All function to calculate how much each country contributed towards the total cost of a campaign.</p><p>Our final widget includes the following information:</p><p><img src="../../../Resources/Images/allfacts.png" class="thumblarge" /></p><p><span class="bold">Step 1</span>: The second column above represents a formula that sums up the total cost for all countries and does not represent the breakdown per country. The formula includes the calculation (total cost) followed by the all function (filter), followed by the dimension (country) in parenthesis. It looks like this:</p><p><img src="../../../Resources/Images/formula.png" /></p><p>We can save (star) the above formula and call it Total cost for Countries, which will be used in the next step.</p><p><span class="bold">Step 2</span>: We can now use the above formula in another formula to calculate the contribution, like this:</p><p><img src="../../../Resources/Images/formula2.png" /></p><p>The result is the third column above (plus formatting the results as percentages).</p></body>
+</html>

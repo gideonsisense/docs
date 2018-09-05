@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Managing User Groups | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Managing User Groups</h1>
+        <p>This topic describes how to add and use user groups in <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p class="bold">How Do User Groups Work?</p>
+        <ol>
+            <li>When building and sharing dashboards, wherever you can select a user, you can also select a user group. For example, you can share a dashboard with an entire user group at once.</li>
+            <li>When you add an additional user to an existing user group, then that user is automatically awarded the permissions of that user group.</li>
+            <li>When users are added in Active Directory to a previously imported Active Directory user group, then those users are automatically added to the corresponding <MadCap:variable name="Variables.CompanyName" /> user group.</li>
+            <li>User groups can only contain users. They do not support nested user groups.</li>
+            <li>Additional users cannot be added to a user group that was imported from Active Directory.</li>
+        </ol>
+        <p>You can add users to a user group using the following methods:</p>
+        <ul>
+            <li>Add existing <MadCap:variable name="Variables.CompanyName" /> users to a user group</li>
+            <li>Add a user group from Active Directory</li>
+        </ul>
+        <h2 class="notoc">Accessing User Group Management</h2>
+        <p>You can add, edit and delete user groups, and assign users to them.</p>
+        <p class="bold">To access the user group settings:</p>
+        <ul>
+            <li>Click <span class="bold">Admin </span>and select the <span class="bold">Groups</span> tab on the left. A list of the previously defined user groups is displayed. The <span class="bold">Origin</span> column displays <span class="bold"><MadCap:variable name="Variables.CompanyName" /></span> or <span class="bold">Active Directory</span> to indicate whether the user group was defined in <MadCap:variable name="Variables.CompanyName" /> or imported from Active Directory.</li>
+        </ul>
+        <p>If no user groups have yet been defined, the following message is displayed: No Groups Found</p>
+        <h2 class="notoc">Adding a New User Group</h2>
+        <p>The following procedure describes how to add a new user group by selecting users from existing users in <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>See <a href="integrate-active-directory.htm">Adding a User Group from Active Directory</a> for a description of how to add a user group from Active Directory.</p>
+        <p class="bold">To add a new user group:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Groups</span> tab on the left.</li>
+            <li>Click <span class="bold">Add Group</span>.<br /><img src="../../../Resources/Images/groupv7.png" class="thumblarge" /></li>
+            <li>In a <span class="bold">Group Name</span> field, enter the name for this user group.</li>
+            <li>In the <span class="bold">Group Users</span> field select each of the users that belong to this group. To add each user, start typing in the user’s name. An auto-complete list is displayed showing the users that already exist in <MadCap:variable name="Variables.CompanyName" />. Select a username to add to the group.<br /><span class="bold">Note</span>: If you want, you can leave the group empty and add members to it later.</li>
+            <li>(Optional) The <span class="bold">Default Language</span> for a group is the language set by an Administrator for that server. From the Default Language list, you can select another default language for a group. For example, if your server supports groups located in different countries, you can set the language for each group.</li>
+            <li>(Optional) Select the default user role. Each member of the group is assigned this role when they are added to the group</li>
+            <li>Click <span class="bold">Create</span>.</li>
+        </ol>
+        <h2 class="notoc">Adding Users to an Existing User Group</h2>
+        <p>The following procedure describes how to add one or more users to an existing user group.</p>
+        <p class="bold">To add multiple users to a user group:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Users</span> tab on the left.</li>
+            <li>Select the relevant users.</li>
+            <li>Click <span class="bold">+ Add to Group</span>.</li>
+            <li>In the <span class="bold">Group Users</span> field, you can type additional usernames to add more users. An auto-complete list is displayed showing the users that already exist in <MadCap:variable name="Variables.CompanyName" />. Select a username to add to the group.</li>
+            <li>Click <span class="bold">Add</span>.</li>
+        </ol>
+        <h2 class="notoc">Editing an Existing User Group</h2>
+        <p class="bold">To edit an existing user group:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Groups</span> tab on the left.</li>
+            <li>Click <img src="../../../Resources/Images/pencilv8.png" class="docbutton" /> on the right of the user group’s entry in the list.<br /><span class="bold">Note</span>: To remove a user from the Group, hover over the user name in the list and click <img src="../../../Resources/Images/trash1.png" class="docbutton" />.</li>
+        </ol>
+        <h2 class="notoc">Deleting a User Group</h2>
+        <p>When a user group that was entered in <MadCap:variable name="Variables.CompanyName" /> is deleted, its users are not deleted. They remain active users in <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>When a user group that was imported from Active Directory is deleted, a prompt is displayed asking whether you want to also delete all the users in this user group from <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p class="bold">To delete an existing user group:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Groups</span> tab on the left.</li>
+            <li>Click <img src="../../../Resources/Images/trash1.png" class="docbutton" /> at the right of the user group’s entry in the list.</li>
+        </ol>
+        <p>&#160;</p>
+    </body>
+</html>

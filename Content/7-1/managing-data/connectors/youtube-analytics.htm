@@ -1,0 +1,154 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to YouTube Analytics | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to YouTube Analytics</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> YouTube Analytics connector is a standalone connector that allows you to import data from the YouTube Analytics API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect to the YouTube Analytics  API through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the YouTube Analytics API. To obtain a connection string, you will need to create a YouTube Analytics app.</p>
+        <p>Once you have connected to YouTube Analytics, you can import a variety of tables from the YouTube Analytics API.</p>
+        <p>This page describes how to install the YouTube Analytics connector, how to connect to YouTube Analytics with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the YouTube Analytics Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the YouTube Analytics REST API</a>
+            </li>
+            <li><a href="#Adding">Adding YouTube Analytics Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#YouTube">YouTube Analytics Tables</a>
+            </li>
+            <li><a href="#Versions">Versions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the YouTube Analytics Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the YouTube Analytics connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the YouTube Analytics connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Youtube Analytics.Connector.Installer.exe">Download</a> the YouTube Analytics installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+            <li>The YouTube Analytics connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/youtubeanalytics.png" class="thumblargeli" />
+        </p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the YouTube Analytics REST API</h2>
+        <p>To access YouTube Analytics’ REST API from the <MadCap:variable name="Variables.ECM" />, you must provide valid Oauth YouTube Analytics credentials through a connection string. These credentials are provided by YouTube Analytics when you create an application.</p>
+        <p>After you receive your credentials from YouTube Analytics, you can create the connection string and provide <MadCap:variable name="Variables.CompanyName" /> with it to connect to your data.</p>
+        <h3 class="notoc">Creating an App</h3>
+        <p>You can follow the procedure below to register an app and obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Log in to the <a href="https://console.developers.google.com/flows/enableapi?apiid=picker&amp;credential=client_key&amp;pli=1">Google Developers Console</a>.</li>
+            <li>Click <span class="bold">Create Project</span> or select an existing project.<br /><img src="../../../Resources/Images/youtubeapi.png" class="thumblarge" /></li>
+            <li>In the API Manager, click <span class="bold">Credentials</span> &gt; <span class="bold">Create Credentials</span> &gt; <span class="bold">OAuth Client Id</span>.<br /><img src="../../../Resources/Images/youtubeapi1.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Configure Consent Screen</span> to customize the information displayed to users when they connect.<br /><img src="../../../Resources/Images/youtubeapi21-768x181.png" class="thumblarge" /></li>
+            <li>If you are connecting from a desktop application, click <span class="bold">Other</span> in the Application Type section. If you are connecting from a Web application, click the Web Application option. In the Authorized Redirect URIs box, enter the URL you want to be used as a trusted redirect URL, where the user will return with the token that verifies that they have granted your app access.</li>
+            <li>Click <span class="bold">Create</span>. The OAuthClientId and OAuthClientSecret are displayed. Save these credentials as they need to be passed to YouTube in the connection string when importing data into the <MadCap:variable name="Variables.ECM" />.<br /><img src="../../../Resources/Images/youtubeapi31.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">OK</span>.</li>
+            <li>Select <span class="bold">Library</span> &gt; <span class="bold">YouTube Analytics API</span>.<br /><img src="../../../Resources/Images/youtubean1.png" class="thumblarge" /><br /></li>
+            <li>Click <span class="bold">Enable</span>.<br /><img src="../../../Resources/Images/youtubeapi5-768x409.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc"><a name="Adding"></a>Adding YouTube Analytics Tables to your <MadCap:variable name="Variables.ElastiCube" /></h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to YouTube Analytics and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. </p>
+        <p>After you have obtained the relevant credentials, you can create the connection used to connect to your YouTube account. The YouTube Analytics connection string has the following structure:</p>
+        <p class="code">jdbc:DataSourceName:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a YouTube Analytics connection string:</p>
+        <p class="code">jdbc:youtubeanalytics:OAuthClientId=xxxxxxxxxxxxxxxxxxxxx;</p>
+        <p class="code">OAuthClientSecret=xxxxxxxxxxxxxx;InitiateOAuth=GETANDREFRESH;CallbackURL=http://localhost;</p>
+        <p>The example above includes mandatory parameters you can provide in the connection. The required parameters are emphasized in bold.</p>
+        <p class="bold">Mandatory Parameters</p>
+        <ul>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property</li>
+            <li><span class="bold">OAuthClientId</span>: Set this to the Client Id</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the Client Secret</li>
+            <li><span class="bold">CallbackURL</span>: Set this to http://localhost</li>
+            <li><span class="bold">ChannelId</span>: Set this to the YouTube Analytics Channel (Profile). This can be set to the Id of the channel. If not specified, MINE will be used</li>
+            <li><span class="bold">ContentOwnerId</span>: Set this to the Id of the content owner</li>
+            <li>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</li>
+        </ul>
+        <p class="bold">To add YouTube Analytics data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">YouTube Analytics</span>. The Connect to YouTube Analytics window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. YouTube Analytics is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to YouTube Analytics and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. <br />The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc"><a name="YouTube"></a>YouTube Analytics Tables</h2>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> YouTube Analytics connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>GroupItems</td>
+                    <td>Create, delete, and query Items that compose a Group.</td>
+                </tr>
+                <tr>
+                    <td>Groups</td>
+                    <td>Create, update, delete, and query YouTube Analytics Groups.</td>
+                </tr>
+                <tr>
+                    <td>AdPerformanceReports</td>
+                    <td>Query Ad Performance Reports. Ad Performance Reports provide impression-based metrics for ads that ran during video playbacks. These metrics account for each ad impression, and each video playback can yield multiple impressions.To access AdPerformanceReports, in the WHERE clause, you should specify at least the video, group or a supported combination of uploaderType and claimedStatus.Optionally, the following filters can be specified: country, continent, subcontinentFor dimensions, the 'adType' type is required. Optionally, 'day' dimension can be added. An example query similar to yours would be (notice, AdPerformanceReports view does not have a channel column, instead you have to use a video filter. This is a limitation of the YouTube Analytics API):SELECT AdType, Day, GrossRevenue, StartDate, EndDate FROM AdPerformanceReports WHERE video='vid123' and continent = '019'</td>
+                </tr>
+                <tr>
+                    <td>Demographics</td>
+                    <td>Query YouTubeAnalytics Demographics grouped by age groups and gender.</td>
+                </tr>
+                <tr>
+                    <td>Devices</td>
+                    <td>Query YouTubeAnalytics Devices or Operating System statistics. This table allows you to aggregate viewing statistics based on the manner in which viewers reached your video content. For example, you can identify the number of views that occurred on mobile devices or game consoles.</td>
+                </tr>
+                <tr>
+                    <td>EngagementReports</td>
+                    <td>Query Engagement Reports info. For example, how many times a user shared a video.</td>
+                </tr>
+                <tr>
+                    <td>TimeBasedReports</td>
+                    <td>Query time-based info on views, subscribers, etc. For example, how many new subscribers were gained at a specific time.</td>
+                </tr>
+                <tr>
+                    <td>TopVideos</td>
+                    <td>Query the TopVideos for a channel or the TopPlaylists if you are a content owner. You can also use this view to query playback detail and geographic filters.</td>
+                </tr>
+                <tr>
+                    <td>TrafficSources</td>
+                    <td>
+                        <p>Query TrafficSources. Statistics are based on the manner in which viewers reached your video and playlist content.</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Versions"></a>Versions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.1.72</td>
+                    <td>June 20, 2017</td>
+                    <td>Support added for retrieving all videos based on channel SELECT * FROM Videos WHERE ChannelId IN (SELECT Id FROM Channels)Many of the tables have been updated to include additional inputs such as OnBehalfOfContentOwner (string) and ForContentOwner (boolean).</td>
+                </tr>
+                <tr>
+                    <td>6.6.0.45</td>
+                    <td>March 16, 2017</td>
+                    <td>The AdPerformanceReports was enhanced to support more combinations of columns to query.</td>
+                </tr>
+                <tr>
+                    <td>6.5.1.20</td>
+                    <td>January 16, 2017</td>
+                    <td>General release</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

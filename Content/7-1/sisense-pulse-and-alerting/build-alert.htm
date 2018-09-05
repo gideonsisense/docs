@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Creating Build Alerts | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating Build Alerts</h1>
+        <p>Administrators can set build alerts to notify themselves or other users when a build fails or succeeds. Build alerts are created from the <MadCap:variable name="Variables.Sisense Web Application" /> and are sent following an <MadCap:variable name="Variables.ElastiCube" /> build.</p>
+        <p>Build alerts allow you to monitor the status of <MadCap:variable name="Variables.ElastiCube" /> builds.</p>
+        <p>Administrators can create build alerts from the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" />. After a build alert is created, it is added to <MadCap:variable name="Variables.CompanyName" /> Pulse from where you can manage it.</p>
+        <p class="bold">To create a build alert:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Admin</span> &gt; <span class="bold">Data Sources</span> &gt; <span class="bold">Add Build Alert</span>.<br />OR<br />From the <MadCap:variable name="Variables.ElastiCube" /> menu, <span class="bold">Add Build Alert</span>.<br /><img src="../../Resources/Images/v7buildalerts.png" class="thumblarge" /><br />The Add Build Alert window is displayed.</li>
+            <li>In the <span class="bold">Name</span> field, enter a name for the alert.<br /><img src="../../Resources/Images/v7buildshare1.png" class="thumblarge" /></li>
+            <li>From the <span class="bold">Server </span>list, select the server where the <MadCap:variable name="Variables.ElastiCube" /> is hosted.</li>
+            <li>From the <MadCap:variable name="Variables.ElastiCube" /> list, select the <MadCap:variable name="Variables.ElastiCube" />(s) that triggers an alert following a build.</li>
+            <li>Select when to notify you following a build. There are three conditions that when met, can trigger an alert:<br /><span class="bold">Build failed</span>: The alert is sent after the <MadCap:variable name="Variables.ElastiCube" /> build fails.<br /><span class="bold">Build succeeded</span>: The alert is sent after the <MadCap:variable name="Variables.ElastiCube" /> is built successfully.<br /><span class="bold">Build succeeded after failure</span>: The alert is sent following a successful build after the <MadCap:variable name="Variables.ElastiCube" /> previously failed to build.</li>
+            <li>Click <span class="bold">Save</span>. The Alert is added to your <MadCap:variable name="Variables.CompanyName" /> <span class="bold">Pulse</span> page.<br />For additional advanced configuration options, see <a href="advanced-settings.htm">Advanced Settings</a>.</li>
+        </ol>
+    </body>
+</html>

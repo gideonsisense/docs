@@ -1,0 +1,95 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="5271" MadCap:lastWidth="1211">
+    <head>
+        <title>Upgrading Sisense | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Upgrading <MadCap:variable name="Variables.CompanyName" /></h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> releases several major versions a year, and a few minor versions in between. Each version includes new features and enhancements as well as other improvements.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> allows you to decide when you want to upgrade to the latest version. There are no automatic updates for <MadCap:variable name="Variables.CompanyName" />. Before upgrading, you can learn about the contents of each release in the  <a href="release-notes.htm">Release Notes</a>.</p>
+        <p>This topic provides prerequisites for upgrading Sisense, notes for upgrading to specific versions of Sisense, and instructions for upgrading Sisense on a single machine and Sisense in high availability environments where multiple machines are involved.</p>
+        <h2 class="notoc">Before You Upgrade</h2>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> recommends you follow these guidelines before you begin the upgrade process in single server and high availability environments:</p>
+        <ul>
+            <li>Install the new version of <MadCap:variable name="Variables.CompanyName" /> on a testing/staging environment and check all of your <MadCap:variable name="Variables.ElastiCube" />s and active dashboards. When you are sure that everything is working well, continue with the installation of the new version in your <a href="setup-production.htm">production environment</a>.</li>
+            <li>Save all open <MadCap:variable name="Variables.ElastiCube" />s and close the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>
+                <p>Verify that no one is currently designing a dashboard.</p>
+            </li>
+            <li>
+                <p>Declare a downtime period and notify users.</p>
+            </li>
+            <li>
+                <p>Install the new version with the same user who installed the original Sisense version (with the same administrator privileges).</p>
+            </li>
+        </ul>
+        <h2 class="notoc">
+            <a name="Sisense">
+            </a>Sisense Version Upgrades</h2>
+        <p>Click the links below to view more information about upgrading to a specific version of Sisense.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sisense V7.0</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If you are upgrading from a version earlier than Sisense V6.7, see the <a href="../67-upgrade.htm">Sisense V6.7 Upgrade Guide</a>.</p>
+                <p>If you have a high availability environment, and you want to use the web-based ElastiCube Manager, your build node must have a Sisense application server installed on it. The application server must use the system application database’s replica set.</p>
+                <p>For more information, see <a href="../administration/high-availability-in-sisense/ecm_ha.htm">Supporting Web ElastiCube Manager in High Availability Environments</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Sisense V7.1</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>If you are upgrading from Sisense V7.0 or later, there are no special requirements.</p>
+                <p>If you are upgrading from a version earlier than Sisense V6.7, see the <a href="../67-upgrade.htm">Sisense V6.7 Upgrade Guide</a>.</p>
+                <p>If you have a high availability environment, and you want to use the web-based ElastiCube Manager, your build node must have a Sisense application server installed on it. The application server must use the system application database’s replica set.</p>
+                <p>For more information, see <a href="../administration/high-availability-in-sisense/ecm_ha.htm">Supporting Web ElastiCube Manager in High Availability Environments</a>.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 class="notoc">
+            <a name="Upgradin">
+            </a>Upgrading Sisense</h2>
+        <p>Sisense is upgraded according to the installation settings you selected the last time you installed Sisense. To customize a new installation, you should uninstall Sisense and then install the latest version. See <a href="custom-install.htm">Customizing the Installation</a> for more information.</p>
+        <p>The procedure below describes how to upgrade Sisense on a single machine. Additionally, upgrading to some versions of Sisense might require further changes. See <a href="#Sisense">Sisense Version Upgrades</a> for additional instructions specific to each version of Sisense.</p>
+        <p>Also, if you are upgrading a high availability environment, see <a href="#Upgradin">Upgrading Sisense High Availability Environments</a> as well.</p>
+        <p class="bold">To install the latest version:</p>
+        <ol>
+            <li>Before installing the latest version of Sisense, it is recommended that you back up your current installation. See <a href="backing_up_sisense.htm">Backing Up a Sisense Installation</a> for more information.</li>
+            <li>Download the latest version of <MadCap:variable name="Variables.CompanyName" />. For more information, see <a href="download-install.htm">Downloading and Installing Sisense</a>.</li>
+            <li>Run the installation file as a Windows Administrator. <MadCap:variable name="Variables.CompanyName" /> automatically detects if a version is already installed, and displays the upgrade wizard.<br /><img src="../../Resources/Images/v7upgrade2x.png" class="thumblarge" /></li>
+            <li>Click <b>Continue</b>.</li>
+            <li>Click <b>Upgrade</b>.<br /><img src="../../Resources/Images/v7upgrade1.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Upgrading">
+            </a>Upgrading Sisense High Availability Environments</h2>
+        <p>If you have implemented a high availability environment for Sisense and want to upgrade to Sisense V6.7.1 or later, there are a few files you must update following changes made to the Sisense infrastructure in addition to the procedure described in <a href="#Upgradin">Upgrading Sisense</a>. </p>
+        <p>The procedure below describes what files need to be modified so your high availability implementation continues working for Sisense V6.7.1 and beyond.</p>
+        <p>
+            <span class="bold">Note</span>: When upgrading your high availability environment, make sure all of your Sisense servers are running the same version to avoid compatibility issues.</p>
+        <p class="bold">To upgrade your high availability environment:</p>
+        <ol>
+            <li>Back up the following files:<br /><br /></li>
+            <span class="bold">Build Node(s)</span>:<br /><ul><li>C:\Program Files\Sisense\Sisense.Orchestration\config\config.json<br /><i>From Sisense V7.0 and later:</i><br /></li><li>C:\Program Files\Sisense\Prism\ECMLogsPersistence\src\config\default.yaml</li><li>If you want to use the web-based ElastiCube Manager, and configure an application server on the build node, include the following file:<br />C:\Program Files\Sisense\PrismWeb\ECMNext\GraphQL\src\config\default.yaml<br />For more information, see <a href="../administration/high-availability-in-sisense/ecm_ha.htm">Supporting Web ElastiCube Manager in High Availability Environments</a>.<br /><br /></li></ul><span class="bold">Web Node(s)</span>:
+            <ul><li>C:\Program Files\Sisense\PrismWeb\vnext\config\default.yaml</li><li>C:\Program Files\Sisense\PrismWeb\App_Data\Configurations\db.config</li><li>C:\Program Files\Sisense\Infra\MongoDB\keyfile. See <a href="../administration/application-database/key-file.htm">Creating a KeyFile</a> for more information. </li><li>C:\Program Files\Sisense\Infra\MongoDB\mongodbconfig.conf</li><li>C:\Program Files\Sisense\PrismWeb\AnalyticalEngine\dist\config\production.json</li><li><i>From Sisense V7.0 and later:</i><br />C:\Program Files\Sisense\PrismWeb\ECMNext\GraphQL\src\config\default.yaml<br /><i>From Sisense V7.1 and later:</i></li><li>C:\Program Files\Sisense\PrismWeb\SisenseStorage\config\default.yaml</li></ul><li>Stop the Sisense Repository server on each of the web nodes.</li><li>Upgrade Sisense on each of the Sisense nodes by running the Sisense installation file as a Windows Administrator.</li><li>After you have installed Sisense on each of the machines, back up the default.yaml file on each of these machines located at:<br />C:\Program Files\Sisense\PrismWeb\vnext\config\default.yaml</li><li>In the build node, open the default.yaml located at C:\Program Files\Sisense\PrismWeb\vnext\config\default.yaml and do the following:<br /><ol><li>Copy and replace the “db_security:” section from your build node to all the query nodes in your high availability environment.<br /></li><li>Remove the comments (#) from “replica_set:” section and update all the relevant parameters by copying the details from your default.yaml file on the build node that you backed up in Step 1 located at:<br />C:\Program Files\Sisense\PrismWeb\vnext\config\default.yaml<br /><span class="bold">Note</span>: Make sure that “name=replica_set” parameter is identical to the replica set name you gave in the file on the build node located at:<br />C:\Program Files\Sisense\Infra\MongoDB\mongodbconfig.conf</li><li>Copy and replace the “replica_set:” section to all other relevant Sisense web machines.</li></ol></li><li>Open the file db.config file located at C:\Program Files\Sisense\PrismWeb\App_Data\Configurations\db.config on the build node.<br />Update the “MongoProvider” connection string with the IP addresses of your nodes, for example:<br />"mongodb://AppUser:we6jBUYGoOrh0K6l+XpTmA==<span class="bold">@XX.XX.XX.XX:27018,XX.XX.XX.XX:27018,XX.XX.XX.XX:27018</span>/admin?replicaset=&lt;<span class="bold">replicasetname</span>&gt;&amp;amp;readPreference=primaryPreferred"<br /><span class="bold">For example</span>:<br /><img src="../../Resources/Images/dbconfig1.png" class="thumblarge" /><br /><span class="bold">Note</span>: The only values that should be changed are the IP addresses in the connectionString and replicatesetname.</li><li>(Optional) If you have enabled SSL, you need to back up the following file, C:\Program Files\Sisense\PrismWeb\AnalyticalEngine\dist\config\production.json and move it to the same location after you have installed Sisense. </li><li>Reset your IIS server.</li></ol>
+        <h2 class="notoc">Downgrading <MadCap:variable name="Variables.CompanyName" /></h2>
+        <p>When you upgrade Sisense, a backup copy of your MongoDB instance is automatically created. The MongoDB contains your server settings including your user and dashboard information. This allows you to reinstall earlier versions of Sisense without having to set up your system a second time.</p>
+        <p>
+            <span class="bold">Note</span>: Before downgrading your Sisense installation, consult the Sisense Technical Support who can assist through the process.</p>
+        <p>During the uninstall process, you can choose to remove all user data, which deletes the MongoDB instance. The next time you install Sisense, your system will be completely clean, and your dashboard, dashboard list, and user data will be fresh.</p>
+        <p>Sisense is improving all the time and some versions of Sisense are incompatible with earlier versions. If you upgrade to a version and need to downgrade to an incompatible version, you can restore a backup copy of the MongoDB created automatically when you installed the last version of Sisense.</p>
+        <p class="bold">To downgrade to an earlier version of <MadCap:variable name="Variables.CompanyName" />:</p>
+        <ol>
+            <li>In Windows, go to <b>Add or Remove Programs</b>.</li>
+            <li>Locate <MadCap:variable name="Variables.CompanyName" /> and click <b>Uninstall</b>.<br /><img src="../../Resources/Images/uninstall.png" class="thumblarge" /><br />The Uninstall Wizard is displayed.</li>
+            <li>In the Uninstall Wizard, click <b>Remove Anyway</b>. If you select the <b>Remove User Data</b> checkbox, <MadCap:variable name="Variables.CompanyName" /> deletes all information stored in the MongoDB and this information must be configured the next time you install <MadCap:variable name="Variables.CompanyName" />.<br /><img src="../../Resources/Images/v7uninstall.png" class="thumblarge" /><br /><MadCap:variable name="Variables.CompanyName" /> is uninstalled.</li>
+            <li>Install the previous version of <MadCap:variable name="Variables.CompanyName" />. The downgrade process is complete.</li>
+        </ol>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,39 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="3038" MadCap:lastWidth="2310">
+    <head>
+        <title>Google Authentication</title>
+    </head>
+    <body>
+        <h1>Google Authentication</h1>
+        <p>When you connect to Google Sheets from the Sisense Web Application, you can authenticate your account with your Google credentials if you are working from the localhost. If however, you are connecting remotely to the Sisense server, and the address of the Sisense Web Application is something other than localhost, Google requires that you connect using the OAuth 2.0 protocol. The OAuth 2.0 authorization framework enables a third-party, in this case, Sisense, to obtain limited access to an HTTP service such as Google Sheets.</p>
+        <p>To connect to Google Sheets through a remote Sisense server, you need to create a Google application to obtain OAuth 2.0 client credentials from Google and then add those credentials to a manifest file on your Sisense Server.</p>
+        <h2 class="notoc">Creating a Google Application</h2>
+        <p>Google OAuth 2.0 requires you to create a Google API Console project and set up authorized JavaScript origins and redirect URIs. Sisense has built-in credentials for the default Google application so you can connect from localhost. For security reasons, you should create and set up your own Google application to support the Google OAuth 2.0 protocol. Your Sisense Administrator needs to configure it one time (for each connector with OAuth 2.0 authorization flow after each installation). The Google OAuth2.0 flow will work for all users after it.</p>
+        <p class="bold">To create a Google application:</p>
+        <ol>
+            <li>Go to the <a href="https://console.developers.google.com/project/_/apiui/apis/library">Google API Console</a>.</li>
+            <li>From the <span class="bold">Select a project</span> list, select an existing project or create a new one by selecting  <span class="bold">Create a new project</span>.</li>
+            <li>In the sidebar under “APIs &amp; Services”, select <span class="bold">Library</span>, then search for  Google Drive API. Open it and click  <span class="bold">Enable</span>.</li>
+            <li>Repeat step 3 for <span class="bold">Google Sheets AP</span>I.</li>
+            <li>In the sidebar under “APIs &amp; Services”, select <span class="bold">Credentials</span>.</li>
+            <li>Select the  <span class="bold">OAuth consent screen</span> tab. Choose an <span class="bold">Email Address</span>, specify a <span class="bold">Product Name</span>, and press <span class="bold">Save</span>. On this step you can also add your product URL, logo, etc.</li>
+            <li>In the <span class="bold">Credentials</span> tab, select the <span class="bold">Create credentials</span> list, and choose <span class="bold">OAuth client ID</span>.</li>
+            <li>Under <span class="bold">Application type</span>, select <span class="bold">Web application</span> (more information <a href="https://support.google.com/googleapi/answer/6158849">here</a>).<ol><li>In the Authorized JavaScript origins field enter the origin for your app – a unique combination of protocol, hostname, and port. You can enter multiple origins to allow for your app to run on different protocols, domains, or subdomains. You cannot use public IP addresses, wildcards, paths and trailing slashes. Do not use localhost for production for security reasons (only dev, test and staging environments). Examples of correct origins:<br /> <code>http://localhost:8080</code><br /><code>https://myproductionurl.example.com</code></li><li>The <span class="bold">Authorized redirect URI </span>is the path in your application that users are redirected to after they have authenticated with Google. The path will be appended with the authorization code for access. Must have a protocol. Cannot contain URL fragments or relative paths. Cannot be a public IP address. The redirect URI must match the client side domain and be added to console APIs or you will get a redirect_uri_mismatch  error. For Sisense it should be in format:<br /><code>http://YOUR_DOMAIN/oauth/R29vZ2xlIFNwcmVhZHNoZWV0cw==/callback</code> where '/oauth/R29vZ2xlIFNwcmVhZHNoZWV0cw==/callback' is a hardcoded immutable string. For example,<br /><code>http://sisense.com/oauth/R29vZ2xlIFNwcmVhZHNoZWV0cw==/callback</code><br />In case, if you are using a base URL, the format of the callback will be:<br /><code>http://BASE_URL/oauth/R29vZ2xlIFNwcmVhZHNoZWV0cw==/callback</code><br />For example:<br /><code>https://baseurl.sisense.com/reporting/oauth/R29vZ2xlIFNwcmVhZHNoZWV0cw==/callback</code><br />where base URL is 'https://baseurl.sisense.com/reporting'. The origin for this base URL will be 'https://baseurl.sisense.com'.<br /><span class="bold">Note</span>: The Google OAuth2.0 redirect URL doesn’t allow spaces, so Sisense has encoded the provider’s name (Google Spreadsheets) into the base64 format – R29vZ2xlIFNwcmVhZHNoZWV0cw==. If you want to use another OAuth2.0 connector, you should add on this step redirect URL with appropriate base64 encoded provider name.</li><li>Click <span class="bold">Create</span>.<br />For example, if you install Sisense on http://test.sisense.com</li></ol></li>
+            <li>From the resulting OAuth client dialog box, copy the Client ID and Client Secret or download a JSON file with all this information.<br />You may experience a delay with Google (up to 5 minutes) for applying your application’s settings.</li>
+        </ol>
+        <h2 class="notoc">Configuring your Google Sheets Connector</h2>
+        <p>After you have created an application and retrieved the credentials in the JSON file, you need to add those credentials to the manifest in your Sisense server.</p>
+        <p>To set up Google Sheets connector to work with your application, you should add your Client ID and Client Secret into connector’s manifest.</p>
+        <ol>
+            <li>Open the manifest file in a text editor. The file is located at:<br /><code> C:\Program Files\Sisense\DataConnectors\JVMContainer\Connectors\Google Spreadsheets\manifest.json</code></li>
+            <li>Find OAuth2 block.</li>
+            <li>Add your clientId and clientSecret fields that you received when you created your Google app:<br /><pre xml:space="preserve">"OAuth2": {<br />  "authUrl": "https://accounts.google.com/o/OAuth2/v2/auth",<br />  "tokenUrl": "https://www.googleapis.com/OAuth2/v4/token",<br />  "scope": "https://www.googleapis.com/auth/spreadsheets.readonly https://www.googleapis.com/auth/drive.readonly https://www.googleapis.com/auth/userinfo.profile https://www.googleapis.com/auth/userinfo.email",<br />  "clientId": "YOUR_CLIENT_ID",<br />  "clientSecret": "YOUR_CLIENT_SECRET",<br />  "returnedValues": {<br />     "refreshToken": "dToken",<br />     "accessToken": "appKey",<br />     "userEmail": "userEmail"<br />  }<br />}</pre></li>
+            <li>Save the file. You don’t need restart Sisense, all changes will be re-read on the fly. </li>
+        </ol>
+        <h3 class="notoc">LIMITATIONS</h3>
+        <p>Sisense has one Google specific limitation in addition to base OAuth2.0 flow limitations:</p>
+        <ul>
+            <li>You can not use public IP addresses (e.g.http://172.29.108.109)  for the Google OAuth2.0 flow. Google doesn’t accept an IP address when doing OAuth or API calls. Default Google applications will work only with localhost (e.g. http://localhost, http://localhost:port, https://localhost, https://localhost:port). For working with domains (e.g. http://test.sisense.com, https://test.sisense.com) you should correctly set up your personal Google application.</li>
+        </ul>
+    </body>
+</html>

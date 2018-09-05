@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="602" MadCap:lastWidth="647">
+    <head>
+        <title>Long Index</title>
+    </head>
+    <body>
+        <h1>Long Index</h1>
+        <p>The ‘Long Index edition’ of Sisense determines how Sisense transforms your data when loading it in to an ElastiCube.</p>
+        <p>Sisense builds your ElastiCube using pointers that represent your data. These pointers are used to find the actual values so no information is lost.</p>
+        <p>To reduce memory consumption and improve performance, Sisense builds ElastiCubes with 32-bit pointers reducing the size of the pointers.</p>
+        <p>You may experience “Out of memory” errors when working with big data such as:</p>
+        <ul>
+            <li>300 million rows of numeric fields</li>
+            <li>2GB of string fields</li>
+        </ul>
+        <p>For example, let’s assume that your data contains strings with a length of 1024 characters and 4,194,304 unique rows such that 1024*4,194,304 &gt; 4GB in content after indexing, you should install the Long Index version of Sisense.</p>
+        <p>By installing the Long Index edition, Sisense will use 64-bit pointers. While this is fine for big data, you should use the default installation of Sisense when working data smaller than the figures mentioned above for faster performance.</p>
+    </body>
+</html>

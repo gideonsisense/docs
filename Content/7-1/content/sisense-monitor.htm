@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="13130" MadCap:lastWidth="956">
+    <head>
+        <title>Sisense Monitor | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Sisense Monitor</h1>
+        <p>Sisense collects data when you or your users install or use Sisense products or services. Sisense uses data collected for internal and support-related purposes such as improving our products and services, improving customer engagement, conducting research, and resolving technical issues. For example, you can identify if too many concurrent builds are affecting query performance and then take corrective action such as scheduling builds throughout the day.</p>
+        <p class="si-video">
+            <object src="https://player.vimeo.com/video/245589621" style="width: 560px;height: 315px;">
+            </object>
+        </p>
+        <p>This page describes the information that Sisense Monitor collects and describes how to troubleshoot common issues with the information contained in Sisense Monitor’s dashboard.</p>
+        <h2 class="notoc">Prerequisites</h2>
+        <p>Your servers can send data collected by Sisense. For a list of data collected and sent, see Collected Product and Usage Data.</p>
+        <p>This service is a licensed feature, contact your CSM for more details.</p>
+        <h3 class="notoc">Minimum Requirements</h3>
+        <p>Sisense Monitor runs in the following HTML5 supported browsers:</p>
+        <ul>
+            <li>Google Chrome</li>
+            <li>Firefox</li>
+        </ul>
+        <h3 class="notoc">Security and Privacy</h3>
+        <p>Sisense Monitor requires that your Sisense server has access to the internet, and can send monitoring information to the service. All information is secured and transferred over HTTPS.</p>
+        <p>Sisense collected product and usage data is stored by a third-party service on AWS data centers, ensuring a high-level of security. The service has the following certifications:</p>
+        <ol>
+            <li>SOC 2 Type 2 compliance</li>
+            <li>ISO 27001 compliance</li>
+            <li>HIPAA compliance</li>
+        </ol>
+        <p>The system does not store personal identity information about your users: Sisense usernames and email addresses are obfuscated by default, before the data leaves your Sisense server.</p>
+        <p>The data is stored by the service for 30 days before being deleted. A copy of the data is stored on secure Sisense servers, indefinitely, for Sisense internal research purposes.</p>
+        <p>Additional information collected by the monitoring system can be obfuscated by the system prior to it leaving your Sisense server. For more information, see <a href="sisense-remote-support-analysis-module.htm">Scrambling Data Collected by Sisense</a>.</p>
+        <h3 class="notoc">Data Refresh Frequency</h3>
+        <p>The data displayed in Sisense Monitor is refreshed as follows:</p>
+        <p>
+            <span class="bold">System Resources</span>: Data regarding your system, such as CPU, Memory, available hard disk space, etc. is collected and sent to Sisense Monitor every minute.</p>
+        <p>
+            <span class="bold">Builds and Queries</span>:  Data regarding build attempts and queries is sent immediately after the action is complete.</p>
+        <h3 class="notoc">Time Handling</h3>
+        <p>All timestamps that appear in Sisense Monitor are displayed according to your browser’s timezone.</p>
+        <h3 class="notoc">Filtering Your Servers</h3>
+        <p>When you log in to Sisense Monitor, the data displayed is the aggregated data for all of the servers together. You can filter the data to display only the data relevant for a specific server by hovering over the server in the Host List widget and clicking <img src="../../Resources/Images/smadd.png" class="docbutton" />.</p>
+        <p>
+            <img src="../../Resources/Images/smhosts.png" class="thumblarge" />
+        </p>
+        <p>You can select <img src="../../Resources/Images/smfilter.png" /> to exclude the data of a specific server from being displayed in Sisense Monitor.</p>
+        <p>Each time you filter a server, the data displayed in Sisense Monitor is refreshed.</p>
+        <h3 class="notoc">Changing Your Password</h3>
+        <p>If you need to change your Sisense Monitor password, from the Sisense Monitor homepage, click <span class="bold">Forgot Password</span> and enter account username or email.</p>
+        <p>Sisense will send an email with a URL to change your password. This URL is valid for 24 hours, afterwards, you must generate a new URL to change your password.</p>
+        <p>Open this URL and enter the new password. The password must be at least 8 characters.</p>
+        <h3 class="notoc">Host List</h3>
+        <p>This widget displays the list of your hosts together with the total number of log records sent by the host in the selected time period.</p>
+        <p>The amount of log files sent by a server depends on its usage. Log files about system resource utilization are sent every minute, regardless of the server usage. Logs about queries and builds are only sent when queries and builds occur. On a server that is not running builds, there won’t be any build or query logs.</p>
+        <p>The amount of logs sent varies depending on how your server is used, however, the amount should be relatively consistent unless your server has recently changed.</p>
+        <p>
+            <img src="../../Resources/Images/monhost.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Sisense Status at a Glance</h2>
+        <p>This section provides a quick view of the status of queries and ElastiCube builds in your system.</p>
+        <h3 class="notoc">Total Queries</h3>
+        <p>This widget shows the total amount of queries executed in the system, during the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/montot.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Queries by Status</h3>
+        <p>This widget shows the total amount of successful and failed queries executed in the system, during the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monquery.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Build Count</h3>
+        <p>This widget shows the total amount of builds performed by the system, during the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/montotal.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Builds by Status</h3>
+        <p>This widget shows the total amount of successful and failed builds performed by in the system, during the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monbuild.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Query Monitoring</h2>
+        <p>This section provides information about your query performance such as their success and failure and the volume of queries being sent to your ElastiCube server.</p>
+        <h3 class="notoc">Query Details Table</h3>
+        <p>This widget provides information about the queries executed in the system during the selected time period.</p>
+        <p>
+            <img src="../../Resources/Images/monquerydetails1.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Query Response Time (Sec.)</h3>
+        <p>This widget provides information about the system query response time. It provides the maximum duration of a query and the average duration of queries in seconds over time.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monqueresp1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">ElastiCube Builds Monitoring</h2>
+        <p>This section provides information about your ElastiCube builds in your system.</p>
+        <h3 class="notoc">Build Status Timeline</h3>
+        <p>This widget provides information about the builds performed by the system. The information is provided for each ElastiCube in the system. Successful builds appear in green. Failed builds appear in red.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monbuiltstatus.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Build Blocks Timeline</h3>
+        <p>This widget provides information about the builds performed by the system. The information is provided for each ElastiCube in the system.  The build process for each ElastiCube is comprised of multiple blocks, including the following stages:</p>
+        <ol>
+            <li>Initialization (appears as empty space)</li>
+            <li>Data Import</li>
+            <li>Custom Column handling</li>
+            <li>Custom Table handling</li>
+            <li>Finalizing</li>
+        </ol>
+        <p>The display only includes data regarding successfully built tables. If the build of a table fails, it will not appear in the widget. The last table that is displayed is the last successful table.</p>
+        <p>This widget is limited to 10K records. If the selected time period includes more records than can be displayed, empty space will be shown on the chart. You can drill down to specific time interval to display information about builds that happened during that period.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monbuildblocks.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Build Details Table</h3>
+        <p>This widget provides information about the builds performed by the system during the selected time period.</p>
+        <p>
+            <img src="../../Resources/Images/mondetails.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">System Resources</h2>
+        <p>This section provides information about your system resource usage, such as software versions, CPU, memory, network and disk utilization.</p>
+        <h3 class="notoc">System Information</h3>
+        <p>This widget provides information about your system, including the Sisense version, hard disk (model, total size, space in use and available size), RAM capacity, number of cores, OS version, and more.</p>
+        <p>
+            <img src="../../Resources/Images/monsys.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Server Information</h3>
+        <p>This widget provides information about your server configuration and status, including the location of the data folder where ElastiCubes are stored, the server’s size and available free space on the server, port configuration, and others.</p>
+        <p>
+            <img src="../../Resources/Images/monserv.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Total CPU Utilization</h3>
+        <p>This widget provides information about the CPU utilization over time.</p>
+        <p>All information is provided as a percentage of the total CPU available on your server.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncpu.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Memory Utilization</h3>
+        <p>This widget provides information about the memory usage in terms of working set. It provides the maximum memory utilization and average memory usage over time.</p>
+        <p>All information is provided as a percentage of the total working set available on your server.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monmem.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Sisense Components CPU Utilization (%)</h3>
+        <p>This widget provides information about the CPU utilization for Sisense’s components. The total CPU usage on the server is also displayed.  The total CPU usage includes the CPU usage by Sisense components and non-Sisense components.</p>
+        <p>All information is provided as percentage of the processor time available on your server.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncomp.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Sisense Components Memory Utilization (GB)</h3>
+        <p>This widget provides information about the memory utilization for Sisense components. The total memory usage of the server is also displayed.  The total includes the memory usage by Sisense components and non-Sisense components.</p>
+        <p>All information is provided as amount of working set in GB.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncomp2.png" class="thumblarge" />
+            <br />
+        </p>
+        <h3 class="notoc">C Drive Disk Utilization</h3>
+        <p>This widget provides information about the C drive disk utilization. It includes the total C disk space, and the utilized disk space, over time.</p>
+        <p>Note that the C drive is used for storing Sisense system configuration, dashboard definitions, user profiles, and more.  ElastiCubes are stored in the data folder, which may not be located on C drive.  Information regarding the data location, available and in-use disk space is available in the widget “Server Information”.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/cdisk.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">I/O Utilization (%)</h3>
+        <p>This widget provides information about the I/O utilization.  All information is provided as percentage of the available disk time.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/monio1.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Network Utilization</h3>
+        <p>This widget provides information about the network utilization.  All information is provided in bytes.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncomp1.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Cube Virtual Bytes Allocation (GB)</h3>
+        <p>This widget provides information about the virtual memory allocation of Sisense ElastiCubes defined on the server.</p>
+        <p>All information is provided in gigabytes.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncube.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Cube CPU Utilization</h3>
+        <p>This widget provides information about the CPU utilization of Sisense ElastiCubes defined on the server.</p>
+        <p>All information is provided in percentage of processor time units.</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncube2.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Cube Memory Utilization (GB)</h3>
+        <p>This widget provides information about the memory utilization of Sisense ElastiCubes defined on the server.</p>
+        <p>All information is provided in working set units (GB).</p>
+        <p>The time interval between the data points depends on the selected time interval.</p>
+        <p>
+            <img src="../../Resources/Images/moncubeut.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Log Monitoring</h2>
+        <p>This section shows the amount of log files sent to the monitoring system. Use this to verify that your system is sending monitoring data.</p>
+        <h3 class="notoc">Log Count</h3>
+        <p>This widget provides information about the number of logs sent by the server to the monitoring system. This can be used to make sure your system is sending data to the Sisense Monitor system. In case your system has not sent monitoring data for a given period of time, data may not be available in the Sisense Monitor dashboard for that time period.</p>
+        <p>
+            <img src="../../Resources/Images/monlog.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Troubleshooting with Sisense Monitor</h3>
+        <p>Sisense Monitor enables you to monitor and troubleshoot issues on your Sisense system.</p>
+        <p>This section describes how to use the Sisense Monitor to troubleshoot potential issues with your ElastiCube server and dashboards.</p>
+        <h3 class="notoc">Debugging ElastiCube Issues</h3>
+        <p>Sisense Monitor can help you troubleshoot errors such as build failures, frozen builds, and server crashes.</p>
+        <p>This section describes examples of these errors and how you can troubleshoot them with Sisense Monitor.</p>
+        <p>
+            <span class="bold">Build Failures</span>
+        </p>
+        <p>There are several reasons your builds can fail ranging from ElastiCube designs to disk space capacity.</p>
+        <p>To try to identify where the problem is occurring and take corrective action, when a build fails, check the following:</p>
+        <ol>
+            <li>
+                <span class="bold">Concurrent Builds</span>: Use the <span class="bold">Build Status Timeline</span> widget to check if there were multiple builds running at the same time. Too many concurrent builds can lead to increase in memory usage and may crash the server.</li>
+            <li>
+                <span class="bold">Memory and CPU</span>: The CPU and Memory widgets provide information at the machine level, the Sisense component level, and the ElastiCube level. In case of high memory or high CPU utilization, the information displayed in these widgets allows you to determine what contributed to the high values.<br /><span class="bold">Note</span>: Towards the end of a full build, the ElastiCube memory usage increases and may even double. This is normal memory consumption. Once the build process completes, the memory returns to normal levels. To allow querying during the build process, the process first builds a new ElastiCube from scratch while the existing one is used for queries. Once the build is complete, the old ElastiCube is deleted.</li>
+            <li>
+                <span class="bold">C Drive Disk Utilization</span>: The C Drive Disk Utilization widget monitors the C drive. This drive should not be more than 80% full. In cases of a full disk space, refer to <a href="https://support.sisense.com/hc/en-us/articles/230651448-Clean-up-your-C-drive">this article</a>.</li>
+            <li>
+                <span class="bold">Stage of the build</span>: In the widget named <span class="bold">Build Details Table</span> you can view the details of each build and its status. In addition, the <span class="bold">Build Block Timeline</span> widget displays the stages of the build, the type of the build and detailed information about the number of records and data source.<br />Every Entire and Cumulative build process has the following flow:<br />Initializing &gt; Import &gt; Custom Fields &gt; Custom Tables<br />A schema changes build usually only builds the custom tables and fields, and any new table added since the last full build.<br />Every build block represents a table, custom field or custom table. Every block sends a log when it starts and when it ends. In case of a failure the currently running build block will not send an end log, and the start log will not appear as well. In case of a failure, the last available block will be the last successful build block.<br /><span class="bold">Tip</span>: During the processing of custom tables and fields the RAM utilization will start increasing. A failure at this stage may suggest a memory problem, or a syntax problem in the queries.<br /><span class="bold">Tip</span>: In case of failure with high memory consumption, while processing custom objects you should check the ElastiCube’s data modeling and make sure there are no many-to-many relationships.</li>
+            <li>
+                <span class="bold">Network Utilization</span>: Check the network usage and download speed in the <span class="bold">Network Utilization</span> widget. Verify there was no network connectivity issue. If the line is completely flat or if it’s constantly very high with no drops, this indicates a network issue. If the line is very low, the build may have a connectivity timeout on the data sources connections. During the import stage, the network utilization should not be lower than a few Mbps.</li>
+            <li>
+                <span class="bold">IO utilization</span>: If the line is constantly high, there may be a problem with the disk performance. During the import stage, low usage of RAM is expected as the server is only receiving data from an external source and is not performing any computations. During this time, high network and disk I\O usage are expected. A failure at this stage may suggest a connectivity configuration issue, or a configuration or data limitation issue (long-index, # of records, etc..).<br /><span class="bold">Tip</span>: In case of failure during the import stage with extremely low or high network usage, check the connectivity with the data sources.</li>
+        </ol>
+        <p>
+            <span class="bold">Frozen Build</span>
+        </p>
+        <p>When a build freezes entirely or takes longer than usual to complete, there are a few things you can check to improve performance:</p>
+        <ol>
+            <li>
+                <span class="bold">Data Source</span>: The connection to the data source is busy. This usually occurs during the import stage along with very low or no network usage and no increase in ElastiCube size on the disk (ElastiCube Virtual Bytes widget). In this case, the data source is likely to close the connection at some point and the build will fail with a connectivity error.<br /><span class="bold">Tip</span>: Check if the Sisense query was received by the data source, and whether it is in a queue, still being processed, or was it cancelled?</li>
+            <li>
+                <span class="bold">Custom Table</span>: Custom table or custom build hangs could be caused by a change in the custom tables/fields syntax. If the query is different from other builds that were faster, the new query might be too long or complicated. Sisense custom queries timeout in six hours. After six hours of processing the same table, the build will fail. <br /><span class="bold">Tip</span>: If the build hangs while building custom objects, check the query.</li>
+        </ol>
+        <p>
+            <span class="bold">Server Crash</span>
+        </p>
+        <p>A server crash may happen when the memory usage reaches 100%. This can happen due to a combination of concurrent builds or too many queries from the Sisense Web Application.</p>
+        <p>When the server crashes, memory utilization will reach a peak and then drop to zero.</p>
+        <p>In this case you should restart the ElastiCube management service and verify that the Server Console is able to find the ElastiCubes, and if so, that the ElastiCube are running and your dashboards are working.</p>
+        <h3 class="notoc">Debugging Dashboard Issues</h3>
+        <p>If you experience dashboard issues such as widgets or dashboards crashing or longer load times than expected, your web server may be receiving a high amount of concurrent queries.</p>
+        <p>When your server receives a high volume of queries, some of the queries are queued and then handled in the order that they were received leading to an increase in average response time.</p>
+        <p>If you are experiencing dashboard issues, check the <span class="bold">Query Response Time</span> widget. This widget shows the maximum and average response times over time. A query that timed out will have a response time of 300 seconds (5 minutes), which is the Sisense default timeout for web queries. In addition, check the <span class="bold">Query Status by Cube</span>, which shows you the failed and successful queries for the top 5 queried ElastiCubes, to identify ElastiCubes that might be causing the dashboard issues.</p>
+        <p>Once you have narrowed down the time frame to the relevant dashboards’ slow response or failure time, look at the <span class="bold">Query Finish Search</span> widget, where you can view a record of every widget’s execution. Check the status of the queries and look for a pattern in the widgets/dashboards that take longer to return or fail.</p>
+        <p>
+            <span class="bold">Tip</span>: In some cases you’ll be able to pinpoint a heavy widget by the response size, that is a field in the <span class="bold">Query Details Table</span> widget that specifies the response size in bytes. If it’s over 10,000, it could be a reason for the performance degradation. Usually this is caused by large pivot tables or scatter charts.</p>
+        <h3 class="notoc">Troubleshooting Sisense Monitor</h3>
+        <p>If  you have problems locating a host in Sisense Monitor, verify the following:</p>
+        <ol>
+            <li>Sisense Monitor is enabled on the host.  By default, Sisense Monitor is enabled as part of every installation, but you may have manually disabled it.</li>
+            <li>The host has internet access.</li>
+            <li>A firewall is not blocking outgoing data from the host.</li>
+            <li>The host was not installed with a different Owner ID.</li>
+        </ol>
+        <p>
+            <span class="bold">Related Topics</span>
+        </p>
+        <p>
+            <a href="sisense-remote-support-analysis-module.htm">Sisense Remote Support Analysis Module</a>
+        </p>
+        <p>
+            <a href="collected-product-usage.htm">Collected Product and Usage Data</a>
+        </p>
+    </body>
+</html>

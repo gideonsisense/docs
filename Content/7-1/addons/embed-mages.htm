@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="869" MadCap:lastWidth="903">
+    <head>
+        <title>Embed Images in Pivot Tables | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Embed Images in Pivot Tables</h1>
+        <p>The Embed Images add-on allows you to insert images into pivot or table widget cells.</p>
+        <p>
+            <img src="../../Resources/Images/pivot-after.png" class="thumblarge" />
+        </p>
+        <p class="bold">Note:</p>
+        <ul>
+            <li>The image URL must be defined within the ElastiCube for this add-on to work.  If your database does not have a field with this information, it can usually be created by using a Custom Field in your ElastiCube table.</li>
+            <li>The image URL must be with http:// protocol.</li>
+        </ul>
+        <p class="bold">To install the Embed Images add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/tableImages.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\</span> folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Create a pivot or table widget. Make sure to add the field that contains the URLs of your images under the Rows section. At the upper-right corner of the widget editor, click the settings icon and look for the Image URL Column setting. This menu will list all the dimensions that have been added under Rows, so you can pick the one that has the URL to your images.<br /><img src="../../Resources/Images/pivot-before.png" class="thumblarge" /></li>
+            <li>Click Apply and refresh the page.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="635" MadCap:lastWidth="982">
+    <head>
+        <title>Introduction to SSO | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Introduction to SSO</h1>
+        <p>Single Sign-On (SSO)  is a mechanism that allows a system to authenticate users and subsequently tell <MadCap:variable name="Variables.CompanyName" /> that the user has been authenticated. The user is then allowed to access <MadCap:variable name="Variables.CompanyName" /> without being prompted to enter separate login credentials.</p>
+        <p>The SSO security mechanism allows <MadCap:variable name="Variables.CompanyName" /> to trust the login requests it gets from your corporate authentication system, and grant access to the users that have been authenticated by it. An SSO session begins when the authenticated user requests a secured resource from <MadCap:variable name="Variables.CompanyName" /> while logged into your site or application. The user’s browser sends an HTTP request to <MadCap:variable name="Variables.CompanyName" /> that includes a cookie which contains session and authentication information. This information is then used for session validation.</p>
+        <p>Users who already have <MadCap:variable name="Variables.CompanyName" /> accounts can continue to access <MadCap:variable name="Variables.CompanyName" /> through the <MadCap:variable name="Variables.CompanyName" /> Login page with their current accounts. To prevent users from directly logging in to <MadCap:variable name="Variables.CompanyName" /> instead of your login page, your <MadCap:variable name="Variables.CompanyName" /> administrator can change the passwords of your current users forcing them to log in with your company’s credentials in your company’s login page.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> recommends that administrators always keep a <MadCap:variable name="Variables.CompanyName" /> password, so that the administrator can access <MadCap:variable name="Variables.CompanyName" /> in case the SSO server is not available.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> SSO supports two SSO protocols for securing the exchange of user authentication data , JSON Web Token (JWT) and SSO via SAML 2.0 (Security Assertion Markup Language). For more information, see <a href="sso-jwt.htm">SSO via JWT</a> or <a href="sso-saml.htm">SSO via SAML 2.0</a>.</p>
+    </body>
+</html>

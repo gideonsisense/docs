@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Google Sheets</title>
+    </head>
+    <body>
+        <h1>Connecting to Google Sheets</h1>
+        <p><span class="bold">Note:</span>&#160;This topic describes how to import data using the online <MadCap:variable name="Variables.Sisense Web Application" />. To import data through the desktop <MadCap:variable name="Variables.ECM" />, click <a href="google-spreadsheet.htm">here</a>. </p>
+        <p>The web-based version of the ElastiCube Manager enables easy and quick access to databases, tables, and views contained in Google Sheets databases.</p>
+        <p>If you are trying to connect to Google Sheets from a remote Sisense server or an address other than localhost, you must configure Google Sheets to work with the Google OAuth protocol. For more information, see <a href="google_auth.htm">Google Authentication</a>.</p>
+        <p><span class="bold">Note</span>: To work with Google Sheets, you must have a professional Google account, since Google’s API is only available to business accounts.</p>
+        <p class="bold">To import data from your Google Sheets:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page of ElastiCube Manager, open an ElastiCube or  create a new ElastiCube.</li>
+            <li>In the ElastiCube, click <img src="../../../Resources/Images/v7databutton.png" class="docbutton" />. The Add Data dialog box is displayed.</li>
+            <li>Click <span class="bold">Google Sheets</span>. The Google Sheets Connect area is displayed.</li>
+            <li>Click <span class="bold">Google</span> and enter your Google Sheets credentials.</li>
+            <li>Once you have logged in, in the ElastiCube Manager, click <span class="bold">Next</span>. The Add Data area is displayed with a list of available spreadsheets for your account.<br /><img src="../../../Resources/Images/v7googlesheets.png" class="thumblarge" /></li>
+            <li>Select the relevant spreadsheet and click <span class="bold">Done</span>. A list of tabs included the sheet are displayed.</li>
+            <li>Select the relevant tabs within the sheet and click <span class="bold">Done</span>. If you select the checkboxes, and click <span class="bold">Done</span>, all the data included in the selected tabs is added to the ElastiCube Manager.<br />OR<br />Click the tab name once to display the <span class="bold">Settings</span> area where you can filter the data added to the ElastiCube Manager.</li>
+            <li>Enter the following details:<br /><span class="bold">Culture</span>: Select the culture for your spreadsheet. This defines settings such as the format of the date and time or delimiter (decimal or comma).<br /><span class="bold">First Row Contains Field Names</span>: Select to specify table column names based on the header in the first row of the spreadsheet.<br /><span class="bold">Ignore rows that start with</span>:  Specify rows to ignore that start with a specific symbol, value or letter.<br /><span class="bold">Static Range</span>: Enter two cells, each with a leading $ sign and a colon as a delimiter. Hit Enter to preview the selection. Selecting the <span class="bold">Static Rang</span>e option enables you to select a specific range of data in the sheet. Data needs to be in a table structure, starting at the top left cell of the range, with field names as the first row.<br />For a static range between cells A1 and E10, type in $A1:$E10.</li>
+            <li>Click <span class="bold">Done</span>. The relevant data is added to the ElastiCube Manager.</li>
+        </ol>
+        <h3 class="notoc">Limitations</h3>
+        <ul>
+            <li>Table field headers (column titles) must be strings for full backwards compatibility</li>
+        </ul>
+    </body>
+</html>

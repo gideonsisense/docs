@@ -1,0 +1,71 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Configuring Base URLs | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Configuring Base URLs</h1>
+        <p>Base URLs are the consistent part of a web address for a site or web application. In Sisense, the default address is localhost:8081. Sisense allows you to specify a Sisense hostname as a subfolder of a domain, for example, baseurl.sisense.com/reporting.</p>
+        <p>The result is that if your users would be accessing the <span class="bold">Pulse</span> page for example, instead of the default baseurl.sisense.com/pulse, they would see the URL baseurl.sisense.com/reporting/pulse.</p>
+        <p>To implement base URLs in Sisense, you need to direct your users to a reverse proxy that is configured to redirect the users to the appropriate base URL that you define in Sisense.</p>
+        <p>The implementation of a reverse proxy is done on your side. An example reverse proxy configuration file for Ngnix is provided below.</p>
+        <p>Implementing a base URL on Sisense’s side requires updating the default.yaml configuration file on your Sisense server.</p>
+        <p class="bold">To configure a new base URL in Sisense:</p>
+        <ol>
+            <li>With a text editor, open the default.yaml file located at …\Program Files\Sisense\PrismWeb\vnext\config</li>
+            <li>Add the property proxyurl: ‘yourbaseURL’ to the webServer object. For example:<br></br><span class="code">webServer:</span><br></br><span class="code">ver: '5.0'</span><br></br><span class="code">port:     40002</span><br></br><span class="code">iisPort: 8081</span><br></br><span class="code">virtualDir:  '/api'</span><br></br><span class="code">apiVersion: 'Beta'</span><br></br><span class="code">oldApi: '/apiv1'</span><br></br><span class="code">secure: false</span><br></br><span class="code">reportPath: \sisense\reports\</span><br></br><span class="code">jobEnable: true</span><br></br><span class="code">trackEnable: true</span><br></br><span class="code">dashboardPath: 'http://localhost/app/main#/dashboards/'</span><br></br><span class="code">proxyurl: https://baseurl.sisense.com/reporting</span><br></br><span class="code">enableSSl: false</span><br></br><span class="code">jsonLimit: '25mb'</span></li>
+            <li>Save your changes.</li>
+        </ol>
+        <p>There are a variety of reverse proxies you can choose to implement a base URL. You can see an example Ngnix configuration below (ngnix.conf):</p><pre xml:space="preserve">worker_processes  1;
+events {
+     worker_connections  1024;
+}
+http {
+    include       mime.types;
+    default_type  application/octet-stream;
+    sendfile        on;
+    keepalive_timeout  65;
+    proxy_connect_timeout       6000;
+    proxy_send_timeout          6000;
+    proxy_read_timeout          6000;
+    send_timeout                6000;
+    server {
+         #listen       80;
+         server_name  site.corporate.com;
+         listen              443 ssl;
+         ssl_certificate     "location of pem file";
+         ssl_certificate_key "location of key file";
+         ssl_protocols       TLSv1 TLSv1.1 TLSv1.2;
+         ssl_ciphers         HIGH:!aNULL:!MD5;
+         rewrite ^/reporting$ /reporting/ last;
+         location ~/reporting(/.*)$ {
+           set $path $1;
+           client_max_body_size 2G;
+           proxy_pass   http://sisenseIP:sisensePort$path$is_args$args;
+           proxy_http_version 1.1;
+           proxy_set_header Upgrade $http_upgrade;
+           proxy_set_header Connection "upgrade";
+           proxy_set_header X-Real-IP  $remote_addr;
+           proxy_set_header X-Forwarded-For $remote_addr;
+           proxy_set_header Host $host;
+           proxy_connect_timeout       6000;
+           proxy_send_timeout          6000;
+           proxy_read_timeout          6000;
+           send_timeout                6000;
+           #if ($http_origin ~* '^(http://origin1.com:8081|https://www.origin2.org)$') {
+           # set $cors_origin '${http_origin}';
+           # set $cors_cred 'true';
+           # set $cors_methods 'GET, POST, DELETE, PUT, OPTIONS, PATCH, HEAD';
+           # set $cors_headers 'Content-Type, X-Device-Id, X-API-KEY, Origin, Authorization, X-Requested-With, Accept, Key, Cache-Control
+           #}
+           add_header Access-Control-Allow-Origin $cors_origin always;
+           add_header Access-Control-Allow-Credentials $cors_cred always;
+           add_header Access-Control-Allow-Methods $cors_methods always;
+           add_header Access-Control-Allow-Headers $cors_headers always;
+           if ($request_method = OPTIONS) {
+           return 200;
+           }
+         } 
+      }
+   }</pre>
+    </body>
+</html>

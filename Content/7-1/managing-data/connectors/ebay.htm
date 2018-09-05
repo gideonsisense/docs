@@ -1,0 +1,178 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Ebay | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to eBay</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> eBay connector is a standalone connector that allows you to import data from eBay’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to eBay’s API.  The connection string contains parameters that define who is trying to access the eBay API.</p>
+        <p>Once you have connected to eBay, you can import a variety of tables from the eBay API.</p>
+        <p>This page describes how to install the eBay connector, how to connect to eBay with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the eBay Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the eBay REST API</a>
+            </li>
+            <li><a href="#Adding">Adding eBay Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#eBay">eBay Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the eBay Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the eBay connector as a standalone connector that you can download and add to your list of default Sisense connectors.</p>
+        <p class="bold">To install the eBay connector:</p>
+        <ol>
+            <li>Contact us for the eBay installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Clos</span>e.</li>
+        </ol>
+        <p class="indent">The eBay connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the eBay REST API</h2>
+        <p>There are two authentication methods available for connecting to eBay: Using a token generated for accessing only personal data or using tokens that allow other users to access their own data. Both methods require you to join the eBay Developers Program.</p>
+        <h3 class="notoc">Register and Get Your Keys</h3>
+        <p>After joining the eBay Developers Program, you can obtain the following values from the Application Keys page.</p>
+        <ol>
+            <li>AppID</li>
+            <li>DevID</li>
+            <li>CertID</li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/appkeyebay.png" class="thumblarge" />
+        </p>
+        <p>If you’re working with your own account, follow the steps below to generate a token:</p>
+        <ol>
+            <li>Go to your Developer Account Dashboard and open the <span class="bold">Application Key</span>s page.</li>
+            <li>In the App Id row for the key set you want to use, click <span class="bold">User Tokens</span>. Use production keys if you’re searching for real items or listing real items to the live eBay site. Use sandbox keys if you’re creating test listings in the sandbox.</li>
+            <li>Click <span class="bold">Get a User Token Here</span> and log in with credentials for either your sandbox or production eBay account.</li>
+            <img src="../../../Resources/Images/ebaysand.png" class="thumblarge" />
+            <li>Click <span class="bold">Get a Token from eBay via Your Application</span> and enter a title for your application and the relevant callback and return URLs. From this page you can also retrieve your RuName, which is a mandatory parameter that needs to be included in the connection string.</li>
+            <img src="../../../Resources/Images/ebaytoken.png" class="thumblarge" />
+            <li>Click <span class="bold">Save</span>.</li>
+        </ol>
+        <p>After setting the following connection properties, you are ready to connect.</p>
+        <h2 class="notoc"><a name="Adding"></a>Adding eBay Tables to Your ElastiCube</h2>
+        <p>After you have retrieve your API Key or OAuth credentials from eBay, you provide the relevant information in a connection string. <MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to eBay and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>The connection string to eBay is in the following format:</p>
+        <p class="code">jdbc:ebay:MyDevID=xxxxxxxxxxxxxxxxxxxxxx;</p>
+        <p>For OAuth, the connection string to eBay is in the following format:</p>
+        <p class="code">jdbc:ebay:DevID=MyDevID;AppID=MyAppID;CertID=MyCertID;RuName=MyRuName;SiteID=0;OAuthAccessToken=MyOAuthAccessToken</p>
+        <ul>
+            <li><span class="bold">DevID</span>: Set this to the Developer ID from your key set.</li>
+            <li><span class="bold">AppID</span>: Set this to the Application ID from your key set.</li>
+            <li><span class="bold">CertID</span>: Set this to the Certificate ID from your key set.</li>
+            <li><span class="bold">RuName</span>: Set this to the Redirect URL name on the Token from eBay via your Application section of the User Tokens page.</li>
+            <li><span class="bold">SiteID</span>: Set this to the eBay site ID. By default this is 0 (the U.S. site). See Site Mappings, for more options.</li>
+            <li><span class="bold">CallbackURL</span>: Set this to http://localhost:33333 or another port of your choice.</li>
+            <li>I<span class="bold">nitiateOAuth</span>: Set this to GETANDREFRESH.</li>
+            <li><span class="bold">Sandbox</span>:  If you are using the sandbox environment add UseSandbox=true.</li>
+        </ul>
+        <p class="bold">To add eBay data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">eBay</span>. The Connect to eBay window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. eBay is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to eBay and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h3 class="notoc"><a name="eBay"></a>eBay Tables</h3>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> eBay connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <h4 class="notoc">Available Tables</h4>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ItemListing</td>
+                    <td>Update, delete, and query Item Listings for sellers.</td>
+                </tr>
+                <tr>
+                    <td>ItemVariations</td>
+                    <td>	Item Variations are multiple similar (but not identical) items in a single fixed-price listing. For example, a T-shirt listing could contain multiple items of the same brand that vary by color and size; each variation would specify a combination of one of these colors and sizes. Each variation can have a different quantity and price. You can buy multiple items from one variation at the same time. (That is, one order line item can contain multiple items from a single variation.)</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="notoc">Available Views</h4>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Parameter</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Bidders</td>
+                    <td>Query eBay users that bid on a specified listing, regardless of whether the listing has ended.</td>
+                </tr>
+                <tr>
+                    <td>Categories</td>
+                    <td>Query eBay Categories.</td>
+                </tr>
+                <tr>
+                    <td>CategoryFeatures</td>
+                    <td>Query the settings supported by eBay Categories.</td>
+                </tr>
+                <tr>
+                    <td>Countries</td>
+                    <td>Lists the country code and associated name of the countries supported by the eBay system, regardless of the site specified in the request.</td>
+                </tr>
+                <tr>
+                    <td>Currencies</td>
+                    <td>Query the supported Currencies in eBay.</td>
+                </tr>
+                <tr>
+                    <td>DSRSummary</td>
+                    <td>	Query rating information from DSR Summary Reports.</td>
+                </tr>
+                <tr>
+                    <td>HighestBidder</td>
+                    <td>Query the Highest Bidder of the eBay users who bid on a specified listing, regardless of whether the listing has ended.</td>
+                </tr>
+                <tr>
+                    <td>ItemShipping</td>
+                    <td>	Query details pertinent to one or more items for which calculated shipping has been offered by the seller, such as package dimension, weight, and packaging/handling costs.</td>
+                </tr>
+                <tr>
+                    <td>ItemTransactions</td>
+                    <td>Query order line item (transaction) information for a specified listing. For auction listings, order line items are not created until the auction ends with a winning bidder, or if the Buy It Now feature is enabled for the listing and used by the buyer to purchase the item. For fixed-price listings, order line items are created after a buyer has committed to purchase the item(s).</td>
+                </tr>
+                <tr>
+                    <td>MostWatchedItems</td>
+                    <td>Query items with the highest watch counts for the entire site or for a specific category. The top items are determined by the Watch Count totals from the preceding day. Ranking of the Most Watched Items is calculated with the latest Watch Count information.</td>
+                </tr>
+                <tr>
+                    <td>ShippingCarriers</td>
+                    <td>Query Shipping Carriers supported by the specified site.</td>
+                </tr>
+                <tr>
+                    <td>ShippingCategories</td>
+                    <td>A shipping service category supported for the site.</td>
+                </tr>
+                <tr>
+                    <td>ShippingLocations</td>
+                    <td>Lists the regions and locations supported by eBay's shipping services. Returns all shipping locations supported by eBay, regardless of the site specified in the request.</td>
+                </tr>
+                <tr>
+                    <td>ShippingServices</td>
+                    <td>Query Shipping Services supported by the specified eBay site.</td>
+                </tr>
+                <tr>
+                    <td>Sites</td>
+                    <td>Lists all available eBay sites and their associated SiteID numbers.</td>
+                </tr>
+                <tr>
+                    <td>TopSellingProducts</td>
+                    <td>Query your eBay Top Selling Products.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

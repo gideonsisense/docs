@@ -1,0 +1,51 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Silent Installation | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Performing a Silent Installation</h1>
+        <p>This topic describes how to install <MadCap:variable name="Variables.CompanyName" /> silently.</p>
+        <p>You can install <MadCap:variable name="Variables.CompanyName" /> using the command-line interpreter, for example, when you need to run an installation on a remote machine.</p>
+        <p>You can also customize the installation using variables, for example, install <MadCap:variable name="Variables.CompanyName" /> without the sample dashboards.</p>
+        <p class="bold">To perform a silent installation:</p>
+        <ol>
+            <li>Download the <a href="http://download.sisense.com/SisenseInstallations/SisenseLatestFull.exe">latest sisense version</a>.</li>
+            <li>Open the command line interpreter and type in the installation commands as follows:</li>
+        </ol>
+        <ul>
+            <li>Full installation (without previous user activation)<br /><span class="code">&lt;Location of downloaded executable file&gt;\SisenseLatestFull.exe -q -username=&lt;&gt; -password=&lt;&gt;</span></li>
+        </ul>
+        <ul>
+            <li>Full installation (for user already activated by Sisense)<br /><span class="code">&lt;Location of downloaded executable file&gt;\SisenseLatestFull.exe -q</span></li>
+        </ul>
+        <ul>
+            <li>Full offline installation (requires a license key from Sisense)<br /><b>Note</b>: To get an offline license, go to <a href="https://www.sisense.com/my-account/">My Account</a> and click <b>GET KEY</b>, or contact your <MadCap:variable name="Variables.CompanyName" /> Success Manager.<br />After attaining your key, copy and paste it after <i>-offlinelicense= (replacing &lt;offline_license_key&gt;</i> in the example below).<br /><span class="code">&lt;Location of downloaded executable file&gt;\SisenseLatestFull.exe -q -offlinelicense=&lt;offline_license_key&gt;</span></li>
+        </ul>
+        <ul>
+            <li>Installation without Sample ElastiCubes and dashboards<br /><span class="code">&lt;Location of downloaded executable file&gt;\SisenseLatestFull.exe -nosamples -q</span></li>
+        </ul>
+        <ul>
+            <li>Choosing Sisense Website name and port<br /><span class="code">&lt;Location of downloaded executable file&gt;\SisenseLatestFull.exe -q -webname=&lt;website_name&gt; -webport=&lt;website_port&gt;</span></li>
+        </ul>
+        <h2 class="notoc">Silent Customized Installations</h2>
+        <p>To define which Sisense components are installed, you can edit the PrismFeature.xml and copy it to “%programData%\sisense”.</p>
+        <p>If you are using IIS express, download <a href="http://download.sisense.com/PrismInstallations/PrismExtensions/PrismFeature.xml">PrismFeature.xml</a>.</p>
+        <p>If you are using IIS, download <a href="http://download.sisense.com/PrismInstallations/PrismExtensions/PrismIIS/PrismFeature.xml">PrismFeature.xml</a>.</p>
+        <p><b>Note</b>: Create “%programData%\sisense” if it does not exist.</p>
+        <p>The PrismFeature.xml file contains an XML node named “Feature”.Changing its ‘Selected’ child node value (true/false) determines if the feature is installed or not. For example, in this configuration, the Prism Server Console is installed:</p>
+        <p><span class="code">&lt;Features&gt;<br></br>&lt;Id&gt;PrismServerConsole_Feature&lt;/Id&gt;<br></br>    &lt;Name&gt;Prism Server Console&lt;/Name&gt;<br></br>    &lt;Selected&gt;true&lt;/Selected&gt;<br></br>    &lt;Manual&gt;false&lt;/Manual&gt;<br></br>    &lt;Selector&gt;CheckBox&lt;/Selector&gt;<br></br>    &lt;Tests /&gt;<br></br>&lt;/Feature&gt;<br></br>&lt;/Features&gt;</span>
+            <br />
+        </p>
+        <p>After editing the XML file, run the installation according to the instructions above.</p>
+        <p>The following are example XML&#160;files you can use when installing Sisense:</p>
+        <ul>
+            <li>Install <MadCap:variable name="Variables.ElastiCube"></MadCap:variable> Server only (<a href="http://data.sisense.com/Product/addons/PrismFeature_Server.xml">Download</a>)</li>
+            <li>Install <MadCap:variable name="Variables.Sisense Web Application"></MadCap:variable> only (<a href="http://data.sisense.com/Product/addons/PrismFeature_Web.xml">Download</a>)</li>
+            <li>Install <MadCap:variable name="Variables.ElastiCube"></MadCap:variable> Server and <MadCap:variable name="Variables.Sisense Web Application"></MadCap:variable> with a full version of IIS (<a href="http://data.sisense.com/Product/addons/PrismFeature_Server%2BWeb_Full_IIs.xml">Download</a>)</li>
+        </ul>
+        <p><span class="bold">Note</span>:&#160;If you use any of the XML&#160;files above, rename them to “PrismFeature.xml” before applying it. </p>
+        <p class="bold">To uninstall <MadCap:variable name="Variables.CompanyName" /> using the command-line interpreter:</p>
+        <p>In the command-line interpreter, enter:</p>
+        <p class="code">&lt;Location of downloaded executable file&gt;\SisenseLatestFull.exe /q  /uninstall</p>
+    </body>
+</html>

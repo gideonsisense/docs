@@ -1,0 +1,61 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2623" MadCap:lastWidth="913">
+    <head>
+        <title>Sisense Pulse and High Availability</title>
+    </head>
+    <body>
+        <h1>Sisense Pulse and High Availability</h1>
+        <p>Sisense alerts are generated from your application server. In a high availability configuration, you can designate one of your query nodes as the Alerts node. The Alerts node is responsible for sending alerts to your users when the other query nodes are down or in the processing on attaching the latest version of the ElastiCube from your build node.</p>
+        <p>The diagram below describes a common high availability configuration in which the query node on the left represents the Alert query node in the ElastiCube Set. If either of the query nodes on the right fail, the Alert query node continues to send alerts.</p>
+        <p>
+            <img src="../../Resources/Images/EsetsHA.png" class="thumblarge" />
+        </p>
+        <p>To add Sisense Pulse to your high availability configuration, you must configure three Sisense configuration files on each of the non-Alert query nodes. The configuration files of the non-Alert query nodes should point to the Alert query node that supports Sisense Pulse. To enable communication between the Alert node and the rest of the query nodes, the credentials of the Alert node should be copied to each of the query nodes.</p>
+        <p>The following files must be configured:</p>
+        <p>
+            <span class="bold">default.yaml</span>
+        </p>
+        <p>This file is located at <code>…\Program Files\Sisense\PrismWeb\vnext\config</code></p>
+        <p>The db_server and port fields should be set to the IP address and port of your Alert query node.</p>
+        <p class="code">db_server:</p>
+        <p class="code">host:   127.0.0.1</p>
+        <p class="code">port: 27018</p>
+        <p class="code">process: \mongodb\mongod.exe</p>
+        <p class="code">dbpath:  '/sisense/PrismWeb/UpgradedDB'</p>
+        <p class="code">ttlNotFound: 604800</p>
+        <p>To allow your query node to communicate with your Alert query node, the following details should be copied from your Alert query node to each of your other query nodes. The AppUser is the Sisense MongoDB user.</p>
+        <p class="code">db_security:</p>
+        <p class="code"> mongoAppUser: AppUser</p>
+        <p class="code"> mongoAppPassword: we6jBUffffrh0K6l+XpTmA</p>
+        <p class="code"> mongoAppKey: dfffM1p3Sm85N0JlQ3g4Mg==</p>
+        <p class="code"> mongoAppIV: ePtGGG6YvSR0ihwkcQ==</p>
+        <p class="bold">ElastiCubeConfiguration.xml</p>
+        <p>This file is located at <span class="code">…\ProgramData\Sisense\PrismServer</span></p>
+        <p>The value of the RabbitMQServer parameter should be changed to 0 on each non-Alert server. This prevents the query node from sending alerts. This value is not changed on the Alert query node as it will be the server that sends alerts.</p>
+        <p class="code">&lt;RabbitMQConfiguration&gt;</p>
+        <p class="code">&lt;RabbitMQServer&gt;0&lt;/RabbitMQServer&gt;</p>
+        <p class="code">&lt;RabbitMQPort&gt;5672&lt;/RabbitMQPort&gt;</p>
+        <p class="code">&lt;/RabbitMQConfiguration&gt;</p>
+        <p class="bold">Sisense.WebQueryService.exe.config</p>
+        <p>This file is located at <span class="code">…\Program Files\Sisense\PrismWeb\Bin</span></p>
+        <p>This file defines your query node’s location and AppUser credentials. To allow query nodes to communicate with your Alert query node, the following parameters should match the values of your Alert query node.</p>
+        <p class="code">&lt;connectionStrings&gt;</p>
+        <p class="code">&lt;add name="Mongo" connectionString="mongodb://AppUser:we6jBUffffrh0K6l+XpTmA==@localhost:27018/admin" /&gt;</p>
+        <p class="code">&lt;/connectionStrings&gt;</p>
+        <p class="code">&lt;appSettings&gt;</p>
+        <p class="code">&lt;add key="Port" value="40001" /&gt;</p>
+        <p class="code">&lt;add key="NodeProxyUrl" value="http://localhost:8081" /&gt;</p>
+        <p class="code">&lt;add key="mongoAppIV" value="ePtGGG6YvSR0ihwkcQ==" /&gt;</p>
+        <p class="code">&lt;add key="mongoAppKey" value="dfffM1p3Sm85N0JlQ3g4Mg==" /&gt;</p>
+        <p class="code">&lt;add key="controlChannelPort" value="0" /&gt;</p>
+        <p class="code">&lt;/appSettings&gt;</p>
+        <p>After each of these files has been configured and saved, Sisense will send alerts from the Alert query node only. If any of your non-query nodes fails, Sisense will continue to send alerts.</p>
+        <h2 class="notoc">Limitations</h2>
+        <p>As of Sisense V6.7 beta, the following limitations for Sisense Pulse in high availability  configurations are in place:</p>
+        <ul>
+            <li>Build alerts are not supported</li>
+            <li>Dashboards supported by query nodes that are currently down, may receive alerts from the Alert query node based on updated data not displayed in the dashboard supported by the query node that is down.</li>
+            <li>If the Alert query node is down, and then returns to service, alerts may be sent late depending on how long the Alert query node was offline.</li>
+        </ul>
+    </body>
+</html>

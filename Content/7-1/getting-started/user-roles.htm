@@ -1,0 +1,410 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Sisense User Roles | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1><MadCap:variable name="Variables.CompanyName" /> User Roles</h1>
+        <p><MadCap:variable name="Variables.CompanyName" /> licenses three categories of roles:&#160;<br /></p>
+        <p class="bold">Administrator</p>
+        <ul>
+            <li><b>Admin</b>: Administrators can access the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" /> from where they can manage all system configuration, data sources, <MadCap:variable name="Variables.ElastiCube" />s, users, user groups and more. <MadCap:variable name="Variables.CompanyName" /> supports multiple Administrators.<br />Note:&#160;Sys.Admin is a special type of Administrator who installs <MadCap:variable name="Variables.CompanyName" /> on your system. There is only one Sys.Admin per account. </li>
+            <li><b>Data Admin</b>: Data Administrators can manage all data sources in the system. They have access to the <span class="bold">Admin</span> page of the <MadCap:variable name="Variables.Sisense Web Application" /> where they can only manage <MadCap:variable name="Variables.ElastiCube" />s and live connections. Data Administrators can also add and manage servers. This is useful for migrating <MadCap:variable name="Variables.CompanyName" /> across environments. Data Administrators do not have access to User Management and System Configuration.</li>
+        </ul>
+        <p class="bold">Designer</p>
+        <ul>
+            <li><b>Data Designer</b>: Data Designers can create and edit <MadCap:variable name="Variables.ElastiCube" />s they created or were shared with them. Data Designers can access the <span class="bold">Admin </span>page of the <MadCap:variable name="Variables.Sisense Web Application" /> where they can manage the <MadCap:variable name="Variables.ElastiCube" />s and live Connections they have access to in the Data Sources page. In addition, Data Designers can see servers, but can not add new servers. Data Designers do not have access to User Management and System Configuration.</li>
+            <li><b>Designer</b>: Designers can create, design, edit and share dashboards. <MadCap:variable name="Variables.CompanyName" /> Designers determine whether the user with who they share a dashboard has editing rights (is a Designer) or only viewing rights (Viewer).</li>
+        </ul>
+        <p class="bold">Viewer </p>
+        <ul>
+            <li><b>Viewer</b>: Viewers can view, explore, drill down, make selections and filter the dashboards that Designers share with them. Viewers only need a standard web browser; no plugins or downloads. They cannot create new dashboards or edit existing ones.</li>
+        </ul>
+        <p>&#160;</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>&#160;</th>
+                    <th colspan="2">Administrator Roles</th>
+                    <th colspan="2">Designer Roles</th>
+                    <th>Viewer Roles</th>
+                </tr>
+                <tr>
+                    <th>&#160;</th>
+                    <th>Admin</th>
+                    <th>Data Admin</th>
+                    <th>Data Designer</th>
+                    <th>Designer</th>
+                    <th>Viewer</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td colspan="6">System Management</td>
+                </tr>
+                <tr>
+                    <td>Access Admin Page</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Edit System Configuration</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Configure SSO</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td colspan="6">User Management</td>
+                </tr>
+                <tr>
+                    <td>Create/Delete Users</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Create/Delete Groups</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Add Active Directory Users</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td colspan="6"><MadCap:variable name="Variables.ElastiCube" /> Management</td>
+                </tr>
+                <tr>
+                    <td>Add/Delete Servers</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>View Servers</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Add Live Connections</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Create/Delete <MadCap:variable name="Variables.ElastiCube" />s</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Edit <MadCap:variable name="Variables.ElastiCube" />s</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Share <MadCap:variable name="Variables.ElastiCube" />s</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Edit Servers</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Create <MadCap:variable name="Variables.ElastiCube" /> Sets</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Delete <MadCap:variable name="Variables.ElastiCube" /> Sets</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Manage Hierarchies</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Configure Data Access Rights</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Stop/Restart Servers</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Stop/Restart <MadCap:variable name="Variables.ElastiCube" />s</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Set Up Data Security</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Access Data Page</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td colspan="6">Dashboard Design</td>
+                </tr>
+                <tr>
+                    <td>Create/Edit/Delete Dashboards</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td style="font-weight: normal;">✓</td>
+                    <td style="font-weight: normal;">✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Copy Dashboard to Another Server</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td style="font-weight: normal;">✓</td>
+                    <td style="font-weight: normal;">✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Restore Dashboards</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td style="font-weight: normal;">✓</td>
+                    <td style="font-weight: normal;">✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Change Color Palettes</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Create/Edit/Delete Widgets</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Rename Widgets</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Duplicate Widgets</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Change Widget Type</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Drill into Widget</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Reorder Widgets</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Create/Delete Dashboard Filters</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Toggle Dashboard Filters On/Off</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Create/Delete Widget Filters</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Toggle Widget Filters On/Off</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td colspan="6">Sharing</td>
+                </tr>
+                <tr>
+                    <td>Export Dashboards to PDF, Img, CSV</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Share Dashboards</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓*</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Migrate Dashboards</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓*</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Pulse</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Access Pulse</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Create Data Alert</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+                <tr>
+                    <td>Create Build Alert</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                    <td>&#160;</td>
+                </tr>
+                <tr>
+                    <td>Delete Alerts *</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                    <td>✓</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>* The user must be the owner of the dashboard, <MadCap:variable name="Variables.ElastiCube" />, or alert.</p>
+    </body>
+</html>

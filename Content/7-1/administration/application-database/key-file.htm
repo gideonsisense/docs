@@ -1,0 +1,19 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="370" MadCap:lastWidth="916">
+    <head>
+        <title>Creating a KeyFile | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating a KeyFile</h1>
+        <p>To ensure that your connection between your application database servers is secure, <MadCap:variable name="Variables.CompanyName" /> uses KeyFiles that you generate.</p>
+        <p>The contents of the keyfile serves as a shared password for each of the nodes in your replica set. The content of the keyfile must be the same for all members of the replica set.</p>
+        <p>You can generate a keyfile using any method you choose. The contents of the keyfile must be between 6 and 1024 characters long.</p>
+        <p>The following operation uses OpenSSL to generate a random character string to use for a keyfile.</p>
+        <p class="bold">To create a KeyFile:</p>
+        <ol>
+            <li>Download <a href="https://sourceforge.net/projects/openssl/files/latest/download">OpenSSL</a> and extract the files to your machine.</li>
+            <li>Open the Command Prompt and navigate to your bin folder of your OpenSSL directory, for example, …/Openssl/bin.</li>
+            <li>Run the command:<br /><span class="code">openssl rand -base64 756 &gt; &lt;path-to-keyfile&gt;</span><br />For example: openssl rand -base64 756 &gt; c:\openSSL\key<br />The file ‘Key’ is created in the path you defined in the command. The location of this file should be referenced in the relevant configuration files. The file should be copied to each node in your replica set.</li>
+        </ol>
+    </body>
+</html>

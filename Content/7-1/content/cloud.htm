@@ -1,0 +1,76 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2519" MadCap:lastWidth="647">
+    <head>
+        <title>Sisense Cloud Security Controls</title>
+    </head>
+    <body>
+        <h1>Sisense Cloud Security Controls</h1>
+        <p>Sisense Cloud is hosted on Amazon Web Services (AWS). This enables Sisense’s software to take advantage of the robust security and compliance certifications available on AWS. More information about AWS Security can be found at <a href="https://aws.amazon.com/security/">https://aws.amazon.com/security/</a>.  A list of certifications and assurance programs can be found at <a href="https://aws.amazon.com/compliance/">https://aws.amazon.com/compliance/</a>.</p>
+        <p class="bold">If you’re new to Sisense, you can learn more about Sisense security here.</p>
+        <p class="bold">Sisense’s System Environment Secure Deployment</p>
+        <p>
+            <i>AWS Account Access Restriction</i>
+        </p>
+        <p>The Sisense Cloud is managed by a small number of designated Sisense IT staff with a demonstrated need to service the application or infrastructure. Access to the Sisense server may be required by IT, Sisense Cloud Service, Sisense Support and Sisense NOC staff. Authorized Sisense staff access the AWS account via multifactor authentication (MFA).</p>
+        <p>
+            <i>Sisense Server</i>
+        </p>
+        <p>Sisense deploys a dedicated and isolated virtual server in the AWS for each Licensee. Each Licensee’s deployment is completely independent of, and does not have access to, any other Sisense Licensee’s deployment.</p>
+        <p>
+            <i>Windows OS Updates</i>
+        </p>
+        <p>Sisense Cloud Service keeps the Windows OS up to date with the latest updates and timely installation of security patches.</p>
+        <p>
+            <span class="bold">Windows Hardening</span>
+        </p>
+        <p>Sisense Follows Windows OS is hardened per the best practices described here:</p>
+        <p>
+            <a href="https://technet.microsoft.com/en-us/library/cc526440.aspx">https://technet.microsoft.com/en-us/library/cc526440.aspx</a>
+        </p>
+        <p>
+            <i>Sisense Windows Passwords</i>
+        </p>
+        <p>All passwords are required to meet Windows complexity requirements.</p>
+        <p>
+            <i>Control Open Ports</i>
+        </p>
+        <p>All incoming and outgoing ports are blocked by default. There is a predefined list of ports that are open for the Sisense application, as follows:</p>
+        <ul>
+            <li>Incoming port for Sisense UI (HTTPS)</li>
+            <li>Incoming port for access to Sisense ElastiCube Manager (RDWeb)</li>
+            <li>Outgoing ports for DB connectors</li>
+        </ul>
+        <p>
+            <i>Anti-Virus</i>
+        </p>
+        <p>Sisense runs anti-virus software on its cloud servers.</p>
+        <p class="bold">Restricted Access to Sisense Server</p>
+        <p>Access to Sisense server is restricted as follows:</p>
+        <p>
+            <i>IP Restriction</i>
+        </p>
+        <p>By Sisense – Sisense’s access to each Sisense Cloud server through the Windows Remote Desktop Protocol (RDP) is enabled from designated Sisense IP addresses only.</p>
+        <p>By Customer – Customer’s access to approved applications on the Sisense Cloud server through Remote Desktop Web Access (RDWeb) is performed from designated IP’s only</p>
+        <p>The Cloud Access IP Whitelist is maintained by the Sisense IT.</p>
+        <p class="bold">Secure Business Flow</p>
+        <p>To minimize the possibility of a security breach when working with the Sisense Software on the Sisense Cloud, Sisense has established security controls covering the entire business cycle:</p>
+        <p>
+            <i>Sisense Deployment Architecture to Prevent Direct Access to Server</i>
+        </p>
+        <p>Sisense deploys the Software in a cloud architecture that enables use the Software while restricting the Customer’s direct access to the Sisense server.</p>
+        <p>Access to the ElastiCube Manager is performed via RDWeb. This secure and encrypted access is limited to working with a designated application and file folders only.</p>
+        <p>
+            <i>Secure Web Access</i>
+        </p>
+        <p>Web access uses secure HTTPS secure protocol with *.sisense.com certificate (other domain certificate can be configured upon request).</p>
+        <p>
+            <i>Moving Assets to the Sisense Software in the Sisense Cloud – Secure FTP</i>
+        </p>
+        <p>As part of the Sisense BI business lifecycle, a customer may need to move files and other components to the Sisense BI server (such as UI Plugins, REST API Connector, ODBC driver, Rebranding logos, Dash files, ElastiCube and dashboard migration between environments).</p>
+        <p>Manual transfer of files to designated folders is performed via RDWeb. Automated transfer is performed via SFTP enabled on the Sisense Cloud server.</p>
+        <p class="bold">No Third Party Software on Sisense Cloud Server</p>
+        <p>To ensure the tight security, no Customer software other than Sisense can be installed on the Sisense Cloud server. This restriction includes browsers, which are blocked on the server to prevent infiltration from the internet.</p>
+        <p class="bold">Customer Security Responsibilities</p>
+        <p>The Sisense Cloud is intended to be connected to Customer systems and networks that Sisense does not control. The Customer is responsible for maintaining security on its own systems and networks and ensuring that the channels it uses to access the Sisense Cloud are protected against malicious software and unauthorized access. Customer should ensure that its authorized users adhere to Sisense’s configuration guidance and use the Sisense Cloud only as directed.</p>
+    </body>
+</html>

@@ -1,0 +1,141 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="4179" MadCap:lastWidth="865">
+    <head>
+        <title>Connecting via ODBC Drivers | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting via ODBC Drivers</h1>
+        <h2 class="notoc">Open Database Connectivity</h2>
+        <p>The ODBC provider allows access to a data source via an installed driver on the operating system regardless of the architecture of the data source.</p>
+        <p>In <MadCap:variable name="Variables.CompanyName" />, it serves as a connector to data providers, such as MS Sql, MySql, Oracle, Hive and so forth.</p>
+        <h2 class="notoc">DSN vs. Connection-String (DSN-Less)</h2>
+        <p>A connection to the provider is configured by a connection-string. Microsoft windows allows you to store the connection string properties in its registry for further use. It supplies an ODBC configuration wizard and requests an identifying Data Source Name (DSN).</p>
+        <p>When you add an ODBC table in the <MadCap:variable name="Variables.ECM" />r, the connection configuration dialog will provide you with two options:</p>
+        <ul>
+            <li>DSN – choosing a data source name.</li>
+            <li>Connection String (DSN-Less) – typing the actual connection string</li>
+        </ul>
+        <h2 class="notoc">Adding Tables to the <MadCap:variable name="Variables.ECM" />:</h2>
+        <ol>
+            <li>Click <span class="bold">Add Data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />r.</li>
+            <li>Under the <span class="bold">Database servers</span> category, select <span class="bold">Generic ODBC Driver</span>.</li>
+            <li>From the ODBC Connectivity Properties dialog choose <span class="bold">DSN</span> or Connection String (DSN-Less).</li>
+        </ol>
+        <ul>
+            <li>
+                <span class="bold">DSN</span>: Choose one of the existing DSNs from the drop-down list (each item is represented by its name), or click <span class="bold">Add DSN… </span>to open the <span class="bold">Create New Data Source</span> window. In this window, you’ll be asked to select one of the installed ODBC drivers, select a name for the DSN, and configure your connection using the wizard steps. At the end, the newly added DSN will be added to the drop-down list as the selected item.</li>
+            <li>
+                <span class="bold">Connection String</span>: Type the connection string in the input box. For known connection strings, click the Help link to navigate to Connection Strings (External site from Sisense). Click <span class="bold">Test Connection</span> to test the connection. Click <span class="bold">OK</span> to move to the final dialog. From the tables selection dialog, select tables that you want to add and click <span class="bold">Add</span>  to complete the wizard.</li>
+        </ul>
+        <p>
+            <span class="bold">Note</span>: You may need to update the executed table query.</p>
+        <p>
+            <img src="../../../Resources/Images/add-odBC.png" class="thumblargeli" />
+        </p>
+        <h3 class="notoc">Setting the Table Query (Troubleshoot)</h3>
+        <p>ODBC and OLE DB are generic drivers; therefore the SQL syntax being executed against the actual data source may vary from one provider to another.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> sets by default the standard SQL for the ODBC/OLE DB tables which covers most of today’s known data providers. For cases where non-standard SQL must be supplied, the table addition dialog provides a quick preview of the current SQL query and an edit button that opens the <span class="bold">Query Properties</span> dialog.</p>
+        <p>In <span class="bold">Query Properties</span>, you can set the following options:</p>
+        <ul>
+            <li>Auto Query Structure: Choosing the proper SQL syntax delimiter.</li>
+            <li>Manual Query Input: Type the desired query.</li>
+        </ul>
+        <h3 class="notoc">Customizing Your ODBC Connection</h3>
+        <p>Though there hundreds of data sources available, the generic ODBC driver can help you connect to just about all of them. However, if the default settings do not fit your specific use-case, <MadCap:variable name="Variables.CompanyName" /> lets you customize your ODBC connection to give you the functionality you need.</p>
+        <p>When you add an ODBC connection to your <MadCap:variable name="Variables.CompanyName" /> configuration, <MadCap:variable name="Variables.CompanyName" /> saves the details of your connection in a file called odbcConfig.json. The odbcConfig.json is a configuration file written in JSON syntax located in the directory: …\Program Files\Sisense\DataConnectors\DotNetContainer\Connectors\GenericODBC  You can edit this file to add functionality such as support for accumulative builds, increase query timeouts, or modify your query patterns.</p>
+        <p>The odbcConfig.json file contains the following objects that you can edit to modify your connectors behavior:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Mandatory</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Provider</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>The name of your data source. This name must be unique.</td>
+                </tr>
+                <tr>
+                    <td>DriverNames</td>
+                    <td>String</td>
+                    <td>Yes</td>
+                    <td>An array of ODBC driver names. If you don't know a driver name, you could check "Connectors.log".</td>
+                </tr>
+                <tr>
+                    <td>IsAccumulativeSupported</td>
+                    <td>Boolean</td>
+                    <td>No</td>
+                    <td>Indicates whether accumulative build is supported.Default value: false.</td>
+                </tr>
+                <tr>
+                    <td>IsRelationsSupported</td>
+                    <td>Boolean</td>
+                    <td>No</td>
+                    <td>Enable/disables relations functionality in the ElastiCube Manager.Default value: false.</td>
+                </tr>
+                <tr>
+                    <td>QueryTimeout</td>
+                    <td>Integer</td>
+                    <td>No</td>
+                    <td>Query timeout value. You can increase this value is your datasource takes longer to establish a connection.Default value: 0.</td>
+                </tr>
+                <tr>
+                    <td>QuerySettings</td>
+                    <td>QueryConfig*</td>
+                    <td>No</td>
+                    <td>Datasource specific query settings (see QueryConfig Object table below).Default value: default query config values.</td>
+                </tr>
+                <tr>
+                    <td>Extension</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>A name of the assembly with the appropriate extension.Default value: none.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>* The properties for the QueryConfig object are described in the table below:</p>
+        <h4 class="notoc">QueryConfig Object</h4>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Type</th>
+                    <th>Mandatory</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ColumnNamePattern</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>Pattern which represents column name format (should include appropriate separators).To create a pattern, you can use the following keywords:.@schema: Schema name (When schema is empty, table name will be using instead).@table: Table name.@column: Column name..Example: `@schema`.`@column`.Default value: [@column]</td>
+                </tr>
+                <tr>
+                    <td>TableNamePattern</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>Pattern which represents table name format (should include appropriate separators).To create a pattern, you can use the following keywords:@schema: Schema name (When schema is empty, table name will be using instead).@table: Table name.Example: "@schema"."@table"Default value: [@schema].[@table] or [@table] in the case when schema name is missing.</td>
+                </tr>
+                <tr>
+                    <td>PreviewSqlPattern</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>Pattern which represents preview SQL format (should include appropriate SQL operators).To create a pattern, you can use the following keywords:@rowcount: The number of rows to show.@sql: Inner select.Example: SELECT * FROM (@sql) LIMIT @rowcountDefault value: SELECT TOP @rowcount x.* FROM (@sql) x</td>
+                </tr>
+                <tr>
+                    <td>DateTimeFormat</td>
+                    <td>String</td>
+                    <td>No</td>
+                    <td>Format used to convert DateTime value to string for an accumulative workflow.More info about standard formatshere.More info about defining a custom formathere..Default value: sortable format specifier.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

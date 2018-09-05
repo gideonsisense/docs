@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Data Security | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Data Security</h1>
+        <p>Data security in <MadCap:variable name="Variables.CompanyName" /> can be divided into two types, data encryption and data access. Data communication is related to how data is secured by <MadCap:variable name="Variables.CompanyName" /> while be imported into <MadCap:variable name="Variables.CompanyName" /> and written on your server’s disk.</p>
+        <p>When data is imported into <MadCap:variable name="Variables.CompanyName" />, the protocol used depends on the protocols supported by the data source. <MadCap:variable name="Variables.CompanyName" /> supports importing data over SSL, if the source supports it. <MadCap:variable name="Variables.CompanyName" /> supports SSL for data Retrieval, for example, when viewing data in dashboards.</p>
+        <p>Configuration data, such as account credentials and authorization profiles, are encrypted prior to being written to the disk. The encryption technology used by <MadCap:variable name="Variables.CompanyName" /> includes:</p>
+        <p>1. SHA-256</p>
+        <p>2. TripleDES</p>
+        <p>3. AES-256</p>
+        <p>For data at rest, Sisense supports OS based disk encryption, Windows file system encryption. For more information, click <a href="https://docs.microsoft.com/en-us/windows/desktop/fileio/file-encryption">here</a>.</p>
+        <p>The second type of data security is data access. This type of data security refers to who can access your data after its imported into <MadCap:variable name="Variables.CompanyName" /> and displayed in a dashboard.</p>
+        <p class="bold">What is Data Access Security?</p>
+        <p><MadCap:variable name="Variables.CompanyName" /> enables you to define Data Security Rules that control which users can access which portions of the raw data in an <MadCap:variable name="Variables.ElastiCube" />, down to row granularity. For example:</p>
+        <ul>
+            <li>Each widget only shows the data permitted by the Data Security Rules that apply, including totals, averages and so on.</li>
+            <li>The data browsers used while building dashboards and widgets only show the data permitted by the Data Security Rules that apply.</li>
+            <li>You can define a single dashboard that automatically displays different results for each user (or user group), based on the rows that user is permitted to see.</li>
+        </ul>
+        <p class="bold">Use Case Example</p>
+        <ul>
+            <li>A Sales Order table has a column representing the salesperson that closed a deal.</li>
+            <li>You created a quarterly performance dashboard for your salespeople, but want each of them to see only their own data.</li>
+            <li>You do not want any of them to be exposed to data that represents the performance of others.</li>
+        </ul>
+        <p class="bold">How Does Data Access Security Work?</p>
+        <p>The Sisense security model is designed to work in a 'Grant access' model, and not in a 'Deny access' model.</p>
+        <p>By default, when applying a data security rule, access is blocked for everyone, and the best practice is to leave 'Everyone else' set to 'Nothing', while granting groups and users with access to specific data values. The model accumulates grants, meaning that the most permissive combination wins. So if both a group and one of its members have conflicting rules, the permissive combination wins.</p>
+        <p>Each <MadCap:variable name="Variables.ElastiCube" /> contains tables and each table contains fields. A Data Security Rule defines that a specific user can only see any data of an entire row of a table, if a specific field in that row has a specific value(s).</p>
+        <p>For example, in a Sales widget a salesperson (for example, Dan) will only see the sales amounts from the rows of a Sales <MadCap:variable name="Variables.ElastiCube" /> whose Salesperson field contains the value Dan (rows 1 and 4).</p>
+        <p class="bold">Sales Table</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>#</td>
+                    <td>Salesperson</td>
+                    <td>Product</td>
+                    <td>Amount</td>
+                </tr>
+                <tr>
+                    <td>1</td>
+                    <td>Dan</td>
+                    <td>HD-TV</td>
+                    <td>$100</td>
+                </tr>
+                <tr>
+                    <td>2</td>
+                    <td>Matthew</td>
+                    <td>TV</td>
+                    <td>$300</td>
+                </tr>
+                <tr>
+                    <td>3</td>
+                    <td>Amber</td>
+                    <td>Media Center</td>
+                    <td>$700</td>
+                </tr>
+                <tr>
+                    <td>4</td>
+                    <td>Dan</td>
+                    <td>Player</td>
+                    <td>$200</td>
+                </tr>
+                <tr>
+                    <td>5</td>
+                    <td>Matthew</td>
+                    <td>Air Conditioner</td>
+                    <td>$600</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Dan will not see any part of a row in the <MadCap:variable name="Variables.ElastiCube" /> that does not contain the value Dan in the Salesperson field, nor will any amounts from this row be included in totals.</p><span class="bold">Note</span>: The entire row of data is not seen by the relevant user even when the field to which the rule applies does not appear in the widget.<p>If a widget that shows the amount spent per product is shared with Dan , then he will only see HD-TV and Player and the sales total will be 300$.</p><h3 class="notoc">Defining Data Access Security for an <MadCap:variable name="Variables.ElastiCube" /></h3><p>Each Data Security Rule applies to a specific field in an <MadCap:variable name="Variables.ElastiCube" /> and to specific user(s)/user group(s). It enables you to define the values that must be contained in a specific field to enable that entire row of data to be available to a user.</p><p class="bold">To access Data Security:</p><ol><li>Click <span class="bold">Admin </span>and select the <MadCap:variable name="Variables.ElastiCube" /> tab in the menu.</li><li>For the relevant <MadCap:variable name="Variables.ElastiCube" />e, select  and click <span class="bold">Data Security</span>.<br />If no data security rules have yet been defined for this <MadCap:variable name="Variables.ElastiCube" />, then the following message is displayed:<br /><img src="../../../Resources/Images/v7setmsg.png" class="thumblarge" /></li><li>Click <span class="bold">Add Field</span> to display a list of the fields in this <MadCap:variable name="Variables.ElastiCube" />.<br /><img src="../../../Resources/Images/Security-9.png" class="thumblarge" /><br /></li><li>Select a field. For example, <span class="bold">Brand</span>. The following window is then displayed in which you can define rules.<br /><span class="bold">Note</span>: You cannot select date type fields.<br /><img src="../../../Resources/Images/v7datasec1.png" class="thumblarge" /><br />The left side of this table enables you to define which users/user groups can access this data. Click <span class="bold">+ Add Restriction</span> and start typing into the <span class="bold">Restricted User/Groups</span> field to get a drop-down list.<br />Add as many users/user groups, as necessary.<br />The right side of this window enables you to define which values the specified users/user groups are permitted to see.<br />Start typing into the <span class="bold">Values</span> field to get a drop-down list.<br /><img src="../../../Resources/Images/v7datasec2.png" class="thumblarge" /></li></ol><p class="bold">Multiple Values can be Selected.</p><p>The value of numeric type fields must be typed into this field, as no auto-complete option appears for numeric type fields.</p><p>Alternatively, you can select:</p><ul><li><span class="bold">Everything</span>: To specify that the selected users/user groups can see this data no matter what the value is in this field.</li><li><span class="bold">Nothing</span>: To specify that the selected users/user groups cannot see this data no matter what the value is in this field.</li></ul><p>For example, you can define that the following Users/User Groups must have the following values in the Product Category column to enable them to see their data row in a widget.</p><table><tbody><tr><td>#</td><td>User/User Group</td><td>Product Category</td></tr><tr><td>1</td><td>Management</td><td>Everything</td></tr><tr><td>2</td><td>Bob</td><td>Apple Mac Desktops</td></tr><tr><td>3</td><td>Don</td><td>Calculators, Camera Flashes</td></tr><tr><td>4</td><td>Everyone else</td><td>Nothing</td></tr></tbody></table><p>This means that management can see the data of all Product Categories, Don can only see the data of Calculators and Camera Flashes, Bob can only see the data of Apple Mac Desktops, and Everyone else won’t see anything.</p><p class="bold">How Does Data Level Security Work for Tables with Relationships?</p><p>Tables in an <MadCap:variable name="Variables.ElastiCube" /> may have a relationship between them.</p><p>As described above, each widget only shows any data of an entire row of a table, if a specific field in that row has a specific value.</p><p>In addition, a widget may further restrict the data shown to a specific user when a rule is defined for a table that has a relationship to a table that has a field in the widget.</p><p>This means that a widget only shows the data permitted by the <span class="bold">combined</span> Data Security Rules assigned to all the tables that have <span class="bold">any field in the widget</span>.</p><p>As described above, the entire data row is restricted even when the field to which the rule applies does not appear in the widget. The entire row of data is also restricted even when the field of the relationship between the two tables does not appear in the widget.</p><p class="bold">Use Case Example – Expanding Upon the Example Above</p><ul><li>The Sales table has a column that has a relationship with a Deal Contacts table that holds the contacts that were involved in each deal.</li><li>You created a Deal Contacts widget for your salespersons.</li><li>As described in the example above, the Sales table has a Data Security Rule that maps each user to his/her matching field value, so that each sales person only sees their own data.</li><li>Even though the Deal Contacts table does not have any Data Security Rules defined for it, the Deal Contacts widget only enables each sales person to see the contacts associated with their own sales, because of the Data Security Rule assigned to the Sales table.</li></ul></body>
+</html>

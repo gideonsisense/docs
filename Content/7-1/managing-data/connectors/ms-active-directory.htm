@@ -1,0 +1,248 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Microsoft Active Directory | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Microsoft Active Directory</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Microsoft Active Directory connector is a standalone connector that allows you to import data from Microsoft Active Directory’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the ElastiCube Manager. The connection string is used to authenticate users who connect to the Microsoft Active Directory tables.</p>
+        <p>Once you have connected to Microsoft Active Directory, you can import a variety of tables from the Microsoft Active Directory API.</p>
+        <p>This page describes how to install the Microsoft Active Directory connector, how to connect to Microsoft Active Directory with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Microsoft Active Directory Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Microsoft Active Directory</a>
+            </li>
+            <li><a href="#Microsof">Microsoft Active Directory Tables</a>
+            </li>
+            <li><a href="#Limitati">Limitations</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Microsoft Active Directory Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Microsoft Active Directory connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Microsoft Active Directory connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Microsoft Active Directory.Connector.Installer.exe">Download</a> the Microsoft Active Directory installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p class="indent">The Microsoft Active Directory connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Microsoft Active Directory</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Microsoft Active Directory and import data into the <MadCap:variable name="Variables.ECM" />.</p>
+        <p>The connection string to connect to Microsoft Active Directory has the following structure:</p>
+        <p class="code">jdbc:activedirectory:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a Microsoft Active Directory connection string:</p>
+        <p class="code">jdbc:activedirectory:User=xxxxxxxxx;Password=xxxxxxxxxx;Server=xxxxxxxxxx;Port=389;BaseDN=CN=xxxx,DC=xxxx,DC=xxxxxxx,DC=xxxxxxx;</p>
+        <p>To establish a connection, the following properties under the Authentication section must be provided:</p>
+        <ul>
+            <li>Valid User and Password credentials (e.g., Domain\\BobF or cn=Bob F,ou=Employees,dc=Domain).</li>
+            <li>Server information, including the IP or host name of the Server and the Port.</li>
+            <li>BaseDN will limit the scope of LDAP searches to the height of the distinguished name provided.</li>
+        </ul>
+        <p><span class="bold">Note</span>: Specifying a narrow BaseDN may greatly increase performance; for example, cn=users,dc=domain will only return results contained within cn=users and its children.</p>
+        <ul>
+            <li>If you define your own custom schemas to work with your ActiveDirectory object classes, set Location to the path to the folder containing the schema files.</li>
+        </ul>
+        <p><span class="bold">Note</span>: To switch between accounts, you need to delete the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Microsoft Active Directory Data Provider.</p>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <p class="bold">To add Microsoft Active Directory data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, Microsoft Active Directory. The Connect to Microsoft Active Directory window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Microsoft Active Directory is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Microsoft Active Directory and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. </li>
+        </ol>
+        <p class="indent">The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</p>
+        <h3 class="notoc">Switching between Accounts</h3>
+        <p>When you connect to the Microsoft Active Directory data source, <MadCap:variable name="Variables.CompanyName" /> saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Microsoft Active Directory Data Provider on your <MadCap:variable name="Variables.CompanyName" /> server. To connect to the Microsoft Active Directory data source with another user on the same machine, you must delete the OAuthsettings.txt file. <MadCap:variable name="Variables.CompanyName" /> will then generate a new file for that user.</p>
+        <p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the OAuthSettingsLocationparameter. When each user connects to the data source, <MadCap:variable name="Variables.CompanyName" /> generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the Microsoft Active Directory data source and for each user, <MadCap:variable name="Variables.CompanyName" /> generates a file that contains that user’s OAuth values in the location defined in the string.</p>
+        <p class="code">jdbc:activedirectory:OAuthSettingsLocation=C:\MicrosoftActiveDirectory\auth\john.txt;OAuthClientId=11276856774486;</p>
+        <p class="code">OAuthClientSecret=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p class="code">jdbc:activedirectory:OAuthSettingsLocation=C:\MicrosoftActiveDirectory\auth\sally.txt;OAuthClientId=11276856774486;</p>
+        <p class="code">OAuthClientSecret=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\Microsoft Active Directory\auth\.</p>
+        <p>This is useful if you support many users who each need to access the Microsoft Active Directory data source.</p>
+        <h2 class="notoc"><a name="Microsof"></a>Microsoft Active Directory Tables</h2>
+        <p>Microsoft Active Directory’s RESTful APIs expose the following Microsoft Active Directory tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Microsoft Active Directory connector:</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Account</td>
+                    <td>The account object class is used to define entries that represent computer accounts.</td>
+                </tr>
+                <tr>
+                    <td>ApplicationEntity</td>
+                    <td>X.500 base class for applications: Directory Service only uses subclass MSFT-DSA.</td>
+                </tr>
+                <tr>
+                    <td>ApplicationProcess</td>
+                    <td>X.500 base class for applications: Exchange only uses subclass DSA-Application.</td>
+                </tr>
+                <tr>
+                    <td>ApplicationSettings</td>
+                    <td>Base class for server-specific application settings.</td>
+                </tr>
+                <tr>
+                    <td>ApplicationSiteSettings</td>
+                    <td>Contains all site-specific settings.</td>
+                </tr>
+                <tr>
+                    <td>ApplicationVersion</td>
+                    <td>Can be used by application developers to store version information about their application or its schema.</td>
+                </tr>
+                <tr>
+                    <td>BuiltinDomain</td>
+                    <td>The container that holds the default groups for a domain.</td>
+                </tr>
+                <tr>
+                    <td>CertificationAuthority</td>
+                    <td>Represents a process that issues public key certificates, for example, a Certificate Server.</td>
+                </tr>
+                <tr>
+                    <td>Computer</td>
+                    <td>This class represents a computer account in the domain.</td>
+                </tr>
+                <tr>
+                    <td>Contact</td>
+                    <td>This class contains information about a person or company that you may need to contact on a regular basis.</td>
+                </tr>
+                <tr>
+                    <td>Events</td>
+                    <td>Query the Events for a Target based on either the Target or SearchTerms. May require the user_events permission.</td>
+                </tr>
+                <tr>
+                    <td>CRLDistributionPoint</td>
+                    <td>The object holding Certificate, Authority, and Delta Revocation lists.</td>
+                </tr>
+                <tr>
+                    <td>DHCPClass</td>
+                    <td>Represents a DHCP Server (or set of servers).</td>
+                </tr>
+                <tr>
+                    <td>DnsNode</td>
+                    <td>Holds the DNS resource records for a single host.</td>
+                </tr>
+                <tr>
+                    <td>DnsZone</td>
+                    <td>The container for DNS Nodes. Holds zone metadata.</td>
+                </tr>
+                <tr>
+                    <td>Domain</td>
+                    <td>Contains information about a domain.</td>
+                </tr>
+                <tr>
+                    <td>DomainDNS</td>
+                    <td>Windows NT domain with DNS-based (DC=) naming.</td>
+                </tr>
+                <tr>
+                    <td>DomainPolicy</td>
+                    <td>Defines the local security authority policy for one or more domains.</td>
+                </tr>
+                <tr>
+                    <td>DomainRelatedObject</td>
+                    <td>The domainRelatedObject object class is used to define an entry that represents a series of documents.</td>
+                </tr>
+                <tr>
+                    <td>ForeignSecurityPrincipal</td>
+                    <td>The Security Principal from an external source.</td>
+                </tr>
+                <tr>
+                    <td>Group</td>
+                    <td>Stores a list of user names. Used to apply security principals on resources.</td>
+                </tr>
+                <tr>
+                    <td>GroupOfNames</td>
+                    <td>Used to define entries that represent an unordered set of names that represent individual objects or other groups of names.</td>
+                </tr>
+                <tr>
+                    <td>GroupOfUniqueNames</td>
+                    <td>Defines the entries for a group of unique names. In general, used to store account objects.</td>
+                </tr>
+                <tr>
+                    <td>GroupPolicyContainer</td>
+                    <td>This represents the Group Policy Object. It is used to define group polices.</td>
+                </tr>
+                <tr>
+                    <td>IpHost</td>
+                    <td>Represents an abstraction of a host or other IP device.</td>
+                </tr>
+                <tr>
+                    <td>IpNetwork</td>
+                    <td>Represents an abstraction of a network. The distinguished name value of the Common-Name attribute denotes the canonical name of the network.</td>
+                </tr>
+                <tr>
+                    <td>Organization</td>
+                    <td>Stores information about a company or organization.</td>
+                </tr>
+                <tr>
+                    <td>OrganizationalPerson</td>
+                    <td>This class is used for objects that contain organizational information about a user, such as the employee number, department, manager, title, office address, and so on.</td>
+                </tr>
+                <tr>
+                    <td>OrganizationalRole</td>
+                    <td>This class is used for objects that contain information that pertains to a position or role within an organization, such as a system administrator, manager, and so on. It can also be used for a nonhuman identity in an organization.</td>
+                </tr>
+                <tr>
+                    <td>OrganizationalUnit</td>
+                    <td>A container for storing users, computers, and other account objects.</td>
+                </tr>
+                <tr>
+                    <td>Person</td>
+                    <td>Contains personal information about a user.</td>
+                </tr>
+                <tr>
+                    <td>PosixAccount</td>
+                    <td>Represents an abstraction of an account with Portable Operating System Interface (POSIX) attributes.</td>
+                </tr>
+                <tr>
+                    <td>PosixGroup</td>
+                    <td>Represents an abstraction of a group of accounts.</td>
+                </tr>
+                <tr>
+                    <td>PrintQueue</td>
+                    <td>Contains information about a print queue.</td>
+                </tr>
+                <tr>
+                    <td>SecurityObject</td>
+                    <td>This is an auxiliary class that is used to identify security principals.</td>
+                </tr>
+                <tr>
+                    <td>SecurityPrincipal</td>
+                    <td>Contains the security information for an object.</td>
+                </tr>
+                <tr>
+                    <td>Server</td>
+                    <td>This class represents a server computer in a site.</td>
+                </tr>
+                <tr>
+                    <td>Site</td>
+                    <td>A container for storing server objects. Represents a physical location that contains computers. Used to manage replication.</td>
+                </tr>
+                <tr>
+                    <td>Top</td>
+                    <td>The top level class from which all classes are derived.</td>
+                </tr>
+                <tr>
+                    <td>TrustedDomain</td>
+                    <td>An object that represents a domain trusted by (or trusting) the local domain.</td>
+                </tr>
+                <tr>
+                    <td>User</td>
+                    <td>This class is used to store information about an employee or contractor who works for an organization. It is also possible to apply this class to long term visitors.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Limitati"></a>Limitations</h3>
+        <ol>
+            <li>Accumulated builds are supported because all tables have string columns.</li>
+            <li>Aggregate functions are not supported</li>
+        </ol>
+    </body>
+</html>

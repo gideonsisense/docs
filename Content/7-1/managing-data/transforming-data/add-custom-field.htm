@@ -1,0 +1,63 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Adding a New Custom Field | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Adding a Custom Column</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> makes it easy for you to add new columns to existing tables. This can be useful if you need to combine data from different existing columns, and when you need to cleanse and prepare data. The new columns also provide Designers with additional fields to use as is, or as a basis for even more advanced calculations in their widgets. You can use SQL to customize the values contained within the custom columns. </p>
+        <p class="bold">To add a new column:</p>
+        <ol>
+            <li>In the Navigation&#160;Pane, select  <img src="../../../Resources/Images/v7menu.png" />&gt; <span class="bold">Add Custom Column</span>. <br /><img src="../../../Resources/Images/v7addcustomfield.png" class="thumblarge" /><![CDATA[
+            ]]><br />OR<br />In the <MadCap:variable name="Variables.ElastiCube" /> model, select the table and click <img src="../../../Resources/Images/v7tablemenu.png" />and <span class="bold">Add Custom Column</span>.<br /><img src="../../../Resources/Images/v7customcolumn.png" class="thumblarge" /><br />The new column will be added to the table,  and an SQL&#160;Editor is displayed where you define your custom SQL&#160;expression.<br /><img src="../../../Resources/Images/v7fieldsettings.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">New Custom&#160;Column</span> field, enter the name of your custom column and click <img src="../../../Resources/Images/checkpoint.png" class="docbutton" />.</li>
+            <li>In the SQL&#160;Editor, enter your custom expression.  <br /></li>
+            <li>Click <img src="../../../Resources/Images/savebtn.png" class="docbutton" /> to add your column to the table. </li>
+        </ol>
+        <h3 class="notoc">Custom Field Use Cases</h3>
+        <p>Here are some typical scenarios for creating custom fields.</p>
+        <p class="bold">Row Level Calculations</p>
+        <p>Calculate revenue from your sales data.</p>
+        <p class="code">Gross Revenue = (Unit Price * QuantitySold)</p>
+        <p class="code">Net Revenue  =  (Unit Price * QuantitySold) - (Unit Cost * QuantityPurchased)</p>
+        <p class="bold">Time Difference Calculations</p>
+        <p>Work out the arrival time based on due and actual arrival dates.</p>
+        <p class="code">daydiff (DueDate,ReceivedAt)</p>
+        <p class="bold">Price Comparisons</p>
+        <p>Compare your price to the competitor’s price.</p>
+        <p class="code">((CompetitorPrice-MyPrice)/((CompetitorPrice+MyPrice)/2))</p>
+        <p class="bold">Buckets</p>
+        <p>Create data buckets according to your required business break points.</p>
+        <p class="code">CASE</p>
+        <p class="code">WHEN [PriceVsCompetitor%] &lt; -0.05 THEN '-5%'</p>
+        <p class="code">WHEN [PriceVsCompetitor%] &gt;= -0.05 AND [PriceVsAvgCompetitor%] &lt;= 0.05 THEN '-5%/+5%'</p>
+        <p class="code">WHEN [PriceVsCompetitor%] &gt; 0.05 THEN '+5%'</p>
+        <p class="code">end</p>
+        <p class="bold">Attributes</p>
+        <p>Create attributes to translate data talk to more coherent categories.</p>
+        <p class="code">CASE</p>
+        <p class="code">WHEN Region = 1 THEN 'USA'</p>
+        <p class="code">WHEN Region = 2 THEN 'EUR'</p>
+        <p class="code">WHEN Region = 3 THEN 'ASIA'</p>
+        <p class="code">end</p>
+        <p class="bold">Date Conversions</p>
+        <p>Convert dates into a numeric representation.</p>
+        <p class="code">getyear(Date)*10000+getmonth(Date)*100+getday(Date) AS DateNum</p>
+        <p>Convert text into dates.</p>
+        <p class="code">createdate(      toint('20'+RIGHT([Timesheet_Date],2)),</p>
+        <p class="code">toint(LEFT(Timesheet_Date,2)),</p>
+        <p class="code">toint(StrBetween(Timesheet_Date,'/','/'))</p>
+        <p class="code">)</p>
+        <p class="bold">Date Period Comparisons Over Time</p>
+        <p>Create month to date and year to date calculations.</p>
+        <p>
+            <a href="https://support.sisense.com/entries/57383474-Creating-Month-to-Date-and-Year-to-Date-Calculations">Click here</a> to read our support article.</p>
+        <p class="bold">Surrogate Keys</p>
+        <p class="code">EmployeeID+tostring([DateNum])+tostring(CustomerID)+tostring([Project_ID])</p>
+        <p class="bold">Importing from Another Table</p>
+        <p>Use the lookup function to import a column from a different table. <a href="function-reference/miscellaneous-functions.htm">Click here</a> to read more.</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

@@ -1,0 +1,101 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3615" MadCap:lastWidth="1474">
+    <head>
+        <title>Switchable Dimensions | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Switchable Dimensions</h1>
+        <p>The Switchable Dimensions add-on allows you to provide several views of your data.</p>
+        <p>With the Switchable Dimensions add-on, you can easily toggle between dimensions displayed in a widget.</p>
+        <p>The Switchable Dimension add-on can be set for categories, values, rows, columns or any other dimension that exists in a widget.</p>
+        <p>
+            <img src="../../Resources/Images/switch1.png" class="thumblarge" />
+        </p>
+        <p>
+            <img src="../../Resources/Images/switch2.png" class="thumblarge" />
+        </p>
+        <p class="bold">To install the Switchable Dimensions add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/SwitchDimension.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\ </span>folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Create the widgets that will have switchable dimensions.</li>
+            <li>Open the widgets script editor and paste the following code:<br /><img src="../../Resources/Images/editscript1-.png" class="thumblarge" /><pre>prism.registerSwitchDimension({
+			widget: widget,
+			maxItemsBeforeSubMenuIsCreated: 5,  //optional                              
+			dimensions: [
+			{
+			panel: '&lt;PANEL_NAME&gt;', 
+			affectAllWidgets: true,  //optional (true|false)
+			dims: [
+			{
+			"index": 0,                                 
+			"dim": "[&lt;TABLE_NAME&gt;.&lt;FIELD_NAME&gt;]",                  
+			"datatype": "&lt;DATATYPE&gt;",                         
+			"title": "", //optional                          
+			"widgetTitleTemplate": "" //optional          
+			},
+			{
+			"index": 0,                                 
+			"dim": "[&lt;TABLE_NAME&gt;.&lt;FIELD_NAME&gt;]",                  
+			"datatype": "&lt;DATATYPE&gt;",                         
+			"title": "", //optional                          
+			"widgetTitleTemplate": "" //optional          
+			}
+			]
+			}
+			]
+		});</pre></li>
+            <li>In the script pasted in the previous step, replace the following placeholders with the relevant values:<br /><span class="bold">“maxItemsBeforeSubMenuIsCreated”</span>: When total count of dimensions exceeds this value, the list of dimensions in the context menu will be placed under submenu. The default value is 5.<br /><span class="bold">“panel”</span>: “&lt;PANEL&gt;” Define the panel name according to the switchable field’s location in the widget (the panels are located on the right side when editing a widget).<br /><span class="bold">“affectAllWidgets”</span>: Boolean value. If this value is true, switching dimension will be applied for every widget from a dashboard which has the same panel as the one from the configuration. The default value is false.<br /><span class="bold">“dim”</span>: The dimension to be switched to. This property is case sensitive.<br /><span class="bold">“datatype”</span>: Dimension data type. It’s important to set correct the datatype. Allowed datatypes include “datetime”, “text”, “numeric”.<br /><span class="bold">“title”</span>:”&lt;TITLE&gt;” Edit the title of the field. This is displayed when right-clicking to switch dimensions.<br /><span class="bold">“widgetTitleTemplate”</span>: A string template that enables dynamic widget titles to be displayed. When defined, a widget title will be dynamically changed according to the given template. The template must contain a {{dim}} variable that will be automatically replaced with the dimension title. The default value is the dimension title.</li>
+            <li>Click <span class="bold">Apply</span> to save your changes and refresh the dashboard to display your switchable options.</li>
+        </ol>
+        <p class="bold">Example</p>
+        <p>The widget script below allows you to switch between Country, Brand &amp; Category for the Categories panel and Age Range, Gender for the Break by panel. Switching between dimensions in the Break by panel will affect all widgets from a dashboard that has the Break by panel.</p>
+        <pre>prism.registerSwitchDimension({
+   widget: widget,
+   dimensions: [
+      {
+           panel: 'categories',                                    
+           dims: [
+              {
+                  "index":0,
+                  "dim":"[country.Country]",
+                  "datatype": "text",
+                  "title":"Country"
+              },
+              {
+                 "index":0,
+                 "dim":"[brand.Brand]",
+                 "datatype": "text",
+                 "title":"Brand"
+              },
+              {
+                  "index":0,
+                  "dim":"[category.Category]",
+                  "datatype": "text",
+                  "title":"Category"
+               }
+            ]
+        },
+
+      {
+         panel: 'break by',
+         affectAllWidgets: true,
+         dims: [                             
+            {
+                "index":0,                                 
+                "dim":"[Commerce.Age Range]",
+                "datatype": "text",
+                "title":"Age range"
+            },
+            {
+               "index": 0,
+               "dim": "[Commerce.Gender]",
+               "datatype": "text",
+               "title": "Gender"
+            }
+         ]
+      }
+   ]
+});</pre>
+    </body>
+</html>

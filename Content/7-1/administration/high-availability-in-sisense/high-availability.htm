@@ -1,0 +1,157 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="13146" MadCap:lastWidth="1446">
+    <head>
+        <title>High Availability in Sisense | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>High Availability in <MadCap:variable name="Variables.CompanyName" /></h1>
+        <h2 class="notoc">Overview</h2>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> provides flexible design choices for supporting high availability (HA) and scalability for your <MadCap:variable name="Variables.CompanyName" /> configuration. To configure <MadCap:variable name="Variables.CompanyName" /> for high availability or optimized performance by scaling out <MadCap:variable name="Variables.CompanyName" /> servers, you must build in redundancy, thus reducing potential downtime or bottlenecks.</p>
+        <span class="bold">Note</span>: High availability must be enabled in your license. For more information, please contact your <MadCap:variable name="Variables.CompanyName" /> representative or submit a request to <MadCap:variable name="Variables.CompanyName" /> Support  through our community website.<p>In a simple configuration, you interface with the <MadCap:variable name="Variables.Sisense Web Application" /> that interacts with the <MadCap:variable name="Variables.ElastiCube" />.</p><p><img src="../../../Resources/Images/basicnonHA.png" class="thumblarge" /></p><p>This configuration represents the <MadCap:variable name="Variables.CompanyName" /> full stack solution. At least one instance of each of the following components must be active to enable you update your data and allow your users to query that data from the dashboard:</p><p class="bold"><MadCap:variable name="Variables.CompanyName" /> Web Server</p><p>The <MadCap:variable name="Variables.CompanyName" /> Web Server hosts the <MadCap:variable name="Variables.Sisense Web Application" /> that provides the user interface and hosts the API endpoints. If the <MadCap:variable name="Variables.CompanyName" /> Web Server fails, your users cannot access the <MadCap:variable name="Variables.Sisense Web Application" /> to view dashboards or use the <MadCap:variable name="Variables.CompanyName" /> APIs.</p><p class="bold">Application Database</p><p>The application database is installed with <MadCap:variable name="Variables.CompanyName" /> and supports the <MadCap:variable name="Variables.Sisense Web Application" />. The application database contains dashboard, filters, and user information necessary for ensuring data consistency across all web servers. In addition, the application database is used for authentication when you make calls to <MadCap:variable name="Variables.CompanyName" />’s APIs.  If the application database fails the <MadCap:variable name="Variables.Sisense Web Application" /> will fail.</p><p class="bold"><MadCap:variable name="Variables.ElastiCube" /> Server</p><p>The <MadCap:variable name="Variables.ElastiCube" /> Server is installed locally on your computer and provides access to <MadCap:variable name="Variables.ElastiCube" />s. If access to the <MadCap:variable name="Variables.ElastiCube" /> Server fails, queries from the <MadCap:variable name="Variables.Sisense Web Application" /> will fail.</p><h2 class="notoc">Understanding High Availability in <MadCap:variable name="Variables.CompanyName" /></h2><p>While <MadCap:variable name="Variables.CompanyName" /> is fully-functional in an environment without high availability, a multi-node configuration is necessary for scalability to support large amounts of concurrent users and redundancy in case of a failure of one of the <MadCap:variable name="Variables.CompanyName" /> components.</p><p><img src="../../../Resources/Images/scen1HA.png" class="thumblarge" /></p><p>In a multi-node configuration, <MadCap:variable name="Variables.CompanyName" /> components are replicated. Replicating each of these components provides redundancy and fault tolerance against the failure of any single component. The replicated components are combined into nodes. There are two types of nodes, a build node and query nodes. The query nodes, which handle user queries from the <MadCap:variable name="Variables.Sisense Web Application" />, are replicated to support high availability. The build node is typically not replicated as its failure only prevents building new <MadCap:variable name="Variables.ElastiCube" />s not issuing queries from the <MadCap:variable name="Variables.Sisense Web Application" />.</p><p class="bold">Build Node</p><p>The build node is responsible for building <MadCap:variable name="Variables.ElastiCube" />s and distributing the build to query nodes via the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service. The <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service is an automated service that you configure on the build node to synchronize and distribute builds to the query nodes. For more information, see <a href="#Distribu">Distributing <MadCap:variable name="Variables.ElastiCube" /> Builds to Query Nodes</a>.</p><p class="bold">Query Nodes</p><p>Query nodes are responsible for supporting queries from <MadCap:variable name="Variables.CompanyName" /> users. These nodes contain a web server, MongoDB, and an <MadCap:variable name="Variables.ElastiCube" /> server. <MadCap:variable name="Variables.ElastiCube" />s are distributed by the build node to the query node. The query nodes’ <MadCap:variable name="Variables.ElastiCube" />s are combined into <MadCap:variable name="Variables.ElastiCube" /> Sets to support high availability by separating the web and <MadCap:variable name="Variables.ElastiCube" /> servers across multiple query nodes. If a build node is distributing a build to one <MadCap:variable name="Variables.ElastiCube" /> server, <MadCap:variable name="Variables.CompanyName" /> automatically directs any queries to the other <MadCap:variable name="Variables.ElastiCube" />s in the <MadCap:variable name="Variables.ElastiCube" /> Set.</p><p>The query node can be configured as a single application stack where each node hosts a <MadCap:variable name="Variables.Sisense Web Application" />, <MadCap:variable name="Variables.ECM" />, and a MongoDB. In this configuration, if the machine hosting the components fails, the whole query node will fail. Queries will then be redirected to the next available query node. Another option is to host each component of the query node separately in a distributed application stack. In this configuration, if a component of the query node fails, the rest of the query node is not affected. For an example of a single application stack, see <a href="#Scenario">Scenario 1</a> and for an example of a distributed application stack, see <a href="#Scenario2">Scenario 2</a>.</p><p class="bold">Load Balancer</p><p>In addition to query and build nodes, to support a high availability configuration, you must handle load balancing on your side prior to directing traffic to one of your <MadCap:variable name="Variables.CompanyName" /> nodes. Load balancing spreads requests across multiple query nodes according to an algorithm you define and the current status of the query node.</p><p>When implementing <MadCap:variable name="Variables.ElastiCube" /> Sets, <MadCap:variable name="Variables.CompanyName" />’s query nodes operate in active-active mode. This means that each of the query nodes is active and can handle requests when the node is not building and its components are available. For example, traffic could be spread 50-50 across two web servers and if a component fails, a load balancer should redirect traffic to the other available web server.</p><p>The URL of your load balancer should be provided as an Alias in <span class="bold">Admin</span> &gt; <span class="bold">Settings</span> in the <MadCap:variable name="Variables.Sisense Web Application" />. This directs <MadCap:variable name="Variables.CompanyName" /> to send traffic to your load balancer, which then sends the traffic to the relevant server.</p><p><img src="../../../Resources/Images/v7alias1.png" class="thumblarge" /></p><p>Within an <MadCap:variable name="Variables.ElastiCube" /> set, you can define how queries are routed to the available <MadCap:variable name="Variables.ElastiCube" />s. For more information, see <a href="route-queries.htm">Routing Queries in <MadCap:variable name="Variables.ElastiCube" /> Sets</a>.</p><h2 class="notoc">Creating a High Availability Environment</h2><p>There are many possible configurations you can implement to support high availability. What determines the type of configuration you choose based on three parameters:</p><ol><li><span class="bold">Redundancy</span>: Which components require redundancy?</li><li><span class="bold">Concurrency</span>: How many users do you need to support?</li><li><span class="bold">Resources</span>: How many systems can you add and maintain to your configuration?</li></ol><p>Regardless of which configuration you choose, there are three steps to achieving high availability in <MadCap:variable name="Variables.CompanyName" />:</p><ol><li>Install <MadCap:variable name="Variables.CompanyName" /> on each machine in the build and query nodes. The <MadCap:variable name="Variables.CompanyName" /> installation includes the <MadCap:variable name="Variables.Sisense Web Application" />, <MadCap:variable name="Variables.ElastiCube" /> server, and the MongoDB.</li><li>Replicate the MongoDB instance on the build node and distribute it to each of the query nodes. For more information, see <a href="replica-sets.htm">Replicating MongoDB</a>.</li><li>Configure the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service on the build node to distribute the latest ElastiCube builds to each of the query nodes. For more information, see <a href="#Distribu">Distributing ElastiCube Builds to Query Nodes</a> below.</li></ol><h3 class="notoc"><a name="Distribu"></a>Distributing <MadCap:variable name="Variables.ElastiCube" /> Builds to Query Nodes</h3><p>The <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service is an automated service that distributes builds and balances queries across an <MadCap:variable name="Variables.ElastiCube" /> Set. The <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service is installed during the default installation of <MadCap:variable name="Variables.CompanyName" />. To distribute <MadCap:variable name="Variables.ElastiCube" /> builds across all query nodes, you must configure the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service. When an <MadCap:variable name="Variables.ElastiCube" /> is building, or receiving a build from the build node, the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service redirects requests to another available ElastiCube in the set.</p><span class="bold">Note</span>: After configuring the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service, the directory C:\ProgramData\SiSense\PrismServer\ElastiCubeData\ and the relevant <MadCap:variable name="Variables.ElastiCube" /> folders within it must be shared with permissions for ‘Everyone’ so <MadCap:variable name="Variables.CompanyName" /> can build or update the <MadCap:variable name="Variables.ElastiCube" />s in those folders.<p>The <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service is defined in a JSON file called config.json in the Sisense.Orchestration Config folder (Sisense/Sisense.Orchestration/Config/) of your <MadCap:variable name="Variables.CompanyName" /> Installation folder of your build node.</p><p>The config.json file has three main objects that you must define. The first object is the <MadCap:variable name="Variables.ElastiCube" /> object that defines which <MadCap:variable name="Variables.ElastiCube" /> is to be built on the build node and which <MadCap:variable name="Variables.ElastiCube" />s are located on query nodes.  The second object is the Tasks object that determines how and when the build <MadCap:variable name="Variables.ElastiCube" /> is to be distributed to the query nodes. The final object that you must define is the Schedule object that defines when an <MadCap:variable name="Variables.ElastiCube" /> is to be built and distributed.</p><p>To distribute your <MadCap:variable name="Variables.ElastiCube" /> builds through the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service, you define and save the config.json file. After saving the file, the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service automatically begins to build ElastiCubes in your ElastiCube Set. You can review the progress of the build in the /Sisense.Orchestration/Logs folder in a log file whose file name you define in the JSON file.</p><p>The objects that you must include in the config.json file and their descriptions are provided in the table below:</p><table><thead><tr><th>Key</th><th>Value</th></tr></thead><tbody><tr><td>General</td><td>The General object contains two objects, logLevel and emails that define what types of logs <MadCap:variable name="Variables.CompanyName" /> generates and where to send them to.</td></tr><tr><td>LogLevel</td><td>The type of info returned in the log. The possible values you can enter are Info, debug, and Error.</td></tr><tr><td>Emails</td><td>This object defines who receives an email and their email address when an email is triggered according to the events you define in the mail object.</td></tr><tr><td>Email</td><td>The email address where emails are to be sent depending on the value of the When key.</td></tr><tr><td>Name</td><td>The name of the recipient of the email.</td></tr><tr><td>Cubes</td><td>The cubes object contains all your <MadCap:variable name="Variables.ElastiCube" />s in your configuration and their location. As the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service is installed on the build node, the build cubes are local, so you must define the name of the <MadCap:variable name="Variables.ElastiCube" />. For <MadCap:variable name="Variables.ElastiCube" />s on a query node, you must define the <MadCap:variable name="Variables.ElastiCube" /> name, URL of the remote server, and its directory.</td></tr><tr><td>Build ElastiCubes</td><td>The Build ElastiCube object defines the <MadCap:variable name="Variables.ElastiCube" />s that will be used as Build ElastiCubes nodes.</td></tr><tr><td>ecube</td><td>The name of the <MadCap:variable name="Variables.ElastiCube" />.</td></tr><tr><td>Query ElastiCubes</td><td>The Query <MadCap:variable name="Variables.ElastiCube" /> object defines the name of the remote ElastiCube, its URL address, and directory.</td></tr><tr><td>ecube</td><td>The name of the <MadCap:variable name="Variables.ElastiCube" />.</td></tr><tr><td>URL</td><td>The URL address of the <MadCap:variable name="Variables.ElastiCube" /> server. If the URL is to a secure address, the value should include the username and password credentials. For example, “ssh://username:password@10.50.1.128:/C/ecubes”. See Scenario 1 for an example.</td></tr><tr><td>localPath</td><td>Directory of the <MadCap:variable name="Variables.ElastiCube" />s.</td></tr><tr><td>Tasks</td><td>The Tasks object contains a task array that defines which <MadCap:variable name="Variables.ElastiCube" /> should be built, the type of build, and to which <MadCap:variable name="Variables.ElastiCube" />s the build should be distributed to. <br />In high availability scenarios, running multiple concurrent builds is not recommended and can result in stability issues. Sisense recommends that tasks are spaced out so each build is complete before the next one begins.</td></tr><tr><td>Task</td><td>The name of the task array. Currently, you can define only one task. Defining multiple tasks in the config.json file may cause builds to fail.<br />In high availability scenarios, running multiple concurrent builds is not recommended and can result in stability issues. Sisense recommends that tasks are spaced out so each build is complete before the next one begins.</td></tr><tr><td>Build</td><td>The build object defines the <MadCap:variable name="Variables.ElastiCube" /> to be built and distributed.</td></tr><tr><td>Cube</td><td>The name of the cube to be built.</td></tr><tr><td>Queue</td><td><p>The value of this key is the type of build <MadCap:variable name="Variables.CompanyName" /> should attempt and in what order. There are two possible values delimited by a comma:</p><p>a<span class="bold">ccumulate</span>: Attempts an accumulative build.</p><p><span class="bold">entire</span>: Attempts an entire build.</p><p><span class="bold">schemaChanges</span>: Attempts to update the build only if changes were made to the schema since the previous build. </p><p><MadCap:variable name="Variables.CompanyName" /> recommends the following value: "accumulate","entire"</p><p>In this example, <MadCap:variable name="Variables.CompanyName" /> attempts to do an accumulative build first, and if it fails, <MadCap:variable name="Variables.CompanyName" /> attempts an entire build. If the build fails for all builds, <MadCap:variable name="Variables.CompanyName" /> retries again according to the next scheduled build.</p></td></tr><tr><td>Distribute</td><td><p>Determines which cubes the latest build should be distributed to. The value should be the <MadCap:variable name="Variables.ElastiCube" /> name for your <MadCap:variable name="Variables.ElastiCube" />s on your query nodes. For example, [“cube1, cube2, cube3”].</p><p>You can add multiple <MadCap:variable name="Variables.ElastiCube" />s delimited by a comma separator.</p></td></tr><tr><td>Reattach</td><td>Reattach is an object that contains two objects, DeleteOldDbfarm and Cube.</td></tr><tr><td>DeleteOldDbfarm</td><td>A boolean value that determines if an old <MadCap:variable name="Variables.ElastiCube" /> is to be deleted after it has been updated.</td></tr><tr><td>Cube</td><td>The name of the <MadCap:variable name="Variables.ElastiCube" /> to be reattached or not.</td></tr><tr><td>Mail</td><td><p>Indicates when an email alert is triggered. Email alerts can be triggered for the following scenarios:</p><p><span class="bold">None</span>: No email is ever sent.</p><p><span class="bold">Build</span>: An email is sent when a build is complete regardless if the build was successful or not.Fail: An email is sent when a build fails.</p></td></tr><tr><td>Scheduler</td><td>The Scheduler object contains an array of tasks that define when a task is to be task is to be initiated.</td></tr><tr><td>Task</td><td>Defines which task to perform and the order. Currently, <MadCap:variable name="Variables.CompanyName" /> only supports one task.</td></tr><tr><td>Schedule</td><td>The time that a task is to be initiated in Cron format. Some examples: -To run a build each night at midnight, enter the value "0 0 * * * *" -To run a build every hour, enter the value "0 * * * * *" See the full Cron format reference <a href="http://crontab.guru/">here</a>.</td></tr><tr><td>Enabled</td><td>A boolean value that indicates if the task is to be executed or not.</td></tr></tbody></table><h2 class="notoc">Use Cases</h2><p>The following section presents two use cases and an example config.json file that demonstrates how to support these use cases. For assistance with additional HA configurations, contact your Customer Service Manager.</p><h4 class="notoc"><a name="Scenario"></a>Scenario 1 – Single Stack</h4><p>In this example, there is one build node and two query nodes. Each query node is hosted on a separate machine while the components that make up the query node are hosted on the same machine as a single application stack.</p><p><img src="../../../Resources/Images/scen1HA1.png" class="thumblarge" /></p><p>In this example, the build cube is called “BuildTest1”. This <MadCap:variable name="Variables.ElastiCube" /> is distributed to two <MadCap:variable name="Variables.ElastiCube" /> servers defined in the cube1 and cube2 objects. The build cube is distributed first to cube1 and then to cube2 as defined in the tasks object. The first time the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service tries to build the BuildTest1 <MadCap:variable name="Variables.ElastiCube" />, it attempts an accumulative build and if that fails, an entire build. After each build is replicated, the previous version of the <MadCap:variable name="Variables.ElastiCube" /> is deleted as specified in the reattach object. This task takes place hourly. If the distribution fails, <MadCap:variable name="Variables.CompanyName" /> sends an email to johndoe@<MadCap:variable name="Variables.CompanyName" />.com with a debug log attached.</p><pre>{  
+   "general":{  
+      "logLevel":"INFO",
+      "emails":[  
+         {  
+            "email":"johndoe@sisense.com",
+            "name":"John Doe"
+         }
+      ]
+   },
+   "cubes":{  
+      "localCubeBuildTest1":{  
+         "ecube":"BuildTest1"
+      },
+      "cube1":{  
+         "ecube":"BuildTest1",
+         "url":"\\\\10.49.1.68\\ecubes",
+         "localPath":"d:\\ecubes"
+      },
+      "cube2":{  
+         "ecube":"BuildTest1",
+         "url":"\\\\10.70.0.32\\ecubes",
+         "localPath":"e:\\ecubes"
+      },
+      "cube3":{  
+         "ecube":"BuildTest1",
+         "url":"ssh://administrator:Password@10.70.1.133:/C/ecubes",
+         "localPath":"e:\\ecubes"
+      }
+   },
+   "tasks":{  
+      "task1":[  
+         {  
+            "build":{  
+               "cube":[  
+                  "localCubeBuildTest1"
+               ],
+               "queue":[  
+                  "accumulate",
+                  "entire"
+               ]
+            }
+         },
+         {  
+            "distribute":[  
+               "cube1",
+               "cube2",
+               "cube3"
+            ]
+         },
+         {  
+            "reattach":{  
+               "deleteOldDbfarm":true,
+               "cube":[  
+                  "cube1",
+                  "cube2",
+                  "cube3"
+               ]
+            }
+         },
+         {  
+            "mail":"build"
+         }
+      ]
+   },
+   "scheduler":[  
+      {  
+         "task":"task1",
+         "schedule":"0 * * * *",
+         "enabled":true
+      }
+   ]
+}</pre><h4 class="notoc"><a name="Scenario2"></a>Scenario 2 – Distributed Stack</h4><p>In this example, there are three query nodes in which each component is located in a different remote location. This scenario, while costly to implement, demonstrates a distributed application stack configuration where each component is replicated and located on a separate server independent of the other components. If any component fails, the rest of the architecture remains intact. For example, the web server is on one server, the <MadCap:variable name="Variables.ElastiCube" />s are stored on another server, and the MongoDB is located on another server.</p><p><img src="../../../Resources/Images/Scen2HA.png" class="thumblarge" /></p><p>The build cube in this example is called “BuildTest1”. This <MadCap:variable name="Variables.ElastiCube" /> is distributed to three remote <MadCap:variable name="Variables.ElastiCube" /> servers defined in the cube1, cube2, and cube3 objects. The build cube is distributed first to cube1, then cube2, and then cube3 as defined in the tasks object. The URLs are standard URLs for cube1 and cube2 while the URL for cube3 is secured through SSH. When the URL is secured, you must provide the URL and the required credentials to access it.</p><p>The first time the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service tries to build the BuildTest1 <MadCap:variable name="Variables.ElastiCube" />, it attempts an accumulative build and if that fails, an entire build. If both builds fail, <MadCap:variable name="Variables.CompanyName" /> attempts to update the schema only.  After each build is replicated, the previous version of the <MadCap:variable name="Variables.ElastiCube" /> is deleted as specified in the reattach object. This task takes place At 14:15 on the 1st of every month. After a build is successful, <MadCap:variable name="Variables.CompanyName" /> sends an email to johndoe@<MadCap:variable name="Variables.CompanyName" />.com.</p><p><pre>{  
+	“general”:{  
+	   	“logLevel”:”DEBUG”,
+		“emails”:[  
+		 {  
+			“email”:“johndoe@sisense.com”,
+			“name”:“John Doe”
+				}
+			]
+		},
+		“cubes”:{  
+			“localCubeBuildTest1”:{  
+		    	“ecube”:“BuildTest1”
+				},
+			“cube1”:{  
+				“ecube”:“BuildTest1”,
+				“url”:“\\\\10.49.1.68\\ecubes”,
+				“localPath”:         ”d:\\ecubes”
+				},
+				“cube2”:{  
+				“ecube”:“BuildTest1”,
+				“url”:“\\\\10.70.0.32\\ecubes”,
+				“localPath”:         ”e:\\ecubes”
+				},
+				“cube3”:{  
+				“ecube”:“BuildTest1”,
+				“url”:         “ssh:         //administrator:         Password@10.70.1.133:/C/ecubes”,
+				“localPath”:         ”e:\\ecubes”
+				   }
+				},
+		“tasks”:{  
+				“task1”:[  
+				{  
+			    	“build”:{  
+				      “cube”:[  
+				         “localCubeBuildTest1”
+				   ],
+				“queue”:[  
+			    	“accumulate”,
+			    	“entire”,
+				    “schemachanges”
+				]
+				}
+				},
+				{  
+				“distribute”:[  
+			    	“cube1″,
+			     	“cube2″,
+			    	“cube3”
+			        	]
+			    	},
+				{  
+				“reattach”:{  
+			    	“deleteOldDbfarm”:true,
+			    	“cube”:[  
+				       “cube1″,
+			           “cube2″,
+				       “cube3”
+				    ]
+				   }
+				 },
+				{  
+				   “mail”:”fail”
+				   }
+				 ]
+				},
+			“scheduler”:[  
+				{  
+				  “task”:“task1”,
+			      “schedule”:“15 14 1 * *”,
+				  “enabled”:true
+				}
+				]
+	}</pre></p><h3 class="notoc">Add Query Nodes</h3><p>In some configurations, replicating components can improve performance by scaling out and preventing any potential bottlenecks. Each component you replicate must be added to the <MadCap:variable name="Variables.ElastiCube" /> Set and the config.json file. You can continue to add query nodes according to your requirement so long as the nodes are included in the config.json file.</p><p class="bold">To add a query node:</p><ol><li>Stop the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service. Open Windows Services, select Sisense.Orchestrator, and click <img src="../../../Resources/Images/stopbutton.png" class="docbutton" />.<br /><img src="../../../Resources/Images/orch1.png" class="thumblarge" /></li><li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click <span class="bold">Admin</span> and select the <span class="bold">Data Sources</span> tab on the left.</li><li>Hover over the <MadCap:variable name="Variables.ElastiCube" /> you want to add to the <MadCap:variable name="Variables.ElastiCube" /> Set and click on the menu that appears. Click <span class="bold">Add to <MadCap:variable name="Variables.ElastiCube" /> Set</span> and select the set that you want to add the ElastiCube to.</li><li>Edit the config.json located at Sisense/Sisense.Orchestration/Config/ and add the new <MadCap:variable name="Variables.ElastiCube" /> to the Cubes object.</li><li>Save the config.json file.</li><li>Restart the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service.</li></ol><h3 class="notoc">Remove Query Nodes</h3><p>You can remove query nodes by removing them from the <MadCap:variable name="Variables.ElastiCube" /> Set and the config.json file.</p><h3 class="notoc">To remove a query node:</h3><ol><li>Stop the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service. Open Windows Services, select Sisense.Orchestrator, and click <img src="../../../Resources/Images/stopbutton.png" class="docbutton" />.<br /><img src="../../../Resources/Images/orch2.png" class="thumblarge" /></li><li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click <span class="bold">Admin</span>  and select the <span class="bold">Data Sources</span> tab on the left.</li><li>In the <MadCap:variable name="Variables.ElastiCube" /> Set table, click  and clear the checkboxes of the <MadCap:variable name="Variables.ElastiCube" />s to be removed. Click <span class="bold">Save</span> after you have selected the relevant <MadCap:variable name="Variables.ElastiCube" />s.</li><li>Edit the config.json located at Sisense/Sisense.Orchestration/Config/ and delete the relevant <MadCap:variable name="Variables.ElastiCube" />s from the Cubes object.</li><li>Save the config.json file.</li><li>Restart the <MadCap:variable name="Variables.CompanyName" /> Orchestrator Service.</li></ol><h3 class="notoc">Limitations</h3><p>If your user queries a query node (Query Node 1), then the build node begins to replace a build on that node (Query Node 1), there are two scenarios in which the data may be inconsistent.</p><ol><li>When generating PDFs or Images, the widgets may not match the dashboard depending.</li><li>In a Pivot widget, the subtotal value may not match the expected value.</li></ol><p>This occurs because the widgets exported to PDF or subtotal values inside Pivot widgets run new queries against the node. If the data was originally taken from query node 1, then subsequently queries were run against another query node (Query Node 2), the data may have changed leading to inconsistent results.</p></body>
+</html>

@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1210" MadCap:lastWidth="907">
+    <head>
+        <title>Managing Drill Hierarchies | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Managing Drill Hierarchies</h1>
+        <p>Dashboard viewers can drill down in most widgets to get an in-depth view of a selected value. To make it easier for viewers to select drill-down paths, dashboard designers can add predefined drill hierarchies to their widgets.</p>
+        <p>As an Administrator, you can create a pool of drill hierarchies, from which Dashboard Designers can select the drill hierarchies they want to include in the widgets they build.</p>
+        <p>
+            <img src="../../../Resources/Images/drill_manage.png" class="thumblarge" />
+        </p>
+        <p>This section describes how to create and manage the drill hierarchies that you want to make available for designers.</p>
+        <p class="bold">To create a drill-down hierarchy:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> in the <MadCap:variable name="Variables.Sisense Web Application" />. In the left menu, select <span class="bold">Data Sources</span>.</li>
+            <li>For the relevant <MadCap:variable name="Variables.ElastiCube" /> <img src="../../../Resources/Images/v7menu5.png" class="docbutton" />, click  and select <span class="bold">Manage Hierarchies</span>.</li>
+            <li>If this is the first hierarchy you are adding, select <span class="bold">Add Hierarchy</span>. If you already have hierarchies, click <span class="bold">Add Hierarchy</span> in the top-right corner.</li>
+            <li>Select the field. This will be the first field in the drill hierarchy, and the same field used in the widget.</li>
+            <li>Click <span class="bold">Add Field</span> to add the next level in the drill hierarchy. Repeat this step for as many levels as you need.<br /><img src="../../../Resources/Images/hier1.png" class="thumblarge" /><br />Additional options include:<br /><span class="bold">Always include with field</span>: Select this checkbox to always include the drill hierarchy in the widget for this field.<br /><span class="bold">Editing the Hierarchy name</span>: To edit the name of the drill hierarchy, click on the pencil icon, and type in the name. Click on the tick icon to confirm the change.<br /><span class="bold">Editing the field name</span>: To edit the name of a field in the hierarchy, hover over the field name and click on the menu &gt; Rename. Type in the name, and click on the tick icon to confirm the change.<br /><img src="../../../Resources/Images/hier2.png" class="thumblarge" /></li>
+            <li>Add as many hierarchies as you need for the <MadCap:variable name="Variables.ElastiCube" />. When done, dashboard designers will have access to the hierarchies in the widget designer, and will be able to select and add them to the widget.<br /><img src="../../../Resources/Images/drill-flow-21.png" class="thumblarge" /></li>
+        </ol>
+        <p class="bold">To change a field in a hierarchy:</p>
+        <ul>
+            <li>Hover over the field in the hierarchy, and click on the menu that appears. Click <span class="bold">Change</span> and select a different field.<br /></li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/drill-change-add.png" class="thumblargeli" />
+        </p>
+        <p class="bold">To delete a hierarchy:</p>
+        <ul>
+            <li>Click on the bin to the right of the hierarchy.</li>
+        </ul>
+    </body>
+</html>

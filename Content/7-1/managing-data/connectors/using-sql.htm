@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="959" MadCap:lastWidth="1218">
+    <head>
+        <title>Using Custom SQL to Import Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Using Custom SQL to Import Data</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> allows you to import data from a variety of data sources. For users that want additional control over the data that is imported, you can define custom queries that run custom SQL against the source database. For example:</p>
+        <ul>
+            <li>Write SQL to import only selected table columns when you do not require all the data.</li>
+            <li>Perform various procedures in the database such as table joins and import only the result set.</li>
+        </ul>
+        <p>After writing your custom query, you can preview the new table before importing the data into the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>
+            <span class="bold">Notes</span>:</p>
+        <ul>
+            <li>This feature is available for the following relational databases: Microsoft SQL Server and MySQL.</li>
+            <li>This feature runs a query in the source database. The performance will depend on processing power from your database, especially for complex queries.</li>
+        </ul>
+        <p class="bold">To add tables with custom queries:</p>
+        <ol>
+            <li>After selecting your database, click + at the bottom the list of tables and views in the database.<br /><img src="../../../Resources/Images/custom3.png" class="thumblarge" /><br />An empty custom table is added and the Settings area is displayed.<br /><img src="../../../Resources/Images/custom4.png" class="thumblarge" /><br /></li>
+            <li>Click + to add additional custom tables.</li>
+            <li>In the Settings area, enter your custom SQL query.</li>
+            <li>Click <span class="bold">Preview Table</span> to preview the results of your custom query.<br />OR<br />Select the table from the Table list and click <span class="bold">Done</span> to import your custom data into the ElastiCube Manager.</li>
+        </ol>
+    </body>
+</html>

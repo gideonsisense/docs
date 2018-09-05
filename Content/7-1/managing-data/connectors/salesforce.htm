@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2118" MadCap:lastWidth="554">
+    <head>
+        <title>Connecting to Salesforce | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Salesforce</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to databases, tables and views contained within SalesForce. The steps below describe how to connect to this type of data source.</p>
+        <p>If you need to connect to your SalesForce Sandbox environment, read this article in our support forum.</p>
+        <p>
+            <span class="bold">Note</span>: <MadCap:variable name="Variables.CompanyName" /> only supports SalesForce Enterprise and above.</p>
+        <h2 class="notoc">Generating a Security Token</h2>
+        <p>Before getting started, you will need a SalesForce Security Token. </p>
+        <p class="bold">To generate a token:&#160;</p>
+        <ol>
+            <li>Open SalesForce and click <span class="bold">Setup</span>&gt;<span class="bold">'My Personal Information'</span>&gt;<span class="bold">'Reset Security Token'</span>. </li>
+            <li>Click the button labeled <span class="bold">‘Reset Security Token’</span>. The token will be sent to your email address.</li>
+        </ol>
+        <h2 class="notoc">Importing Salesforce Data</h2>
+        <p>SalesForce can be customized in various ways, therefore its recommend to first review your deployment, and understand in which entity (account, contact etc.) and how the required data is stored. Once understood, connect to SalesForce and import a few tables to review the data. For a general outline of SalesForce entities see <a href="http://www.salesforce.com/us/developer/docs/api/Content/data_model.htm#topic-title">SalesForce Schema</a> and <a href="http://www.salesforce.com/us/developer/docs/api/Content/sforce_api_objects_list.htm">Table Description</a>.</p>
+        <p class="bold">To import Salesforce data:&#160;</p>
+        <ol>
+            <li>Click <span class="bold">Add Data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the <span class="bold">Web Services</span> category, select <span class="bold">SalesForce</span>.<br /><img src="../../../Resources/Images/add-salesforce.png" class="thumblarge" /></li>
+            <li>Enter the username and password to connect to SalesForce.</li>
+            <li>Enter the security token requested from SalesForce (see note above).<br /><img src="../../../Resources/Images/salesforce.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Connect to Server</span>, then click <span class="bold">OK</span>.<br />All tables and views associated with SalesForce will appear in a new window.<br />To preview the data contained in a particular table, highlight the table or view in the list and click the preview pane below. To preview the table, select the Preview checkbox.</li>
+            <li>Select the checkboxes next to each table or view you want to use.<br />Existing relationships between tables can be automatically replicated in the ElastiCube by selecting the <span class="bold">Automatically create relationships from database</span> checkbox. Likewise fields with similar names can be linked by selecting the<span class="bold"> Automatically create relationships for fields with the same name</span> checkbox.<br /><img src="../../../Resources/Images/salesforce2.png" class="thumblarge" /></li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+        <p>For troubleshooting SalesForce connections, see our <a href="https://support.sisense.com/entries/95960297-Troubleshooting-SalesForce-connectivity-issues">forum post</a>.</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

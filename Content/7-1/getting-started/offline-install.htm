@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Installing Sisense Offline | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Installing <MadCap:variable name="Variables.CompanyName" /> Offline</h1>
+        <p>The standard installation of <MadCap:variable name="Variables.CompanyName" /> requires internet access to download additional necessary components. To support machines behind firewalls, or without internet access, you need to download and install the full <MadCap:variable name="Variables.CompanyName" /> <a href="http://download.sisense.com/SisenseInstallations/SisenseLatestFull.exe">installation file</a>. After you have installed <MadCap:variable name="Variables.CompanyName" />, you need to provide an offline activation key.</p>
+        <p>The steps below describe how to install <MadCap:variable name="Variables.CompanyName" /> offline and activate it.</p>
+        <h2 class="notoc">Prerequisites</h2>
+        <p>Before installing <MadCap:variable name="Variables.CompanyName" /> offline, make sure you have the following installed:</p>
+        <ol>
+            <li>
+                <a href="https://www.microsoft.com/en-us/download/confirmation.aspx?id=49981">Microsoft .NET 4.6.1 Framework</a>
+            </li>
+            <li>
+                <span class="bold">IIS – Internet information Services </span>(Microsoft’s Web server), see the following instructions per your operating system<br /><a href="http://technet.microsoft.com/en-us/library/cc725762.aspx">Windows 7 or 8</a><br /><a href="http://www.iis.net/learn/install/installing-iis-7/installing-iis-7-and-above-on-windows-server-2008-or-windows-server-2008-r2">Windows Server 2008</a><br /><a href="http://www.iis.net/learn/get-started/whats-new-in-iis-8/installing-iis-8-on-windows-server-2012">Windows Server 2012</a></li>
+        </ol>
+        <h2 class="notoc">Installing <MadCap:variable name="Variables.CompanyName" /></h2>
+        <p class="bold">To install <MadCap:variable name="Variables.CompanyName" /> offline:</p>
+        <ol>
+            <li>Download the <a href="http://download.sisense.com/SisenseInstallations/SisenseLatestFull.exe">latest full version of <MadCap:variable name="Variables.CompanyName" /></a>.</li>
+            <li>Open the installation file and click <span class="bold">Run</span>. The Welcome to <MadCap:variable name="Variables.CompanyName" /> window is displayed.<br /><img src="../../Resources/Images/RunSisense.png" class="thumblarge" /></li>
+            <li>In the Welcome to <MadCap:variable name="Variables.CompanyName" /> window, click <span class="bold">Activate</span>.<br /><img src="../../Resources/Images/v7activate.png" class="thumblarge" /></li>
+            <li>In the <MadCap:variable name="Variables.CompanyName" /> Activation window, click <span class="bold">Behind a Firewall</span>. The product ID is displayed.<br /><img src="../../Resources/Images/v7activate1.png" class="thumblarge" /></li>
+            <li>Copy the product ID.<br /><img src="../../Resources/Images/activation5.png" class="thumblarge" /><br /></li>
+            <li>On an online machine, open <a href="http://www.sisense.com/my-account/">http://www.sisense.com/my-account/</a> and log in with your <MadCap:variable name="Variables.CompanyName" /> credentials.<br /></li>
+            <li>In the My Account page, from the left menu, select <span class="bold">GET KEY</span>.<br /></li>
+            <li>Paste your product ID from the Sisense installation into the field and click <span class="bold">GET KEY</span>. Your Off License key is displayed.<br /><img src="../../Resources/Images/offlinelicense.png" class="thumblarge" /></li>
+            <li>Copy the key and paste it into the key area in the <MadCap:variable name="Variables.CompanyName" /> Activation window.<br /><img src="../../Resources/Images/activation7.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Install</span>. <MadCap:variable name="Variables.CompanyName" /> is activated and you can begin to install Sisense.</li>
+            <li>Click <span class="bold">Custom Installation</span>.<br /><img src="../../Resources/Images/activation8.png" class="thumblarge" /></li>
+            <li>Select <span class="bold">Microsoft IIS</span> and click <span class="bold">Continue</span>.<br /><img src="../../Resources/Images/activation9.png" class="thumblarge" /><br />The installation will start running and complete.</li>
+        </ol>
+    </body>
+</html>

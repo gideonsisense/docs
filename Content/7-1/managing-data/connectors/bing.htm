@@ -1,0 +1,201 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Bing | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Bing</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Bing connector is a standalone connector that allows you to import data from Bing’s APIs into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to Bing’s API. To obtain a connection string, you will need to create a Bing app.</p>
+        <p>Once you have connected to Bing, you can import a variety of tables from the Bing API.</p>
+        <p>This page describes how to install the Bing connector, how to connect to Bing with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Bing Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Bing REST API</a>
+            </li>
+            <li><a href="#Adding">Adding Bing Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Bing">Bing Tables</a>
+            </li>
+            <li><a href="#Versions">Versions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Bing Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Bing connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Bing connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Bing.Connector.Installer.exe">Download</a> the Bing installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p class="indent">The Bing connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Bing REST API</h2>
+        <p>To access Bing’s REST API from <MadCap:variable name="Variables.CompanyName" />, you must obtain a valid API key. The API Key is provided by Bing after you subscribe to an API.</p>
+        <p class="bold">Obtaining an API Key:</p>
+        <ol>
+            <li>Log in to <a href="https://www.bing.com/dev">https://www.bing.com/dev</a>.</li>
+            <li>From the main menu, select the API you want to retrieve data from.</li>
+            <li>If you have already subscribed to it, you will see two subscription types, Free Trial and Labs. Select the relevant subscription type.</li>
+        </ol>
+        <p class="indent">The API Key is displayed.<br /><img src="../../../Resources/Images/bing_key.png" class="thumblarge" /></p>
+        <ol start="4">
+            <li>Click <span class="bold">Copy</span> for the relevant key.</li>
+            <li>Save the key to paste it into your connection string.</li>
+        </ol>
+        <h3 class="notoc"><a name="Adding"></a>Adding Bing Tables to your <MadCap:variable name="Variables.ElastiCube" /></h3>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Bing and import data into the <MadCap:variable name="Variables.ECM" />r.</p>
+        <p>The connection string to connect to Bing has the following structure:</p>
+        <p>jdbc:bing:ApiKey=73529b7a4994ytec8d4ca6c33049;InitiateOAuth=GETANDREFRESH;</p>
+        <p>Mandatory properties are ApiKey, and InitiateOAuth.</p>
+        <ul>
+            <li><span class="bold">ApiKey</span>: Application key provided by Microsoft that authenticates your account.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property.</li>
+        </ul>
+        <p><span class="bold">Note</span>: To switch between accounts, you need to delete the file OAuthsettings.txt file located at <span class="code">…\Users\xxx\AppData\Roaming\CData\Bing Data Provider</span>.</p>
+        <p class="bold">To add Bing data:</p>
+        <ol>
+            <li>In the ElastiCube Manager, click <span class="bold">Add Data</span> and then, <span class="bold">Bing</span>. The Connect to Bing window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Bing is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Bing and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h3 class="notoc">Switching between Accounts</h3>
+        <p>When you connect to the Bing If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.data source, Sisense saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Bing Data Provider on your <MadCap:variable name="Variables.CompanyName" /> server. To connect to the Bing data source with another user on the same machine, you must delete the OAuthsettings.txt file. <MadCap:variable name="Variables.CompanyName" /> will then generate a new file for that user.</p>
+        <p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the <span class="bold">OAuthSettingsLocation</span> parameter. When each user connects to the data source, <MadCap:variable name="Variables.CompanyName" /> generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the Bing data source and for each user, <MadCap:variable name="Variables.CompanyName" /> generates a file that contains that user’s OAuth values in the location defined in the string.</p>
+        <p class="code">jdbc:Bing:<span class="bold">OAuthSettingsLocation=C:\Bing\auth\john.txt</span>;OAuthClientId=11276856774486;OAuthClientSecret</p>
+        <p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p class="code">jdbc:Bing:<span class="bold">OAuthSettingsLocation=C:\Bing\auth\sally.txt</span>;OAuthClientId=11276856774486;OAuthClientSecret</p>
+        <p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\Bing\auth\.</p>
+        <p>This is useful if you support many users who each need to access the Bing data source.</p>
+        <h3 class="notoc"><a name="Bing"></a>Bing Tables</h3>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Bing connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>ImageSearch</td>
+                    <td>
+                        <p>Query the Bing image search engine.
+
+When querying this table the SearchTerms parameter must be specified. For example, to search Bing Images for the term 'bing' use the following query:</p>
+                        <p class="code"> 
+
+SELECT * FROM ImageSearch where SearchTerms = 'bing'
+
+</p>
+                        <p>You can also specify a search safety level: 
+
+</p>
+                        <p class="code">SELECT * FROM ImageSearch where SearchTerms = 'bing' and SafeSearch = 'Moderate'</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>NewsSearch</td>
+                    <td>
+                        <p>Query the Bing news search engine.</p>
+                        <p>
+
+When querying this table the SearchTerms parameter must be specified. For example, to search Bing Images for the term 'bing' use the following query: 
+
+</p>
+                        <p class="code">SELECT * FROM NewsSearch where SearchTerms = 'bing'
+
+</p>
+                        <p>You can also specify a search safety level: 
+
+</p>
+                        <p class="code">SELECT * FROM NewsSearch where SearchTerms = 'bing' and SafeSearch = 'Moderate'</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Search</td>
+                    <td>
+                        <p>Query the Bing search engine.
+</p>
+                        <p>
+When querying this table the SearchTerms parameter must be specified. For example, to search Bing Images for the term 'bing' use the following query: 
+
+</p>
+                        <p class="code">SELECT * FROM Search where SearchTerms = 'bing'
+
+</p>
+                        <p>You can also specify a search safety level: 
+
+</p>
+                        <p class="code">SELECT * FROM Search where SearchTerms = 'bing' and SafeSearch = 'Moderate'</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>VideoSearch</td>
+                    <td>
+                        <p>Query the Bing video search engine.
+</p>
+                        <p>
+When querying this table the SearchTerms parameter must be specified. For example, to search Bing Images for the term 'bing' use the following query: 
+
+</p>
+                        <p class="code">SELECT * FROM VideoSearch where SearchTerms = 'bing'
+
+</p>
+                        <p>You can also specify a search safety level: 
+
+</p>
+                        <p class="code">SELECT * FROM VideoSearch where SearchTerms = 'bing' and SafeSearch = 'Moderate'</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>WebSearch</td>
+                    <td>
+                        <p>Query the Bing web search engine.
+
+</p>
+                        <p>When querying this table the SearchTerms parameter must be specified. For example, to search Bing Images for the term 'bing' use the following query: 
+
+</p>
+                        <p class="code">SELECT * FROM WebSearch where SearchTerms = 'bing'
+
+</p>
+                        <p>You can also specify a search safety level: 
+
+</p>
+                        <p class="code">SELECT * FROM WebSearch where SearchTerms = 'bing' and SafeSearch = 'Moderate'</p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="notoc"><a name="Versions"></a>Versions</h4>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.0.16</td>
+                    <td>	March 16, 2017</td>
+                    <td>General release</td>
+                </tr>
+                <tr>
+                    <td>6.5.1.3</td>
+                    <td>	February 8, 2017</td>
+                    <td>General Beta release</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

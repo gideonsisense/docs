@@ -1,0 +1,73 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2277" MadCap:lastWidth="704">
+    <head>
+        <title>Embedded Analytics | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Embedded Analytics</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" />’s embedded analytics solution is an end-to-end, single stack BI solution embedded within your application that lets your customers easily prepare, analyze and visualize complex data. <MadCap:variable name="Variables.CompanyName" />’s embedded analytic solution offers built-in features and exposes a variety of functionality through several interfaces, such the <MadCap:variable name="Variables.CompanyName" /> JavaScript and REST APIs for customizing your integration.</p>
+        <p>You can accomplish the following through the <MadCap:variable name="Variables.CompanyName" /> embedded analytics solution:</p>
+        <ul>
+            <li>Seamlessly integrate <MadCap:variable name="Variables.CompanyName" /> with your current interface and branding</li>
+            <li>Manage data, reporting and visualization</li>
+            <li>Integrate SSO and Active Directory</li>
+            <li>Govern user and data security</li>
+            <li>Support high availability</li>
+        </ul>
+        <p>This documentation is intended for two audiences, product managers and developers. For product managers, those who want to enhance their products and applications with <MadCap:variable name="Variables.CompanyName" /> embedded analytics, this section describes the features and functionality <MadCap:variable name="Variables.CompanyName" /> offers as part of an embedded analytics solution. For developers, those who embed Sisense in the application, this section describes how to embed <MadCap:variable name="Variables.CompanyName" /> analytics through the relevant APIs.</p>
+        <h2 class="notoc">Overview</h2>
+        <p>When you embed <MadCap:variable name="Variables.CompanyName" /> analytics, you can provide your users with <MadCap:variable name="Variables.CompanyName" />’s analytical capabilities such as data management, reporting and visualization, built into your business applications and solutions.</p>
+        <p>Each OEM has their own requirements when embedding <MadCap:variable name="Variables.CompanyName" />’s analytic solution. This section covers the multiple ways in which <MadCap:variable name="Variables.CompanyName" />’s OEM features can be embedded to provide BI capabilities in your applications. <MadCap:variable name="Variables.CompanyName" /> exposes functionality through several interfaces. For example, <MadCap:variable name="Variables.CompanyName" />’s REST API allows you to white label <MadCap:variable name="Variables.CompanyName" /> and <MadCap:variable name="Variables.CompanyName" />’s command shell allows you to couple <MadCap:variable name="Variables.CompanyName" /> with your on-premise installation to modify connection settings. You determine which features you want to embed according to the type of OEM services you provide to your customers.</p>
+        <p>The following table lists the various OEM-related tasks you can perform with <MadCap:variable name="Variables.CompanyName" /> and the description with links to the relevant documentation for completing each tasks:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Task</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Rebranding <MadCap:variable name="Variables.CompanyName" /></td>
+                    <td>
+                        <p>
+                            <MadCap:variable name="Variables.CompanyName" /> enables you to white label the <MadCap:variable name="Variables.Sisense Web Application" /> to display your company's logos and colors and mask the URL to display your company's domain.<br />For documentation regarding how you can customize and rebrand your <MadCap:variable name="Variables.CompanyName" /> solution, see the following topics:</p>
+                        <p>
+                            <a href="rebranding-sisense/white-label.htm">White Labeling <MadCap:variable name="Variables.CompanyName"></MadCap:variable></a>
+                        </p>
+                        <p>
+                            <a href="rebranding-sisense/rebrand-auto.htm">Rebranding <MadCap:variable name="Variables.CompanyName"></MadCap:variable> Automated Emails</a>
+                        </p>
+                        <p>
+                            <a href="rebranding-sisense/display-custom-url.htm">Displaying Custom URLs</a>
+                        </p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>Embedding <MadCap:variable name="Variables.CompanyName" /></td>
+                    <td>
+                        <p>
+                            <MadCap:variable name="Variables.CompanyName" /> also allows you to embed widgets and dashboards directly into your site or application through the use of iFrames or SisenseJS, <MadCap:variable name="Variables.CompanyName" />'s custom JavaScript library for embedding widgets.<br />For documentation regarding how you can embed <MadCap:variable name="Variables.CompanyName" />, see the following topics:</p>
+                        <p>
+                            <a href="embedding-sisense/embed-sisense.htm">Embedding Dashboards and Widgets via iFrames</a>
+                        </p>
+                        <p>
+                            <a href="http://developer.sisense.com/display/API2/SisenseJS">Embedding Dashboards and Widgets via JavaScript</a>
+                        </p>
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">Considerations</h2>
+        <p>Before embedding <MadCap:variable name="Variables.CompanyName" /> analytics, you should keep in mind several considerations that may affect your design and deployment:</p>
+        <ul>
+            <li>
+                <span class="bold">Users</span>: Who will be using your application? This determines what interfaces need to be white labeled and which API calls you should leverage.</li>
+            <li>
+                <span class="bold">Performance</span>: As with any deployment, you must provide sufficient CPU and memory on the client and the server for your anticipated user load.</li>
+            <li>
+                <span class="bold">Availability</span>: What is your desired up-time and how many resources can you dedicate to maintaining system availability.</li>
+        </ul>
+    </body>
+</html>

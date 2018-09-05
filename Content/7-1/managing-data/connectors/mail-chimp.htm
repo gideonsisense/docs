@@ -1,0 +1,312 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to MailChimp | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to MailChimp</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> MailChimp connector is a standalone connector that allows you to import data from MailChimp’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to MailChimp’s API. To obtain a connection string, you will need to retrieve an API Key from MailChimp or register a MailChimp app.</p>
+        <p>Once you have connected to MailChimp, you can import a variety of tables from the MailChimp API.</p>
+        <p>This page describes how to install the MailChimp connector, how to connect to</p>
+        <p>MailChimp with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the MailChimp Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the MailChimp REST API</a>
+            </li>
+            <li><a href="#Adding">Adding MailChimp Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#MailChim">MailChimp Tables</a>
+            </li>
+            <li><a href="#Versions">Versions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the MailChimp Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the MailChimp connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the MailChimp connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/MailChimp.Connector.Installer.exe">Download</a> the MailChimp installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The MailChimp connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/mailchimp.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the MailChimp REST API</h2>
+        <p>There are two authentication methods available for connecting to MailChimp, through an API Key or through OAuth. Both methods expose the same data, the difference is in what information is required by MailChimp to authenticate your account. For the API Key, all you need is a key provided my MailChimp in your account. For Oauth, you need to register an app with MailChimp, and then pass those details to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>After you have the relevant information from MailChimp, you create a connection string and connect to MailChimp.</p>
+        <p>The steps below describe how to retrieve the API Key and Oauth credentials that need to be included in the connection string.</p>
+        <h2 class="notoc">Using the API Key to Connect to MailChimp</h2>
+        <p>The APIKey grants full access to your MailChimp account. To obtain the APIKey, log into MailChimp and click <span class="bold">Account</span> &gt; <span class="bold">Extras</span> &gt; <span class="bold">API Keys</span>.</p>
+        <p>With the API Key, you can connect to MailChimp by passing the key in a connection string.</p>
+        <h2 class="notoc">Using OAuth to Connect to MailChimp</h2>
+        <p>To access MailChimp’s REST API from <MadCap:variable name="Variables.CompanyName" />, you must provide valid Oauth MailChimp credentials. These credentials are provided by MailChimp when you register an application.</p>
+        <p>OAuth requires the authenticating user to interact with MailChimp using the browser. The driver facilitates this in various ways as described below.</p>
+        <h3 class="notoc">Register Your Application</h3>
+        <p>Follow the steps below to obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Log into your MailChimp account and click <span class="bold">Account</span> &gt; <span class="bold">Extras</span> &gt; <span class="bold">API Keys</span> &gt; <span class="bold">Register and Manage Your Apps</span>.</li>
+            <li>Enter the information you want to be displayed to users when they are prompted to grant permissions to your application. This information includes your app name, company, and website.</li>
+            <li>If you are making a desktop application, in the Redirect URI box enter http://127.0.0.1. If you are making a Web application, in the Redirect URI box enter a URL where you would like users to be redirected after they grant permissions to your application.</li>
+        </ol>
+        <h2 class="notoc"><a name="Adding"></a>Adding MailChimp Tables to Your ElastiCube</h2>
+        <p>After you have retrieve your API Key or OAuth credentials from MailChimp, you provide the relevant information in a connection string. <MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to MailChimp and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. </p>
+        <p>For MailChimp, your connection string should include the following parameters:&#160;</p>
+        <ul>
+            <li><span class="bold">OAuthClientId</span>: Set this to the consumer key in your app settings.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the consumer secret in your app settings.</li>
+            <li><span class="bold">CallbackURL</span>: Set this to the callback URL you specified in your app settings.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken and OAuthAccessTokenSecret.</li>
+        </ul>
+        <p>For API Keys, the connection string to MailChimp is in the following format:</p>
+        <p class="code">jdbc:mailchimp:APIKey=xxxxxxxxxxxxxxxxxxxxxx;</p>
+        <p>For OAuth, the connection string to MailChimp is in the following format:</p>
+        <p class="code">jdbc:mailchimp:OAuthClientId=xxxxxxxxx;OAuthClientSecret=xxxxxxxxx;CallbackURL=http://127.0.0.1;InitiateOAuth=GETANDREFRESH;</p>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <p class="bold">To add MailChimp data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, MailChimp. The Connect to MailChimp window is displayed.<br /><img src="../../../Resources/Images/mailchimp1.png" class="thumblarge" /></li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. MailChimp is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to MailChimp and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc"><a name="MailChim"></a>MailChimp Tables</h2>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> MailChimp connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AuthorizedApps</td>
+                    <td>A list of applications authorized to access the account.</td>
+                </tr>
+                <tr>
+                    <td>AutomationEmailQueues</td>
+                    <td>A summary of the queue for an email in an automation workflow.</td>
+                </tr>
+                <tr>
+                    <td>AutomationsRemovedSubscribers</td>
+                    <td>A summary of the subscribers removed from an automation workflow.</td>
+                </tr>
+                <tr>
+                    <td>CampaignFeedback</td>
+                    <td>A summary of the comment feedback for a specific campaign.</td>
+                </tr>
+                <tr>
+                    <td>CampaignFolders</td>
+                    <td>Folders for organizing campaigns</td>
+                </tr>
+                <tr>
+                    <td>Campaigns</td>
+                    <td>A summary of the campaigns within an account.</td>
+                </tr>
+                <tr>
+                    <td>ConversationMessages</td>
+                    <td>Messages from a specific conversation. Conversation tracking is a feature available to paid accounts that lets you view replies to your campaigns from inside your MailChimp account.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceCartLines</td>
+                    <td>A list of an ecommerce cart's lines.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceCarts</td>
+                    <td>A list of an account's ecommerce carts.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceCustomers</td>
+                    <td>A list of an account's ecommerce customers.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceOrderLines</td>
+                    <td>A list of an ecommerce order's lines.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceOrders</td>
+                    <td>A list of an account's ecommerce orders.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceProducts</td>
+                    <td>A list of an account's ecommerce products.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceProductVariants</td>
+                    <td>A list of an ecommerce product's variants.</td>
+                </tr>
+                <tr>
+                    <td>EcommerceStores</td>
+                    <td>A list of an account's ecommerce stores.</td>
+                </tr>
+                <tr>
+                    <td>FileManagerFiles</td>
+                    <td>A listing of all available images and files within an account's gallery.</td>
+                </tr>
+                <tr>
+                    <td>FileManagerFolders</td>
+                    <td>A listing of all variable folders within an account's gallery.</td>
+                </tr>
+                <tr>
+                    <td>ListInterestCategories</td>
+                    <td>A listing of this list's interest categories.</td>
+                </tr>
+                <tr>
+                    <td>ListInterests</td>
+                    <td>A list of this category's interests</td>
+                </tr>
+                <tr>
+                    <td>ListMemberNotes</td>
+                    <td>The last 10 notes for a specific list member, based on date created.</td>
+                </tr>
+                <tr>
+                    <td>ListMembers</td>
+                    <td>Individuals who are currently or have been previously suscribed to this list, including members who have bounced or unsubscribed.</td>
+                </tr>
+                <tr>
+                    <td>ListMergeFields</td>
+                    <td>The merge field (formerly merge vars) for a given list. These correspond to merge fields in MailChimp's lists and subscriber profiles.</td>
+                </tr>
+                <tr>
+                    <td>Lists</td>
+                    <td>A collection of subscriber lists associated with this account. Lists contain subscribers who have opted-in to receive correspondence from you or your organization.</td>
+                </tr>
+                <tr>
+                    <td>ListSegmentMembers</td>
+                    <td>Individuals who are currently or have been previously suscribed to this list, including members who have bounced or unsubscribed.</td>
+                </tr>
+                <tr>
+                    <td>ListSegments</td>
+                    <td>A list of available segments.</td>
+                </tr>
+                <tr>
+                    <td>ListsTwitterLeadGenCards</td>
+                    <td>Twitter Lead Generation Cards for given List</td>
+                </tr>
+                <tr>
+                    <td>ListsWebhooks</td>
+                    <td>Webhooks configured for the given list.</td>
+                </tr>
+                <tr>
+                    <td>TemplateFolders</td>
+                    <td>Folders for organizing templates</td>
+                </tr>
+                <tr>
+                    <td>Templates</td>
+                    <td>A list an account's available templates.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Available Views</h3>
+        <table>
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AutomationEmails</td>
+                    <td>A summary of the emails in an automation workflow.</td>
+                </tr>
+                <tr>
+                    <td>Automations</td>
+                    <td>A summary of the automations within an account.</td>
+                </tr>
+                <tr>
+                    <td>Conversations</td>
+                    <td>A collection of this account's tracked conversations. Conversation tracking is a feature available to paid accounts that lets you view replies to your campaigns from inside your MailChimp account.</td>
+                </tr>
+                <tr>
+                    <td>ListAbuse</td>
+                    <td>A collection of abuse complaints for a specific list. An abuse complaint occurs when your recipient clicks to 'report spam' in their email program.</td>
+                </tr>
+                <tr>
+                    <td>ListActivity</td>
+                    <td>Up to the previous 180 days of daily detailed aggregated activity stats for a given list. Does not include AutoResponder or Automation activity.</td>
+                </tr>
+                <tr>
+                    <td>ListClients</td>
+                    <td>Top email clients used, as measured by their user-agent string</td>
+                </tr>
+                <tr>
+                    <td>ListGrowthHistory</td>
+                    <td>A month-by-month summary of a specific list's growth activity.</td>
+                </tr>
+                <tr>
+                    <td>ListMemberActivity</td>
+                    <td>The last 50 member events for a list.</td>
+                </tr>
+                <tr>
+                    <td>ListSignupForms</td>
+                    <td>Collection of List Signup Forms</td>
+                </tr>
+                <tr>
+                    <td>ReportAbuse</td>
+                    <td>A list of abuse complaints for a specific list.</td>
+                </tr>
+                <tr>
+                    <td>ReportAdvice</td>
+                    <td>A list of feedback based on a campaign's statistics.</td>
+                </tr>
+                <tr>
+                    <td>ReportClickDetails</td>
+                    <td>A list of URLs and unique IDs included in HTML and plain-text versions of a campaign.</td>
+                </tr>
+                <tr>
+                    <td>ReportClickDetailsMembers</td>
+                    <td>A collection of members who clicked on a specific link within a campaign.</td>
+                </tr>
+                <tr>
+                    <td>ReportDomainPerformance</td>
+                    <td>Statistics for the top-performing email domains in a campaign.</td>
+                </tr>
+                <tr>
+                    <td>ReportEmailActivity</td>
+                    <td>A list of member's subscriber activity in a specific campaign.</td>
+                </tr>
+                <tr>
+                    <td>ReportLocations</td>
+                    <td>Top open locations for a specific campaign.</td>
+                </tr>
+                <tr>
+                    <td>Reports</td>
+                    <td>A list of reports containing campaigns marked as Sent.</td>
+                </tr>
+                <tr>
+                    <td>ReportSentTo</td>
+                    <td>A list of subscribers who were sent a specific campaign.</td>
+                </tr>
+                <tr>
+                    <td>ReportUnsubscribes</td>
+                    <td>A list of members who have unsubscribed from a specific campaign.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Versions"></a>Versions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.0.54</td>
+                    <td>March 28, 2017</td>
+                    <td>Beta release</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

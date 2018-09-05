@@ -1,0 +1,56 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Custom Installation | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Customizing the Installation</h1>
+        <p>This topic describes how you can customize the settings for your web server application during the installation process or after <MadCap:variable name="Variables.CompanyName" /> is installed.</p>
+        <p>For example, you can configure your server to use the Long index edition of <MadCap:variable name="Variables.CompanyName" /> if your <MadCap:variable name="Variables.ElastiCube" />s are expected to contain a table with over 300 million rows.</p>
+        <p>
+            <b>Note</b>: You cannot customize the settings during an upgrade process. If you upgraded <MadCap:variable name="Variables.CompanyName" /> and want to customize settings, refer to the post-installation option described below.</p>
+        <p>
+            <b>To access the customization options during the installation process</b>:</p>
+        <ul>
+            <li>While <a href="download-install.htm">installing Sisense</a>, click <b>Customize Installation</b>, and define the settings as described below.<br /><img src="../../Resources/Images/v7custom2.png" class="thumblarge" /></li>
+        </ul>
+        <p>
+            <b>To access the customization options after you have already installed </b>
+            <MadCap:variable name="Variables.CompanyName" />:</p>
+        <ol>
+            <li>Open the Control Panel, and go to <b>Programs</b> &gt; <b>Programs and Features</b>. Right-click <b><MadCap:variable name="Variables.CompanyName" /></b>, and click <b>Change</b>.</li>
+            <li>Click <b>Continue</b> &gt; <b>Change Features</b>, and define the settings as described below.<br /><img src="../../Resources/Images/v7custom3.png" class="thumblarge" /></li>
+        </ol>
+        <h2 class="notoc">Settings</h2>
+        <p class="bold">
+            <MadCap:variable name="Variables.EcubeServer" />
+        </p>
+        <p>Select the <MadCap:popup><MadCap:popupHead>Long index</MadCap:popupHead><MadCap:popupBody>The ‘Long Index edition’ of Sisense determines how Sisense transforms your data when loading it in to an ElastiCube.
+
+Sisense builds your ElastiCube using pointers that represent your data. These pointers are used to find the actual values so no information is lost.
+
+To reduce memory consumption and improve performance, Sisense builds ElastiCubes with 32-bit pointers reducing the size of the pointers.
+
+You may experience “Out of memory” errors when working with big data such as:
+
+300 million rows of numeric fields
+2GB of string fields
+For example, let’s assume that your data contains strings with a length of 1024 characters and 4,194,304 unique rows such that 1024*4,194,304 &gt; 4GB in content after indexing, you should install the Long Index version of Sisense.
+
+By installing the Long Index edition, Sisense will use 64-bit pointers. While this is fine for big data, you should use the default installation of Sisense when working data smaller than the figures mentioned above for faster performance.</MadCap:popupBody></MadCap:popup> edition if your <MadCap:variable name="Variables.ElastiCube" />s are expected to contain a table with over 300 million rows.</p>
+        <p>It is not recommended to use this configuration setting for <MadCap:variable name="Variables.ElastiCube" />s in which the largest table does not include at least 300 million rows.</p>
+        <p class="bold">
+            <MadCap:variable name="Variables.Sisense Web Application" />
+        </p>
+        <p>You must specify the <MadCap:variable name="Variables.Sisense Web Application" /> <b>Port</b> and <b>Website Name</b>. Usually, if no other sites are running on the machine, you can use port 8081.</p>
+        <p>There are three options for the server type:</p>
+        <ul>
+            <li>
+                <b>Microsoft IIS Express</b>: This is the default web server used to host the web application.</li>
+            <li>
+                <b>Microsoft IIS</b>: This is recommended for production environments. In case there is an existing site with the same name, it will be overridden.</li>
+            <li>
+                <b>Manual</b>: This is recommended when you have to manually set up your IIS. If this is selected during upgrades, the installation will keep the existing site details and configuration in the IIS. When using this setting, make sure to define the physical path of the IIS site to the new installation folder (C:\Program Files\Sisense\PrismWeb).</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Setting Up a Production Environment | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Setting Up Your Production Environment</h1>
+        <p>This topic describes how to set up a production environment for hosting your Sisense implementation.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> recommends installing <MadCap:variable name="Variables.CompanyName" /> in a staging environment, where you can check all of your <MadCap:variable name="Variables.ElastiCube" />s and dashboards, as well as test different configurations and customization options. When everything is working as expected, deploy <MadCap:variable name="Variables.CompanyName" /> in your production environment. To learn more about migrating your installation, see <a href="migrate-install.htm">Migrating <MadCap:variable name="Variables.CompanyName" /></a>.</p>
+        <h2 class="notoc">Providing Remote Access to the Sisense Web Environment</h2>
+        <p>To maximize the <MadCap:variable name="Variables.CompanyName" /> experience, you will want to make your dashboards accessible to external users outside the organization’s network. This requires the following configurations:</p>
+        <ul>
+            <li>Open TCP port (default is 8081) to access the <MadCap:variable name="Variables.Sisense Web Application" /> internally.</li>
+            <li>Ensure that your <MadCap:variable name="Variables.CompanyName" /> machine has a public IP address or domain name associated with a public IP for external access.</li>
+            <li>Open port 443 if you are using SSL. <MadCap:variable name="Variables.CompanyName" /> recommends using SSL for secure connections or a VPN solution. For more information about implementing SSL, see <a href="../administration/defining-security-and-access-settings/set-ssl.htm">Setting Up SSL</a>.</li>
+        </ul>
+        <p>External users who were granted access can view dashboards by entering the machine’s IP and the port number, for example: xx.xxx.xx.xx:8081 or my.company.com:8081</p>
+        <p>Click <a href="https://support.sisense.com/entries/69712564-Required-settings-to-share-dashboards-outside-of-your-organizations-network-connection">here</a> to learn more and see troubleshooting tips.</p>
+        <h2 class="notoc">Providing Remote Access to the <MadCap:variable name="Variables.ECM" /></h2>
+        <p>In some cases, you may want to provide external access to the <MadCap:variable name="Variables.ECM" /> for designing and modeling your <MadCap:variable name="Variables.ElastiCube" />s. In such cases it is necessary to consult your <MadCap:variable name="Variables.CompanyName" /> Success Manager to make sure your licensing terms allow this option.</p>
+        <p>In addition, make sure that ports 811, 812 on your <MadCap:variable name="Variables.CompanyName" /> machine are open.</p>
+        <p>
+            <b>Note</b>: To avoid exposing your data, do not open ports 811/812 without the proper security measures.</p>
+        <h2 class="notoc">Sisense Email&#160;Server</h2>
+        <p>Sisense provides you with an email server for sending reports and notifications to your users from <MadCap:variable name="Variables.CompanyName" />, to be used in POC and testing environments. When you migrate your deployment to a production environment, you should configure your own custom email server, so you can manage your emails according to your company's policies. </p>
+        <p>For more information, see <a href="../administration/system-settings/setup-custom-email.htm">Setting Up a Custom Email Server</a>. </p>
+        <h2 class="notoc">Base URLs</h2>
+        <p>Base URLs are the consistent part of a web address for a site or web application. In Sisense, the default address is localhost:8081. Sisense allows you to specify a Sisense hostname as a subfolder of a domain, for example, baseurl.sisense.com/reporting.</p>
+        <p>For more information, see <a href="configure-base-url.htm">Configuring Base URLs</a>. </p>
+    </body>
+</html>

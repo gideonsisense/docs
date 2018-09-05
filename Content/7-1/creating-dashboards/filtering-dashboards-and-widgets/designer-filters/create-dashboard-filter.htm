@@ -1,0 +1,125 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="6877" MadCap:lastWidth="797">
+    <head>
+        <title>Creating Dashboard Filters | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating Dashboard Filters</h1>
+        <p>This topic explains how to create dashboard filters using the different filtering options.</p>
+        <p>In this section you will learn how to:</p>
+        <ul>
+            <li>
+                <a href="#Creating">Create a Dashboard Filter</a>
+            </li>
+            <li>
+                <a href="#Creating2">Create a List Filter</a>
+            </li>
+            <li>
+                <a href="#Creating3">Create a Text Filter</a>
+            </li>
+            <li>
+                <a href="#Creating4">Create a Numeric Value Filter</a>
+            </li>
+            <li>
+                <a href="#Creating5">Create a Top/Bottom Ranking Filter</a>
+            </li>
+            <li>
+                <a href="#Creating6">Create a Time Filter</a>
+            </li>
+            <li>
+                <a href="#Wildcard">Wildcards</a>
+            </li>
+        </ul>
+        <h2 class="notoc">
+            <a name="Creating">
+            </a>Creating a Dashboard Filter</h2>
+        <p class="bold">To create a dashboard filter:</p>
+        <ol>
+            <li>Click <span class="bold">Filter Your Dashboard</span> in the dashboard’s right panel (if it’s your first filter), or <span class="bold">+</span> if you are adding another filter. The Add Filter dialog box is displayed.<br /><img src="../../../../Resources/Images/add filters.png" class="thumblarge" /><br /></li>
+            <li>(Optional) If you have multiple data sources, select the data source that contains the fields you want to filter. Filters applied to fields from one data source do not affect fields from another data source even on the same dashboard.<br /></li>
+            <li>Select the field by which to filter.</li>
+            <li>Select the type of filter from the pane on the left, such as <span class="bold">List</span>, <span class="bold">Criteria</span>, <span class="bold">Calendar</span> or <span class="bold">Ranking</span>. The options provided in this window may vary according to the selected field type (Date, Numeric or Descriptive).<br /></li>
+            <li>Select the required filtering details in the panel on the right to create one of the following types of filters:</li>
+            <ul>
+                <li>Creating an Include/Exclude Filter</li>
+                <li>Creating a Text/Numeric/Date Filter</li>
+                <li>Creating a Top/Bottom Ranking Filter</li>
+                <li>Creating a Calendar Filter<br />These are explained in depth below.</li>
+            </ul>
+            <li>Click the <span class="bold">Star Favorite</span>  button to save this filter. You can give your starred filter a unique name by clicking in the text field and editing the given name. This will be useful when you need to quickly add a new filter (with same field type) or update a filter to reflect the unique parameters that you defined in your starred filter.<br />Note: Your favorite filters are visible to shared users.</li>
+            <li>Click <span class="bold">OK </span>to filter the data in the Dashboard and add this filter to the FILTER panel on the right of the Dashboard.<br />After a filter has been added to the Dashboard, it stays displayed on the Dashboard’s FILTER panel. Any changes that you make to the filter are immediately reflected in the Dashboard.<br />Tip: You can rearrange the filters in the Filters panel by dragging a filter above or below another filter.</li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Creating2">
+            </a>Creating an Include/Exclude Filter (List Filter)</h2>
+        <p>This type of filter enables you to define whether selected field values are included or excluded.</p>
+        <p class="bold">To define a List filter:</p>
+        <ol>
+            <li>Follow Steps 1 – 3 of <a href="#Creating">Creating Dashboard Filters</a>.</li>
+            <li>Select the <span class="bold">List</span> option in the left panel.<br /><img src="../../../../Resources/Images/filterlist.png" class="thumblarge" /></li>
+            <li>Select/clear the field values to be included/excluded in the Dashboard.</li>
+            <li>Click <span class="bold">OK</span> to filter the data in the Dashboard and add a List filter to the Filter panel of the Dashboard.</li>
+        </ol>
+        <h2 class="notoc">Selecting Single Selection or Multi Selection</h2>
+        <p>By default list filters are set to multi selection. To toggle between single and multi-selection click the button on the upper right of the list filter:</p>
+        <p class="bold">Multi Selection:<br /><img src="../../../../Resources/Images/multifilter.png" class="thumblarge" /><br /></p>
+        <p class="bold">Single Selection:<br /><img src="../../../../Resources/Images/singlefilter.png" class="thumblarge" /></p>
+        <h2 class="notoc">
+            <a name="Creating3">
+            </a>Creating a Text Filter</h2>
+        <p>This type of filter enables you to filter according to text matching.</p>
+        <p class="bold">To define a Text filter:</p>
+        <ol>
+            <li>Select the Text tab.</li>
+            <li>Follow steps 1 – 3 of <a href="#Creating">Creating Dashboard Filters</a>. Select a Textual field.</li>
+            <li>Select the operator, for example Starts with or Containing.</li>
+            <li>Type in the value by which to filter.</li>
+            <li>If you require additional conditions, click <span class="bold">+ Add condition</span>. Select <span class="bold">AND</span> or <span class="bold">OR</span> to define how filter operators are combined.<br /></li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Creating4">
+            </a>Creating a Numeric Value Filter</h2>
+        <p>This type of filter enables you to limit your dashboards to specific value ranges. For example:</p>
+        <ul>
+            <li>Keep only sales above 100$.</li>
+            <li>Keep only product IDs between 1000020 and 1000030.</li>
+        </ul>
+        <p class="bold">To define a Numeric filter:</p>
+        <ol>
+            <li>Select the <span class="bold">Values</span> tab.</li>
+            <li>Follow steps 1 – 3 of <a href="#Creating">Creating Dashboard Filters</a>.</li>
+            <li>Select the operator, for example Equals or Greater than.</li>
+            <li>Type in the value by which to filter.</li>
+            <li>If you require additional conditions, click <span class="bold">+ Add condition</span>. Select <span class="bold">AND</span> or <span class="bold">OR</span> to define how filter operators are combined.<br /></li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Creating5">
+            </a>Creating a Top/Bottom Ranking Filter</h2>
+        <p>This type of filter enables you to select whether to include only the top/bottom ranking fields.</p>
+        <p class="bold">To define a Ranking filter:</p>
+        <ol>
+            <li>Follow steps 1 – 3 of <a href="#Creating">Creating Dashboard Filters</a>.</li>
+            <li>Select the <span class="bold">Ranking</span> filter tab. </li>
+            <li>Select <span class="bold">Top</span> or <span class="bold">Bottom</span> and the number of items to include.</li>
+            <li>In the <span class="bold">By</span> field, select a field by which to rank the fields. A list of the fields that match these definitions is displayed so that you can verify that the results are as you expect.</li>
+            <li>Click <span class="bold">OK</span> to filter the data in the Dashboard and add a Ranking filter to the FILTER panel of the Dashboard.</li>
+        </ol>
+        <h2 class="notoc">
+            <a name="Creating6">
+            </a>Creating a Time Filter</h2>
+        <p>There are two types of time filtering options, Calendar and Dynamic Time filters:</p>
+        <h3 class="notoc">Calendar Filter</h3>
+        <p>This filter enables you to select custom date ranges from a calendar.</p>
+        <p class="bold">To define a Calendar filter:</p>
+        <ol>
+            <li>Follow steps 1 – 3 of <a href="#Creating">Creating Dashboard Filters</a>. (Select a date field)</li>
+            <li>Select the <span class="bold">Calendar</span> filter tab.</li>
+            <li>Use the quick navigation menu to jump to a point in time.</li>
+            <li>Select a date range using any of the following methods:</li>
+        </ol>
+        <ul>
+            <li>Click on a start and end date.</li>
+            <li>Type in the dates, or use a shortcut such as Earliest Date or Today.<br /><span class="bold">Note</span>: Earliest Date and Latest Date refer to the earliest and latest dates with data.<br /><img src="../../../../Resources/Images/new-cal1.png" class="thumblarge" /></li>
+        </ul>
+        <span class="bold">Note</span>: Unlike other filters that you define, viewers will be able to change the type of date filter, providing more flexibility for viewing date ranges. For example, from Time Frame to Calendar, etc.<h3 class="notoc">Dynamic Time Filter</h3><p>This filter enables you filter dashboards to preset dynamic time frames, such as ‘Last Year’, ‘Last 2 Years’, ‘2 Year ago’, etc.</p><p class="bold">To define a dynamic time filter:</p><ol><li>Follow steps 1 – 3 of <a href="#Creating">Creating Dashboard Filters</a>. (Select a date field)</li><li>Select the <span class="bold">Time</span> filter tab.</li><li>Use the calendar to select a date range to filter by. Use the left calendar to select the starting date of the range, and the right calendar to select the end date.</li><li>Click <span class="bold">OK</span> to filter the data in the Dashboard and add a date filter to the Filter panel of the Dashboard.</li></ol><h3 class="notoc">Advanced Filtering Criteria</h3><p>If you require advanced filtering options that are not included in the provided settings (for dashboard or widget), you can add or edit filters in the <span class="bold">Advanced</span> section.</p><p class="bold">To add or edit filtering criteria:</p><ol><li>Click <span class="bold">Advanced</span> in the left panel.</li><li>Add or edit filtering criteria. Click <span class="bold">Test</span> to see the results of your new/edited filter.</li><li>Click <span class="bold">OK</span> to add the filter.</li></ol><p class="bold">Example 1 – Adding an OR statement</p><p>The example below shows an OR statement being used to display multiple names. After clicking <span class="bold">Test</span>, the matches are displayed to the right of the script.</p><p><img src="../../../../Resources/Images/advanced-filter.png" class="thumblarge" /></p><p class="bold">Examples using JAQL Queries</p><p class="bold">Example 2 – Filtering by Measures</p><p>This option lets you filter dimensions by measures, returning only the filtered members and associated values.</p><p>In this example, all products with a total price equal or greater than 1 million will be returned.</p><p>The query:</p><p><img src="../../../../Resources/Images/eg11.png" class="thumblarge" /></p><p>Results include the relevant product names and price, for example:</p><ul><li>Product A, 1000000</li><li>Product B, 1551246</li></ul><p class="bold">Example 3 – Filtering by Dimension Attributes</p><p>This option lets you filter dimensions by filtered attributes of other dimensions, returning only the filtered values.</p><p>In this example, all customers that purchased Product A and Product B will be returned.</p><p><img src="../../../../Resources/Images/eg2.png" class="thumblarge" /></p><p>Note that you can add as many nested filters as needed.</p><h2 class="notoc">Updating on Every Change</h2><p>When this option is on, any changes you make to the dashboard filters are updated immediately, and the dashboard is refreshed to reflect the changes.</p><p>If you are working with large or complex data sets that result in longer refresh times, then switch off this option. Make all your changes, and click the Update button when you are ready to update your dashboard.</p><span class="bold">Note</span>: This option is available for Designers only. Sisense viewers can make changes that will update automatically on very change.<h2 class="notoc"><a name="Wildcard"></a>Wildcards</h2><p>To filter lists or text quickly, you can use wildcards such as ‘_’ or ‘%’, which will be interpreted as literal characters or an empty string.</p><p><MadCap:variable name="Variables.CompanyName" /> supports the following wildcards:</p><p class="bold">Single Characters</p><p>You can enter an underscore ‘_ ‘ as a placeholder for a single unknown character.</p><p><img src="../../../../Resources/Images/now2.png" class="thumblarge" /></p><p class="bold">Multiple Characters</p><p>You can use a percent % symbol to search for an undefined length of string.</p><p><img src="../../../../Resources/Images/percent1.png" class="thumblarge" /></p><p class="bold">Escape Characters</p><p>If you are searching for a string with an underscore or percent symbol, add a backslash (\) in front of the special character. Backslashes are treated as an escape character by <MadCap:variable name="Variables.CompanyName" />.</p><p>For example, to locate results for the string “_te”, use a backslash before the string:</p><p><img src="../../../../Resources/Images/escapecharacter1.png" class="thumblarge" /></p><p>&#160;</p></body>
+</html>

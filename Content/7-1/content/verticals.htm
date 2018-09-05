@@ -1,0 +1,54 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3384" MadCap:lastWidth="872">
+    <head>
+        <title>Sisense Verticals</title>
+    </head>
+    <body>
+        <h1>Sisense Verticals</h1>
+        <p>After you have downloaded the relevant Vertical Zip files, you should extract their contents to your local machine. At least two files are included in each Vertical Zip file you can download, an Ecdata file (.ecdata) and a Dashboard file (.dash).</p>
+        <p>You import these files into your ElastiCube Manager and Sisense Web Application and then redefine the data sources replacing them with your own internal data sources.</p>
+        <p>Once you have replaced the data sources and refreshed the dashboard, the predefined widgets are displayed with your data source’s results.</p>
+        <p>The following steps describe the process of importing the Vertical files into the ElastiCube Manager and Sisense Web Application and replacing the data sources with your own.</p>
+        <h2 class="notoc">Importing ElastiCube Data</h2>
+        <p>Sisense dashboards are based on data they query from ElastiCubes. ElastiCubes data is stored in a compressed file called an Ecdata file. The file contains all of the information contained in an ElastiCubeData folder (including the source data), and is used by the Sisense Server Console to build a new ElastiCube.</p>
+        <p>To support your dashboard, the Ecdata needs to be imported into the ElastiCube Manager. In later steps, you will replace this data with your own and refresh the dashboard to reflect your data.</p>
+        <p class="bold">To import data:</p>
+        <ol>
+            <li>In the ElastiCube Manager, open the Sisense Server Console.<br /><img src="../../Resources/Images/openserver.png" class="thumblarge" /></li>
+            <li>Click on the import ECDATA file icon <img src="../../Resources/Images/servericon.png" class="docbutton" />.</li>
+            <li>Select the location of the ECDATA file and click <span class="bold">Open</span>.</li>
+            <li>A window will appear showing the import progress. Once complete, the new ElastiCubes will be added to the list of existing ElastiCubes. Make sure the ElastiCube is running before accessing it.<br /><img src="../../Resources/Images/serverconsole1.png" class="thumblarge" /></li>
+        </ol>
+        <p>
+            <span class="bold">Note</span>: You can also transfer data by copying the folder where Sisense stores the data locally, instead of exporting and importing the compressed file. To learn more, click <a href="../getting-started/migrate-install.htm">here</a>.</p>
+        <h2 class="notoc">Importing a Dashboard</h2>
+        <p>After you have imported the relevant Ecdata files for the Vertical you are interested in, you can import the dashboard included in the Vertical ZIP file. The Dashboard file (.dash) contains a predefined dashboard which queries the ElastiCube imported in the previous step. You can view the dashboard as it is, but the data will only be relevant for your use case after you change the data source in later steps.</p>
+        <p class="bold">To import a dashboard:</p>
+        <ol>
+            <li>In the ElastiCube Manager Server Console, select the relevant ElastiCube and click <span class="bold">Edit</span>.<br /><img src="../../Resources/Images/EditSource.png" class="thumblarge" /></li>
+            <li>In the ElastiCube Manager, select <span class="bold">Dashboard</span>.<br /><img src="../../Resources/Images/selectdash.png" class="thumblarge" /></li>
+            <li>The Sisense Web Application is opened and the New Dashboard window is displayed.<br /><img src="../../Resources/Images/renamedash.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Create</span>.</li>
+            <li>Hover over the Dashboards list in the home page and click the ‘<span class="bold">+</span>’ symbol. Select <span class="bold">Import Dashboard</span> from the menu. You can also right-click anywhere in the Dashboards list, or click on the menu of one of your existing folders to import a dashboard into a folder.</li>
+            <li>Select your exported .dash file. The dashboard will be added to your list. You can drag it from there to your desired location in the tree. The Dashboard is displayed with Sisense’s predefined widgets and data.</li>
+        </ol>
+        <h2 class="notoc">Changing Connectivity Settings for Data Sources</h2>
+        <p>Once you have imported the .dashboard file, the data source that is queried by the dashboard needs to be updated with your data. Through the ElastiCube Manager you can replace the predefined Sisense data sources with your data sources.</p>
+        <p>When the dashboard queries your data source it expects the data to be in the same format as the original data source. The data source name, fields and field types must remain the same for existing widgets in the dashboard to be able to reference the data correctly. This means that while you can provide your own data, it must be included in tables using the same naming as Sisense defined in the original ElastiCube. For example, in the table below, customer, there are five columns. Each column must maintain the same name, however, you should replace the values of each column with your own.</p>
+        <p>
+            <img src="../../Resources/Images/customerex.png" class="thumblarge" />
+        </p>
+        <p>After replacing your data source, you can refresh the dashboard to reflect your data.</p>
+        <p class="bold">To change data sources:</p>
+        <ol>
+            <li>In the ElastiCube Manager, click <span class="bold">ElastiCube &gt; Change Connectivity Settings…</span><br /><img src="../../Resources/Images/connset.png" class="thumblarge" /></li>
+            <li>A list of all existing data sources and associated data tables is displayed.</li>
+            <li>Hover over the data source to reveal the following options:<br /><img src="../../Resources/Images/connset2.png" class="thumblarge" /></li>
+            <li>
+                <span class="bold">Change Source Provider</span>: When you change the source provider, you change the type of data source currently defined. Click to select a data source connection type, for example, change MS SQL to an Oracle database. You will then be prompted to define the connection to the new data source. When done, click <span class="bold">Close</span>.</li>
+            <li>
+                <span class="bold">Change Source Database</span>: When you change the source database, you maintain the same data source type while providing your data. Click to edit the login details to the database as well as connections to associated tables. In case your data source is a file like Excel, select the Excel and click <span class="bold">Close </span>when complete.</li>
+            <li>Refresh your dashboard to view your information inside Sisense’s predefined visualizations.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2977" MadCap:lastWidth="836">
+    <head>
+    </head>
+    <body>
+        <h1>Creating an App in Facebook</h1>
+        <p>When connecting to Facebook’s API through connectors such as <a href="Facebook.htm">Facebook</a> and <a href="facebook-ads.htm">Facebook Ads</a>, you need valid credentials that you can obtain when creating a Facebook app.</p>
+        <p>This page describes how you can create a Facebook app to obtain the necessary credentials you need to import your Facebook data into the ElastiCube Manager.</p>
+        <p>After you have obtained these credentials, you can add them to your connection string to connect to Facebook’s APIs.</p>
+        <p class="bold">To obtain authentication credentials:</p>
+        <ol>
+            <li>Log into Facebook and navigate to <a href="https://developers.facebook.com/apps">https://developers.facebook.com/apps</a>.</li>
+            <li>Click <span class="bold">+ Add a New App</span>.</li>
+            <li>Define your app’s name and click <span class="bold">Create App ID</span>. The Product Setup page is displayed.</li>
+            <li>Click <span class="bold">Add Product</span>.<br /><img src="../../../Resources/Images/fbsettingsproduct.png" class="thumblarge" /></li>
+            <li>For the Marketing API,  click <span class="bold">Get Started</span>.<br /><img src="../../../Resources/Images/fbmarketingapi.png" class="thumblarge" /></li>
+            <li>Open the Settings page.<br /><img src="../../../Resources/Images/fbsettingapi.png" class="thumblarge" /></li>
+            <li>In the Settings page, the OAuth client credentials, <span class="bold">App Id</span> and <span class="bold">App Secret</span>, are displayed.<br /><img src="../../../Resources/Images/fbsettings3.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">App Domains</span> field, enter localhost.</li>
+            <li>In the Settings page, click <span class="bold">+ Add Platform</span> and select <span class="bold">Website</span>. The Website area is added to the Settings page.</li>
+            <li>In the <span class="bold">Site URL</span> field, enter http://localhost. This value is represents the callback URL in your connection string where the user will return with the token that verifies that they have granted your app access.<br /><img src="../../../Resources/Images/fbsettings2.png" class="thumblarge" /></li>
+            <li>In the bottom-right corner of the Settings page, click <span class="bold">Save Changes</span>. Facebook requests that you authenticate your account.</li>
+            <li>Enter your password to authenticate your account and click <span class="bold">OK</span>. Your app is saved.</li>
+            <li>After you have authenticated your account, you must set permissions for the app to retrieve your data. Open the <a href="https://developers.facebook.com/tools/explorer" target="_blank">Facebook Explorer</a> to set your permissions.<br /></li>
+            <li>In Facebook Explorer, click <span class="bold">Get Token &gt; Get User Access Token</span>.<br /><img src="../../../Resources/Images/fbpermissions-1.png" class="thumblarge" /></li>
+            <li>Select the relevant permissions you need and click <span class="bold">Get Access Token</span>. Your permissions are now set and you can request the relevant data from Facebook.<br /><span class="bold">Note</span>: For apps to manage ads, you must be granted the app ads_management or ads_read extended permission. Use ads_read if you only need Ad Insights API access, to pull reporting information. Use ads_management when you need to read, create and update ads. For more information about permissions, click <a href="https://developers.facebook.com/docs/marketing-api/access" target="_blank">here</a>.</li>
+        </ol>
+        <h3 class="notoc">Accessing the Facebook API</h3>
+        <p>Facebook has three levels of access to its Marketing API, which determine how you can use and access data from your Facebook app:</p>
+        <ul>
+            <li>
+                <span class="bold">Development</span>: Try and test apps with the API.</li>
+            <li>
+                <span class="bold">Basic</span>: Test, iterate, build apps with up to 25 external accounts.</li>
+            <li>
+                <span class="bold">Standard</span>: Support unlimited accounts and be nominated to Facebook Marketing Partner program.</li>
+        </ul>
+        <p>When you create a Facebook, you are assigned a Development level of access by default. Each access level has its own account and rate limitations. You can modify your level of access by submitting a request to Facebook. Fore more information about these limitations and upgrading your access, click <a href="https://developers.facebook.com/docs/marketing-api/access" target="_blank">here</a>.</p>
+        <h2 class="notoc">Adding Advertising Account Permissions</h2>
+        <p>In addition to Facebook permissions, if you want to retrieve data from a Facebook Ads account, that is associated with your Facebook account,  you need to add that account’s ID to the app through the Authorized Ad Accounts ID field. This field is where you define which ad accounts are associated with your account and allowed to advertise for your app.</p>
+        <p class="bold">To associate advertising accounts to your account:</p>
+        <ol>
+            <li>Log into Facebook and navigate to <a href="https://developers.facebook.com/apps" target="_blank">https://developers.facebook.com/apps</a>.</li>
+            <li>Selecting <span class="bold">Settings &gt; Advanced</span>.<br /><img src="../../../Resources/Images/fbads7.png" class="thumblarge" /><br /></li>
+            <li>In the <span class="bold">Authorized Ad Accounts ID</span> field, enter the Facebook ID of the accounts that can access your Facebook Ads data.<br /><img src="../../../Resources/Images/fbads6.png" class="thumblarge" /></li>
+        </ol>
+    </body>
+</html>

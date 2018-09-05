@@ -1,0 +1,53 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Handling Relationship Cycles | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Handling Relationship Cycles</h1>
+        <p><span class="bold">Note</span>: The image on this page were taken in the desktop version of the <MadCap:variable name="Variables.ECM" />, however, the same principles described on this page also apply to the ElastiCube Manager Online.</p>
+        <p>Good relationships between tables are the key to pulling in data in logical ways.  <MadCap:variable name="Variables.ElastiCube" />s are usually created from more than one table. To perform calculations on fields that reside in separate tables, you must define a relationship between the tables so the calculation mechanism knows how to navigate from one field to another.</p>
+        <p>When a single possible path exists between two fields, there is no issue.  For example, performing a query involving the Customer Name and Amount field on the <MadCap:variable name="Variables.ElastiCube" /> schema below can yield only one result, since there is only one possible path leading from the Customer Name field to the Amount field.</p>
+        <p>
+            <img src="../../../Resources/Images/cycle1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Relationship Cycles</h2>
+        <p>In some cases, more than one path exists leading from one field to another.  Sometimes this is due to poor database design, and other times it is just a realistic necessity due to the way the data is structured. In such cases, there is no absolute way to determine the required path to take to calculate results.</p>
+        <p>For example, in the <MadCap:variable name="Variables.ElastiCube" /> schema below, the Customer Name and Amount fields now have multiple paths between them:</p>
+        <ul>
+            <li>Customer —&gt; Sales History (over the Customer ID field)</li>
+            <li>Customer —&gt; Commercial (over the Customer ID field) —&gt; Sales History (over the Business ID field)</li>
+            <li>Customer —&gt; Private (over the Customer ID field) —&gt; Sales History (over the Customer ID field)</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/cycle2.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Automatically Dealing with Relationship Cycles</h2>
+        <p>Theoretically, any one of these possible paths could be the correct one in terms of the results you are trying to calculate.  When the calculation engine encounters numerous possible paths, it picks the shortest path, which will have less impact performance-wise on query processing. Below are some general guidelines.</p>
+        <ul>
+            <li>The calculation engine will always prefer paths that have no many-to-many relationships.  If all possible paths contain many-to-many relationships, the path with the least number of this type of relationship is preferred.</li>
+            <li>Similarly, the engine will prefer one-to-one relationships over one-to-many relationships.</li>
+            <li>If at the end of the first selection process more than one possible path still exists, the engine will prefer the path containing the least number of tables.</li>
+            <li>Finally, if numerous paths are still possible, one is picked at random.</li>
+        </ul>
+        <h2 class="notoc">Breaking Relationship Cycles in the <MadCap:variable name="Variables.ECM" /></h2>
+        <p>To ensure the calculation engine takes the path you want it to take, the cycle must be broken. There are a few techniques to do this depending on the required results.</p>
+        <h3 class="notoc">Removing Relationships</h3>
+        <p>One option is to remove one of the relationships in the cycle.  For example, removing the Customer ID relationship from the Sales History table will eliminate the cycle.  This approach is only applicable when the removed relationship is not used by other queries.</p>
+        <p>
+            <img src="../../../Resources/Images/cycle3.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Duplicating Table Elements</h3>
+        <p>Duplicating table elements is another method to break relationship cycles.  In the example below, the Sales History table was duplicated and renamed Private Customers Sales History.  In addition, the Customer ID relationship was removed from the original Sales History table.  This results in the creation of two separate Amount fields, one for commercial customers residing in the original Sales History table, and one for private customers residing in the new Private Customers Sales History.  As the Customer ID relationship was removed from the original table, whichever field you use will determine the correct calculation path.</p>
+        <p>
+            <img src="../../../Resources/Images/cycle4.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Breaking Relationship Cycles in the <MadCap:variable name="Variables.Sisense Web Application" /></h3>
+        <p>You can also use the <MadCap:variable name="Variables.CompanyName" /> web app to invoke a specific path to be used during query execution (as opposed to the solutions mentioned above that are defined on the schema level, in the <MadCap:variable name="Variables.ECM" />).</p>
+        <p>Each widget in <MadCap:variable name="Variables.CompanyName" /> has an associated data layout. If you have more than one path connecting corresponding fields between two tables, you can enforce a specific path by filtering the widget, and selecting just the field that you want to use.  For example if the Commerce table is connected to Brands via the Brand and Brand ID fields, then add a filter to the widget and select Brand ID to use that path in the query.</p>
+        <p>
+            <img src="../../../Resources/Images/breaking-cycle.png" class="thumblarge" />
+        </p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

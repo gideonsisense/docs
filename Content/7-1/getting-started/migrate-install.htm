@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="1625" MadCap:lastWidth="1205">
+    <head>
+        <title>Migrating Sisense | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Migrating a <MadCap:variable name="Variables.CompanyName" /> Installation</h1>
+        <p>This topic describes migrating a Sisense installation from one machine to another.</p>
+        <p>
+            <a href="backing_up_sisense.htm">Backing up your installation</a> is recommended before a migration process, but also on a regular basis for securing your data and Sisense configurations.</p>
+        <p>You may need to migrate your entire setup when moving from a staging/development environment to a production environment, when upgrading hardware, etc.</p>
+        <p>
+            <MadCap:conditionalText MadCap:conditions="Default.Whitelabeled">
+                <b>Note</b>: If you have advanced and/or customized web configurations, such as SSL, SSO, redirects, etc., please consult <MadCap:variable name="Variables.CompanyName" /> Support through the <a href="https://support.sisense.com/hc/en-us/requests/new">Help Center</a>.</MadCap:conditionalText>
+        </p>
+        <p>The migration process involves migrating both the Sisense application database and your ElastiCubes.</p>
+        <p>Additionally, if you are using plugins, you will need to replace the Plugins folder with your current plugins located at C:\Program Files\Sisense\PrismWeb\plugins.</p>
+        <h3 class="notoc">Migrating ElastiCubes</h3>
+        <p>The ElastiCube Server contains your ElastiCubes. To migrate ElastiCubes, you must export them as .ecdata files and import them into your new environment. If the data sources that support the ElastiCube are at a different location than they were on your original server, the ElastiCube’s connectivity settings must be updated.</p>
+        <p class="bold">To migrate your ElastiCubes:</p>
+        <ol>
+            <li>Declare downtime to avoid the loss of work during the process and stopping the IIS service. You can stop the IIS service by running the command <span class="bold">iisreset /stop</span> in the Command Prompt as an Administrator. Do not close the Command Prompt as you will need it in Step 3.</li>
+            <li>Export and import your .ecdata files. See <a href="../managing-data/managing-data/import-export-ecube.htm">Importing and Exporting Elasticube Data</a> for more information.</li>
+            <li>In the Command Prompt, run the command <span class="bold">iisreset /start</span> to restart your IIS Server.</li>
+            <li>If the database location was changed as well, modify the connectivity settings. See <a href="../managing-data/connectors/change-connect.htm">Change Connectivity Settings</a> to learn how.</li>
+        </ol>
+        <h3 class="notoc">Sisense Web Application</h3>
+        <p>To migrate your Sisense Web Application configuration, you must copy several configuration files from the current environment and migrate these files to the new environment in the same directories. These configuration files are used by Sisense to allow communication between the Sisense application database and the Sisense Web Application.</p>
+        <p class="bold">To migrate the Sisense Web Application:</p>
+        <ol>
+            <li>Back up the old environment, open your machine’s Control Panel, and go to System and <span class="bold">Security &gt; Administrative Tools &gt; Services</span>, and stop the SisenseRepository service (this will make the website inaccessible).<br /><img src="../../Resources/Images/servicesrepos1.png" class="thumblarge" /></li>
+            <li>Create a copy of the entire Repository directory located at:<br /><span class="code">%ProgramData%\Sisense\PrismWeb\Repository</span></li>
+            <li>Replace the existing <span class="bold">Repository </span>directory in the new environment with the one you backed up.</li>
+            <li>Create copies of the following configuration files and paste them into the same directories in the new environment:<br /><span class="code">%ProgramFiles%\Sisense\PrismWeb\ECMNext\GraphQL\src\config\default.yaml</span><br /><span class="code">%ProgramFiles%\Sisense\PrismWeb\vnext\config\default.yaml</span><br /><span class="code">%ProgramFiles%\Sisense\Infra\MongoDB\mongodbconfig.conf</span><br /><span class="code">%ProgramFiles%\Sisense\PrismWeb\App_Data\Configurations\db.config</span><br /><span class="bold">Note</span>: In each of the default.yaml files are the application database user credentials that the Sisense Web Application needs to access the Sisense application database. In these files, verify the values of user and password match.<br /><img src="../../Resources/Images/appusers1.png" class="thumblarge" /></li>
+            <li>Start the SisenseRepository service. Your Sisense configuration has now been migrated to the new environment.</li>
+        </ol>
+    </body>
+</html>

@@ -1,0 +1,219 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Stripe | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Stripe</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Stripe connector is a standalone connector that allows you to import data from Stripe’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Stripe APIs. To obtain a connection string, you will need to create a Stripe app.</p>
+        <p>Once you have connected to Stripe, you can import a variety of tables from the Stripe API.</p>
+        <p>This page describes how to install the Stripe connector, how to connect to Stripe with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Stripe Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the Stripe REST API</a>
+            </li>
+            <li><a href="#Adding">Adding Stripe Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Stripe">Stripe Tables</a>
+            </li>
+            <li><a href="#Versions">Versions</a>
+            </li>
+            <li><a href="#Limitati">Limitations</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Stripe Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Stripe connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Stripe connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Stripe.Connector.Installer.exe">Download</a> the Stripe installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>. <br />The Stripe connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</li>
+        </ol>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the Stripe REST API</h2>
+        <p>To access Stripe’s REST API from the <MadCap:variable name="Variables.ECM" />, you must provide valid Oauth Stripe credentials through a connection string. These credentials are provided by Stripe when you create an application.</p>
+        <p>After you receive your credentials from Stripe, you can create the connection string and provide <MadCap:variable name="Variables.CompanyName" /> with it to connect to your data.</p>
+        <h3 class="notoc">Registering an App</h3>
+        <p>Follow the steps below to obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Log into your Stripe dashboard and click <span class="bold">Your Account</span> &gt; <span class="bold">Account Settings</span> &gt; <span class="bold">Connect</span> &gt; <span class="bold">Platform Settings</span>.</li>
+            <li>Enter a name, description, and other information to be displayed to users when they log in to grant permissions to your app.</li>
+            <li>If you are making a desktop application, set the Redirect URL to http://localhost:33333 or a different port number of your choice.<br />If you are making a Web application, set the Redirect URL to a page on your Web app you would like the user to be returned to after they have authorized your application.</li>
+        </ol>
+        <h3 class="notoc"><a name="Adding"></a>Adding Stripe Tables to your ElastiCube</h3>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Stripe and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. </p>
+        <p>TThe connection string to Stripe is in the following format:</p>
+        <p class="code">jdbc:stripe:APIKey=xxxxxxxxxxxxxxxxxxxxxx;</p>
+        <p>For example:</p>
+        <p class="code">jdbc:stripe:InitiateOAuth=GETANDREFRESH;Instance=xxxxxxxxxx;OAuthClientId=xxxxxxxxxxxx;</p>
+        <p class="code">OAuthClientSecret=xxxxxxxxx;</p>
+        <p>Your Stripe connection string should include the following parameters, separated by a semicolon ';'.</p>
+        <ul>
+            <li><span class="bold">OAuthClientId</span>: Set this to the client Id in the Connect section of your account settings.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to a secret key in the API Keys section of your account settings.</li>
+            <li><span class="bold">CallbackURL</span>: Set this to the Redirect URL in the Connect section of your account settings.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property.</li>
+        </ul>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <p class="bold">To add Stripe data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Stripe</span>. The Connect to Stripe window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Stripe is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Stripe and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>.</li>
+            <li>The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc"><a name="Stripe"></a>Stripe Tables</h2>
+        <p>Stripe’s RESTful APIs expose the following Stripe tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Stripe connector:</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Accounts</td>
+                    <td>Create, update, delete, and query the Accounts you manage in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>BankAccounts</td>
+                    <td>Create, update, delete, and query the available Bank Accounts in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>BankAccountTokens</td>
+                    <td>Insert and query the available Bank Account Tokens in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Cards</td>
+                    <td>Create, update, and query the available Cards in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>CardTokens</td>
+                    <td>Create and query the available Card Tokens in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Charges</td>
+                    <td>Create, update, and query the available Charges in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Coupon</td>
+                    <td>Get and delete the available discount of a Subscription</td>
+                </tr>
+                <tr>
+                    <td>Customers</td>
+                    <td>Create, update, delete, and query the available Customers in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>CustomerDiscounts</td>
+                    <td>Get and delete the available discount of a Customer.</td>
+                </tr>
+                <tr>
+                    <td>Disputes</td>
+                    <td>Update and query the available Disputes in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Plans</td>
+                    <td>Create, update, delete, and query the available Plans in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Refunds</td>
+                    <td>Query the available refunds in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>SubscriptionDiscounts</td>
+                    <td>Get and delete the available discount of a Subscription.</td>
+                </tr>
+                <tr>
+                    <td>SubscriptionItems</td>
+                    <td>Create, update, delete, and query the available subscription items in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>TransferReversals</td>
+                    <td>Query the available categories in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Transfers</td>
+                    <td>Query the available transfers in Stripe.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Available Views</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AvailableBalance</td>
+                    <td>Query the Available Balance in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>BalanceHistory</td>
+                    <td>Query Balance History in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>CountrySpecs</td>
+                    <td>Query the available Country Specs in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Events</td>
+                    <td>Query the available events in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Orders</td>
+                    <td>Query the available orders in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>PendingBalance</td>
+                    <td>Query the available balance in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Products</td>
+                    <td>Query the available products in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>Skus</td>
+                    <td>Query the available SKUs in Stripe.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Versions"></a>Versions</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.1.57</td>
+                    <td>May 18, 2017</td>
+                    <td>New Objects supported: Coupons, CustomerDiscounts, Plans, SubscriptionDiscounts, SubscriptionItems</td>
+                </tr>
+                <tr>
+                    <td>6.6.0.37</td>
+                    <td>March 16, 2017</td>
+                    <td>General Release</td>
+                </tr>
+                <tr>
+                    <td>6.5.1.10</td>
+                    <td>December 15, 2016</td>
+                    <td>General Beta release</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc"><a name="Limitati"></a>Limitations</h3>
+        <ul>
+            <li>Not all fields can be filtered.</li>
+            <li>When a field cannot be filtered, you can not perform an accumulative build on that field.</li>
+        </ul>
+    </body>
+</html>

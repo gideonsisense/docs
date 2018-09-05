@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="2320" MadCap:lastWidth="903">
+    <head>
+        <title>Filtered Measures | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Filtered Measures</h1>
+        <p>By default, filter selections in Sisense can be defined on the dashboard or widget level. The Filtered Measure add-on makes it possible to create additional selection states. This means that you’re able to show two (or more) different sets of selections in a single widget.</p>
+        <p>This feature is useful when you want to perform comparative analysis. For example, an eCommerce agency needs to create a dashboard that provides sales analysis across years. One of the main purposes of the dashboard is to compare sales of their categories in different years. To provide side-by-side comparisons that analysts can change dynamically, you can create two different filters: Year 1, and Year 2. These filters will represent two different year selections that can be changed by the user.</p>
+        <p>The example below describes how to install the Filtered Measure add-on and implement it to an example sales analysis across multiple years.</p>
+        <p class="bold">To install the Filtered Measures add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/parameters.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\ </span>folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>In the ElastiCube Manager, duplicate the field that you want to perform a comparative analysis on. For example, duplicate the Date field within the ElastiCube to compare values for two years.<br /><img src="../../Resources/Images/duplicate.png" class="thumblarge" /></li>
+            <li>In the Sisense Web Application, add these duplicated fields created in the previous step as filters, for example, if you are using dates, you can create filters as Year 1 and Year 2.  To learn how to create filters, click here.<br /><img src="../../Resources/Images/datedate2.png" class="thumblarge" /></li>
+            <li>Create a pivot table that calculates Revenue per Category and apply the dashboard filters created in the previous step.<br /><img src="../../Resources/Images/pivot1.png" class="thumblarge" /></li>
+            <li>In the Revenue formula editor, add the Years in Date field to the formula.<br /><img src="../../Resources/Images/years.png" class="thumblarge" /></li>
+            <li>Change the name of the field to the name of the required filter (that is, the one you want to affect the value) and add ‘@’ symbol before it.<br /><img src="../../Resources/Images/rename.png" class="thumblarge" /></li>
+            <li>Rename the field with a meaningful name (for example: Year 1 Revenue).<br /><img src="../../Resources/Images/rename3.png" class="thumblarge" /></li>
+            <li>Repeat steps 5-7 for Year 2. Year 1 Revenue column is affected by the Year 1 filter and  Year 2 Revenue column is affected by the Year 2 filter.<br /><img src="../../Resources/Images/pivot3.png" class="thumblarge" /></li>
+            <li>To create a Growth calculation, simply use the following syntax:<br /><img src="../../Resources/Images/filtermeasures.png" class="thumblarge" /><br />Once you create the Growth measure, you can use it in a numeric indicator and bar chart.</li>
+        </ol>
+    </body>
+</html>

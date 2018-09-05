@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Supporting Web ElastiCube Manager in High Availability Environments </title>
+    </head>
+    <body>
+        <h1>Supporting the Web-Based ElastiCube Manager in High Availability Environments </h1>
+        <p>The web-based ElastiCube Manager works side-by-side with the desktop ElastiCube manager. The desktop ElastiCube Manager can continue to be used after upgrading to Sisense versions that support that Web-based ElastiCube Manager.</p>
+        <p>The web-based ElastiCube Manager can be used in a high availability environments, with the following limitations:</p>
+        <ol>
+            <li>The build node must include a full Sisense installation, including the web server and application database. The application database of the build node must be part of the application database replica set.</li>
+            <li>You must edit only the ElastiCube used for the build, meaning the ElastiCube that is located on the build server. You should not edit the ElastiCubes that are on the query nodes, and are part of the ElastiCube sets, because they are not used for the build process. Their data is overwritten upon the next build.</li>
+            <li>To edit ElastiCubes using the web-based ElastiCube Manager, you must access the Sisense Web Application located on the build node.</li>
+            <li>When building an ElastiCube on the build node, on the <span class="bold">Data</span> page the build progress will not be updated.  The build logs will remain on the first step, although the build will progress and complete.  To view the build status, you can use the build log files available on the build server, or check the Server Console on the build node.</li>
+            <li>If you initiate a build from the <span class="bold">Data</span> page at the same time that a build is initiated by the Orchestrator service or when a build is already in progress, one of the builds will fail. An additional build should be initiated.</li>
+        </ol>
+    </body>
+</html>

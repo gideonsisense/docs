@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1135" MadCap:lastWidth="879">
+    <head>
+        <title>Cross Origin Resource Sharing</title>
+    </head>
+    <body>
+        <h1>Cross Origin Resource Sharing</h1>
+        <p>CORS is a way to make HTTP requests from one origin to another, despite a browser’s Same-Origin policy. The Same-Origin policy prevents client-side web applications located in one domain from obtaining data from an application in a different domain. For example, when requesting resources, the browser compares the origins of the request and if they do not match, the browser returns an Access-Control-Allow-Origin error.</p>
+        <p>CORS is usually relevant if your dashboard is embedded within an iFrame on your site and your site or application attempts to access resources in the iFrame or if you make AJAX requests across origins.To work around this limitation, your browser and server use HTTP headers to define which users can request resources from Sisense. CORS is relevant when your site or application attempts to access Sisense resources such as through the Sisense API from your site or application.</p>
+        <p>Sisense supports CORS so if you are building an application requesting resources from Sisense, all you need to do is send a POST request to allow CORS and define the domains from which cross-domain requests will be made.</p>
+        <p class="bold">To enable CORS:</p>
+        <ol>
+            <li>From the Sisense REST API, send a POST request to the <span class="bold">settings/system</span> API.<br /><img src="../../Resources/Images/sysset.png" class="thumblarge" /></li>
+            <li>If you have modified the first day of the week, you need to provide your new first day of the week as the value of “<span class="bold">firstday</span>” key.</li>
+            <li>In the CORS object, set enabled to true.</li>
+            <li>In the allowedOrigins array, enter every domain from which you might make a request to Sisense.
+        <pre xml:space="preserve">"webServer": {
+ "enableSSl": true,
+ "enabled": true,
+"allowedOrigins": [
+"string"
+]}}</pre><p><span class="bold">Note</span>: When adding domains, remove any https:// prefix in your call and any ports.</p></li>
+            <li>Click Run.<br />Read more about the settings API <a href="http://developer.sisense.com/display/API2/REST+API+Reference+-+v0.9#RESTAPIReference-v0.9-Settings">here</a>. Read more about CORS <a href="https://en.wikipedia.org/wiki/Cross-origin_resource_sharing">here</a>.</li>
+        </ol>
+    </body>
+</html>

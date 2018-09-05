@@ -1,0 +1,86 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="3721" MadCap:lastWidth="676">
+    <head>
+        <title>Integrating Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Integrating Data</h1>
+        <p>
+            <span class="bold">Note</span>: The images on this page were taken in the desktop version of the <MadCap:variable name="Variables.ECM" />, however, the same principles described on this page also apply to the web-based version of the <MadCap:variable name="Variables.ECM" />.</p>
+        <p>The following examples explain how to integrate and merge data from different sources into a single <MadCap:variable name="Variables.ElastiCube" /> structure. This requires properly planning how to merge the data; to avoid creating unnecessary relationships, while avoiding many to many relationships. Examples in this section:</p>
+        <ul>
+            <li>
+                <a href="#Creating">Creating a Common Date Selection</a>
+            </li>
+            <li>
+                <a href="#Financia">Financial Reporting</a>
+            </li>
+            <li>
+                <a href="#Looking">Looking Up Values</a>
+            </li>
+        </ul>
+        <h2 class="notoc">
+            <a name="Creating">
+            </a>Creating a Common Date Selection</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>When pulling together data from multiple sources, you will have a number of different dates.  Marketing has a Campaign Date, Sales has an Opportunity Date and Finance has a GL Date.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>This type of data leaves us with three sets of dates. Modeling it properly will allow you to select from one common date field while still leaving you the option  to choose from one of the three date fields individually.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>Create a custom table that retrieves a unique list of the dates used between the three tables.</p>
+        <p>
+            <img src="../../../../Resources/Images/gl1.png" class="thumblarge" />
+        </p>
+        <p>Use the following syntax:</p>
+        <p class="code">Select [GL Date] AS [Common Date]</p>
+        <p class="code">FROM [GL Entries]</p>
+        <p class="code">Union</p>
+        <p class="code">Select [Marketing Campaign Date] AS [Common Date]</p>
+        <p class="code">FROM [Marketing Campaigns]</p>
+        <p class="code">Union</p>
+        <p class="code">Select [Opportunity Date] AS [Common Date]</p>
+        <p class="code">FROM [Sales Opportunities]</p>
+        <p>Link the four tables together:</p>
+        <p>
+            <img src="../../../../Resources/Images/gl2.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Results</h3>
+        <p>This gives us the common date field to use.  This allows, for example, to select a month that will narrow down the selections across all three tables.</p>
+        <p>&#160;</p>
+        <h2 class="notoc">
+            <a name="Financia">
+            </a>Financial Reporting</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>Transactional systems are meant for handling transactions and not for reporting and analysis. For example, Financial GL data will include all the transactions but may not include all income statement or balance sheet reporting definitions.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>This data usually resides in other data sources or tables.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>Here is what our sample GL entries look like. It is not very useful to analysis and reporting.</p>
+        <p>
+            <img src="../../../../Resources/Images/fr1.png" class="thumblarge" />
+        </p>
+        <p>Another data source is needed to help define how the data will be analyzed and reported.</p>
+        <p>Start by bringing in another Data Source that contains details about the accounts and how they are categorized:</p>
+        <p>
+            <img src="../../../../Resources/Images/fr2.png" class="thumblarge" />
+        </p>
+        <p>The two tables are linked on the account number. As there is one record in the GL Categories for multiple rows in the GL Entries, this is known as a One-to-Many Relationship.</p>
+        <p>The end results show that we can easily view the data in an organized fashion for analysis and reporting.</p>
+        <p>
+            <img src="../../../../Resources/Images/fr3.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">
+            <a name="Looking">
+            </a>Looking Up Values</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>Sometimes it is necessary to look up a value from one table and bring it into another table. For example, knowing how much a Marketing Campaign costs versus the Sales Opportunity amount.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>These two amounts typically reside in different systems. We need to look up the value from the Marketing system and bring it into the main Sales table.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>In the Sales Opportunities table, create a custom field that will allow to look up a value from the Marketing Campaigns table based on the Marketing Campaign ID. You can do this using the lookup function.</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

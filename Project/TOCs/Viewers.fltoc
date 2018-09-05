@@ -1,0 +1,79 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultToc
+  Version="1"
+  conditions="Default.Whitelabeled">
+  <TocEntry
+    Title="Dashboards and Reporting" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/Variables.htm" />
+  <TocEntry
+    Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd"></TocEntry>
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/Book_InteractingwithDashboards.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <TocEntry
+      Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd"></TocEntry>
+    <TocEntry
+      Title="Viewing Dashboards"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  </TocEntry>
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/Book_Filters.htm" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <TocEntry
+      Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Making Selections in a Widget"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Drilling Down in a Widget"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  </TocEntry>
+  <TocEntry
+    Title="[%=System.LinkedTitle%]"
+    Link="/Content/Book_Reporting.htm">
+    <TocEntry
+      Title="Overview" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Exporting Widgets" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="[%=System.LinkedTitle%]" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Creating PDF Reports"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Customizing PDF Reports"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+  </TocEntry>
+  <TocEntry
+    Title="Pulse and Alerting">
+    <TocEntry
+      Title="Overview"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Creating Data Alerts"
+      MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    <TocEntry
+      Title="Advanced Settings">
+      <TocEntry
+        Title="Overview"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd"></TocEntry>
+      <TocEntry
+        Title="Setting Notification Channels"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      <TocEntry
+        Title="Customizing Notification Messages"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      <TocEntry
+        Title="Configuring Additional Options"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    </TocEntry>
+  </TocEntry>
+</CatapultToc>

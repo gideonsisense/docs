@@ -1,0 +1,202 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Build Settings and Data Accumulation Behavior | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>ElastiCube Build Settings</h1>
+        <p>When you build your ElastiCube, data is imported from your data sources into the ElastiCube according to settings you define on the model level and on the table level.</p>
+        <p>This topic describes how data can be imported on each level and the implications of each of the ElastiCube build settings.</p>
+        <h2 class="notoc">Model Level</h2>
+        <p>On the model level, you have three choices for importing data, Replace All, By Table, and Changes Only.</p>
+        <p>
+            <img src="../../Resources/Images/buildoptions.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Replace All</h3>
+        <p>When you replace all your data on the model level, any existing data imported into your ElastiCube is overwritten and any custom tables or columns are recalculated. Sisense imports an exact copy of your data from the source. If the size of your data is large or the connection speed to the source slow, it can take a long time to build your ElastiCube.</p>
+        <p>The diagram below illustrates what happens before and after a Replace All build:</p>
+        <p>
+            <img src="../../Resources/Images/replaceall.png" class="thumblarge" />
+        </p>
+        <p>
+            <span class="bold">Note</span>: While building the ElastiCube with schema changes or entire ElastiCube builds, you can continue to run queries. In the event that the build fails, Sisense restores the original version of the ElastiCube and attempts the build again. While Sisense restores the original ElastiCube, some downtime may occur while Sisense copies the ElastiCube to your drive. The downtime is the amount of time it takes to copy the ElastiCube locally. If you require high availability for your data, Sisense provides this through ElastiCube Sets. When Sisense restores an ElastiCube a copy of the original ElastiCube is created. You should verify that your server can store multiple copies ElastiCubes until the restoration process is complete.</p>
+        <h3 class="notoc">By Table</h3>
+        <p>When you build By Table, all your data is overwritten except for tables where you have specifically defined their build behavior in the schema.</p>
+        <p>
+            <img src="../../Resources/Images/bytable.png" class="thumblarge" />
+        </p>
+        <p>This option is only displayed when a table’s build behavior has been defined in the schema. When you have customized a table’s build behavior, an icon is displayed that indicates the table’s build behavior, for example, <span class="bold">Changes Only</span> <img src="../../Resources/Images/changesonly.png" /> or <span class="bold">Append</span> <img src="../../Resources/Images/append.png" />. These icons are also described in the legend in the bottom-right corner of the schema. </p>
+        <p>In the Build Settings dialog box, you can click the table links to see which tables have been configured or are set to be overwritten.</p>
+        <p>For more information about table build behavior, see <a href="#Table">Table Level</a> below.</p>
+        <h3 class="notoc">Changes Only</h3>
+        <p>When you build by Changes Only, you build only new tables or tables that have changed since the last build. This is useful when you frequently need to refresh a large data source. For example, if you have a data source that is updated daily, rather than rebuild the entire ElastiCube daily, you can just import the new data added each day. This option can significantly reduce the amount of time it takes to complete a build.</p>
+        <p>Tables that have changed since the last build include the following:</p>
+        <ul>
+            <li>New tables that were added</li>
+            <li>Tables where columns were added or dropped</li>
+            <li>Custom tables where the expression has changed</li>
+            <li>Tables with custom columns where the expression has changed</li>
+            <li>Custom tables that have SQL expressions which reference other tables that have changed</li>
+        </ul>
+        <p>If your table meets any of the above criteria, then the table’s data is overwritten and rebuilt from scratch.</p>
+        <h2 class="notoc">
+            <a name="Table">
+            </a>Table Level</h2>
+        <p>You can define your build’s behavior per table by selecting the table’s menu &gt; <span class="bold">Build Behavior</span>, and selecting the relevant option.</p>
+        <p>
+            <img src="../../Resources/Images/tablereplace.png" class="thumblarge" />
+        </p>
+        <p>Then, when you define what type of build you want to do, select the <span class="bold">By Table</span> option.</p>
+        <p>
+            <img src="../../Resources/Images/bytable.png" class="thumblarge" />
+        </p>
+        <p>You can set the build behavior of a table to one of the following options:</p>
+        <h3 class="notoc">Replace All (Default)</h3>
+        <p>Replaces all data at the time of the build. This is recommended for dimension tables, for example: store attributes, or dimensions, which describe the objects in a fact table.</p>
+        <h3 class="notoc">Append</h3>
+        <p>Adds all the data from the source table and appends it to the existing data in the ElastiCube.</p>
+        <p>The diagram below illustrates what happens before and after an Append build:</p>
+        <p>
+            <img src="../../Resources/Images/appenddiagram.png" class="thumblarge" />
+        </p>
+        <p>On Day 2, the data taken from the source was appended onto the existing data in Sisense without ignoring any rows of data.</p>
+        <h3 class="notoc">Changes Only</h3>
+        <p>Does not import any data unless changes have occurred in the table. This is recommended with summary/snapshot fact tables and with data marts (smaller subsets of data, tailored for specific needs).</p>
+        <p>Tables that have changed since the last build include the following:</p>
+        <ul>
+            <li>New tables that were added</li>
+            <li>Tables where columns were added or dropped</li>
+            <li>Custom tables where the expression has changed</li>
+            <li>Tables with custom columns where the expression has changed</li>
+            <li>Custom tables that have SQL expressions which reference other tables that have changed</li>
+        </ul>
+        <h3 class="notoc">Accumulate By</h3>
+        <p>Adds additional rows of data incrementally to an existing table according to the data in a specified integer or date column that acts as an index. You can select a specific integer or date column that will be used to determine whether to accumulate data at the time of the build. The column acts as an index, and if the index value is greater in a subsequent build, then data is accumulated for the table. This is recommended for detailed fact tables, for example: store quantitative information for analysis.</p>
+        <p>
+            <span class="bold">Note</span>: Only date and integer columns are supported.</p>
+        <p>To select the integer or date column within a table as the parameter to accumulate by, click on the column’s menu, and then select <span class="bold">Accumulate By</span>.</p>
+        <p>
+            <img src="../../Resources/Images/accumby.png" class="thumblarge" />
+        </p>
+        <p>Accumulation behavior for integers and for dates are as follows:</p>
+        <p>When you select an integer, only source rows with a value greater than the maximum index value in the ElastiCube table will be inserted. Existing data in the ElastiCube table will not be modified or deleted.</p>
+        <p>The diagram below illustrates what happens before and after an Accumulative build:</p>
+        <p>
+            <img src="../../Resources/Images/accumdiagram.png" class="thumblarge" />
+        </p>
+        <p>On Day 2, the integer value 3 was set as an index so new rows that are less than the integer value are not added in the next build. In this case, D and E of Column 1 were excluded as 2 and 1 of the new rows are less than the index value 3.</p>
+        <h3 class="notoc">Accumulative Build Support</h3>
+        <p>Some data sources (for example, CSV files) do not support accumulating data on the column level, and in such cases data will be duplicated. The table below describes which data providers support accumulative builds and appending data to tables:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Data Source Provider</th>
+                    <th>Append to Table</th>
+                    <th>Accumulate by Column</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Oracle</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>MySQL</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>MS SQL</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>PostgreSQL</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>ODBC</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>OLEDB</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Hive</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>MS Excel</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>CSV file</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>MS Access</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Salesforce</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Google AdWords</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Google Analytics</td>
+                    <td>No</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Google Spreadsheets</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>ZenDesk</td>
+                    <td>Yes</td>
+                    <td>No</td>
+                </tr>
+                <tr>
+                    <td>Amazon Redshift</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Heroku Postgres</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>DB2</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>Teradata</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+                <tr>
+                    <td>MongoDB (ODBC)</td>
+                    <td>Yes</td>
+                    <td>Yes</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

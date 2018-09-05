@@ -1,0 +1,34 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Deleting ElastiCubes | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Deleting <MadCap:variable name="Variables.ElastiCube" />s</h1>
+        <p>When you no longer want to use an <MadCap:variable name="Variables.ElastiCube" />, you can delete the <MadCap:variable name="Variables.ElastiCube" /> from the <span class="bold">Data</span> page.</p>
+        <p>Deleting an <MadCap:variable name="Variables.ElastiCube" /> removes it from the server and the <MadCap:variable name="Variables.ElastiCube" />’s folder saved locally on your hard drive. After an <MadCap:variable name="Variables.ElastiCube" /> has been deleted, it cannot be restored.</p>
+        <p>If your <MadCap:variable name="Variables.ElastiCube" /> has any dependencies, or entities such as dashboards, that are currently connected to the <MadCap:variable name="Variables.ElastiCube" />, some of these entities will also be deleted and some you will be prompted to remap to another data source. Entities that are deleted when you delete an <MadCap:variable name="Variables.ElastiCube" /> include:</p>
+        <ul>
+            <li>Data security rules</li>
+            <li>Build alerts</li>
+            <li>Drill hierarchies</li>
+        </ul>
+        <p>Entities that are not deleted, but should be remapped to another data source include:</p>
+        <ul>
+            <li>Dashboards</li>
+            <li>Widgets (from other dashboards)</li>
+            <li>Pulse Alerts</li>
+        </ul>
+        <p>Entities that you can remap to another data source are clickable links that when clicked, display a list of all the entities that need to be remapped.</p>
+        <p>
+            <img src="../../../Resources/Images/deleteentity.png" class="thumblarge" />
+        </p>
+        <p>You can choose to remap the entities to another data source manually or select the new data source from the list on the bottom of the Delete <MadCap:variable name="Variables.ElastiCube" /> window. If you do not remap the entities, the dependencies will not work until you apply a new data source.</p>
+        <p><span class="bold">Note</span>: Any temporary folders that were saved locally during failed builds are not deleted when the ElastiCube is deleted and must be removed manually.</p>
+        <p class="bold">To delete an <MadCap:variable name="Variables.ElastiCube" />:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click <span class="bold">Data</span>.</li>
+            <li>From the menu of the relevant <MadCap:variable name="Variables.ElastiCube" />, select <span class="bold">Delete</span>.<br /><img src="../../../Resources/Images/v7delete.png" /></li>
+            <li>Click <span class="bold">Yes</span> to confirm you want to delete the <MadCap:variable name="Variables.ElastiCube" />.<br />OR<br />If you <MadCap:variable name="Variables.ElastiCube" /> has any dependencies, remap those entities to a new <MadCap:variable name="Variables.ElastiCube" /> or select None to remap them later.</li>
+        </ol>
+    </body>
+</html>

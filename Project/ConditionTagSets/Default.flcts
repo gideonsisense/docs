@@ -1,0 +1,15 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultConditionTagSet>
+  <ConditionTag
+    Comment=""
+    Name="Website"
+    BackgroundColor="Blue" />
+  <ConditionTag
+    Comment=""
+    Name="File"
+    BackgroundColor="Red" />
+  <ConditionTag
+    BackgroundColor="#008000"
+    Name="Whitelabeled"
+    Comment="" />
+</CatapultConditionTagSet>

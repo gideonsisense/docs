@@ -1,0 +1,180 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Tutorial: Getting Started with Sisense | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Tutorial: Getting Started with <MadCap:variable name="Variables.CompanyName" /></h1>
+        <h2 class="notoc">Welcome!</h2>
+        <p>In this basic tutorial, you will learn how to connect to data, and how to build your first dashboard.</p>
+        <p>The demo data in this tutorial is based on sample E-commerce data, and a common market analysis scenario will be used.</p>
+        <p>If you have already connected to data sources, you can skip this step and go directly to Step 2 – Your First Dashboard.</p>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Step 1 Connect to Data</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <h2 class="notoc"><a name="Introduc"></a>Introduction</h2>
+                <p>To work with data in Sisense you need ElastiCubes. An ElastiCube is Sisense’s proprietary analytical database, which enables you to connect multiple data sources and run complex queries in split seconds.</p>
+                <p>You can connect to databases (like SQL Server, MySql, Oracle, etc.), files (text, csv, Microsoft Access, etc.) and online web services (Google AdWords/Analytics, Salesforce, Zendesk, etc.).</p>
+                <p>In this tutorial you will create your first ElastiCube using some sample ECommerce data.</p>
+                <p>Please download the following two sample files:</p>
+                <ol>
+                    <li><a href="https://download.sisense.com/GettingStarted/GettingStartedECommerce.csv">GettingStarted ECommerce.csv</a> – A CSV file with a few hundred thousand entries.</li>
+                    <li><a href="http://download.sisense.com/Tutorials/GettingStarted/GettingStarted Brands.xlsx">GettingStarted Brands.xlsx</a> – An Excel file with data on brands sold in our ECommerce sample.</li>
+                </ol>
+                <h2 class="notoc">1. Open the ElastiCube Manager</h2>
+                <p>Look for <span class="bold">Sisense</span> in your Windows Start Menu and open it.</p>
+                <p>From the menu bar, select <span class="bold">Data </span>&gt; <span class="bold">+&#160;<MadCap:variable name="Variables.ElastiCube" /></span>.</p>
+                <p>
+                    <img src="../../Resources/Images/tutorial1.png" class="thumblarge" />
+                </p>
+                <p>Now, give your ElastiCube the name “Tutorial”:</p>
+                <p>
+                    <img src="../../Resources/Images/Tutorial2.png" class="thumblarge" />
+                </p>
+                <p>You just created an empty ElastiCube. The next step is to add some data to it.</p>
+                <h2 class="notoc">2. Add Data Sources</h2>
+                <p class="bold">Table #1 – CSV File</p>
+                <p>Import the base table, which is in the form of a CSV file. This table contains info about what kind of products have been purchased, and how much they cost.</p>
+                <ol>
+                    <li>Click <img src="../../Resources/Images/databutton.png" class="docbutton" /> and select CSV from the list:<br /><img src="../../Resources/Images/csvonline.png" class="thumblarge" /></li>
+                    <li>You will be prompted to choose how you want to upload your CSV file. Select <span class="bold">File Upload</span>.<br /><img src="../../Resources/Images/fileupload.png" class="thumblarge" /></li>
+                    <li>Drag the GettingStarted.CSV file to the Upload area or click browse and navigate to the file.<img src="../../Resources/Images/dropfiles.png" class="thumblarge" /></li>
+                    <li>After you upload the CSV file, select it from the Uploads list and click <span class="bold">Next</span>:<br /><img src="../../Resources/Images/tutoialnext.png" class="thumblarge" /></li>
+                    <li>Select the GettingStarted Ecommerce file from the Select Table list. You can preview the data inside it by clicking <img src="../../Resources/Images/v7preview8.png" class="docbutton" />. This displays some more settings you can use to customize your data, but for now, click <span class="bold">Done</span>.  <br /><img src="../../Resources/Images/previewtables.png" class="thumblarge" /></li>
+                </ol>
+                <p>Congratulations, you have connected to your first data source. You can now see the CSV file in your schema.</p>
+                <p>The name of the table in the ElastiCube defaults to the file name in this case. You can double-click the title to rename it and remove the CSV extension.</p>
+                <p>Your ElastiCube should look like this:</p>
+                <p>
+                    <img src="../../Resources/Images/tutorialcsv.png" class="thumblarge" />
+                </p>
+                <p class="bold">Table #2 – Excel File</p>
+                <p>Information about the brands that were sold in the main table exists in another table, this time in an Excel file.</p>
+                <ol>
+                    <li>Click <span class="bold">Add Data</span> and select <span class="bold">Microsoft Excel File</span> from the list.</li>
+                    <li>You will be prompted to select an Excel file. Find and select “GettingStarted Brands.xlsx”, which you  downloaded in Step 1 (you can also download the file <a href="http://download.sisense.com/Tutorials/GettingStarted/GettingStarted Brands.xlsx">here</a>).</li>
+                    <li>In the new window leave the default settings and click <span class="bold">Add</span>.</li>
+                </ol>
+                <p>Congratulations, you have now added your second table, an Excel file.</p>
+                <p>To rename the table, click the table once and select  and rename the table to “Brands”.</p>
+                <p>Your ElastiCube should look like this:</p>
+                <p>
+                    <img src="../../Resources/Images/csvexcel.png" class="thumblarge" />
+                </p>
+                <h2 class="notoc">3. Connect Different Data Sources</h2>
+                <p>So far you have added two tables from two different data sources. Now let’s see how to connect them.</p>
+                <p>In the ElastiCube, creating and deleting relationships between tables is as simple as drag and drop.</p>
+                <p>Any two fields of the same type (numeric/text/date) can be connected. In this sample, both tables have a “Brand ID” column. Let’s connect them:</p>
+                <ol>
+                    <li>Drag the Brands table onto the Ecommerce table. This opens the Relationships pane.<br /><img src="../../Resources/Images/relations.png" class="thumblarge" /></li>
+                    <li>Select <span class="bold">Brand ID</span> from both tables and click <span class="bold">Done</span>. You should now see the two tables are joined through the column Brand ID.</li>
+                </ol>
+                <h2 class="notoc">4. Build the ElastiCube</h2>
+                <p>Now that you have defined your ElastiCube, you are ready to build it. This will pull the data from the data sources into the ElastiCube.</p>
+                <p>
+                    <img src="../../Resources/Images/brands.png" class="thumblarge" />
+                </p>
+                <ol>
+                    <li>Click Build in the top menu.<br /><img src="../../Resources/Images/build.png" class="thumblarge" /></li>
+                    <li>The build will start. You will see the progress at the bottom of the ElastiCube Manager window. Wait for the build to finish:<br /><img src="../../Resources/Images/buildlog.png" class="thumblarge" /></li>
+                </ol>
+                <p>Congratulations! You have successfully built your first ElastiCube.</p>
+                <h2 class="notoc">5. Dashboard Time!</h2>
+                <p>Click Analytics in the top menu to open the Sisense Web Application and create a new dashboard.<br /><img src="../../Resources/Images/analytics.png" class="thumblarge" /></p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Step 2 – Your first Dashboard</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <p>Welcome to Step 2 of the Sisense tutorial. In Step 1 – Connect to Data of this tutorial, you connected to data and built your first ElastiCube. Now, you are ready to jump right into creating your first dashboard.</p>
+                <p>Although it is recommended to complete Step 1 in advance, you can jump right into Step 2 if you wish.</p>
+                <p>If you’re arriving directly from Step 1, you should already be in the process of creating a new dashboard after clicking Analytics in the top menu of Sisense:</p>
+                <p>
+                    <img src="../../Resources/Images/createdash.png" class="thumblarge" />
+                </p>
+                <h2 class="notoc">Introduction</h2>
+                <p>The Sisense Web application is designed to let business users easily create powerful and meaningful dashboards, without being a developer or data scientist.</p>
+                <p>To get a feel for the process, Sisense has put together this tutorial which shows you how to do a quick market analysis to identify what products are meeting customers’ needs, and in which markets. You will use appropriate visualizations to create a dashboard that provides answers to four questions:</p>
+                <ol>
+                    <li><span class="bold">Sales Trend</span>: Is annual revenue increasing?</li>
+                    <li><span class="bold">Optimal Product Mix</span>: What product lines should we grow?</li>
+                    <li><span class="bold">Segmentation</span>: Which customer segments should we develop?</li>
+                    <li><span class="bold">Market Size and Growth</span>: Where are our best markets located?</li>
+                </ol>
+                <p>To make things interesting, your data set is based on sales and customer data from an E-commerce site.</p>
+                <h2 class="notoc">1 – Create a New Dashboard</h2>
+                <ol>
+                    <li>Click <span class="bold">+</span> to create a new dashboard on the <span class="bold">Analytics</span> page.<br /><img src="../../Resources/Images/createdash.png" class="thumblarge" /></li>
+                    <li>In the <span class="bold">Data Set </span>field, select the ElastiCube to which you want to connect. If you’ve completed <a href="#Introduc">Step 1 – Connect to Data</a>, select ‘Tutorial’ in the Data Set field, otherwise choose ‘Sample ECommerce’.</li>
+                    <li>A default title name matching the ElastiCube name will be given to the dashboard. Feel free to change it.<br /><img src="../../Resources/Images/Tutorialcreate.png" class="thumblarge" /></li>
+                    <li>Click <span class="bold">Create</span>.<br />Now that you have a dashboard, you can start adding widgets to it.</li>
+                </ol>
+                <h2 class="notoc">2 – Create Your First Widget: Sales Trends</h2>
+                <p>Create your first widget to get a general idea of your sales performance.</p>
+                <ol>
+                    <li>Click Select Data on the left side of the screen:<br /><img src="../../Resources/Images/newwidget5.png" class="thumblarge" /></li>
+                    <li>A list of available fields will be displayed grouped according to the table they belong to. This window is called ‘Data Browser’, and lets you easily find the fields available in your ElastiCube. Select the ‘Revenue’ field:<br /><img src="../../Resources/Images/revenue.png" class="thumblarge" /></li>
+                </ol>
+                <p>Now you immediately get a ready made widget that shows you all revenue to date. We call this kind of widget an “Indicator”.</p>
+                <p>But to understand revenue over time, add a time field to the mix:</p>
+                <ol>
+                    <li>Click <span class="bold">+ Add More Data</span>:<br /><img src="../../Resources/Images/newwidget6.png" class="thumblarge" /></li>
+                    <li>In the data browser, hover over the <span class="bold">Date</span> field and click <span class="bold">More…</span> Then select <span class="bold">Quarters</span>:<br /><img src="../../Resources/Images/datemore.png" class="thumblarge" /></li>
+                    <li>Click <span class="bold">Create</span> to add the line chart widget to the dashboard.<br />The revenue trend is also positive showing annual growth, so now go ahead and explore what’s driving this growth. It would be interesting to uncover profitable product categories.</li>
+                </ol>
+                <h2 class="notoc">3 – Create a Scatter Chart to See Cost and Revenue</h2>
+                <p>Now try to understand the interaction of cost and revenue to discover the most profitable product lines.</p>
+                <ol>
+                    <li>On the top of the dashboard click <img src="../../Resources/Images/widgetbutton.png" class="docbutton" />.</li>
+                    <li>Click <span class="bold">Select Data</span> and select the ‘Category’ field.</li>
+                    <li>Click <span class="bold">Add More Data</span> and select the ‘Revenue’ field.</li>
+                    <li>Click Add More Data again and this time hover over the ‘Cost’ field and click <span class="bold">More… &gt; Average</span>.</li>
+                    <li>Now select the scatter chart icon <img src="../../Resources/Images/scattericon.png" />from the widget buttons on the left, and click <span class="bold">Create</span>.<br /><img src="../../Resources/Images/scatterplot.png" class="thumblarge" /><br />It’s simple to see that product categories on the right generate the most revenue and those products in the lower left have the lowest cost and revenue. Hover over each scatter point to see the category behind it, to discover that Cell Phones and PDAs generate most of the revenue.<br />You now understand which product lines to sell, but to get a complete view of your market, you need to identify optimal customer segments to target in each market – start by creating segments based on age.</li>
+                </ol>
+                <h2 class="notoc">4 – Creating Pie Charts to Visualize Customer Segmentation</h2>
+                <ol>
+                    <li>On the top of the dashboard, click <span class="bold">New Widget</span>.</li>
+                    <li>Click <span class="bold">Select Data</span> and select the ‘Age Range’ field.</li>
+                    <li>Click <span class="bold">Add Data</span> and select  the ‘Revenue’ field.</li>
+                    <li>Now select the pie chart icon <img src="../../Resources/Images/piecharticon.png" class="docbutton" /> from the widget buttons on the left, and click <span class="bold">Create</span>.<br /><img src="../../Resources/Images/piechart.png" class="thumblarge" /><br />You can clearly see that customers between the ages of 65+ are the most valuable in terms of the revenue they generate. This insight can be used to focus advertising budgets and develop unique campaigns to grow these customer segments. Now, you can turn your attention to identifying which markets are growing at the quickest rate.</li>
+                </ol>
+                <h2 class="notoc">5 – Creating a Map to See Market Growth</h2>
+                <p>Before you focus on growth, you should focus on a specific year first, by adding a filter.</p>
+                <p>The <span class="bold">Filter</span> panel on the right of the dashboards lets you add dynamic filters to the dashboard.</p>
+                <ol>
+                    <li>Click <span class="bold">Filter Your Dashboard</span> on the right side of the dashboard.</li>
+                    <li>In the Data Browser, click on the <span class="bold">Date</span> field.</li>
+                    <li>Click the multi/single selection button <img src="../../Resources/Images/selectutton.png" /> to make it a single selection filter.</li>
+                    <li>Leave only 2013 selected, and click <span class="bold">OK</span>.<br /><img src="../../Resources/Images/tutorialfilter.png" class="thumblarge" /><br />Your dashboard is now filtered to show data only for the year 2013.<br />Now create a map:</li>
+                    <li>Click <img src="../../Resources/Images/widgetbutton.png" class="docbutton" /> at the top of the dashboard.</li>
+                    <li>Click <span class="bold">Select Data</span> and select the <span class="bold">Country</span> field.</li>
+                    <li>Click <span class="bold">Add More Dat</span>a again and select the <span class="bold">Revenue</span> field.</li>
+                    <li>Click on the scatter map button type <img src="../../Resources/Images/mapicon.png" />on the left.<br />Now you see a map, where the biggest circles represent the countries with the highest revenue. But if you want to concentrate on the markets with the biggest growth in revenue, its easy:<br /></li>
+                    <li>Hover and click to open the menu of the Total Revenue field and select <span class="bold">Quick Functions &gt; % Change Over Time &gt; Growth</span>.<br /><img src="../../Resources/Images/mapfilters.png" class="thumblarge" /></li>
+                    <li>Click <span class="bold">Create</span>.<br />Now the biggest circles on the map represent countries with highest growth. You can see for example that the United States is very hot right now. You can use this information to focus resources as well as further analyze these markets to understand revenue drivers.</li>
+                </ol>
+                <h2 class="notoc">6 – Rearrange the Widgets in the Dashboard</h2>
+                <p>You can rearrange the dashboard by dragging and dropping, and resizing the widgets. Dragging one widget on top of another splits the area in the dashboard and allocates space for both widgets.</p>
+                <p>See this animation to get a feeling of how to rearrange widgets:<br /><img src="../../Resources/Images/Rearrange.gif" /><br /></p>
+                <p>Go ahead and rearrange your dashboard however you see fit.</p>
+                <p>You can now easily see all four visualizations showing sales trends, product mix, customer segments and fast growing markets. You can explore and drill into the details to get further insight.</p>
+                <h2 class="notoc">7 – Filtering and Drill Downs</h2>
+                <p>In our pie chart we can clearly see that our strongest age range is 65+. Let’s explore this age range a little more:</p>
+                <ol>
+                    <li>Click the 65+ slice in the pie chart.</li>
+                    <li>As a result, a new filter is added to the filter panel on the right, and the entire dashboard is now filtered to focus on this age range.</li>
+                    <li>Taking a look at the updated scatter chart, you can see that Monitors are by far the most revenue generating category for this age range.</li>
+                    <li>Right-click the 65+ slice in the pie chart and select <span class="bold">Drill Into…</span> from the menu.</li>
+                    <li>A Data Browser will pop up, letting you select any field to drill into. Click on the <span class="bold">Brand</span> field.</li>
+                    <li>You can now  see which brands contribute the most to the revenue of your selected age range.<br />You can make direct selections by dragging the mouse over the points that interest you in the scatter and line charts as well.</li>
+                </ol>
+                <h2 class="notoc">8 – So What Did We See Here?</h2>
+                <p>The dashboard you created enables you to interactively analyze three market priorities – where to sell, what to sell and who to sell to. More importantly it makes it simple to see the interaction of product categories, client segments and revenue, to optimize marketing and sales activities and track performance targets.</p>
+                <p>This was just a quick glimpse of what you can do. Now it’s time to start exploring on your own.</p>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+    </body>
+</html>

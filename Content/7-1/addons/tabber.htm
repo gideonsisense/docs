@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Tabber | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Tabber</h1>
+        <p>The Tabber add-on creates a new widget that allows you to switch between views easily and quickly without changing the dashboard.</p>
+        <p>Tabber Widget can be used to view data in different time zone (Current Month , Last Month) or to view data in different categories (Revenues, Sales,Orders ).</p>
+        <p>
+            <b>
+                <img src="../../Resources/Images/tabber1.png" class="thumblarge" />
+            </b>
+        </p>
+        <p>This widget is designed to be used only once per dashboard.</p>
+        <p>
+            <span class="bold">Note</span>: The Tabber add-on does not support saving the Tabber state after refreshes or filter changes.</p>
+        <p class="bold">To install the Tabber add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/tabber.zip">Download</a> the attachment and unzip the contents into your <span class="bold">C:\Program Files\Sisense\PrismWeb\plugins\</span> folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>In the Sisense Web Application, create a new widget. The Tabber widget is displayed in the list of options.<br /><img src="../../Resources/Images/tabber2.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Apply</span> to create the widget.</li>
+            <li>Open the script editor of the Tabber widget.<br /><img src="../../Resources/Images/editscript.png" class="thumblarge" /></li>
+            <li>Paste the following code into the script editor.</li>
+        </ol>
+        <pre xml:space="preserve">widget.on('render',function(w, e){e.prefixText = '';
+			e.suffixText = '';
+			e.selectedColor = '#86b817'; /*The color of the chosen title*/
+			e.fontColor = '#cccccc'; /*The color of the unchosen titles*/
+			e.elementWidth = '103%';
+			e.descColor = '#a5a5a5';
+			e.parentMarginLeft = '-15px';
+			e.height = 32; /* affects the tabber widget default high*/
+			});
+widget.tabs = [{title: "Column Chart", displayWidgetIds : ["55797a9459ef031011000032"],
+			hideWidgetIds : ["557d408a4630ccdc11000019"]},
+			{title: "Table", displayWidgetIds : ["557d408a4630ccdc11000019"],
+			hideWidgetIds : ["55797a9459ef031011000032"]}
+		];</pre>
+        <ol start="6">
+            <li>Each row represents a different tab. The order of the tabs is according to the rows as the appear in the code.<br /><span class="bold">displayWidgetIds</span>: Within the [] , write all the widgets ID’s you wish to display under the specific tab in “”, separated by comma.<br /><span class="bold">hideWidgetIds</span>: In the [] write all the widgets ID’s you wish to hide from the specific tab in “”, separated by comma. The widget ID appears in the widget URL. You can view the URL when editing a widget. The widget ID is displayed at the end of the widget URL, for example: http://localhost:8081/app/main#/dashboards/55797a3542f03101100002c/widgets/55797a9459ef031011000032. The widget ID is: 55797a9459ef031011000032.<br />You can change the Tabber design such as the font color. See the available options as comments in the code example above.</li>
+            <li>Click <span class="bold">Save</span> and close the window.</li>
+            <li>Refresh the widget and click <span class="bold">Apply</span>.</li>
+            <li>To place multiple widgets under one tab, copy the JavaScript code below into the script editor at the end of your script and save the changes:<br /><span class="code">widget.tabsConfig = 'multiply'</span></li>
+        </ol>
+    </body>
+</html>

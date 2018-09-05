@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="510" MadCap:lastWidth="949">
+    <head>
+        <title>Limiting Access to the Application Database | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Limiting Access to the Application Database</h1>
+        <p>For security reasons, by default, access to application database from outside of localhost (127.0.0.1) is prevented.</p>
+        <p>If you need to access the application database from an IP address other than localhost, you can add the IP address of that server to the <MadCap:variable name="Variables.CompanyName" /> MongoDB configuration file, which contains a list of all servers allowed to access the application database. The <MadCap:variable name="Variables.CompanyName" /> MongoDB configuration file, mongodb.conf, is located in the following directory</p>
+        <p class="code">…\Program Files\Sisense\Infra\MongoDB\</p>
+        <p>To allow external IP addresses to access your application database, add the IP addresses in this format  [127.0.0.1, XX.XX.XX.X] as the value of bindIp, or change it to 0.0.0.0 to enable connections from any IP.</p>
+        <p class="code">net:</p>
+        <p class="code">bindIp: [127.0.0.1, XX.XX.XX.XX]</p>
+        <p>
+            <span class="bold">Note</span>: The value of bindIp has been changed from an array to a string. As a string, the IP addresses should be separated by a comma with no space in between. In addition, the only IP addresses to be included in the string as 127.0.0.1 and the public IP of your local server.</p>
+    </body>
+</html>

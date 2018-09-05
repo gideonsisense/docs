@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1358" MadCap:lastWidth="903">
+    <head>
+        <title>Comments | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Comments</h1>
+        <p>The Sisense Comments add-on enables you to add a comment box within the Sisense dashboard using the iFrame widget.  Comment boxes provide a platform for annotation and social collaboration allowing viewers to discuss your visualizations.</p>
+        <p>
+            <img src="../../Resources/Images/comments1.png" class="thumblarge" />
+        </p>
+        <p>This article describes how you can embed a simple 3rd party Comment Box tool by Bawks, but there are many other options available if other features are needed (log ins, more advanced moderator support, etc.).</p>
+        <p>
+            <span class="bold">Note</span>: The comments in this example are hosted on a 3rd party site.  If you require comments to be hosted internally, another script/tool may be used.</p>
+        <p class="bold">To set up the Comments add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/iFrameWidget.zip">Download</a> the attachment and unzip the contents into your C<span class="bold">:\Program Files\Sisense\PrismWeb\plugins\ </span>folder. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Restart the IIS.<br />If you installed IIS express when installing Sisense: Restart the service PrismWebExpress<br />If you installed IIS when installing Sisense: Open the Command Prompt, type <span class="bold">iisreset</span> and click <span class="bold">Enter</span>.</li>
+            <li>Set up a free HTML Comments Box Account. You can sign in with an existing Google account <a href="http://www.htmlcommentbox.com/">here</a> to set up a free comments box.  You may of course use another tool, but the setup may be slightly different.</li>
+            <li>Copy the script given on the page once you have signed up.  There are additional options available by clicking the options tab (these include several styling and metadata options), but this article describes the default options.</li>
+            <li>Right-click this link, <a href="http://download.sisense.com/Product/addons/Comments.html">Comments.html</a>, and select <span class="bold">Save Link As </span>to download the comments page and save it to the folder C:\Program Files\Sisense\PrismWeb.</li>
+            <li>Using a text editor like Notepad ++, open the Comments.html file.</li>
+            <li>Locate the following line:<br /><span class="code">&lt;!– INSERT SCRIPT HERE –&gt;</span><br />and replace this line with the script you copied from Step 4 and save the file.</li>
+            <li>Open the Sisense dashboard you want to add the Comments box to.  Create a new widget and click <span class="bold">Advanced configuration</span>.</li>
+            <li>From the Widgets list, select the iFrame widget.<br /><img src="../../Resources/Images/iframe1.png" class="thumblarge" /></li>
+            <li>On the right side of the page, in the <span class="bold">IFRAME URL</span> field, enter <span class="bold">/Comments.html</span>.</li>
+            <li>Click <span class="bold">Apply</span>. An iFrame widget with the Comments add-on is displayed in your dashboard.</li>
+        </ol>
+    </body>
+</html>

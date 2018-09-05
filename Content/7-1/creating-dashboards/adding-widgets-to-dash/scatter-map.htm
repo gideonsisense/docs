@@ -1,0 +1,59 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2545" MadCap:lastWidth="647">
+    <head>
+        <title>Scatter Map | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Scatter Map</h1>
+        <p>Scatter Maps allow you to visualize geographical data as data points on a map.</p>
+        <p>The map distinguishes data using different colors and sizes for the data points on the map.</p>
+        <p>
+            <img src="../../../Resources/Images/scattermap-768x390.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Adding Data</h2>
+        <p>In the <span class="bold">Location</span> panel, you can add any field(s) that contain geographic data, and the map will find the most appropriate point. Supported Location types:</p>
+        <ul>
+            <li>Country</li>
+            <li>City</li>
+            <li>State/Province</li>
+            <li>Latitude/Longitude (for example: 37.5601, -122.50131, but not 37.5601° N, 122.50131° W).</li>
+        </ul>
+        <p>For example, if you have a country field, using it by itself will visualize the countries on the map.</p>
+        <p>If instead you have a city field, using it will visualize the cities on the map automatically.</p>
+        <h3 class="notoc">Improving Geographic Accuracy</h3>
+        <p class="bold">Use multiple geographic fields</p>
+        <p>To improve accuracy, it is recommended to use more than one geographic level. For example, if you have both a country and a city field, add both of them to the <span class="bold">Location</span> panel.</p>
+        <p class="bold">Define the location type</p>
+        <p>Clicking on the geographic field’s menu will present a location type sub-menu, which contains the following options:</p>
+        <ul>
+            <li>Auto</li>
+            <li>Country</li>
+            <li>State/Province</li>
+            <li>City</li>
+        </ul>
+        <p>
+            <img src="../../../Resources/Images/scatter-map_autolocation1.png" class="thumblargeli" />
+        </p>
+        <p>By default, <span class="bold">Auto</span> is always selected. This option always tries to figure out which fits best. For better accuracy, you can specify the appropriate location type.</p>
+        <h3 class="notoc">Using Latitude and Longitude data</h3>
+        <p>To visualize latitude and longitude data, you have to add one field containing latitude data, and another field containing longitude data, in this order.</p>
+        <p class="bold">Color</p>
+        <p>Select a numeric field here to color the scatter points on the map according to their value and color rule.</p>
+        <p>The value of the field is displayed in the tooltip of the scatter point on the map. Hover over the point to see it.</p>
+        <p class="bold">Size</p>
+        <p>Select a numeric field here to make the size of the scatter points on the map relative to their value in the field’s value range.</p>
+        <p class="bold">Details</p>
+        <p>You can select additional data (numeric or descriptive) that will appear when hovering over the data point in the map.</p>
+        <p>
+            <img src="../../../Resources/Images/scatter-new1.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Designing the Scatter Map</h2>
+        <p>Fine-tune the appearance of the Scatter Map Widget, using the following tools.</p>
+        <ul>
+            <li>
+                <span class="bold">Marker Style</span>: Choose between various marker styles.<br /><img src="../../../Resources/Images/marker-style.png" /></li>
+            <li>
+                <span class="bold">Marker Size</span>: Select the relative size for the markers.<br /><img src="../../../Resources/Images/marker-size.png" /><br />When the Size has a field in it, the slider has two levers controlling the minimum and maximum size of the points.<br /><img src="../../../Resources/Images/marker-size-dual.png" /></li>
+        </ul>
+    </body>
+</html>

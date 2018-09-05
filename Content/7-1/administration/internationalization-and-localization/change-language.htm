@@ -1,0 +1,66 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="4302" MadCap:lastWidth="774">
+    <head>
+        <title>Changing the Sisense Web Application’s Language | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Changing the <MadCap:variable name="Variables.Sisense Web Application" />’s Language</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> supports multiple languages in the <MadCap:variable name="Variables.Sisense Web Application" /> making it easier to extract meaningful insights from your data in your users’ local language.</p>
+        <p>The following images display two interfaces, one in English and the other in Spanish.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="../../../Resources/Images/Siengdash.png" class="thumblarge" />
+                    </td>
+                    <td>
+                        <img src="../../../Resources/Images/SiESdash.png" class="thumblarge" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>Spanish</td>
+                </tr>
+            </tbody>
+        </table>
+        <h2 class="notoc">What has been Translated?</h2>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> has translated text that your users might see including menu names, buttons, messages, and other elements in the <MadCap:variable name="Variables.Sisense Web Application" />. Translating the <MadCap:variable name="Variables.Sisense Web Application" /> does not affect your data or how it is displayed.</p>
+        <p>The <MadCap:variable name="Variables.Sisense Web Application" /> has been localized to the following languages:</p>
+        <ul>
+            <li>Chinese (Simple)</li>
+            <li>French (France)</li>
+            <li>German</li>
+            <li>Italian</li>
+            <li>Japanese</li>
+            <li>Portuguese (BR)</li>
+            <li>Russian</li>
+            <li>Spanish (ES)</li>
+            <li>Spanish (LA)</li>
+            <li>Dutch</li>
+        </ul>
+        <p>Note, the following content is not being localized:</p>
+        <ul>
+            <li>Built-in Javascript editor</li>
+            <li>
+                <MadCap:variable name="Variables.ECM" /> and Server Console</li>
+            <li>
+                <MadCap:variable name="Variables.CompanyName" /> documentation and online help</li>
+            <li>REST API and documentation</li>
+            <li>
+                <MadCap:variable name="Variables.CompanyName" /> automated emails</li>
+        </ul>
+        <span class="bold">Note</span>: You can use your own translation of <MadCap:variable name="Variables.CompanyName" /> automated emails by defining your own. Click here for more information.<h2 class="notoc">Changing <MadCap:variable name="Variables.CompanyName" />’s Default Language</h2><p>Administrators can select the default language for the <MadCap:variable name="Variables.Sisense Web Application" />. Setting the default language affects all users and groups who access the <MadCap:variable name="Variables.CompanyName" /> dashboard. Additionally, Administrators can then set the language for specific groups and users when adding new users or by editing a group or user account.</p><p>After selecting a new language, each string with a translation is displayed in that language across all your <MadCap:variable name="Variables.CompanyName" /> users’ interfaces.</p><p>If you have defined a custom translation, the name of the language as defined in the settings.json is displayed in this list. See <a href="#Embeddin">Embedding Custom Languages</a> below for more information.</p><p><MadCap:variable name="Variables.CompanyName" />’s default language is English. After changing the system language, you can revert back to the English or any other language by selecting it from the list.</p><p class="bold">To modify your default language:</p><ol><li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click <span class="bold">Admin</span> in the top menu, and then <span class="bold">Settings</span> in the left menu.</li><li>Select the relevant language from the Language list. After selecting the language, the UI is immediately translated.</li><li>Click <span class="bold">Save</span>. The <MadCap:variable name="Variables.Sisense Web Application" /> is translated in the selected language.</li></ol><h2 class="notoc"><a name="Embeddin"></a>Embedding Customized Languages</h2><p><MadCap:variable name="Variables.CompanyName" /> enables you to display your own translations in the <MadCap:variable name="Variables.Sisense Web Application" /> by replacing the values of strings in any language you choose.</p><p>You can embed customized languages by modifying configuration and resource files replacing the string values according to your requirements.</p><p>For example, in the homepage of the <MadCap:variable name="Variables.Sisense Web Application" />, the word “Explore” is displayed. In the resource file home.js, you can modify the value of this string to display your own text as shown below.</p><table style="width: 100%;"><col /><col /><tbody><tr><td><img src="../../../Resources/Images/internatex1.png" class="thumblarge" /></td><td><p><![CDATA[	
+]]></p><pre xml:space="preserve">"welcome_user": "Welcome",
+"explore": {
+"explore": "Explore",
+"learn": "Learn &amp; find new tips &amp; tricks",
+"links": {</pre></td></tr><tr><td><img src="../../../Resources/Images/internatex2.png" class="thumblarge" /></td><td><pre xml:space="preserve">"welcome_user": "Welcome",
+"explore": {
+"explore": "TEST",
+"learn": "Learn &amp; find new tips &amp; tricks",
+"links": {</pre></td></tr></tbody></table><p>In addition to modifying the resource files, you must modify the settings.json file and specify your language’s name and update the version. In this example, the language has been changed to “test” and the version increased from 1.0.0 to 1.0.1.</p><p class="code">{ “displayName”: “test”, “version”: “1.0.1” }</p><p>The value of “displayName” is displayed as your language’s name in Default Language list on the System Configuration page. In the example below, the displayed was set to Test.</p>Upgrading <MadCap:variable name="Variables.CompanyName" /> may replace the bundled translation files. If you wish to modify a bundled language, copy of all of the translation files to a new directory, and change the copied versions to prevent your translation from being overwritten.<p class="bold">To customize the <MadCap:variable name="Variables.Sisense Web Application" />’s language:</p><ol><li>Navigate to the directory “…\Sisense\PrismWeb\translations\”</li><li>In the \translations directory, copy the <span class="bold">en-us(default)</span> directory, paste it in the \translation directory and rename it.</li><li>In the new directory, open each resource file and translate the strings into the desired language saving each file after your changes are made.</li><li>Open the settings.json file and replace the following key values:<br /><span class="bold">displayName</span>: Enter the name of the language.<br /><span class="bold">version</span>: Enter the name of the new version. Currently, the version is 1.0.0. For each version, increase this value, for example, 1.0.1.</li><li>Save the changes in a file called settings.json in your new language folder.</li><li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click Admin in the top menu, and then Settings in the left menu.</li><li>Select your customized translation from the Language list. The <MadCap:variable name="Variables.Sisense Web Application" /> is displayed in your customized translation.</li><li>Click <span class="bold">Save</span>.</li></ol></body>
+</html>

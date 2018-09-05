@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Oracle | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Oracle</h1>
+        <p><span class="bold">Note:</span>&#160;This topic describes how to import data using the online <MadCap:variable name="Variables.Sisense Web Application" />. To import data through the desktop <MadCap:variable name="Variables.ECM" />, click <a href="oracle.htm">here</a>. </p>
+        <p>The  <MadCap:variable name="Variables.ECM" />  enables easy and quick access to databases, tables and views contained within Oracle databases. The steps below describe how to connect to this type of data source.</p>
+        <p class="bold">To import data from Oracle:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page of <MadCap:variable name="Variables.ECM" />, open an <MadCap:variable name="Variables.ElastiCube" /> or create a new <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>In the <MadCap:variable name="Variables.ElastiCube" />, click <img src="../../../Resources/Images/v7databutton.png" class="docbutton" />. The Add Data dialog box is displayed.<br /><img src="../../../Resources/Images/oraclesettings.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Oracle Database</span> to open the Oracle settings.<br /><img src="../../../Resources/Images/v7oracle.png" class="thumblarge" /></li>
+            <li>Enter the following details:</li>
+            <ul>
+                <li><span class="bold">Location</span>: Enter the computer/server IP address of the database. To connect to a database running on your own computer enter <span class="bold">localhost</span>.</li>
+                <li>
+                    <p>If Windows Authentication is configured with the database in the <span class="bold">User Name</span> and <span class="bold">Password</span> fields, enter your database credentials.</p>
+                </li>
+                <li>
+                    <p><span class="bold">Use Direct Connection</span>: You can also use a direct connection to connect. Select <span class="bold">Use Direct Connection</span>. You will need to enter the <span class="bold">Service ID</span> and <span class="bold">Port</span> number to connect.</p>
+                </li>
+                <li>
+                    <p><span class="bold">Service ID</span>:  Enter your Service ID. This can be found in the TNSNAmes.ora file. You can find a full description in the following topic: <a href="http://www.orafaq.com/wiki/Tnsnames.ora">Service ID</a>.</p>
+                </li>
+                <li>
+                    <p>Note that in the file for each tnsname, you can find the service ID and service name.</p>
+                </li>
+                <li>
+                    <p><span class="bold">User name and Password</span>: Either use your Windows login details if they are configured with the database, or alternatively enter the username and password to connect to the database.</p>
+                </li>
+            </ul>
+            <li>Click <img src="../../../Resources/Images/v7next.png" class="docbutton" />. A list of tables in the database are displayed. All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/TableSettings.png" class="thumblarge" /></li>
+        </ol>
+        <ol start="6">
+            <li>
+                <p>From the Tables list, select the relevant table or view you want to work with. You can click  <img src="../../../Resources/Images/previewtable.png" class="docbutton" /> next to the relevant table or view to see a preview of the data inside it. When you select the table or view, two new options are displayed at the bottom of the list, <span class="bold">Import Relationships</span> and <span class="bold">Add Custom Import SQL</span>.</p>
+            </li>
+            <li>
+                <p>(Optional) By default, existing relationships between tables are automatically replicated in the <MadCap:variable name="Variables.ElastiCube" />. You can disable this by toggling the <span class="bold">Import Relationships</span> switch.</p>
+            </li>
+            <li>
+                <p>(Optional) Click + to customize the data you want to import with SQL. See <a href="import-custom.htm">Importing Data with Custom Queries</a> for more information.</p>
+            </li>
+            <li>
+                <p>After you have selected all the relevant tables, click <span class="bold">Done</span>. The tables are added to your schema in the <MadCap:variable name="Variables.ECM" />.</p>
+            </li>
+        </ol>
+    </body>
+</html>

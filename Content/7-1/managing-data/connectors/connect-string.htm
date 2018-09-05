@@ -1,0 +1,246 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="5659" MadCap:lastWidth="1177">
+    <head>
+        <title>Connection String Parameters | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connection String Parameters</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to some data sources and import data into the <MadCap:variable name="Variables.ECM" />.</p>
+        <p>Connection strings have the following structure:</p>
+        <p class="code">jdbc:DataSourceName:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of a Exact connection string:</p>
+        <p class="code">jdbc:exactonline:OAuthClientId=xxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxx;Region=’United States’;Division=xxxx;InitiateOAuth=GETANDREFRESH;OAuthCallbackURL=localhost:12345;</p>
+        <p>This page lists the mandatory and optional parameters required by the data source you want to connect to. Mandatory parameters must be defined and included in your connection string whereas optional parameters are only recommended by <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>In addition, some parameters are required by specific data sources. You can view these parameters by clicking the relevant link below:</p>
+        <p>
+            <a href="#Exact">Exact</a>
+        </p>
+        <p>
+            <a href="#Facebook">Facebook</a>
+        </p>
+        <p>
+            <a href="#HubSpot">HubSpot</a>
+        </p>
+        <p>
+            <a href="#Quickboo">Quickbooks Online</a>
+        </p>
+        <p>
+            <a href="#ServiceN">ServiceNow</a>
+        </p>
+        <p>
+            <a href="#Xero">Xero</a>
+        </p>
+        <p>
+            <a href="#YouTube">YouTube Analytics</a>
+        </p>
+        <h2 class="notoc">Mandatory Properties</h2>
+        <ul>
+            <li>
+                <span class="bold">OAuthClientId</span>: The client ID assigned when you register your application with an OAuth authorization server.</li>
+            <li>
+                <span class="bold">OAuthClientSecret</span>: Set this to the App Secret in your app settings.</li>
+            <li>
+                <span class="bold">CallbackURL</span>: The OAuth callback URL to return to when authenticating. This value must match the callback URL you specify in your app settings. Set this to http://localhost.</li>
+            <li>
+                <span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property.</li>
+            <li>
+                <span class="bold">Timeout</span>: The value in seconds until the timeout error is thrown, cancelling the operation. Set to 0 to disable time outs.</li>
+        </ul>
+        <h2 class="notoc">Optional Parameters</h2>
+        <ul>
+            <li>
+                <span class="bold">OAuthSettingsLocation</span>: The location of the settings file where OAuth values are saved for each user when InitiateOAuth is set to GETANDREFRESH. See <a href="#Switchin">Switching between Accounts</a>.</li>
+            <li>
+                <span class="bold">Logfile</span>: Creates a log file. The value of this parameter is the location on your drive where the log file is to be created. To determine how much detail is included in the log file, see the parameter Verbosity below.</li>
+            <li>
+                <span class="bold">Verbosity</span>: The verbosity level that determines the amount of detail included in the log file. Set the verbosity from 1 – 5.<ul><li>1 will log the query, the number of rows returned by it, the start of execution and the time taken, and any errors.</li><li>2 will log everything included in Verbosity 1, cache queries, and HTTP headers.</li><li>3 will additionally log the body of the HTTP requests.</li><li>4 will additionally log transport-level communication with the data source. This includes SSL negotiation.</li><li>5 will additionally log communication with the data source and additional details that may be helpful in troubleshooting problems. This includes interface commands.</li></ul></li>
+        </ul>
+        <h3 class="notoc">
+            <a name="Switchin">
+            </a>Switching between Accounts</h3>
+        <p>When you connect to the Facebook data source, <MadCap:variable name="Variables.CompanyName" /> saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\Facebook Data Provider on your <MadCap:variable name="Variables.CompanyName" /> server. To connect to the Facebook data source with another user on the same machine, you must delete the OAuthsettings.txt file. <MadCap:variable name="Variables.CompanyName" /> will then generate a new file for that user.</p>
+        <p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the <span class="bold">OAuthSettingsLocation</span> parameter. When each user connects to the data source, <MadCap:variable name="Variables.CompanyName" /> generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the Facebook data source and for each user, Sisense generates a file that contains that user’s OAuth values in the location defined in the string.</p>
+        <p class="code">jdbc:facebook:<span class="bold">OAuthSettingsLocation=C:\facebook\auth\john.txt</span>;OAuthClientId=11276856774486;OAuthClientSecret</p>
+        <p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p class="code">jdbc:facebook:<span class="bold">OAuthSettingsLocation=C:\facebook\auth\sally.txt</span>;OAuthClientId=11276856774486;OAuthClientSecret</p>
+        <p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\facebook\auth\.</p>
+        <p>This is useful if you support many users who each need to access the Facebook data source.</p>
+        <h2 class="notoc">Data Source Parameters</h2>
+        <p>This section lists parameters that are required to be inside connection strings</p>
+        <h3 class="notoc">
+            <a name="Exact">
+            </a>Exact</h3>
+        <ul>
+            <li>
+                <span class="bold">Region</span>: Set this to the region of the Exact Online service you want to connect to.</li>
+            <li>
+                <span class="bold">Division</span>: Set this to the division of the Exact Online administration.</li>
+        </ul>
+        <p>The following is an example of an Exact connection string:</p>
+        <p class="code">jdbc:exactonline:OAuthClientId=xxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxx;Region=’United States’;Division=xxxx;InitiateOAuth=GETANDREFRESH;OAuthCallbackURL=localhost:12345;</p>
+        <h3 class="notoc">
+            <a name="Facebook">
+            </a>Facebook</h3>
+        <p class="bold">Rate Limitations</p>
+        <ul>
+            <li>
+                <span class="bold">ThrottleSeconds</span>: Indicates how many seconds to wait until sending another insight request when the ThrottleMaxPercent has been met.</li>
+            <li>
+                <span class="bold">ThrottleMaxPercent</span>: The threshold set for throttling further insight requests. The defaults for ThrottleSeconds and ThrottleMaxPercent are 10 and 95.</li>
+            <li>
+                <span class="bold">RetryWaitTime</span>: The amount of time in milliseconds to wait before retrying to query the Facebook API.</li>
+            <li>
+                <span class="bold">MaximumRequestRetries</span>: The maximum amount of request retries.</li>
+        </ul>
+        <p>The following is an example of a Facebook connection string:</p>
+        <p class="code">jdbc:facebook:OAuthClientId=xxxxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxxxxxxxxx;</p>
+        <p class="code">InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;Timeout=0;</p>
+        <p class="bold">Optional Parameters</p>
+        <ul>
+            <li>
+                <span class="bold">Aggregate Format</span>: The format aggregate or collection columns should return in.</li>
+            <li>
+                <span class="bold">Authenticate As Page</span>: The name or Id of a page to authenticate as when making requests to Facebook.</li>
+            <li>
+                <span class="bold">Auto Cache</span>: The AutoCache property controls automatic caching of data.</li>
+            <li>
+                <span class="bold">Cache Connection</span>: The connection string for the cache database.</li>
+            <li>
+                <span class="bold">Cache Driver</span>: The database driver to be used to cache data.</li>
+            <li>
+                <span class="bold">Cache Location</span>: Specifies the path to the cache when caching to a file.</li>
+            <li>
+                <span class="bold">Cache Metadata</span>: Whether or not to cache the table metadata. The cache will be stored in memory unless CacheConnection or CacheLocation are set.</li>
+            <li>
+                <span class="bold">Callback URL</span>: The OAuth callback URL to return to when authenticating. This value must match the callback URL you specify in your app settings.</li>
+            <li>
+                <span class="bold">Firewall Password</span>: A password, if authentication is required to connect through a firewall.</li>
+            <li>
+                <span class="bold">Firewall Port</span>: The TCP port for the firewall FirewallServer — see the description of the FirewallServer option for details.</li>
+            <li>
+                <span class="bold">Firewall Server</span>: Specify a firewall name or IP address to authenticate requested connections, if necessary.</li>
+            <li>
+                <span class="bold">Firewall Type</span>: The type of firewall to connect through.</li>
+            <li>
+                <span class="bold">Firewall User</span>: The user name to authenticate with the firewall.</li>
+            <li>
+                <span class="bold">Initiate OAuth</span>: Set this property to initiate the process to obtain or refresh the OAuth access token when you connect.</li>
+            <li>
+                <span class="bold">Location</span>: A path to the directory that contains the schema files defining tables, views, and stored procedures.</li>
+            <li>
+                <span class="bold">Logfile</span>: A path to the log file.</li>
+            <li>
+                <span class="bold">Max Log File Size</span>: A string specifying the maximum size in bytes for a log file (ex: 10MB). When the limit is hit, a new log is created in the same folder with the date and time appended to the end.</li>
+            <li>
+                <span class="bold">OAuth Access Token</span>: The access token for connecting using OAuth.</li>
+            <li>
+                <span class="bold">OAuth Client Id</span>: The client Id assigned when you register your application with an OAuth authorization server.</li>
+            <li>
+                <span class="bold">OAuth Client Secret</span>: The client secret assigned when you register your application with an OAuth authorization server.</li>
+            <li>
+                <span class="bold">OAuth Settings Location</span>: The location of the settings file where OAuth values are saved when InitiateOAuth is set to GETANDREFRESH or REFRESH.</li>
+            <li>
+                <span class="bold">Offline</span>:Use offline mode to get the data from the cache instead of the live source.</li>
+            <li>
+                <span class="bold">Other</span>: The other parameters necessary to connect to a data source, such as username and password, when applicable.</li>
+            <li>
+                <span class="bold">Pagesize</span>: The maximum number of results to return per page from Facebook.</li>
+            <li>
+                <span class="bold">Proxy Auth</span>: Scheme The proxy server authorization scheme (default: BASIC).</li>
+            <li>
+                <span class="bold">Proxy Auto Detect</span>: This indicates whether to use the default system proxy settings or not. Set ProxyAutoDetect to FALSE to use custom proxy settings. This takes precedence over other proxy settings.</li>
+            <li>
+                <span class="bold">Proxy Password</span>: A password, if authenticating with a proxy server.</li>
+            <li>
+                <span class="bold">Proxy Port</span>: The TCP port for the proxy ProxyServer (default: 80).</li>
+            <li>
+                <span class="bold">Proxy Server</span>: If a proxy server is given, then the HTTP request is sent to the proxy instead of the specified server.</li>
+            <li>
+                <span class="bold">Proxy SSL Type</span>: The SSL type to use when connecting to the proxy server (default: AUTO).</li>
+            <li>
+                <span class="bold">Proxy User</span>: A user name, if authentication is to be used for the proxy.</li>
+            <li>
+                <span class="bold">Pseudo Columns</span>: Indicates whether or not to include pseudo columns as columns to the table.</li>
+            <li>
+                <span class="bold">Query Cach</span>e: The time duration, in seconds, for which the in-memory cached data is reused.</li>
+            <li>
+                <span class="bold">Readonly</span>: You can use this property to enforce read-only access to Facebook from the provider.</li>
+            <li>
+                <span class="bold">RTK</span>: The runtime key used for licensing.</li>
+            <li>
+                <span class="bold">Search Terms</span>: Default SearchTerms if none are specified. Used for some tables, such as Users, where SearchTerms may be specified.</li>
+            <li>
+                <span class="bold">SSL Server Cert</span>: The certificate to be accepted from the server when connecting using TLS/SSL.</li>
+            <li>
+                <span class="bold">Support Enhanced SQL</span>: If set to true, the provider will cache the entire table in memory and issue the current query against the memory cache. Allows queries with aggregate functions that are otherwise unsupported. The entire memory cache is discarded after the query is executed, unlike QueryCache.</li>
+            <li>
+                <span class="bold">Tables</span>: Comma-separated list of tables to be listed. For example: Tables=TableA,TableB,TableC.</li>
+            <li>
+                <span class="bold">Target</span>: A default target if none is specified. Used for some tables, such as Comments, where a target may be specified.</li>
+            <li>
+                <span class="bold">Timeout</span>:The value in seconds until the timeout error is thrown, canceling the operation.</li>
+            <li>
+                <span class="bold">Verbosity</span>: The verbosity level that determines the amount of detail included in the log file.</li>
+            <li>
+                <span class="bold">Version</span>: The Facebook Graph API version to use.</li>
+        </ul>
+        <h3 class="notoc">
+            <a name="HubSpot">
+            </a>HubSpot</h3>
+        <ul>
+            <li>
+                <span class="bold">HubId</span>: Set this to the Hub Id of the HubSpot account you are connecting to.</li>
+        </ul>
+        <p>The following is an example of a HubSpot connection string:</p>
+        <p class="code">jdbc:hubspot:OAuthClientId=xxxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxxxxxxx;InitiateOAuth=GETANDREFRESH;</p>
+        <p class="code">HubId=xxxxxxxxx;CallbackURL=https://localhost;Timeout=0;</p>
+        <h3 class="notoc">
+            <a name="Quickboo">
+            </a>Quickbooks Online</h3>
+        <ul>
+            <li>
+                <span class="bold">CompanyId</span>: Set this to the ID of the company you want to connect to.</li>
+        </ul>
+        <p>The following is an example of a Quickbooks Online connection string:</p>
+        <p class="code">jdbc:quickbooksonline:OAuthClientId=xxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxx;CompanyId=xxxxxxxxxxxxxx;</p>
+        <p class="code">CallbackURL=http://localhost/;InitiateOAuth=GETANDREFRESH;Timeout=0;</p>
+        <h3 class="notoc">
+            <a name="ServiceN">
+            </a>ServiceNow</h3>
+        <ul>
+            <li>
+                <span class="bold">Password</span>: Set this to your password.</li>
+            <li>
+                <span class="bold">Username</span>: Set this to your username.</li>
+            <li>
+                <span class="bold">Instance</span>: Set this to your instance.</li>
+        </ul>
+        <p>The following is an example of a ServiceNow connection string:</p>
+        <p class="code">jdbc:servicenow:InitiateOAuth=GETANDREFRESH;Instance=xxxxxxxxxx;OAuthClientId=xxxxxxxxxxxx;</p>
+        <p class="code">OAuthClientSecret=xxxxxxxxx;Username=xxxxxxxxxx;Password=xxxxxxxxxxxxxxx;</p>
+        <h3 class="notoc">
+            <a name="Xero">
+            </a>Xero</h3>
+        <ul>
+            <li>
+                <span class="bold">XeroAppAuthentication</span>: Set this to the type of your application. Allowed values: PUBLIC or PARTNER. Default: PUBLIC.</li>
+        </ul>
+        <p>The following is an example of a Xero connection string:</p>
+        <p class="code">jdbc:xero:OAuthclientId=xxxxxxxxxxxxx;OAuthClientSecret=xxxxxxxxxxxxx;</p>
+        <p class="code">InitiateOAuth=GETANDREFRESH;XeroAppAuthentication=PUBLIC;</p>
+        <h3 class="notoc">
+            <a name="YouTube">
+            </a>YouTube Analytics</h3>
+        <ul>
+            <li>
+                <span class="bold">ChannelId</span>: Set this to the YouTube Analytics Channel (Profile). This can be set to the Id of the channel. If not specified, MINE will be used.</li>
+            <li>
+                <span class="bold">ContentOwnerId</span>: Set this to the Id of the content owner.</li>
+        </ul>
+        <p>The following is an example of a YouTube Analytics connection string:</p>
+        <p class="code">jdbc:youtubeanalytics:OAuthClientId=xxxxxxxxxxxxxxxxxxxxx;</p>
+        <p class="code">OAuthClientSecret=xxxxxxxxxxxxxx;InitiateOAuth=GETANDREFRESH;CallbackURL=http://localhost;</p>
+    </body>
+</html>

@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="7" MadCap:lastHeight="1740" MadCap:lastWidth="680">
+    <head>
+        <title>Connecting to Oracle | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Oracle</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to databases, tables and views contained within Oracle databases. The steps below describe how to connect to this type of data source.</p>
+        <ol>
+            <li>Click <span class="bold">Add data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the Database servers category, select Oracle Database.<br /><img src="../../../Resources/Images/add-oracle.png" class="thumblarge" /></li>
+            <li>You are prompted to enter the following information:</li>
+            <ul>
+                <li>
+                    <span class="bold">Database server location</span>: Enter the computer/server IP address with the database. To connect to a database running on your own computer, type in localhost.</li>
+                <li>
+                    <span class="bold">Login details</span>: Either use your Windows login details if they are configured with the database, or alternatively enter the username and password to connect to the database.</li>
+                <li>
+                    <span class="bold">Use Direct Connection</span>: You can also use a direct connection to connect. You will need to enter the Service ID and Port number to connect.<ul><li>As long as you choose to work in direct mode to Oracle (this can be defined in the Oracle provider wizard), no client software needs to be installed. If you want to work with an already installed Oracle client, you can use the indirect mode, which assumes you have the Oracle client already installed.</li><li>Service ID can be found in the TNSNAmes.ora file. You can find a full description in the following topic: Service ID</li><li>Note that in the file for each tnsname, you can find the service ID and service name.</li></ul></li>
+            </ul>
+            <li>Click <span class="bold">Connect to Server</span>.</li>
+            <li>A list of available databases will appear in the list box below.<br /><img src="../../../Resources/Images/oracle.png" class="thumblarge" /></li>
+            <li>Select the relevant database you want to work with and click <span class="bold">OK</span>.
+            All tables and views associated with the database will appear in a new window. To view a preview of data contained in a particular table, highlight the table or view in the list and in click the preview pane below. To preview the table, select the <span class="bold">Preview</span> checkbox.<br /><img src="../../../Resources/Images/oracle2.png" class="thumblarge" /></li>
+            <li>Select the check box next to each table or view you want to use.</li>
+            <li>If you want to customize the data before importing it into the ElastiCube, you can run a custom SQL query to manipulate the data. This can be useful, for example, when you want to import only a portion of the data, rather than all of the data. <a href="using-sql.htm">Click here</a> to learn more.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+    </body>
+</html>

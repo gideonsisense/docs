@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Creating Dependent Filters | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating Dependent Filters</h1>
+        <p>This topic describes dependent filters.</p>
+        <p>Dependent Filters combine multiple dashboard filters into a hierarchy of dependent filters that affect each other from parent, to child, to grandchild and so on. When you filter the parent filter, fewer options will be available in the child filter.</p>
+        <p class="bold">Example Use Case</p>
+        <p>The following example shows how using a dependent filter helps you easily focus information in a dashboard.</p>
+        <p>This example describes an online travel agency with 250,000 hotels in its database. An agent wants to find a specific hotel, but does not remember its name. To narrow the results, the agent can define a dependent filter. This dependent filter is comprised of four sub-dependent filters defined with the following hierarchy:</p>
+        <p>
+            <img src="../../../../Resources/Images/funnel1.png" class="thumblarge" />
+        </p>
+        <p>&#160;</p>
+        <ul>
+            <li><span class="bold">Destination</span>: Displays a list of States and Countries. In this example, the agent will select the Destination Florida.</li>
+            <li><span class="bold">City</span>: Because Florida was selected, only Destinations in Florida are displayed in the child filter, such as: Miami, Orlando and Tampa. In this example, the agent will select the City Orlando.</li>
+            <li><span class="bold">Resort</span>: Because Orlando was selected, only resorts in Orlando are displayed in the grandchild filter, such as Floridays, Buena Vista, Walt Disney World. In this example, the agent will select the Walt Disney World resort.</li>
+            <li><span class="bold">Hotel</span>: Because Walt Disney World was selected, only the Hotels in Walt Disney World are displayed in the great-grandchild filter.</li>
+        </ul><span class="bold">Note</span>: By default, filters are not dependent. Dependent Filters can be defined only from selection type filters.<p class="bold">To define a Dashboard Dependent Filter:</p><ol><li>The top level (most inclusive) filter of the Dependent Filter must first be defined in the usual manner (see <a href="create-dashboard-filter.htm">Creating Dashboard Filters</a>). This newly added filter then appears on the dashboard.<br /><img src="../../../../Resources/Images/depend.png" class="thumblarge" /></li><li>On the parent filter, click + or click  <img src="../../../../Resources/Images/MENUIcon.png" class="docbutton" />→  <span class="bold">Add a dependent filter</span>.</li><li>Define the child filter in the usual manner (see <a href="create-dashboard-filter.htm">Creating Dashboard Filters</a>). The number of available options for selection in the child filter are less because of the selections in the parent filter. The child filter appears on the dashboard with a down arrow indicating the dependent filter and its parent above.<br /><img src="../../../../Resources/Images/DEPFIL2.png" class="thumblarge" /></li><li>Repeat this step for each new child filter to create as many sub-levels of Dependent Filters as you need.</li></ol></body>
+</html>

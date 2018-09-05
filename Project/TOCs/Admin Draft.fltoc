@@ -1,0 +1,226 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultToc
+  Version="1">
+  <TocEntry
+    Title="New Book 1">
+    <TocEntry
+      Title="Administration"
+      Link="/Content/7-1/administration/admin-overview.htm">
+      <TocEntry
+        Title="Admin"
+        Link="/Content/7-1/administration/admin-overview.htm"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      <TocEntry
+        Title="Application Database"
+        Link="/Content/7-1/administration/application-database/sisense-application-database.htm">
+        <TocEntry
+          Title="Accessing the Sisense Application Database"
+          Link="/Content/7-1/administration/application-database/access-sisense-application-database.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Enabling SSL for the Application Database"
+          Link="/Content/7-1/administration/application-database/enable-ssl-application-database.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Hosting the Application Database"
+          Link="/Content/7-1/administration/application-database/host-application-database.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Creating a KeyFile"
+          Link="/Content/7-1/administration/application-database/key-file.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Limiting Access to the Application Database"
+          Link="/Content/7-1/administration/application-database/limiting-access-to-application-database.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Sisense Application Database"
+          Link="/Content/7-1/administration/application-database/sisense-application-database.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="Defining Security and Access Settings">
+        <TocEntry
+          Title="Assigning Security Rights"
+          Link="/Content/7-1/administration/defining-security-and-access-settings/assign-security-rights.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Data Security"
+          Link="/Content/7-1/administration/defining-security-and-access-settings/data-security.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Security at Sisense"
+          Link="/Content/7-1/administration/defining-security-and-access-settings/security.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Optional Security Hardening for Sisense Web Pages"
+          Link="/Content/7-1/administration/defining-security-and-access-settings/security-hardening.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Sisense Security Architecture"
+          Link="/Content/7-1/administration/defining-security-and-access-settings/security-overview.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Setting Up SSL"
+          Link="/Content/7-1/administration/defining-security-and-access-settings/set-ssl.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="ElastiCube Management">
+        <TocEntry
+          Title="Managing Data Sources"
+          Link="/Content/7-1/administration/elasticube-management/data-source-management.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Querying ElastiCubes during Builds"
+          Link="/Content/7-1/administration/high-availability-in-sisense/ecubeset.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Adding and Removing ElastiCube Servers"
+          Link="/Content/7-1/administration/elasticube-management/manage-elasticube.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Sharing ElastiCubes"
+          Link="/Content/7-1/administration/elasticube-management/share-elasticube.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="Embedded Analytics">
+        <TocEntry
+          Title="Embedding Sisense">
+          <TocEntry
+            Title="Embedding Dashboards and Widgets"
+            Link="/Content/7-1/administration/embedded-analytics/embedding-sisense/embed-sisense.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        </TocEntry>
+        <TocEntry
+          Title="Rebranding Sisense">
+          <TocEntry
+            Title="Displaying Custom URLs"
+            Link="/Content/7-1/administration/embedded-analytics/rebranding-sisense/display-custom-url.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+          <TocEntry
+            Title="Rebranding Sisense Automated Emails"
+            Link="/Content/7-1/administration/embedded-analytics/rebranding-sisense/rebrand-auto.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+          <TocEntry
+            Title="White Labeling Sisense"
+            Link="/Content/7-1/administration/embedded-analytics/rebranding-sisense/white-label.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        </TocEntry>
+        <TocEntry
+          Title="Embedded Analytics"
+          Link="/Content/7-1/administration/embedded-analytics/embed-overview.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="High Availability in Sisense">
+        <TocEntry
+          Title="High Availability in Sisense"
+          Link="/Content/7-1/administration/high-availability-in-sisense/high-availability.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Replicating the Application Database"
+          Link="/Content/7-1/administration/high-availability-in-sisense/replica-sets.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Routing Queries in ElastiCube Sets"
+          Link="/Content/7-1/administration/high-availability-in-sisense/route-queries.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="Internationalization and Localization">
+        <TocEntry
+          Title="Changing the Sisense Web Application’s Language"
+          Link="/Content/7-1/administration/internationalization-and-localization/change-language.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Internationalization and Localization"
+          Link="/Content/7-1/administration/internationalization-and-localization/international-locale.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Translating Sisense Metadata"
+          Link="/Content/7-1/administration/internationalization-and-localization/translate-metadata.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="System Settings">
+        <TocEntry
+          Title="Managing Drill Hierarchies"
+          Link="/Content/7-1/administration/elasticube-management/manage-drill-hiearchy.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Sisense Narratives"
+          Link="/Content/7-1/content/narratives.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Setting Up a Custom Email Server"
+          Link="/Content/7-1/administration/system-settings/setup-custom-email.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="System Configuration"
+          Link="/Content/7-1/administration/system-settings/system-configuration.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="System Settings"
+          Link="/Content/7-1/administration/system-settings/system-settings.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="User Management">
+        <TocEntry
+          Title="Single Sign On (SSO)"
+          Link="/Content/7-1/administration/user-management/single-sign-on/introduction-sso.htm">
+          <TocEntry
+            Title="Introduction to SSO"
+            Link="/Content/7-1/administration/user-management/single-sign-on/introduction-sso.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+          <TocEntry
+            Title="SSO via JWT"
+            Link="/Content/7-1/administration/user-management/single-sign-on/sso-jwt.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+          <TocEntry
+            Title="SSO via SAML 2.0"
+            Link="/Content/7-1/administration/user-management/single-sign-on/sso-saml.htm"
+            MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        </TocEntry>
+        <TocEntry
+          Title="Customizing User Roles"
+          Link="/Content/7-1/administration/user-management/custom-user-roles.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Integrating Active Directory"
+          Link="/Content/7-1/administration/user-management/integrate-active-directory.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Managing Dashboard Users"
+          Link="/Content/7-1/administration/user-management/manage-dashboard-user.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Managing User Groups"
+          Link="/Content/7-1/administration/user-management/manage-user-group.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Managing User Sessions"
+          Link="/Content/7-1/administration/user-management/manage-user-session.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+        <TocEntry
+          Title="Managing Sisense Users"
+          Link="/Content/7-1/administration/user-management/user-overview.htm"
+          MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      </TocEntry>
+      <TocEntry
+        Title="Data Source Management"
+        Link="/Content/7-1/administration/data-source-mgmt.htm"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      <TocEntry
+        Title="Managing Plug-ins"
+        Link="/Content/7-1/administration/manage-plugin.htm"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+      <TocEntry
+        Title="Migrating Sisense across Environments"
+        Link="/Content/7-1/administration/migrate-sisense.htm"
+        MadCap:generatedToc="true" xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" />
+    </TocEntry>
+  </TocEntry>
+</CatapultToc>

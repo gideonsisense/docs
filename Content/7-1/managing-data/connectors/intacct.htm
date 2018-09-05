@@ -1,0 +1,249 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Inacct  | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Intacct</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Intacct connector is a standalone connector that allows you to import data from Intacct into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who want to connect to Intacct.</p>
+        <p>Once you have connected to Intacct, you can import a variety of tables from the Intacct API.</p>
+        <p>This page describes how to install the Intacct connector, how to connect to Intacct with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Intacct Connector</a>
+            </li>
+            <li><a href="#Adding">Adding Intacct Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Intacct">Intacct Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Intacct Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Intacct connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Intacct connector:</p>
+        <ol>
+            <li>Contact us for the Intacct installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The Intacct connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <h2 class="notoc"><a name="Adding"></a>Adding Intacct Tables to Your <MadCap:variable name="Variables.ElastiCube" /></h2>
+        <p>After you have installed the Intacct connector, you can import your data from Intacct by connecting with a connection string. The connection string contains your Intacct users credentials. Intacct uses the connection string to authenticate your account and allow you to extract the relevant data for your account.</p>
+        <p>The connection string to Intacct is in the following format:</p>
+        <p class="code">jdbc:Intacct:APIKey=xxxxxxxxxxxxxxxxxxxxxx;</p>
+        <p>For example:</p>
+        <p class="code">jdbc:intacct:User=’myusername’;CompanyID=’TestCompany’;Password=’mypassword’;SenderID=’Test’;SenderPassword=’abcde123′;</p>
+        <p>Your Intacct connection string should include the following parameters, separated by a semicolon ';'.</p>
+        <ul>
+            <li><span class="bold">User</span>: You Intacct username.</li>
+            <li><span class="bold">CompanyID</span>: Your company’s Intacct ID used when you log in.</li>
+            <li><span class="bold">Password</span>: Your Intacct user password.</li>
+            <li><span class="bold">SenderID</span>: The Web Services SenderID assigned to you by Intacct.</li>
+        </ul>
+        <p>To connect to a shared child company, add your LocationID parameter to the connection string. To connect to a distributed child company, add your ClientID parameter to the connection string.</p>
+        <p class="bold">To add Intacct data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Intacct</span>. The Connect to Intacct window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Intacct is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Intacct and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h2 class="notoc"><a name="Intacct"></a>Intacct Tables</h2>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Intacct connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <h3 class="notoc">Available Tables</h3>
+        <ul>
+            <li>AcctRange</li>
+            <li>ACHBank</li>
+            <li>ActivityLog</li>
+            <li>Aisle</li>
+            <li>Allocation</li>
+            <li>APAccountLabel</li>
+            <li>APAdjustment</li>
+            <li>APBill</li>
+            <li>APBillBatch</li>
+            <li>APPymt</li>
+            <li>APRecurBill</li>
+            <li>APTerm</li>
+            <li>ARAccountLabel</li>
+            <li>ARAdjustment</li>
+            <li>ARInvoice</li>
+            <li>ARInvoiceBatch</li>
+            <li>ARPaymentBatch</li>
+            <li>ARTerm</li>
+            <li>Attendee</li>
+            <li>Billing_Contact</li>
+            <li>Bin</li>
+            <li>BudgetHeader</li>
+            <li>CheckingAccount</li>
+            <li>Class</li>
+            <li>ClassGroup</li>
+            <li>Comments</li>
+            <li>Contact</li>
+            <li>CreditCard</li>
+            <li>Customer</li>
+            <li>CustomerEmailTemplate</li>
+            <li>CustomerGroup</li>
+            <li>CustomerVisibility</li>
+            <li>CustType</li>
+            <li>Department</li>
+            <li>DepartmentGroup</li>
+            <li>EEarningType</li>
+            <li>EAccountLabel</li>
+            <li>EExpenses</li>
+            <li>EmailTemplate</li>
+            <li>Employee</li>
+            <li>EmployeeEntityContacts</li>
+            <li>EmployeeGroup</li>
+            <li>EmployeeOutOfOffice</li>
+            <li>EmployeePositionSkill</li>
+            <li>EmployeeRate</li>
+            <li>EmployeeType</li>
+            <li>ExchangeRate</li>
+            <li>ExchangeRateTypes</li>
+            <li>ExpenseAdjustments</li>
+            <li>ExpensePaymentType</li>
+            <li>GAAPAdjJrnl</li>
+            <li>GLAccount</li>
+            <li>GLAcctGrp</li>
+            <li>GLAcctGrpMember</li>
+            <li>GLBatch</li>
+            <li>GLBudget</li>
+            <li>GLCoaCatMember</li>
+            <li>GLCompGrpMember</li>
+            <li>ICRow</li>
+            <li>InvDocument</li>
+            <li>InvDocumentParams</li>
+            <li>InvPriceList</li>
+            <li>Item</li>
+            <li>ItemGroup</li>
+            <li>ItemTaxGroup</li>
+            <li>Journal</li>
+            <li>Location</li>
+            <li>LocationGroup</li>
+            <li>Misc_Supporting_Document</li>
+            <li>OutOfOffice</li>
+            <li>PODocument</li>
+            <li>PODocumentParams</li>
+            <li>POPriceList</li>
+            <li>PositionSkill</li>
+            <li>ProductLine</li>
+            <li>Project</li>
+            <li>ProjectGroup</li>
+            <li>ProjectResources</li>
+            <li>ProjectStatus</li>
+            <li>ProjectTransactionRule</li>
+            <li>ProjectType</li>
+            <li>RecurGLBatch</li>
+            <li>RenewalMacro</li>
+            <li>ReportingPeriod</li>
+            <li>RevRecTemplate</li>
+            <li>RevRecTemplMilestone</li>
+            <li>SavingsAccount</li>
+            <li>Seminar</li>
+            <li>Seminar_Package</li>
+            <li>Seminar_Registration</li>
+            <li>SODocument</li>
+            <li>SODocumentParams</li>
+            <li>SOPriceList</li>
+            <li>StatAccount</li>
+            <li>StatJournal</li>
+            <li>STKitDocument</li>
+            <li>Task</li>
+            <li>TaskResources</li>
+            <li>TaxGroup</li>
+            <li>TerritoryGroup</li>
+            <li>Timesheet</li>
+            <li>TimeType</li>
+            <li>TransactionRule</li>
+            <li>TransactionRuleDetail</li>
+            <li>TrxCurrencies</li>
+            <li>UoM</li>
+            <li>UserAdjJrnl</li>
+            <li>UserInfo</li>
+            <li>UserRoles</li>
+            <li>Vendor</li>
+            <li>VendorGroup</li>
+            <li>VendorVisibility</li>
+            <li>VendType</li>
+            <li>Warehouse</li>
+        </ul>
+        <h3 class="notoc">Available Views</h3>
+        <ul>
+            <li>AllocationEntry</li>
+            <li>APAdjustmentItem</li>
+            <li>APBillItem</li>
+            <li>APBillPayment</li>
+            <li>APIUsageDetail</li>
+            <li>APIUsageSummary</li>
+            <li>APPayment</li>
+            <li>APPaymentItem</li>
+            <li>APPaymentRequest</li>
+            <li>APRecurBillEntry</li>
+            <li>ARAdjustmentItem</li>
+            <li>ARInvoiceItem</li>
+            <li>ARPayment</li>
+            <li>ARPaymentItem</li>
+            <li>ARRecurInvoice</li>
+            <li>ARRecurInvoiceEntry</li>
+            <li>BankFee</li>
+            <li>BankFeeEntry</li>
+            <li>BillingSchedule</li>
+            <li>CCTransaction</li>
+            <li>CCTransactionEntry</li>
+            <li>ChargePayoff</li>
+            <li>ChargePayoffEntry</li>
+            <li>CNSAcctBal</li>
+            <li>Company</li>
+            <li>CreditCardFee</li>
+            <li>CreditCardFeeEntry</li>
+            <li>DDSJob</li>
+            <li>Deposit</li>
+            <li>DepositEntry</li>
+            <li>EExpensesItem</li>
+            <li>EExpensesPayment</li>
+            <li>EPPayment</li>
+            <li>EPPaymentItem</li>
+            <li>EPPaymentRequest</li>
+            <li>ExchangeRateEntry</li>
+            <li>ExpenseAdjustmentsItem</li>
+            <li>FundsTransfer</li>
+            <li>FundsTransferEntry</li>
+            <li>GLAccountBalance</li>
+            <li>GLAcctGrpHierarchy</li>
+            <li>GLDetail</li>
+            <li>GLEntry</li>
+            <li>GLResolve</li>
+            <li>InvDocumentEntry</li>
+            <li>InvDocumentSubtotals</li>
+            <li>InvoiceRun</li>
+            <li>InvPriceListEntry</li>
+            <li>InvRecurSubtotals</li>
+            <li>ItemComponent</li>
+            <li>OtherReceipts</li>
+            <li>OtherReceiptsEntry</li>
+            <li>PODocumentEntry</li>
+            <li>PODocumentSubtotals</li>
+            <li>POPriceListEntry</li>
+            <li>PORecurSubtotals</li>
+            <li>PSADocumentEntry</li>
+            <li>RecurDocumentEntry</li>
+            <li>RecurGLEntry</li>
+            <li>RevRecChangeLog</li>
+            <li>RevRecSchedule</li>
+            <li>RevRecScheduleEntry</li>
+            <li>RevRecScheduleEntryTask</li>
+            <li>SODocumentEntry</li>
+            <li>SODocumentSubtotals</li>
+            <li>SOPriceListEntry</li>
+            <li>SORecurDocument</li>
+            <li>SORecurSubtotals</li>
+            <li>STKitDocumentEntry</li>
+            <li>TerritoryGrpMember</li>
+            <li>TimesheetEntry</li>
+            <li>TransTmplBatch</li>
+            <li>TransTmplEntry</li>
+            <li>UoMDetail</li>
+            <li>UserRights</li>
+            <li>WfpmPaymentRequest</li>
+        </ul>
+    </body>
+</html>

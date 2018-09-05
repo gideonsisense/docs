@@ -1,0 +1,84 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Creating Dashboards | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating Dashboards</h1>
+        <p>This topic describes how to create a new dashboard. </p>
+        <p>There are two ways you can create dashboards, first, through the <MadCap:variable name="Variables.Sisense Web Application" />, and the second, through the <MadCap:variable name="Variables.CompanyName" /> REST API.</p>
+        <p>The difference between these two methods is the <MadCap:variable name="Variables.Sisense Web Application" /> provides an interface where you populate the dashboard with widgets.</p>
+        <p>To create a dashboard through the REST API, you define the dashboard and then populate it with widgets that already exist through their widget IDs.</p>
+        <h2 class="notoc">Creating a Dashboard</h2>
+        <p>Each Dashboard is based on the data selected from one or more <MadCap:variable name="Variables.ElastiCube" />s or data sets. The instructions below assume that the required <MadCap:variable name="Variables.ElastiCube" />(s) and data set(s) have already been created. You can also use the sample <MadCap:variable name="Variables.ElastiCube" />s that are installed with <MadCap:variable name="Variables.CompanyName" /> if you have not yet created your own.</p>
+        <p class="bold">To create a dashboard:</p>
+        <ol>
+            <li>In the <span class="bold">Analytics</span> page, click <span class="bold">+</span> above the Dashboards list.<br />OR<br />Right-click on the folder menu and select <span class="bold">New Dashboard</span>.<br /><img src="../../Resources/Images/v7newdash1.png" class="thumblarge" /><br />The following window appears:<br /><img src="../../Resources/Images/v7sampledash.png" class="thumblarge" /></li>
+            <li>Click the name of the <span class="bold">Data Set</span> displayed to select the <MadCap:variable name="Variables.ElastiCube" /> or data set you want to work with. <MadCap:variable name="Variables.ElastiCube" />s have the <img src="../../Resources/Images/ecubeicon.png" /> next to their name while data sets have the <img src="../../Resources/Images/liveiconnew.png" /> icon next to their name.</li>
+            <li>Click the name of the <span class="bold">Title</span>, and enter a name for the dashboard. This name will appear at the top of the dashboard, and in the <span class="bold">Dashboards</span> list.</li>
+            <li>Click <span class="bold">Create</span>.<br />You are then automatically guided through the process of creating your first widget in the Widget Wizard, as described in <a href="adding-widgets-to-dash/add-widget-to-dash.htm">Adding Widgets to a Dashboard</a>.</li>
+        </ol>
+        <p>&#160;</p>
+        <h2 class="notoc">Creating Dashboards through the REST API</h2>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> REST API enables you to programmatically create dashboards by defining the basic properties of a dashboard such as Title, <MadCap:variable name="Variables.ElastiCube" /> (datasource), and owner. After defining the properties of the dashboard, you define its visualizations by including the widget IDs of pre-existing widgets.</p>
+        <p class="bold">To create a dashboard through the REST API:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click <span class="bold">Admin</span> at the top, and then <span class="bold">REST AP</span>I, followed by REST API Reference.<br /><img src="../../Resources/Images/v7restapi.png" class="thumblarge" /><br /></li>
+            <li>Select <span class="bold">Dashboards</span> then <span class="bold">POST /dashboards</span>.</li>
+            <li>In the body of your call, define the values of the following keys:<br /></li>
+            <table>
+                <thead>
+                    <tr>
+                        <th>Key</th>
+                        <th>Value</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>Title</td>
+                        <td>String that defines the name of the dashboard as displayed in the <MadCap:variable name="Variables.Sisense Web Application" />.</td>
+                    </tr>
+                    <tr>
+                        <td>desc</td>
+                        <td>String that represents a short description of the dashboard.</td>
+                    </tr>
+                    <tr>
+                        <td>datasource</td>
+                        <td>
+                            <p>Object that defines the data source where the dashboard pulls its data.<br />This object contains the following elements:<br /><span class="bold">title</span>: The name of the <MadCap:variable name="Variables.ElastiCube" />.</p>
+                            <p><span class="bold">id</span>: The address and name of the <MadCap:variable name="Variables.ElastiCube" /> where the dashboard queries its data from.</p>
+                            <p><span class="bold">address</span>: The address of the dashboard.</p>
+                            <p><span class="bold">database</span>: The name of the <MadCap:variable name="Variables.ElastiCube" /> where the data is pulled from by the dashboard.</p>
+                            <p><span class="bold">fullname</span>: The name of the <MadCap:variable name="Variables.ElastiCube" />.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>filters</td>
+                        <td>
+                            <p>This object defines the dashboard filters that the user add goes to the "filters" object in the .dash file.</p>
+                            <p>This object contains the following elements:</p>
+                            <p><span class="bold">datatype</span>: The type of data affected by the filter, for example, text.</p>
+                            <p><span class="bold">title</span>: The name of the filter displayed in the Filters pane.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>layout</td>
+                        <td>
+                            <p>Object that defines what widgets are displayed in the dashboard and their layout.</p>
+                            <p>This object contains the following elements:</p>
+                            <p><span class="bold">type</span>: String that defines how the layout of the dashboard. This value should be "columnar".</p>
+                            <p><span class="bold">columns</span>: Array objects that defines the width of each column in the dashboard and how widgets are displayed in each column.</p>
+                            <p><span class="bold">cells</span>: Object that contains the subcells.</p>
+                            <p><span class="bold">subcells</span>: Object that contains the elements objects where widgets are defined.</p>
+                            <p><span class="bold">elements</span>: This objects contains the widget and defines its dimensions within the <MadCap:variable name="Variables.ElastiCube" />.</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>defaultFilters</td>
+                        <td>This object defines the default filters of a dashboard. When a user selects "Set as my default filters" from the Filters menu in the <MadCap:variable name="Variables.Sisense Web Application" />, the filters are defined in this object.</td>
+                    </tr>
+                </tbody>
+            </table>
+            <li>Click <span class="bold">POST</span>. The Dashboard is added to the Dashboards list in the <MadCap:variable name="Variables.Sisense Web Application" />.</li>
+        </ol>
+    </body>
+</html>

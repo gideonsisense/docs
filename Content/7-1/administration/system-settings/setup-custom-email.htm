@@ -1,0 +1,113 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Setting Up a Custom Email Server | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Setting Up a Custom Email Server</h1>
+        <p>Sisense includes a default email server configuration, which uses Mandrill by MailChimp to send automated emails such as dashboard reports or password reset emails.  This configuration can be used for POC and testing environments. For production environments, you should provide your own email server. Custom email servers allow all your email transactions to be completely managed on your side.</p>
+        <p>Through the <MadCap:variable name="Variables.CompanyName" /> REST API, you can send an HTTP POST request to issue <MadCap:variable name="Variables.CompanyName" /> emails through your own custom email server instead of the default <MadCap:variable name="Variables.CompanyName" /> email server. The REST API exposes properties that you can configure for the custom email servers such as security, timeout, and logging properties.</p>
+        <li>When authenticating an HTTP request, <MadCap:variable name="Variables.CompanyName"></MadCap:variable> only supports the basic authentication through the Authorization method using plain text.</li>
+        <p class="bold">To set up a custom email server:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, click Admin, and then Rest API, followed by REST API Reference.</li>
+            <li>In version 1.0 of the REST API, select Settings, then POST /settings/email_server.</li>
+            <li>In the body of your call, define the values of the following keys:</li>
+        </ol>
+        <table>
+            <thead>
+                <tr>
+                    <th>Key</th>
+                    <th>Value</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>enable</td>
+                    <td>
+                        <p>If True, allows access to the custom email server instead of the default <MadCap:variable name="Variables.CompanyName" /> email server.</p>
+                        <p><span class="bold">Note</span>: This property is different from the enable property found in version .9 of the REST API POST /settings/system request. In .9, enable activates <MadCap:variable name="Variables.CompanyName" /> emails. In version 1.0, enable sends <MadCap:variable name="Variables.CompanyName" /> emails through your custom server.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>host</td>
+                    <td>The hostname or IP address to connect to. By default, this is 'localhost'.</td>
+                </tr>
+                <tr>
+                    <td>port</td>
+                    <td>The port to connect to (defaults to 25 or 465).</td>
+                </tr>
+                <tr>
+                    <td>secure</td>
+                    <td>
+                        <p>When you send an email, some email servers check if secure transport (TLS) is available for that address or domain.</p>
+                        <p>This value determines if the connection should use TLS (if True) or not (if False). The default value is false.The connection may be upgraded to TLS if the email server requires it.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>ignoreTLS</td>
+                    <td>
+                        <p>If this is True and secure is False, TLS will not be used even if the email server attempts to upgrade the connection to TLS-secure.</p>
+                        <p>This field should be set to True when connecting to a non-secure SMTP server.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>requireTLS</td>
+                    <td>If this is True and secure is False, it forces the connection to be upgraded to TLS-secure even if the email server does not advertise support for TLS.</td>
+                </tr>
+                <tr>
+                    <td>connectionTimeout</td>
+                    <td>How many milliseconds to wait for the connection to establish.</td>
+                </tr>
+                <tr>
+                    <td>greetingTimeout</td>
+                    <td>How many milliseconds to wait for the greeting after connection is established.</td>
+                </tr>
+                <tr>
+                    <td>socketTimeout</td>
+                    <td>How many milliseconds of inactivity to allow.</td>
+                </tr>
+                <tr>
+                    <td>user</td>
+                    <td>
+                        <p>The user name of the user.</p>
+                        <p>As non-secure or restricted SMTP servers do not require authentication, do not include this field when connecting to a non-secure SMTP server.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>pass</td>
+                    <td>
+                        <p>The user’s password for the email server.</p>
+                        <p>As non-secure or restricted SMTP servers do not require authentication, do not include this field when connecting to a non-secure SMTP server.</p>
+                    </td>
+                </tr>
+                <tr>
+                    <td>logger</td>
+                    <td>If set to True, <MadCap:variable name="Variables.CompanyName" /> logs events such as which server you connected to.If the value is not defined or is False, then nothing is logged.</td>
+                </tr>
+                <tr>
+                    <td>debug</td>
+                    <td>If set to True, then <MadCap:variable name="Variables.CompanyName" /> logs SMTP traffic. When False, <MadCap:variable name="Variables.CompanyName" /> logs only transaction events.Debug logs record everything and may increase in size quickly and impact performance. You should only set activate debug logging when troubleshooting a specific issue and then reset the logging level back to info.</td>
+                </tr>
+            </tbody>
+        </table>
+        <ol start="4">
+            <li>Click <span class="bold">Run</span>.</li>
+            <li>
+                <p>After you have set up the email server, you need to change the sender email address to the domain of your custom email server so they are consistent. You can update the sender email through the POST 0.9 /branding endpoint in the <MadCap:variable name="Variables.CompanyName" />REST API.</p><pre xml:space="preserve">{ 
+ "emails": {
+ "senderEmail": "username@newdomain.com"
+  }
+}</pre>
+            </li>
+        </ol>
+        <ol start="6">
+            <li>
+                <p>Click <span class="bold">Run</span>.</p>
+            </li>
+        </ol>
+        <h2 class="notoc">Troubleshooting a Custom Email Server</h2>
+        <p>To troubleshoot any issue with your custom email server, activate logging through the <span class="bold">logger</span> and <span class="bold">debug</span> keys in the REST API. When <span class="bold">logger</span> and <span class="bold">debug</span> are set to True, <MadCap:variable name="Variables.CompanyName" /> generates logs that are saved in the following directory:</p>
+        <p class="code">c:\Program Files\Sisense\PrismWeb\vnext\iisnode</p>
+        <p>After troubleshooting the issue, the debug logger should be disabled as the logs can grow in size rapidly and this may impact performance.</p>
+    </body>
+</html>

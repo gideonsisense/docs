@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Defining and Editing Field Formulas | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Editing Field Formulas</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> makes it easy to edit custom tables. You can use SQL to customize the fields contained within a custom table.</p>
+        <p>When you edit a custom table, any changes you make are saved when you click <span class="bold">Save</span> unless the expression did not successfully parse. In this case, you are prompted to save a draft of the invalid expression.</p>
+        <p>
+            <img src="../../../Resources/Images/invalid.png" class="thumblarge" />
+        </p>
+        <p>If you save the invalid expression, Sisense continues to use the last valid expression that was saved when building an ElastiCube, but the next time you open a preview of the table, the invalid expression will be displayed. This allows you to continue building working ElastiCubes while letting you save incomplete expressions for later.</p>
+        <p>If you wish to display the last valid expression, you can click the <span class="bold">Refresh</span> button in the menu bar and then press <span class="bold">Save</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/refresh.png" class="thumblarge" />
+        </p>
+        <p class="bold">To edit a custom table’s SQL expression:</p>
+        <ol>
+            <li>Select the custom table you want to edit and click <img src="../../../Resources/Images/v7preview6.png" />.<br /><img src="../../../Resources/Images/v7preview21.png" class="thumblarge" /><br />The custom table area is displayed</li>
+            <li>Enter SQL statements to access tables and fields that exist in the schema. See related topics for more details on <a href="sql-reference.htm">SQL</a> and <a href="function-reference/functions.htm">Function References</a>.</li>
+            <li>To view results based on the SQL statement, click  <img src="../../../Resources/Images/v7preview7.png" />. <br /><span class="bold">Note</span>: At least one build including the relevant base table must have been completed in order to preview results.</li>
+            <li>Click <span class="bold">Save</span> to save your changes.</li>
+        </ol>
+    </body>
+</html>

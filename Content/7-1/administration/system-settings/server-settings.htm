@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Server Settings</title>
+    </head>
+    <body>
+        <h1>Server Settings</h1>
+        <p>Sisense Administrators have access to the Data Settings page located in the Data Management section of the <span class="bold">Admin</span> page.</p>
+        <p>From the Data Settings page, Administrators can modify memory allocation, the number of simultaneous queries that can be handled, and query caching executed by Sisense.</p>
+        <p><span class="bold">Note</span>:&#160;Sisense recommends consulting with Technical Support before changing the advanced settings.</p>
+        <p>You can modify the following settings:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Settings</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Default ElastiCube Data Location</td>
+                    <td>The location of your ElastiCubes on your server. Sisense recommends storing ElastiCube data on a separate non-system drive.</td>
+                </tr>
+                <tr>
+                    <td>Data Import Chunk Size (Rows)</td>
+                    <td>The number of rows in every chunk imported when building an ElastiCube. This can be increased or decreased based on your build performance and network throughput.</td>
+                </tr>
+                <tr>
+                    <td>R Server Address</td>
+                    <td>The address of your R Server. By default, this feature is not activated. Click the toggle button to enable R server integration in Sisense and enter the IP address and port. Click Test to verify the connection to the R server. For more information about using R in Sisense, seeUsing R in Formulas.</td>
+                </tr>
+                <tr>
+                    <td>Max ElastiCube Memory Allocation</td>
+                    <td>The percentage of RAM out of the server's total RAM on the machine that can be allocated to each ElastiCube. By default, the value is set to Dynamic, which automatically allocates and frees memory in each ElastiCube to ensure stability and performance. Setting a static percentage will disable this mechanism.</td>
+                </tr>
+                <tr>
+                    <td>Simultaneous Query Executions</td>
+                    <td>The number of simultaneous queries that can be processed on a server across all ElastiCubes.This value is determined by half of the machine's vCPU cores.</td>
+                </tr>
+                <tr>
+                    <td>Query Timeout (Seconds)</td>
+                    <td>The maximum amount of seconds that must pass before a query times out.</td>
+                </tr>
+                <tr>
+                    <td>ElastiCube Query Recycler</td>
+                    <td>The ElastiCube Query Recycler caches similar and identical queries to the ElastiCube to reduce the amount of time to return a response. This reduces the amount of time it takes to process queries.This should be turned off for debugging purposes only.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,36 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Accordion | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Accordion</h1>
+        <p>The Accordion enables you to toggle between different sub-dashboards on demand by clicking an Indicator widget.  </p>
+        <p>The Accordion add-on is useful for providing large amounts of information within a limited space.</p>
+        <p>
+            <img src="../../Resources/Images/accordian.png" class="thumblarge" /> <img src="../../Resources/Images/accordian1.png" class="thumblarge" /></p>
+        <p class="bold">To install the Accordion add-on:</p>
+        <ol>
+            <li>
+                <a href="http://download.sisense.com/Product/addons/accordionPlugin.zip">Download</a> the attachment and unzip the contents into your <span class="code">C:\Program Files\Sisense\PrismWeb\plugins\ folder</span>. If the plugins folder doesn’t exist, just create it. After those files have been unzipped there, you may also have to restart the web server.</li>
+            <li>Create a dashboard that will be displayed as the sub-dashboard when using the Accordion widget. The dashboard name should start with the prefix ‘_accrd_’  for the dashboard to be hidden for non-owner users from the Dashboards panel.</li>
+            <li>Open the Indicator widget’s script editor.<br /><img src="../../Resources/Images/editscript.png" class="thumblarge" /></li>
+            <li>In the Script Editor, paste the following code:</li>
+        </ol>
+        <pre xml:space="preserve">       widget.on('ready', function(se, ev){
+          Accordion({
+          element: element,
+          widget: widget,
+          dashboard: dashboard,
+          //filters: ['[&lt;table name&gt;.&lt;table field&gt;]'],
+          default: false,
+          dashboardUrl: 'http://192.168.5.91:80/app/main/%23/dashboards/547741397486bedc1b0002bf',
+          widgetFiltersInheritance: true       
+     });
+ })</pre>
+        <ol start="5">
+            <li>Edit the script and define the values relevant for your use-case. You can modify the following objects:<br /><span class="bold">default</span>: Set to true to display the sub-dashboard by default.<br /><span class="bold">//filters</span>: The filters object has the structure [‘[&lt;TABLE_NAME&gt;.&lt;FIELD_NAME&gt;]’].  You can configure which dashboard filters will be taken from the “super” dashboard, for example: filters: [“[Dates.Date (Calendar)]”,”[Product.Name]”,”[Employee.Name]”].<br /><span class="bold">dashboardUrl</span>: The value of the dashboardUrl object is the URL of your dashboard. This is the sub-dashboard that will be displayed when you click an Indicator widget. You can add any filters you may want to apply by remove the comment tags from the filters object and defining its value. You can retrieve the Dashboard URL when sharing a dashboard. The Dashboard URL is displayed at the bottom your Sharing window.<br /></li>
+            <li>In the Script Editor, click <span class="bold">Save</span> and refresh the widget to display the Accordion effect.</li>
+        </ol>
+    </body>
+</html>

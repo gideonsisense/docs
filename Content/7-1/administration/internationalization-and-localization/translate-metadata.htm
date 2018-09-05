@@ -1,0 +1,244 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="6689" MadCap:lastWidth="772">
+    <head>
+        <title>Translating Sisense Metadata | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Translating <MadCap:variable name="Variables.CompanyName" /> Metadata</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> enables you to translate metadata in your users’ native language. <MadCap:variable name="Variables.CompanyName" /> metadata is displayed in your users’ dashboards and includes the following:</p>
+        <ul>
+            <li>
+                <MadCap:variable name="Variables.ElastiCube" /> fields</li>
+            <li>
+                <MadCap:variable name="Variables.ElastiCube" /> tables</li>
+            <li>Widget Titles</li>
+            <li>Dashboard Names</li>
+            <li>Folder Names</li>
+            <li>Saved formulas</li>
+            <li>Default and custom hierarchies</li>
+            <li>Customized renamed field titles</li>
+        </ul>
+        <p>The following images display two interfaces with metadata, one in English and the other in Russian.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>
+                        <img src="../../../Resources/Images/premeta.png" class="thumblarge" />
+                    </td>
+                    <td>
+                        <img src="../../../Resources/Images/postmeta1.png" class="thumblarge" />
+                    </td>
+                </tr>
+                <tr>
+                    <td>English</td>
+                    <td>Russian</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>As fields such as <MadCap:variable name="Variables.ElastiCube" /> names and tables are defined by you, these fields are not translated when changing the default language of the <MadCap:variable name="Variables.Sisense Web Application" />.</p>
+        <p>You can translate your metadata by modifying the default values using a JavaScript plugin. Through the plugin, you define the new values to be displayed. You may also include additional logic to determine which users or user groups the translated values should be displayed to.</p>
+        <p>When you create a JavaScript plugin, you should create a folder for the plugin and place it inside the plugins folder in the following location:</p>
+        <p class="code">...\Program Files\Sisense\PrismWeb\plugins\</p>
+        <p>If the \plugins\ folder does not exist, create it and then create a new folder within the \plugins\ folder with the relevant files.</p>
+        <p>You can download an example of a Metadata Translation plugin <a href="http://download.sisense.com/Product/metadata/metadata.zip">here</a>.</p>
+        <p>Extract the enclosed folder into the plugins folder, <code>…\Program Files\Sisense\PrismWeb\plugins\</code>.</p>
+        <p>This file contains a folder called Metadata and two files:</p>
+        <p>
+            <span class="bold">plugin.json</span>: The plugin.json file contains the name of the plugin and a link to the file that describes the plugin’s functionality, in this example, run.js.</p>
+        <p>
+            <span class="bold">run.js</span>: The run.js file contains the plugin’s functionality and describes which metadata is to be translated and how it is to be translated.</p>
+        <p>This example, and any metadata translation JavaScript file you write should include three parts:</p>
+        <ul>
+            <li>Provider Function: These functions provide the mapping context contained in the Mapping object.</li>
+            <li>Event Subscription: This event is triggered when a datasource changes, and calls the Provider function.</li>
+            <li>Mapping Object: Contains key/value pairs with your default and translated metadata.</li>
+        </ul>
+        <h3 class="notoc">Provider Functions</h3>
+        <p>The code sample below is an example of two Provider functions, the first is a global provider function for folder and dashboard aliasing. The second is the datasource provider function for translating <MadCap:variable name="Variables.ElastiCube" /> and formula names. You can replace the parameters in this example to provide the mapping context you define in the Mapping object.</p>
+        <p class="bold">Global Provider</p>
+        <p class="code">function (resolve, reject) {</p>
+        <p class="code">//an ajax request or any other logic.</p>
+        <p class="code">setTimeout(function () {</p>
+        <p class="code">resolve(globalAliasing);</p>
+        <p class="code">}, 0);</p>
+        <p class="code">};</p>
+        <p>The following table describe the Provider function and its arguments:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>resolve</td>
+                    <td>A callback function which should be called with the provided aliasing context object or without any parameter if aliases shouldn't be provided for the datasource.</td>
+                </tr>
+                <tr>
+                    <td>reject</td>
+                    <td>A callback function to be called in case of error, so the system can properly handle it.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">Datasource Provider</p>
+        <p class="code">function (datasourceId, resolve, reject) {</p>
+        <p class="code">//an ajax request or any other logic.</p>
+        <p class="code">setTimeout(function () {</p>
+        <p class="code">resolve(datasourceAliasing);</p>
+        <p class="code">}, 0);</p>
+        <p class="code">};</p>
+        <p>The following table describe the Provider function and its arguments:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Parameter</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>datasourceId</td>
+                    <td>
+                        <p>An object that represents the ID of the datasource with the following properties:</p>
+                        <ul>
+                            <li>address</li>
+                            <li>database</li>
+                            <li>fullname</li>
+                            <li>ID</li>
+                            <li>title</li>
+                        </ul>
+                    </td>
+                </tr>
+                <tr>
+                    <td>resolve</td>
+                    <td>A callback function which should be called with the provided aliasing context object or without any parameter if aliases shouldn't be provided for the datasource.</td>
+                </tr>
+                <tr>
+                    <td>reject</td>
+                    <td>A callback function to be called in case of error, so the system can properly handle it.</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Event Subscription</h3>
+        <p>To trigger the Provider functions, your plugin should include a handler for a global event ‘beforealiascontextinit’.</p>
+        <p>In the example below, datasourceProviderFunction and globalAliasingProvider are the Provider functions. The timeout parameter is optional and configures the amount of time in milliseconds which the system waits for the aliasing context to be resolved by the provider function. By default the system uses a timeout of 2000 ms</p>
+        <p class="code">prism.on("beforealiascontextinit", function (ev, args) {</p>
+        <p class="code">var timeout = 2000;</p>
+        <p class="code">args.register(datasourceProviderFunction, globalAliasingProvider, timeout);</p>
+        <p class="code">});</p>
+        <h3 class="notoc">Mapping Object</h3>
+        <p>The translation context is a simple JavaScript object which contains key value pairs for tables, columns, hierarchies, formulas and custom item titles, all case-insensitive.</p>
+        <p>The sample below is a skeleton of a Mapping object that defines what metadata is to be translated and its new value.</p>
+        <pre xml:space="preserve">/**
+* tables - aliases for table names
+* "tables": {
+* "table_name_1": "alias_1",
+* "table_name_2": "alias_2",
+* }
+* columns - aliases for column names in scope of table
+* "columns": {
+* "table_name_1": {
+* "column_name_1": "alias_for_column_name_1"
+* "column_name_2": "alias_for_column_name_2"
+* "column_name_3": "alias_for_column_name_3"
+* },
+* "table_name_2": {
+* "column_name_1": "alias_for_column_name_1"
+* "column_name_2": "alias_for_column_name_2"
+* "column_name_3": "alias_for_column_name_3"
+* }
+* }
+* titles - aliases for custom dimension titles, etc
+* "titles": {
+* "Custom title": "Alias",
+* "Sample Revenue": "Sample Profit"
+* },
+* formulas - aliases for custom formula titles
+* "formulas": {
+* "Custom title": "Alias"
+* },
+* hierarchies - aliases for hierarchy titles
+* "hierarchies": {
+* "Custom title": "Alias"
+* }
+*/
+var datasourceAliasing = {
+"tables": {
+"brand": "бренд",
+"category": "категория",
+"country": "страна",
+"commerce": "коммерция"
+},
+"formulas": {
+"Revenue": "Чистый доход"
+},
+"hierarchies": {
+"Category by Brand and Age Range": "Категория через Бренд и Год"
+},
+"titles": {
+"CUSTOM REVENUE": "ДОХОДЫ"
+},
+"columns": {
+"Brand": {
+"Brand": "Бренд",
+"Brand ID": "Бренд Id"
+},
+"Category": {
+"Category": "Категория",
+"Category ID": "Id Категории"
+},
+"Widgets": {
+"Revenue": "Чистый доход",
+},
+"Commerce": {
+"Age Range": "Возрастные диапазоны",
+"Brand ID": "Id Бренда",
+"Category ID": "Id Категории",
+"Condition": "Состояние",
+"Cost": "Затраты",
+"Country ID": "Id Страны",
+"Date": "Дата",
+"Gender": "Пол",
+"Quantity": "Количество",
+"Revenue": "Доходы",
+"Visit ID": "Id Посетителя"
+},
+"Country": {
+"Country ID": "Id Страны",
+"Country": "Страна"
+}
+}
+};
+/**
+* Global object example
+* folder - aliases for folder names
+* "folder": {
+*    "folder_name_1": "alias_1",
+*    "folder_name_2": "alias_2",
+* }
+* dashboards- aliases for dashboard names
+* "dashboards- ": {
+*    "dashboard_name_1": "alias_1",
+*    "dashboard_name_2": "alias_2",
+* }*
+*/
+var globalAliasing = {
+"folders": {
+"New Folder": "Folder renamed",
+"my folder": "my folder renamed",
+"Any name": "любое название"
+},
+"dashboards": {
+"Sample - Ecommerce (1)": "Коммерческий Dashboard",
+"Sample - Healthcare": "Sample Healthcare renamed",
+"Sample - Healthcare (1)": "Healthcare renamed",
+"my dashboard": "my dashboard renamed"
+},
+};
+</pre>
+    </body>
+</html>

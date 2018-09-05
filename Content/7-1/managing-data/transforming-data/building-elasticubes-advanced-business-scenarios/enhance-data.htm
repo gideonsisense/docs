@@ -1,0 +1,277 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Enhancing Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Enhancing Data</h1>
+        <p><span class="bold">Note</span>: The image on this page were taken in the desktop version of the <MadCap:variable name="Variables.ECM" />, however, the same principles described on this page also apply to the ElastiCube Manager.</p>
+        <p>The following examples explain how to add attributes and/or records that did not exist in the data source. Examples include:</p>
+        <ul>
+            <li><a href="#Calculat">Calculating Derived Facts</a>
+            </li>
+            <li><a href="#Calendar">Calendar vs. Fiscal Year</a>
+            </li>
+            <li><a href="#Time">Time Zone Conversion</a>
+            </li>
+            <li><a href="#Currency">Currency Conversion</a>
+            </li>
+            <li><a href="#Current">Current vs. Previous Period for Specific Date Range</a>
+            </li>
+            <li><a href="#Calculat2">Calculating the Number of Open Orders per Day</a>
+            </li>
+            <li><a href="#Slowly">Slowly Changing Dimensions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Calculat"></a>Calculating Derived Facts</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>Derived Facts are additional facts that we calculate while importing or delivering the data. For example:</p>
+        <p>
+            <img src="../../../../Resources/Images/df11.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>You must decide whether to calculate the derived facts “on demand”, meaning in the web application, or in advance in the <MadCap:variable name="Variables.ElastiCube" />. Take into consideration that calculating ‘On Demand’ Derived Facts in the web application can enable more dynamic filtering, while calculating them in the <MadCap:variable name="Variables.ElastiCube" /> stage will save query time when retrieving the data, and enforce calculation consistency, especially with non-trivial facts. This is due to the fact that the dashboard designer/end users will receive consistent results for measures, instead of having to create the complex measures individually, by their own understanding.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>In the following schema you can create a derived fact to calculate the inventory ratio per product.</p>
+        <p>
+            <img src="../../../../Resources/Images/df2.png" class="thumblarge" />
+        </p>
+        <p>Create a <a href="../add-custom-table.htm">custom table</a> using an SQL Expression that joins the “Order Details” table with the “Products” table and returns the division result of “Quantity” and “UnitOnOrder”, with the following Syntax:</p>
+        <p class="code">SELECT</p>
+        <p class="code">[Products].ProductID,</p>
+        <p class="code">tofloat(sum(UnitsOnOrder))/tofloat(sum(Quantity)) AS InventoryRatio</p>
+        <p class="code">FROM [Products] JOIN [Order Details]</p>
+        <p class="code">ON [Products].ProductID=[Order Details].ProductID</p>
+        <p class="code">GROUP BY [Products].ProductID</p>
+        <p class="code">HAVING tofloat(sum(UnitsOnOrder))/tofloat(sum(Quantity))&gt;0</p>
+        <p>The result table will give the desired results:</p>
+        <p>
+            <img src="../../../../Resources/Images/df3.png" class="thumblarge" />
+        </p>
+        <p>Connect the custom table to the rest of the tables:</p>
+        <p>
+            <img src="../../../../Resources/Images/df4.png" class="thumblarge" />
+        </p>
+        <p><span class="bold">Note</span>: You can also add the “InventoryRatio” measure to the “Products” table using the Lookup() function by “ProductID”.</p>
+        <h2 class="notoc"><a name="Calendar"></a>Calendar vs. Fiscal Year</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>A large number of companies use a fiscal calendar that does not comply with the Gregorian 12-month calendar.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>This requires modeling the data properly so that the data can be reported or analyzed via the normal calendar or via the revised fiscal calendar.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>In this example, let’s assume that the Fiscal Calendar starts on September 1st. So if we are in the calendar year of 2013, then the fiscal year of 2014 starts September 1st. To accomplish this, we create a custom field that takes the date field and adds four months to it.</p>
+        <p>
+            <img src="../../../../Resources/Images/cf1.png" class="thumblarge" />
+        </p>
+        <p>When you create a pivot table in the web application, you will see that the new year (2014) starts in September using the Fiscal field.</p>
+        <p>
+            <img src="../../../../Resources/Images/cf2.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Time"></a>Time Zone Conversion</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>In many cases, we need to generate reports based on data from different time zones.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>When working with different time zones, the challenge is to store all of the business transactions in an absolute time reference that does not change with the seasons, locations (for instance – GMT), or daylight saving. Therefore, the absolute transition time is a combination of location and date.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>The aim is to add an “absolute time” field to every business transaction, based on its location and time.</p>
+        <p class="bold">Step 1 – Create a Reference Source Table</p>
+        <p>Create a source table (database table / Excel / CSV) that contains the countries and cities that exist in the database, a numeric representation of timestamp range to determine if the transaction belongs to daylight savings time or not (see this <a href="https://www.timeanddate.com/time/dst/2015.html">web site</a>), and the UTC to allow the conversion to GMT.</p>
+        <p>For example:</p>
+        <table>
+            <tbody>
+                <tr>
+                    <td>Country</td>
+                    <td>City</td>
+                    <td>DST_From</td>
+                    <td>DST_To</td>
+                    <td>UTC</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Seattle</td>
+                    <td>20120311.2</td>
+                    <td>20121103.1</td>
+                    <td>-7</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Seattle</td>
+                    <td>20121103.1</td>
+                    <td>20130310.2</td>
+                    <td>-8</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Seattle</td>
+                    <td>20130310.2</td>
+                    <td>20131027.1</td>
+                    <td>-7</td>
+                </tr>
+                <tr>
+                    <td>USA</td>
+                    <td>Seattle</td>
+                    <td>20131027.1</td>
+                    <td>20140309.2</td>
+                    <td>-8</td>
+                </tr>
+                <tr>
+                    <td>UK</td>
+                    <td>London</td>
+                    <td>20120325.1</td>
+                    <td>20121028.2</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>UK</td>
+                    <td>London</td>
+                    <td>20121028.2</td>
+                    <td>20130330.1</td>
+                    <td>1</td>
+                </tr>
+                <tr>
+                    <td>UK</td>
+                    <td>London</td>
+                    <td>20130330.1</td>
+                    <td>20131027.2</td>
+                    <td>0</td>
+                </tr>
+                <tr>
+                    <td>UK</td>
+                    <td>London</td>
+                    <td>20131027.2</td>
+                    <td>20140330.1</td>
+                    <td>1</td>
+                </tr>
+            </tbody>
+        </table>
+        <p class="bold">Step 2 – Add a Numeric Representation of the OrderDate</p>
+        <p>To associate the Order Date with its UTC, create a custom field of type “Decimal” with a numeric representation of the Date timestamp, using this SQL statement:</p>
+        <p class="code">getyear(OrderDate)*10000+getmonth(OrderDate)*100+getday(OrderDate)+ToDouble(gethour(OrderDate))/100</p>
+        <p>The result table should look like this:</p>
+        <p>
+            <img src="../../../../Resources/Images/tz1.png" class="thumblarge" />
+        </p>
+        <p class="bold">Step 3 – Join between the Two Tables</p>
+        <p>The third step includes creating a custom SQL expression that joins between the two tables and creating the “Absolute Time” custom field within it (“GMTDate”).  This is to create a synchronization between all the transactions. The custom field will be created using the “add hours” function with the matching UTC value. See the following script:</p>
+        <p class="code">SELECT</p>
+        <p class="code">[Orders].CustomerID,</p>
+        <p class="code">[Orders].EmployeeID,</p>
+        <p class="code">[Orders].Freight,</p>
+        <p class="code">[Orders].OrderDate,</p>
+        <p class="code">[Orders].OrderID,</p>
+        <p class="code">[Orders].ShipAddress,</p>
+        <p class="code">[Orders].ShipCity,</p>
+        <p class="code">[Orders].ShipCountry,</p>
+        <p class="code">AddHours(([Orders].OrderDate),[GMT Conversion.csv].UTC) AS GMTDate</p>
+        <p class="code">FROM [Orders]</p>
+        <p class="code">JOIN</p>
+        <p class="code">[GMT Conversion.csv]</p>
+        <p class="code">ON</p>
+        <p class="code">[Orders].ShipCity=[GMT Conversion.csv].City AND</p>
+        <p class="code">[Orders].ShipCountry=[GMT Conversion.csv].Country AND</p>
+        <p class="code">[Orders].DateNum&gt;=[GMT Conversion.csv].DST_From AND</p>
+        <p class="code">[Orders].DateNum&lt;[GMT Conversion.csv].DST_To</p>
+        <p>&#160;</p>
+        <p>The result table will look like this:</p>
+        <p>
+            <img src="../../../../Resources/Images/tz2.png" class="thumblarge" />
+        </p>
+        <p class="bold">Step 4 – Make Schema Adjustments</p>
+        <p>For the next step, do the following:</p>
+        <ul>
+            <li>Replace the current Orders table with the new one,</li>
+            <li>Refer to the new “Absolute Time” custom field (“GMTDate”) as the leading date field</li>
+            <li>Make the reference tables (“Orders” and “GMT Conversion.csv”) invisible.</li>
+        </ul>
+        <h2 class="notoc"><a name="Currency"></a>Currency Conversion</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>Most data for entities is recorded in their local reporting currency (ie $ for United States, £ for UK).  Here we want to convert all the amounts to USD.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>This requires determining the Currency Rate of the region and then multiplying the value in local currency by the associated Exchange Rate by Month.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>Create two custom fields in the GL Entries. The first will look up the Currency code of the region. This field will be used along with a month field to link to the Exchange Rates table.</p>
+        <p>
+            <img src="../../../../Resources/Images/cr1.png" class="thumblarge" />
+        </p>
+        <p>The first field in the GL Entries is created using the lookup function to retrieve values from the Currency Codes table.</p>
+        <p class="code">Lookup([Currency Codes],[Currency Code],Region,Region)</p>
+        <p>Then create a second Custom Field for the Month of the GL Date.</p>
+        <p class="code">GetMonth([GL Date])</p>
+        <p>Next, link the fields together (note that both Month fields were set to Integer and the Currency Codes table to Invisible).</p>
+        <p>
+            <img src="../../../../Resources/Images/cr2.png" class="thumblarge" />
+        </p>
+        <p>The Local Amount multiplied by the Exchange Rate gives the Converted USD Amount.</p>
+        <p>
+            <img src="../../../../Resources/Images/cr3.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Current"></a>Current vs. Previous Period for Specific Date Range</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>In many cases we would like to compare our business’ performance last week, to the week before, or maybe we would like to see a percentage of sales growth for the current month/quarter compared to the previous month/quarter.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>Since we want the compared time range to be as flexible as possible, the solution has to include both layers – ElastiCube and web application.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>Create a custom table in the ElastiCube to summarize the totals/counts per day for the source table:</p>
+        <p class="code">SELECT</p>
+        <p class="code">a.Date,</p>
+        <p class="code">sum(a.Revenue)AS value</p>
+        <p class="code">FROM [Accord 2011 Client List] AS a GROUP BY a.Date</p>
+        <p>Create a custom table in the ElastiCube with current vs. previous values, by adjusting the script below:</p>
+        <p class="code">SELECT</p>
+        <p class="code">curr.Date AS date,</p>
+        <p class="code">curr.value AS current,</p>
+        <p class="code">prev.value AS prev</p>
+        <p class="code">FROM [sum] curr</p>
+        <p class="code">LEFT JOIN [sum] AS prev</p>
+        <p class="code">ON curr.Date = addyears(prev.Date,1)</p>
+        <p class="code">UNION</p>
+        <p class="code">SELECT</p>
+        <p class="code">addyears(prev.Date,1) AS date,</p>
+        <p class="code">curr.value,</p>
+        <p class="code">prev.value</p>
+        <p class="code">FROM [sum] prev</p>
+        <p class="code">LEFT JOIN [sum] AS curr</p>
+        <p class="code">ON prev.Date= addyears(curr.Date,-1)</p>
+        <p>In the web application, add a ‘date range picker’ using the days from the custom table. Then add two new numeric indicators. In the first numeric picker add the ‘sum of the current value’, in the second numeric picker, add the ‘sum of the previous value’.</p>
+        <p>In the date range picker, select the days of interest and you will see the current and previous values.</p>
+        <h2 class="notoc"><a name="Calculat2"></a>Calculating the Number of Open Orders per Day</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>An open sales order is where the order has been placed but has not yet been delivered. If for examle there is an order for 100 items and against this order only 50 items have been delivered (it is partially delivered). A high level of open orders per day may indicate that something is wrong with orders handling.</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>We cannot just count the number of orders per day because it will exclude orders that were open on a certain day and are already closed. Therefore, we will need to create a snapshot of the number of open orders per day.</p>
+        <h3 class="notoc">Solution</h3>
+        <ol>
+            <li>Import an Excel file with all dates listed in the Orders table into the ElastiCube.</li>
+            <li>To improve query performance, convert all the date fields into numeric representations (for more information, see <a href="reformat-data.htm">Numeric Representation of Date fields</a>).</li>
+            <li>Create the following custom table:</li>
+        </ol>
+        <p class="code">SELECT</p>
+        <p class="code">s.Dates,</p>
+        <p class="code">tm.Created_At,</p>
+        <p class="code">tm.Closed_At,</p>
+        <p class="code">tm.TicketId</p>
+        <p class="code">FROM [All Dates] s LEFT JOIN [Orders] tm</p>
+        <p class="code">ON   s.DateInt &gt;= tm.CreatedAtInt</p>
+        <p class="code">AND (tm.SolvedAt IS NULL OR s.DateInt &lt;= tm.SolvedAtInt)</p>
+        <h2 class="notoc"><a name="Slowly"></a>Slowly Changing Dimensions</h2>
+        <h3 class="notoc">Business Case</h3>
+        <p>Transactional data typically does not change, however the data that describes the associated dimensions may change. This example demonstrates how to manage dimensions that may be updated with new values within the data warehouse at different points in time.</p>
+        <p>For example, a customer that was living in NYC and moved to LA earlier this year.</p>
+        <p class="code">Date	Customer	City</p>
+        <p class="code">1/1/2011	John Smith	NYC</p>
+        <p class="code">1/1/2013	John Smith	LA</p>
+        <h3 class="notoc">Modeling Challenge</h3>
+        <p>Following the example above, when the transactions were made last year, the customer was living in NYC. Later this year, the customer moved to LA.</p>
+        <p>If you decide to refer only to the last city and summarize revenue by city, the NYC transaction will be credited to LA only because the customer currently lives there.</p>
+        <p>If you connect the “Customer” field within the above table to the “Customer” field in the fact table, you will create a “Many to many” relationship because “Customer” is not a unique identifier of this table.</p>
+        <h3 class="notoc">Solution</h3>
+        <p>The solution is to change the level of granularity of the “Customer_City” table and add the “Date” field to the key –</p>
+        <ol>
+            <li>Concatenation of the Slowly Changing Dimension table’s unique identifier (for example – Customer_ID + Date)</li>
+            <li>Creation of the same concatenated field in the transactions table.</li>
+            <li>Merge between the 2 keys.</li>
+            <li>This way, you can associate the [Customer_ID + Date] key of every transaction with the relevant customer city.</li>
+        </ol>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

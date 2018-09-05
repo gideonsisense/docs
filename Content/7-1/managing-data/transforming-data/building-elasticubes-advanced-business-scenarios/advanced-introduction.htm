@@ -1,0 +1,48 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1319" MadCap:lastWidth="1020">
+    <head>
+        <title>Elasticubes for Advanced Business Scenarios | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>
+            <MadCap:variable name="Variables.ElastiCube" /> for Advanced Business Scenarios</h1>
+        <p>This section provides examples of more advanced scenarios, and the recommended methods for implementing the required business logic.</p>
+        <p>The examples are categorized into the following data manipulation methods: Integrating, Formatting and Enhancing.</p>
+        <h2 class="notoc">Integrating Data</h2>
+        <p>Integrate and merge data from different sources into a single <MadCap:variable name="Variables.ElastiCube" /> structure by identifying common keys between the different tables. Proper planning is important for merging the data; on the one hand, you need to avoid creating unnecessary relationships, and on the other hand, make sure you don’t have any many to many relationships. Examples include:</p>
+        <ul>
+            <li>
+                <a href="integrate-data.htm#Creating">Creating a Common Date Selection</a>: Create a common date field from multiple date sets (from multiple data sources), and still keep the ability to use each original date field individually.</li>
+            <li>
+                <a href="integrate-data.htm#Financia">Financial Reporting</a>: Bring in an additional data source to help analyze data from transaction systems. For example, Financial GL data will include all transactions but may not have all the income statement or balance sheet reporting definitions.</li>
+            <li>
+                <a href="integrate-data.htm#Looking">Looking Up Values</a>: Look up a value from one table and bring it into another table. For example, knowing how much a marketing campaign costs versus the sales opportunity amount is an important KPI to measure.</li>
+        </ul>
+        <h2 class="notoc">Reformatting Data</h2>
+        <p>Reformat field data to free space, and make fields more readable and usable. For example, convert a date field to numeric, or reduce the precision of real numbers. You can reformat fields within the <MadCap:variable name="Variables.ElastiCube" /> using a custom SQL expression.</p>
+        <ul>
+            <li>
+                <a href="reformat-data.htm#Numeric">Numeric Representation of Date Fields</a>: Create a date table that is represented by a numeric representation instead of a date field to improve the query performance, as well as provide more flexibility, including the ability to filter a date range.</li>
+        </ul>
+        <h2 class="notoc">Enhancing Data</h2>
+        <p>
+            <a href="enhance-data.htm">Enhance data</a> by adding attributes/records that did not exist in the original data source.</p>
+        <ul>
+            <li>
+                <a href="enhance-data.htm">Calculating Derived Facts</a>: Derived Facts are additional facts that we calculate while importing or delivering the data.</li>
+            <li>
+                <a href="enhance-data.htm#Calendar">Calendar vs. Fiscal Year</a>
+                : Align a fiscal calendar with a Gregorian calendar.</li>
+            <li>
+                <a href="enhance-data.htm#Time">Time Zone Conversion</a>: Use a source table to convert dates and times from different time zones into a uniform data set.</li>
+            <li>
+                <a href="enhance-data.htm#Currency">Currency Conversion</a>: Convert one currency into another using custom fields and a currency exchange rate table.</li>
+            <li>
+                <a href="enhance-data.htm#Current">Current vs. Previous Period for Specific Date Range</a>: Compare data such as sales between a current period and a past period.</li>
+            <li>
+                <a href="enhance-data.htm#Calculat2">Calculating the Number of Open Orders per Day</a>: Check open sales orders where the order has been placed but has not yet been delivered.</li>
+            <li>
+                <a href="enhance-data.htm#Slowly">Slowly Changing Dimensions</a>: Transactional data does not usually change, however the data that describes the associated dimensions may change. See how to manage dimensions that may be updated with new values within the data warehouse at different points in time.</li>
+        </ul>
+    </body>
+</html>

@@ -1,0 +1,21 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1241" MadCap:lastWidth="1446">
+    <head>
+    </head>
+    <body>
+        <h1>FIPS</h1>
+        <p>Sisense is built around a robust and flexible security architecture that has been designed to ensure security processes are enforced while scaling to enterprise deployments of Sisense.</p>
+        <p>As part of this architecture, Sisense complies with the United States Federal Information Processing Standard (FIPS) 140 standard, which defines cryptographic algorithms approved for use by US Federal government computer systems for the protection of sensitive data. An implementation of an approved cryptographic algorithm is considered FIPS 140-compliant only if it has been submitted for and has passed National Institute of Standards and Technology (NIST) validation.</p>
+        <p>In Sisense v6.7, Sisense added security hardening to the Sisense application database access. Part of the improvements to the application database’s security removed FIPS compliance. To remain FIPS-compliant, you must disable the application databases authentication, which was added in Sisense V6.7. The database access will remain unauthenticated, as it was prior to Sisense V6.7.</p>
+        <p>If you disable the application database's authentication, Sisense recommends deploying the application database behind a network firewall to increase the level of security.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> is currently developing a version of Sisense for Linux. The Linux version will support application database authentication together with FIPS compliance.</p>
+        <p class="bold">To disable the application database’s authentication:</p>
+        <ol>
+            <li>Disable authentication from the application database:<ol><li>Open the file C:\Program Files\Sisense\Infra\MongoDB\mongodbconfig.conf.</li><li>Change authorization to “disabled”.<br /><img src="../../Resources/Images/disabled1.png" class="thumblarge" /></li></ol></li>
+            <li>Restart Sisense.Repository:<ol><li>Open Windows Task Manager and select the <span class="bold">Services</span> tab.</li><li>Right-click on Sisense.Repository and select <span class="bold">Restart</span>.<br /><img src="../../Resources/Images/wintaskmang.png" class="thumblarge" /></li></ol></li>
+            <li>Remove the username and password from the application database’s connection string:<ol><li>Open C:\Program Files\Sisense\PrismWeb\App_Data\Configurations\db.config.</li><li>Remove the username and password parameters from connectionString, for example connectionString=”mongodb://localhost:27018/admin”).<br />MongoDB connection strings have the following format:<br />mongodb://[username:password@]host1[:port1][,host2[:port2],…[,hostN[:portN]]][/[database][?options]]In the example below, AppUser:mWLdf6b/Dqgdfh+3K6bAg==@ should be removed:<br /><img src="../../Resources/Images/appuser1.png" class="thumblarge" /></li></ol></li>
+            <li>Restart IIS. In Windows, open CMD and run <span class="bold">IISRESET</span>.</li>
+        </ol>
+    </body>
+</html>

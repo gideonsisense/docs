@@ -1,0 +1,291 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Facebook Ads</title>
+    </head>
+    <body>
+        <h1>Connecting to Facebook Ads</h1>
+        <p>The Sisense Facebook Ads connector is a standalone connector that allows you to import data quickly from your Facebook Ads account into the ElastiCube Manager without custom SQL. This connector includes several features to enable you to quickly and easily import data from Facebook Ads:</p>
+        <ul>
+            <li>Date range selector from with the ElastiCube Manager</li>
+            <li>Support for accumulative builds</li>
+            <li>Retry mechanism to improve build success</li>
+        </ul>
+        <p>After you have downloaded and installed the connector, you can connect to Facebook Ads through a connection string you provide Sisense in the ElastiCube Manager. The connection string is used to authenticate users who connect to Facebook’s APIs.</p>
+        <p>This page describes how to install the Facebook Ads connector, how to connect to Facebook Ads with a connection string, and what tables you can import into the ElastiCube Manager.</p>
+        <ul>
+            <li>Prerequisites</li>
+            <li>Installing the Facebook Ads Connector</li>
+            <li>Connecting to Facebook Ads</li>
+            <li>Accessing the Facebook API</li>
+            <li>Creating a Connection String</li>
+            <li>Adding Facebook Ads Tables to your ElastiCube</li>
+            <li>Facebook Ads Tables</li>
+            <li>Versions</li>
+        </ul>
+        <p class="bold">Breaking Changes for the Marketing API Version 2.8</p>
+        <p>As of July 25, 2017, Facebook no longer supports their Marketing API version 2.8. Currently, all users whose Facebook app is v2.8 will receive an error. To overcome this issue, add the parameter ‘Version=2.10’ to the connection string.</p>
+        <p>For more information about the latest version of the Marketing API, see Facebook’s <a href="https://developers.facebook.com/ads/blog/post/2017/07/18/marketing-api-2.10/">blog posts</a>.</p>
+        <h2 class="notoc">Prerequisites</h2>
+        <ul>
+            <li>The Facebook Ads connector requires Sisense V6.6.1 and later.</li>
+        </ul>
+        <h2 class="notoc">Installing the Facebook Ads Connector</h2>
+        <p>Sisense provides the Facebook Ads connector as a standalone connector that you can download and add to your list of default Sisense connectors. After you install the Facebook Ads connector, it is added to your list of Web Service connectors.</p>
+        <p class="bold">To install the Facebook Ads connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/FacebookAds.Connector.Installer.exe">Download</a> the Facebook Ads installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The Facebook Ads connector is displayed in the ElastiCube Manager under <span class="bold">Add Data &gt; Web Services</span>.<br /><img src="../../../Resources/Images/fbads1.png" class="thumblarge" /></p>
+        <h2 class="notoc">Connecting to the Facebook Ads</h2>
+        <p>To access Facebook Ads’ data from Sisense, you must provide valid Facebook Ads credentials in a connection string.</p>
+        <p>This section describes how to create a Facebook app to retrieve the necessary authentication parameters for the connections string and then how to construct the connection string.</p>
+        <p><span class="bold">Note</span>: If you have already created a connection string for the Facebook connector, you can use the same credentials in the Facebook Ads connection string.</p>
+        <h3 class="notoc">Creating an App</h3>
+        <p>The credentials you need to connect to your data in Facebook are provided by Facebook when you create a Facebook app through the Facebook Developer site.</p>
+        <p>For more information, see <a href="create-app-facebook.htm">Creating an App in Facebook</a>.</p>
+        <h3 class="notoc">Creating a Connection String</h3>
+        <p>Sisense uses connection strings to connect to Facebook Ads and import data into the ElastiCube Manager. Each connection string contains authentication parameters that the data source uses to verify your identity and what information you can export to Sisense.</p>
+        <p><span class="bold">Note</span>: When switching accounts, you must sign out of your account and then sign it with the new account.</p>
+        <p>After you have obtained the relevant credentials, you can create the connection used to connect to your Facebook account. The Facebook connection string has the following structure:</p>
+        <p>jdbc:DataSourceName:Property1=Value1;Property2=Value2;</p>
+        <p>The following is an example of Facebook connection string:</p>
+        <p class="code">jdbc:facebook:OAuthClientId=112345383774486;OAuthClientSecret=064c524478d712534b7e7e4224fad;</p>
+        <p class="code">InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;Timeout=0;ThrottleSeconds=15;</p>
+        <p class="code">ThrottleMaxPercent=90;Other=RetryWaitTime=60000;MaximumRequestRetries=5;</p>
+        <p>The example above includes both mandatory and optional parameters you can provide in the connection. The required parameters are emphasized in bold.</p>
+        <p class="bold">Mandatory Parameters</p>
+        <ul>
+            <li><span class="bold">OAuthClientId</span>: Set this to the App ID in your app settings.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the App Secret in your app settings.</li>
+            <li><span class="bold">CallbackURL</span>: Set this to the Return URL in your app settings.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken connection property.</li>
+        </ul>
+        <MadCap:dropDown>
+            <MadCap:dropDownHead>
+                <MadCap:dropDownHotspot>Optional Parameters</MadCap:dropDownHotspot>
+            </MadCap:dropDownHead>
+            <MadCap:dropDownBody>
+                <ul>
+                    <li><span class="bold">Aggregate Format</span>: The format aggregate or collection columns should return in.</li>
+                    <li><span class="bold">Authenticate As Page</span>: The name or Id of a page to authenticate as when making requests to Facebook.</li>
+                    <li><span class="bold">Auto Cache</span>: The AutoCache property controls automatic caching of data.</li>
+                    <li><span class="bold">Cache Connection</span>: The connection string for the cache database.</li>
+                    <li><span class="bold">Cache Driver</span>: The database driver to be used to cache data.</li>
+                    <li><span class="bold">Cache Location</span>: Specifies the path to the cache when caching to a file.</li>
+                    <li><span class="bold">Cache Metadata</span>: Whether or not to cache the table metadata. The cache will be stored in memory unless CacheConnection or CacheLocation are set.</li>
+                    <li><span class="bold">Callback URL</span>: The OAuth callback URL to return to when authenticating. This value must match the callback URL you specify in your app settings.</li>
+                    <li><span class="bold">Firewall Password</span>: A password, if authentication is required to connect through a firewall.</li>
+                    <li><span class="bold">Firewall Port</span>: The TCP port for the firewall FirewallServer — see the description of the FirewallServer option for details.</li>
+                    <li><span class="bold">Firewall Server</span>: Specify a firewall name or IP address to authenticate requested connections, if necessary.</li>
+                    <li><span class="bold">Firewall Type</span>: The type of firewall to connect through.</li>
+                    <li><span class="bold">Firewall User</span>: The user name to authenticate with the firewall.</li>
+                    <li><span class="bold">Initiate OAuth</span>: Set this property to initiate the process to obtain or refresh the OAuth access token when you connect.</li>
+                    <li><span class="bold">Location</span>: A path to the directory that contains the schema files defining tables, views, and stored procedures.</li>
+                    <li><span class="bold">Logfile</span>: A path to the log file.</li>
+                    <li><span class="bold">Max Log File Size</span>: A string specifying the maximum size in bytes for a log file (ex: 10MB). When the limit is hit, a new log is created in the same folder with the date and time appended to the end.</li>
+                    <li><span class="bold">MaximumRequestRetries</span>: The maximum amount of request retries.</li>
+                    <li><span class="bold">OAuth Access Token</span>: The access token for connecting using OAuth.</li>
+                    <li><span class="bold">OAuth Client Id</span>: The client Id assigned when you register your application with an OAuth authorization server.</li>
+                    <li><span class="bold">OAuth Client Secret</span>: The client secret assigned when you register your application with an OAuth authorization server.</li>
+                    <li><span class="bold">OAuth Settings Location</span>: The location of the settings file where OAuth values are saved when InitiateOAuth is set to GETANDREFRESH or REFRESH.</li>
+                    <li><span class="bold">Offline</span>: Use offline mode to get the data from the cache instead of the live source.</li>
+                    <li><span class="bold">Other</span>: The other parameters necessary to connect to a data source, such as username and password, when applicable.</li>
+                    <li><span class="bold">Pagesize</span>: The maximum number of results to return per page from Facebook.</li>
+                    <li><span class="bold">Proxy Auth</span>: Scheme The proxy server authorization scheme (default: BASIC).</li>
+                    <li><span class="bold">Proxy Auto Detect</span>: This indicates whether to use the default system proxy settings or not. Set ProxyAutoDetect to FALSE to use custom proxy settings. This takes precedence over other proxy settings.</li>
+                    <li><span class="bold">Proxy Password</span>: A password, if authenticating with a proxy server.</li>
+                    <li><span class="bold">Proxy Port</span>: The TCP port for the proxy ProxyServer (default: 80).</li>
+                    <li><span class="bold">Proxy Server</span>: If a proxy server is given, then the HTTP request is sent to the proxy instead of the specified server.</li>
+                    <li><span class="bold">Proxy SSL Type</span>: The SSL type to use when connecting to the proxy server (default: AUTO).</li>
+                    <li><span class="bold">Proxy User</span>: A user name, if authentication is to be used for the proxy.</li>
+                    <li><span class="bold">Pseudo Columns</span>: Indicates whether or not to include pseudo columns as columns to the table.</li>
+                    <li><span class="bold">Query Cache</span>: The time duration, in seconds, for which the in-memory cached data is reused.</li>
+                    <li><span class="bold">Readonly</span>: You can use this property to enforce read-only access to Facebook from the provider.</li>
+                    <li><span class="bold">RetryWaitTime</span>: The amount of time in milliseconds to wait before retrying to query the Facebook API.</li>
+                    <li><span class="bold">RTK</span>: The runtime key used for licensing.</li>
+                    <li><span class="bold">Search Terms</span>: Default SearchTerms if none are specified. Used for some tables, such as Users, where SearchTerms may be specified.</li>
+                    <li><span class="bold">SSL Server Cert</span>: The certificate to be accepted from the server when connecting using TLS/SSL.</li>
+                    <li><span class="bold">Support Enhanced SQL</span>: If set to true, the provider will cache the entire table in memory and issue the current query against the memory cache. Allows queries with aggregate functions that are otherwise unsupported. The entire memory cache is discarded after the query is executed, unlike QueryCache.</li>
+                    <li><span class="bold">Tables</span>: Comma-separated list of tables to be listed. For example: Tables=TableA,TableB,TableC.</li>
+                    <li><span class="bold">Target</span>: A default target if none is specified. Used for some tables, such as Comments, where a target may be specified.</li>
+                    <li><span class="bold">ThrottleSeconds</span>: Indicates how many seconds to wait until sending another insight request when the ThrottleMaxPercent has been met.</li>
+                    <li><span class="bold">ThrottleMaxPercent</span>: The threshold set for throttling further insight requests. The defaults for ThrottleSeconds and ThrottleMaxPercent are 10 and 95.</li>
+                    <li><span class="bold">Timeout</span>: The value in seconds until the timeout error is thrown, canceling the operation.</li>
+                    <li><span class="bold">Verbosity</span>: The verbosity level that determines the amount of detail included in the log file.</li>
+                    <li><span class="bold">Version</span>: The Facebook Graph API version to use. You can see your version in the Facebook Developer dashboard. See the <a href="https://developers.facebook.com/docs/apps/changelog">Facebook Platform Changelog</a> to see if your version is still supported.<br /><img src="../../../Resources/Images/fbapi1.png" class="thumblarge" /></li>
+                </ul>
+            </MadCap:dropDownBody>
+        </MadCap:dropDown>
+        <h2 class="notoc">Adding Facebook Ads Tables to your ElastiCube</h2>
+        <p>After you have changed the connectivity settings of the predefined ElastiCube, or if you want to create your own ElastiCube from scratch, you can add Facebook Ads tables exposed by the Facebook API.</p>
+        <p>Facebook provides access to data associated with the Facebook account you defined in the connection string. Once you have connected, Sisense displays a list of Facebook Ads tables you can import. For a list of supported tables, see Facebook Ads Tables.</p>
+        <p class="bold">To add Facebook Ads data:</p>
+        <ol>
+            <li>In ElastiCube Manager, click <span class="bold">Add Data</span> and then, <span class="bold">Facebook Ads</span>. The Connect to Facebook window is displayed.<br /><img src="../../../Resources/Images/fbads2.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">Date Range fields</span>, select the date range for the relevant Facebook Ads data you want to import.<br /><span class="bold">Note</span>: When performing an accumulative build, if you change the date range from your previous build, select <span class="bold">Delete existing Data</span> to prevent duplication.<br /><img src="../../../Resources/Images/FBaccum.png" class="thumblarge" /></li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. Facebook is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. Sisense connects to Facebook and displays a list of tables available for you to import. For a list of tables you can import, see Facebook Ads Tables.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the ElastiCube Manager.</li>
+        </ol>
+        <p><span class="bold">Tip</span>: Facebook Ads leverages the Facebook Marketing API, however, this API includes user request limitations. To overcome this limitation, try to reduce the date range or query fewer Ad accounts by removing them from your developers profile (<span class="bold">Settings &gt; Advanced &gt; Advanced Ad Account IDs</span>). For more information, see Facebook’s Marketing Rate limitations.</p>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h2 class="notoc">Facebook Ads Tables</h2>
+        <p>The table below describes the tables you can import from various Facebook APIs. Facebook limits the number of calls and the amount of data that you can retrieve from their APIs. These limitations depend on which Facebook API you are using and your account type. When you reach a limit, Sisense returns the error provided by Facebook. For example, if you receive any of the following error codes, this usually indicates that you have reached one of Facebook’s limitations:</p>
+        <ul>
+            <li>error code = 4, CodedException</li>
+            <li>error code = 32, CodedException</li>
+            <li>error code = 17,  User request limit reached</li>
+        </ul>
+        <p>If you encounter one of these errors, refer to the Facebook API that exposed the table for more details regarding that API’s limitations.</p>
+        <p>Available Tables</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Table</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AdAccounts</td>
+                    <td>The Ad Accounts available for a user. AdAccounts in Facebook are the accounts you have available in Facebook for creating Ads on. Accessing Ad Account information requires the ads_read permission.</td>
+                </tr>
+                <tr>
+                    <td>AdCreatives</td>
+                    <td>Information about an Ad Creative or the Ad Creatives on a specific Ad Account, Ad Set, or Ad. AdCreatives in Facebook represent a collection of the creatives for specific Ads in Facebook. Accessing Ad Creative information requires the ads_read permission.</td>
+                </tr>
+                <tr>
+                    <td>AdInsights</td>
+                    <td>Ads Insights provides access for reporting and analytics purposes. Accessing AdInsights information requires the ads_read permission.</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_Age_Gender</td>
+                    <td rowspan="11">The following are breakdowns of the AdInsights table. Due to storage constraints, Facebook has made only some permutations of breakdowns available. For more information, see <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns/v2.8" target="_blank">Facebook Breakdowns</a>.</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_Country</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_FrequencyValue</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_Placement_Device</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_HStatsByAdvertiserTZ</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_HStatsByAudienceTZ</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_Placement_Device</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_Placement_ImpressionDevice</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_ProductId</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_PublisherPlatform_ImpressionDevice_PlatformPosition</td>
+                </tr>
+                <tr>
+                    <td>AdInsights_Region</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions</td>
+                    <td>Query an Ad Report. Accessing Ad Report information requires the ads_read permission. AdInsightsActions represents a breakdown of the Actions column from AdInsights.</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_Age_Gender</td>
+                    <td rowspan="10">The following are breakdowns of the AdInsightsActions table. Due to storage constraints, Facebook has made only some permutations of breakdowns available. For more information, see <a href="https://developers.facebook.com/docs/marketing-api/insights/breakdowns/v2.8" target="_blank">Facebook Breakdowns</a>.</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_Country</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_FrequencyValue</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_HStatsByAdvertiserTZ</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_HStatsByAudienceTZ</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_Placement_Device</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_Placement_ImpressionDevice</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_ProductId</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_PublisherPlatform_ImpressionDevice_PlatformPosition</td>
+                </tr>
+                <tr>
+                    <td>AdInsightsActions_Region</td>
+                </tr>
+                <tr>
+                    <td>Ads</td>
+                    <td>Query information about an Ad or the Ads in a specific Ad Set, Campaign, or Ad Account. Accessing Ad Information requires the ads_read permission. Ads in Facebook represent individual ads that have been created.</td>
+                </tr>
+                <tr>
+                    <td>AdScheduledReports</td>
+                    <td>Query the Scheduled Reports for a given Ad Account. Accessing Scheduled Report information requires the ads_read permission. The scheduled reports are a list of reports scheduled to run every day for your account. These can be maintained in the Facebook Ads Manager. Daily runs of these reports are available from ScheduledReportRuns.</td>
+                </tr>
+                <tr>
+                    <td>AdSets</td>
+                    <td>Query information about an Ad Set or the Ad Sets on a specific Campaign or Ad Account. Accessing Ad Set information requires the ads_read permission. AdSets in Facebook represent a collection of Ads in Facebook.</td>
+                </tr>
+                <tr>
+                    <td>Campaigns</td>
+                    <td>Query information about a Campaign or the Campaigns on a specific Ad Account. Accessing Campaign information requires the ads_read permission. Campaigns in Facebook represent advertising campaigns that individual Ads or AdSets may be a part of.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>Versions</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.1.50</td>
+                    <td>June 12, 2017</td>
+                    <td>New version of Graph API v2.9 ChangelogNew objects: SimpleVideoInsights, VideoInsightsByActionType, VideoInsightsByDistributionType, VideoInsightsByReactionType</td>
+                </tr>
+                <tr>
+                    <td>6.6.1.45</td>
+                    <td>May 17. 2017</td>
+                    <td>General Release</td>
+                </tr>
+            </tbody>
+        </table>
+        <h3 class="notoc">Version 6.6.1.45</h3>
+        <p class="bold">Breaking Changes</p>
+        <p>In the latest version of the Facebook Graph API, permissions have been largely reworked. All of the friends* permissions have been removed. In addition, most permissions require Facebook approval if you wish to request information about other user accounts who are not an administrator of the Facebook App. Sisense recommends reviewing the new permissions listed by Facebook here:</p>
+        <p><a href="https://developers.facebook.com/docs/facebook-login/permissions/v2.1" target="_blank">https://developers.facebook.com/docs/facebook-login/permissions/v2.1</a>
+        </p>
+        <p>In addition, users may reject requested permissions in the Authorization dialog on Facebook. If this happens, the specific Permissions requested will state that they are declined under the Status column. The permission may be rerequested by executing GetOAuthAccessToken and setting AuthType to rerequest.</p>
+        <p>If you want to keep using an old version of the API, you can by simply setting the Version connection property in the connection string to the specific version you were using and also setting the Location to a folder where you have saved an older copy of the schema files (.rsd and .rsb files).</p>
+        <p>If you want to update your app to 2.9, then you don’t have to do anything</p>
+        <p><span class="bold">Note</span>: Sisense removed few metrics from the AdInsights / AdInsightsActions due to their removal by Facebook in 2.9.</p>
+        <p>A number of various changes have been made across tables due to changes in Facebook. These changes are listed below:</p>
+        <ul>
+            <li>Facebook no longer allows public posts to be searched. We have had to remove SearchTerms from the Posts table because of this.</li>
+            <li>Checkins have been removed from the Graph API. Due to this, we have removed the Checkins table.</li>
+            <li>Events may no longer be inserted, updated, or deleted via the Graph API. We have had to change the Events table to a view.</li>
+            <li>Usernames for Facebook Users may no longer be used as a target and are no longer returned. The Facebook username for Pages is unaffected.</li>
+            <li>User ID’s for Facebook Users will be different across different Facebook Apps. This is due to the new policy of App-scoped User ID’s.</li>
+        </ul>
+    </body>
+</html>

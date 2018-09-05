@@ -1,0 +1,38 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="1943" MadCap:lastWidth="693">
+    <head>
+        <title>Connecting via OLE DB Drivers | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting via OLE DB Drivers</h1>
+        <h2 class="notoc">Object Linking and Embedding Database</h2>
+        <p>The OLE DB provides access to a data source via an installed driver on the operating system regardless of the architecture of the data source.</p>
+        <p>In <MadCap:variable name="Variables.CompanyName" />, it serves as a connector to data providers that are not included in the common providers list, such as MS SQL, MySQL, Oracle and so forth.</p>
+        <h2 class="notoc">Adding a table to the <MadCap:variable name="Variables.ECM" /></h2>
+        <ol>
+            <li>Click <span class="bold">Add Data</span> on the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the <span class="bold">Database servers</span> category select <span class="bold">Generic OleDB Driver</span>.<br /><img src="../../../Resources/Images/add-ole-DB.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">Data Link Properties</span> dialog, select a connection by choosing the relevant OLE DB driver and the connection properties.<br /><img src="../../../Resources/Images/ole-DB-1.png" class="thumblarge" /></li>
+            <span class="bold">Note</span>:&#160;When the data source server requires a login credentials, you must select the Allow saving password checkbox.
+            <li>Follow all wizard steps and click <span class="bold">OK</span>  to move to the final dialog. From the tables selection dialog, select tables that you want to add and click <span class="bold">Add</span> to complete the wizard. <span class="bold">Note</span>: You may need to update the executed table query described below.<br /><img src="../../../Resources/Images/ole-DB-2.png" class="thumblarge" /></li></ol>
+        <h3 class="notoc">Setting the table query (Troubleshoot)</h3>
+        <p>ODBC and OLE DB are generic drivers; therefore the SQL syntax being executed against the actual data source may vary from one provider to the other.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> sets by default the standard SQL for the ODBC/OLE DB tables which covers most of the known data providers. For cases where non-standard SQL must be supplied, the table addition dialog provides a quick preview of the current SQL query and an edit button which opens the Query Properties dialog.</p>
+        <p>In the <span class="bold">Query Properties</span> dialog, two options are available:</p>
+        <ul>
+            <li>
+                <span class="bold">Auto Query Structure</span>: Choose the proper SQL syntax delimiter</li>
+            <li>
+                <span class="bold">Manual Query Input</span>: Type the desired query.</li>
+        </ul>
+        <p>
+            <span class="bold">Note</span>: The automatic options can be applied on the current table or on all tables, while the manual option defines a single table and can only be applied on the current table. The <span class="bold">Apply All</span> and <span class="bold">Apply Table</span> buttons will be enabled according to the selection made.</p>
+        <h3 class="notoc">Misc Troubleshooting:</h3>
+        <ul>
+            <li>When an ODBC table is added by a DSN connection, the DSN must exist on the target <MadCap:variable name="Variables.ElastiCube" /> Server machine, or else the server will fail to connect and import data from that table. In general, setting a connection by a DSN (not by connection string) is not recommended practice.</li>
+            <li>Regarding ODBC only, ensure that the addressed ODBC driver platform (32 or 64 bit) matches the current installation of <MadCap:variable name="Variables.CompanyName" /> (Manager and Server). Platform mismatches will lead to connectivity errors.</li>
+            <li>When setting an OLE DB connection, and the data source server requires login credentials, the Allow saving password checkbox must be selected.</li>
+        </ul>
+    </body>
+</html>

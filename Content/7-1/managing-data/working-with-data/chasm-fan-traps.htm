@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1901" MadCap:lastWidth="994">
+    <head>
+        <title>Chasm and Fan Traps | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Chasm and Fan Traps</h1>
+        <p>
+            <span class="bold">Note</span>: The image on this page were taken in the desktop version of the <MadCap:variable name="Variables.ECM" />, however, the same principles described on this page also apply to the web-based <MadCap:variable name="Variables.ECM" />.</p>
+        <p>Chasm and fan traps should be avoided when building your <MadCap:variable name="Variables.ElastiCube" /> schemas.</p>
+        <h2 class="notoc">Chasm Traps</h2>
+        <p>A chasm trap occurs when two “Many-to-One” joins converge on a single table, and the query includes measures from both leaf tables. As a result multiple rows are returned from the tables when processing the query.</p>
+        <p>
+            <img src="../../../Resources/Images/chasm1.png" class="thumblarge" />
+        </p>
+        <p>If you were to calculate both measures (Qty and Value) simultaneously, like in the following example, the values for Customers will be multiplied due to the inner join between the leaf tables, and the results may be incorrect:</p>
+        <p>
+            <img src="../../../Resources/Images/chasm2.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc">Fan Traps</h2>
+        <p>A fan trap occurs when two “many-to-one” joins follow one another in master-detail form (OrderDetails), and the query includes a measure from both the leaf table (OrderDetails) and its immediate master (Orders).</p>
+        <p>
+            <img src="../../../Resources/Images/chasm3.png" class="thumblarge" />
+        </p>
+        <p>If you try to aggregate both measures simultaneously (using the query below), you will probably get incorrect results:</p>
+        <p>
+            <img src="../../../Resources/Images/chasm4.png" class="thumblarge" />
+        </p>
+        <p>The “Qty” measure, corresponding to the leaf measure table (OrderDetails) is calculated correctly, but the “Value” measure, corresponding to the measure held in its master (Orders), is not. This is because we get the “Value” of every OrderID, which may inflate the expected results.</p>
+        <p>The web application translation module separates the calculations, and unions the results by generating a query for each of the measures’ paths (path in terms of tables to go by). Then the web application translation module will group all the measures with the same tables’ paths into one query and union it with all the other “same path measures” with different paths.</p>
+        <p>The described “Chasm Trap” can be prevented like this:</p>
+        <p>
+            <img src="../../../Resources/Images/chasm5.png" class="thumblarge" />
+        </p>
+        <p>And the “Fan Trap” will be prevented this way:</p>
+        <p>
+            <img src="../../../Resources/Images/chasm6.png" class="thumblarge" />
+        </p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

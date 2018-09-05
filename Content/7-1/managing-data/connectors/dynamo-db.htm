@@ -1,0 +1,126 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to DynamoDB | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to DynamoDB</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> DynamoDB connector is a standalone connector that allows you to import data from the DynamoDB API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the DynamoDB API. To obtain a connection string, you will need to create a DynamoDB developers account.</p>
+        <p>Once you have connected to DynamoDB, you can import a variety of tables from the DynamoDB API.</p>
+        <p>This page describes how to install the DynamoDB connector, how to connect to DynamoDB with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the DynamoDB Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the DynamoDB REST API</a>
+            </li>
+            <li><a href="#Adding">Adding DynamoDB Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#DynamoDB">DynamoDB Tables</a>
+            </li>
+            <li><a href="#Accumula">Versions</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the DynamoDB Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the DynamoDB connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the DynamoDB connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/DynamoDB.Connector.Installer.exe">Download</a> the DynamoDB installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p class="indent">The DynamoDB connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/dynamodb.png" class="thumblargeli" />
+        </p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the DynamoDB REST API</h2>
+        <p>The connection to DynamoDB is made using your <span class="bold">AccessKey</span>, <span class="bold">SecretKey</span>, and optionally your <span class="bold">Domain</span> and <span class="bold">Region</span>. Your AccessKey and SecretKey can be obtained on the security credentials page for your Amazon Web Services account. Your Region will be displayed in the upper left-hand corner when you are logged into DynamoDB.</p>
+        <ul>
+            <li><span class="bold">AccessKey</span>: Your AWS account access key. This value is accessible from your AWS security credentials page.</li>
+            <li><span class="bold">SecretKey</span>: Your AWS account secret key. This value is accessible from your AWS security credentials page.</li>
+            <li><span class="bold">Domain</span>: Your AWS domain name. You can optionally choose to associate your domain name with AWS.</li>
+            <li><span class="bold">Region</span>: The hosting region for your Amazon Web Services. Available values are NORTHERNVIRGINIA, OREGON, NORTHERNCALIFORNIA, IRELAND, SINGAPORE, SYDNEY, TOKYO, and SAOPAULO. The default value is NORTHERNVIRGINIA.</li>
+        </ul>
+        <h3 class="notoc"><a name="Adding"></a>Adding DynamoDB Tables to your <MadCap:variable name="Variables.ElastiCube" /></h3>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to DynamoDB and import data into the <MadCap:variable name="Variables.ECM" />.</p>
+        <p>The connection string to connect to DynamoDB has the following structure:</p>
+        <p class="code">jdbc:DynamoDB:Property1=Value1;Property2=Value2;</p>
+        <p>An example of a connection string:</p>
+        <p class="code">jdbc:dynamodb:Access Key=AKIAJH283HDH2932DQ;Secret Key=vG07bFgSmvfgsrdfgHsB6iQU/HVOqO9L9g;Domain=amazonaws.com;Region=OREGON;</p>
+        <p><span class="bold">Note</span>: To switch between accounts, you need to delete the file OAuthsettings.txt file located at …\<span class="code">Users\xxx\AppData\Roaming\CData\DynamoDB</span> Data Provider.</p>
+        <p class="bold">To add DynamoDB data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data </span>and then, <span class="bold">DynamoDB</span>. The Connect to DynamoDB window is displayed.<br /><img src="../../../Resources/Images/dynamodb2.png" class="thumblarge" /></li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. DynamoDB is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to DynamoDB and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h3 class="notoc">Switching between Accounts</h3>
+        <p>When you connect to the DynamoDB data source, <MadCap:variable name="Variables.CompanyName" /> saves your OAuth values in the file OAuthsettings.txt file located at …\Users\xxx\AppData\Roaming\CData\DynamoDB Data Provider on your <MadCap:variable name="Variables.CompanyName" /> server. To connect to the DynamoDB data source with another user on the same machine, you must delete the OAuthsettings.txt file. <MadCap:variable name="Variables.CompanyName" /> will then generate a new file for that user.</p>
+        <p>Another option to support multiple users is to define the location and file name of an OAuthsettings file for each unique user in your connection string through the OAuthSettingsLocation parameter. When each user connects to the data source, <MadCap:variable name="Variables.CompanyName" /> generates the OAuth file with the file name you specify in the location you define. In the examples below, two users are allowed to access the DynamoDB data source and for each user, <MadCap:variable name="Variables.CompanyName" /> generates a file that contains that user’s OAuth values in the location defined in the string.</p>
+        <p class="code">jdbc:DynamoDB:OAuthSettingsLocation=C:\DynamoDB\auth\john.txt;OAuthClientId=11276856774486;OAuthClientSecret</p>
+        <p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p class="code">jdbc:DynamoDB:OAuthSettingsLocation=C:\DynamoDB\auth\sally.txt;OAuthClientId=11276856774486;OAuthClientSecret</p>
+        <p class="code">=064c70d78567jm2b7e7e4224fad;InitiateOAuth=GETANDREFRESH;Version=2.8;CallbackURL=http://localhost/;</p>
+        <p>In the example above, to OAuth files are created, one for John and one for Sally in the location C:\DynamoDB\auth\.</p>
+        <p>This is useful if you support many users who each need to access the DynamoDB data source.</p>
+        <h3 class="notoc"><a name="DynamoDB"></a>DynamoDB Tables</h3>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> DynamoDB connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Table0</td>
+                    <td>Test table.</td>
+                </tr>
+                <tr>
+                    <td>Table1</td>
+                    <td>Test table.</td>
+                </tr>
+                <tr>
+                    <td>Movies</td>
+                    <td>	Sample data file that contains information about a few thousand movies from the Internet Movie Database (IMDb).</td>
+                </tr>
+            </tbody>
+        </table>
+        <h4 class="notoc"><a name="Accumula"></a>Accumulative Builds</h4>
+        <p><MadCap:variable name="Variables.CompanyName" /> support accumulative builds for all numeric and dates data types. However, the data must be sorted before building the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>Versions</p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <thead>
+                <tr>
+                    <th>Version</th>
+                    <th>Release Date</th>
+                    <th>Improvements</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>6.6.0.63</td>
+                    <td>	April 20, 2017</td>
+                    <td><MadCap:variable name="Variables.CompanyName" /> automatically retries a query attempt for certain errors</td>
+                </tr>
+                <tr>
+                    <td>6.6.0.54</td>
+                    <td>March 21, 2017</td>
+                    <td>	TypeDetectionScheme in the connection string works as expected</td>
+                </tr>
+                <tr>
+                    <td>6.6.0.48</td>
+                    <td>	March 3, 2017</td>
+                    <td>Support for Accumulated builds with <MadCap:variable name="Variables.CompanyName" /> V6.6 Beta installed</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

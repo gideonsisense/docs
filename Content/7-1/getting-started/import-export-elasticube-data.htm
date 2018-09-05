@@ -1,0 +1,25 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1081" MadCap:lastWidth="801">
+    <head>
+        <title>Importing and Exporting Elasticube Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Importing and Exporting Elasticube Data</h1>
+        <p>ElastiCube data can be transferred to different machines. This is useful when you are deploying on a new machine or need to transfer the data to a different server.</p>
+        <p>The transferred data is stored in a compressed ecdata file. The file contains all of the information contained in an ElastiCubeData folder (including the source data),  and is used by the Sisense Server Console to build a new ElastiCube.</p>
+        <p class="bold">To export data:</p>
+        <ol>
+            <li>Open the Sisense Server Console.</li>
+            <li>Click on the relevant ElastiCube.</li>
+            <li>Click the ‘Stop’ button to stop the specific ElastiCube (not the entire server).</li>
+            <li>Click <span class="bold">Export</span>. Enter a name for the file you are saving, and click <span class="bold">Save</span>.<br /><img src="../../Resources/Images/exportecdata1.png" class="thumblarge" /></li>
+        </ol>
+        <p class="bold">To import data:</p>
+        <ol>
+            <li>Open the Sisense Server Console.</li>
+            <li>Click on the import ecdata file icon <img src="../../Resources/Images/ecdataexporticon1.png" class="docbutton" />. </li>
+            <li>Select the location of the ecdata file and click <span class="bold">Open</span>.</li>
+            <li>A window will appear showing the import progress. Once complete, the new ElastiCubes will be added to the list of existing ElastiCubes. Make sure the ElastiCube is running before accessing it.<br /><img src="../../Resources/Images/importecdata1.png" class="thumblarge" /><br /><span class="bold">Note</span>: You can also transfer data by copying the folder where Sisense stores the data locally, instead of exporting and importing the compressed file. To learn more, click <a href="migrate-install.htm">here</a>.</li>
+        </ol>
+    </body>
+</html>

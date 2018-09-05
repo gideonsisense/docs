@@ -1,0 +1,42 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Accessing the Sisense Application Database | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Accessing the <MadCap:variable name="Variables.CompanyName" /> Application Database</h1>
+        <p>When <MadCap:variable name="Variables.CompanyName" /> is installed, <MadCap:variable name="Variables.CompanyName" /> installs a MongoDB database as the application database with three MongoDB users:</p>
+        <ul>
+            <li>
+                <span class="bold">AppUser</span>: The user used by the <MadCap:variable name="Variables.CompanyName" /> application to access data stored in the <MadCap:variable name="Variables.CompanyName" /> MongoDB.</li>
+            <li>
+                <span class="bold">ReadUser</span>:  A user with read-only access to the <MadCap:variable name="Variables.CompanyName" /> MongoDB data.</li>
+            <li>
+                <span class="bold">WriteUser</span>: A user with read-write access to the <MadCap:variable name="Variables.CompanyName" /> MongoDB data.</li>
+        </ul>
+        <p>The AppUser is created to allow the Sisense Application to interact with the application database. This password is unique to your Sisense installation and should not be changed. The credentials of the AppUser are shared between each node of the replica set. If you want to create a Sisense MongoDB instance on server where Sisense is not installed, see <a href="host-application-database.htm">Hosting an Application Server</a>.</p>
+        <p>By default, Sisense limits access to your application database to localhost. If you want to limit access to your application database, see <a href="limiting-access-to-application-database.htm">Limiting Access to the Application Database</a>.</p>
+        <h2 class="notoc">Creating Application Database Users</h2>
+        <p>The ReadUser and WriteUser can be used to access your Sisense application database. These users have the relevant read-only and write-only MongoDB roles assigned to them for accessing the application database.</p>
+        <p class="bold">To create an application database user:</p>
+        <ol>
+            <li>Open the Sisense REST API.<br /><img src="../../../Resources/Images/v7adminrest1.png" class="thumblarge" /></li>
+            <li>In the REST API, select <span class="bold">admin POST /app_database/change_database_user_password</span>.<br /><img src="../../../Resources/Images/postadmin1.png" class="thumblarge" /><br /></li>
+            <li>In the field <span class="bold">Authorization</span>, enter your API token. See <a href="http://developer.sisense.com/display/API2/Using+the+REST+API">Using the REST API</a> for more information.</li>
+            <li>In the User object, provide the username (ReadUser or WriteUser depending on which user’s password you want to change) and the new password:<br /><span class="code">{</span><br /><span class="code">"userName": "string", (ReadUser or WriteUser)</span><br /><span class="code">"password": "string" (The password you enter here is the password you will provide when connecting to the database)</span><br /><span class="code">}</span></li>
+            <li>Click <span class="bold">RUN</span>.</li>
+        </ol>
+        <p>This endpoint encrypts your password and saves it in Sisense application database. When you connect to the application database, use the plaintext password you entered as the value of the password parameter, not the encrypted password returned by the API.</p>
+        <h2 class="notoc">Connecting to the Application Database</h2>
+        <p>Once you have defined the username and passwords for your application database users, these users can connect to the application database through applications such as RoboMongo or when importing data into an ElastiCube from your Sisense MongoDB as described in <a href="../../managing-data/connectors/mongo-db.htm">Connecting to MongoDB</a>.</p>
+        <p>For example, in RoboMongo, you can connect to your local Sisense MongoDB by connecting to the Address <span class="bold">localhost</span> through port <span class="bold">27018</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/connectsettings1.png" class="thumblarge" />
+        </p>
+        <p>In the Authentication tab, enter the name of the Sisense MongoDB, admin, and your username and password. The username is the user whose password you changed, in this example, ReadUser. The password is the password you provided through the <span class="bold">POST admin/app_database/change_database_user_password</span> endpoint. This password is not the encrypted password that was returned, but the password you defined as the value of the password parameter, for example “mypassword”.</p>
+        <p>
+            <img src="../../../Resources/Images/connectsettings.png" class="thumblarge" />
+        </p>
+        <p>Click <span class="bold">Test</span> to verify that your user can connect. If your credentials are authenticated successfully, click <span class="bold">Save</span> and then connect to the database. Your Sisense MongoDB tables will be displayed.</p>
+    </body>
+</html>

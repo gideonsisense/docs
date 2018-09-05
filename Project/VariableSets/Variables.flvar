@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<CatapultVariableSet>
+  <Variable
+    Comment=""
+    Name="CompanyName"
+    EvaluatedDefinition="Sisense">Sisense</Variable>
+  <Variable
+    Comment=""
+    Name="EcubeServer"
+    EvaluatedDefinition="ElastiCube Server">ElastiCube Server</Variable>
+  <Variable
+    Name="ECM"
+    Comment=""
+    EvaluatedDefinition="ElastiCube Manager">ElastiCube Manager</Variable>
+  <Variable
+    Name="ElastiCube"
+    Comment=""
+    EvaluatedDefinition="ElastiCube">ElastiCube</Variable>
+  <Variable
+    Name="Sisense Web Application"
+    Comment=""
+    EvaluatedDefinition="Sisense Web Application">Sisense Web Application</Variable>
+  <Variable
+    Name="Sisense.com"
+    Comment=""
+    EvaluatedDefinition="Sisense.com">Sisense.com</Variable>
+</CatapultVariableSet>

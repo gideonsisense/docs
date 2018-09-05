@@ -1,0 +1,103 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Upgrading to Sisense V7.0 | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Upgrading to <MadCap:variable name="Variables.CompanyName" /> V7.0</h1>
+        <p>In <MadCap:variable name="Variables.CompanyName" /> V7.0, you can now manage your <MadCap:variable name="Variables.ElastiCube" />s and dashboards anytime, anywhere from a centralized location inside the <MadCap:variable name="Variables.Sisense Web Application" />.</p>
+        <p>For an overview of <MadCap:variable name="Variables.CompanyName" /> V7’s features and functionality, see <a href="#">Getting Started with V7</a>.</p>
+        <p>During the initial phases of the migration to a fully-online <MadCap:variable name="Variables.ECM" />, not all of the functionality included in the desktop version of the <MadCap:variable name="Variables.ECM" /> will be available. All features will be available on the web early Q1 2018.</p>
+        <p>In the meantime, to overcome any gaps in your workflows, <MadCap:variable name="Variables.CompanyName" /> V7.0 supports two versions of the <MadCap:variable name="Variables.ECM" />, the desktop version of the <MadCap:variable name="Variables.ECM" /> and the web-based version of the <MadCap:variable name="Variables.ECM" />.</p>
+        <p>This page describes the implications of working with two versions of the <MadCap:variable name="Variables.ECM" /> and how both versions of the <MadCap:variable name="Variables.ECM" /> can work together to support backwards compatible features.</p>
+        <h2 class="notoc">Working Side-by-Side FAQs<a name="#side"></a></h2>
+        <ul>
+            <li><span class="bold">Can I open my existing <MadCap:variable name="Variables.ElastiCube"></MadCap:variable>s in the Web?</span>
+                <br />Yes, your existing <MadCap:variable name="Variables.ElastiCube" />s will be displayed in the desktop version of the <MadCap:variable name="Variables.ECM" /> as well as the web-based version of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li><span class="bold">Do changes in the Web affect my <MadCap:variable name="Variables.ElastiCube" /> on the Desktop and vice versa?</span>
+                <br />Any changes you make from either version of the <MadCap:variable name="Variables.ECM" /> will be reflected in the other version after you build the <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li><span class="bold">Can I save a copy of my <MadCap:variable name="Variables.ElastiCube" /> in the Web?</span>
+                <br />In the new web-based version of the <MadCap:variable name="Variables.ECM" />, your work is saved automatically. However, your changes are not reflected in your dashboard or the desktop version of the <MadCap:variable name="Variables.ECM" /> until the <MadCap:variable name="Variables.ElastiCube" /> is built.</li>
+            <li><span class="bold">What functionality in the desktop version of the <MadCap:variable name="Variables.ECM" /> is not supported in the Web?</span>
+                <br />Most features and functionality included in the desktop version of the <MadCap:variable name="Variables.ECM" /> are supported on the web, however, are few features have not yet been migrated.<br />For a full list of features not currently supported and how to overcome these gaps, see <MadCap:variable name="Variables.CompanyName" /> V7.0 Backwards Compatibility below.</li>
+            <li><span class="bold">When will all desktop functionality be available in the Web?</span>
+                <br />All functionality available in the desktop version of the <MadCap:variable name="Variables.ECM" /> will be available online by the end of the first quarter, 2018.</li>
+            <li><span class="bold">Is the desktop ECM going to be discontinued?</span>
+                <br />No, the desktop version of the <MadCap:variable name="Variables.ECM" /> will continue to be installed with <MadCap:variable name="Variables.CompanyName" /> throughout 2018. If there are any plans to depreciate the desktop version after 2018, these will be communicated well in advanced.</li>
+        </ul>
+        <h2 class="notoc"><MadCap:variable name="Variables.CompanyName" /> V7.0 Backwards Compatibility</h2>
+        <p>While most functionality is included in the web-based version of the <MadCap:variable name="Variables.ECM" />, the following features will be available on the web from early Q1 2018:</p>
+        <ul>
+            <li>Pre/Post Build Plugins</li>
+            <li>Import/Export ElastiCubes</li>
+            <li>Attach/Detach ElastiCubes</li>
+            <li>Change Connectivity</li>
+            <li>Add Data from Unsupported Data Sources</li>
+        </ul>
+        <p>This section provides solutions to help you complete your tasks by working with two versions of the <MadCap:variable name="Variables.ECM" />.</p>
+        <h3 class="notoc">Pre/Post Build Plugins</h3>
+        <p>When you create an <MadCap:variable name="Variables.ElastiCube" /> in the web-based version of the <MadCap:variable name="Variables.ECM" />, all pre-post plugins are disabled.</p>
+        <p class="bold">To enable pre/post build plugins to work with <MadCap:variable name="Variables.ElastiCube" />s created online:</p>
+        <ol>
+            <li>In Windows, open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Open the relevant <MadCap:variable name="Variables.ElastiCube" /> and select <span class="bold">Edit</span>. The <MadCap:variable name="Variables.ElastiCube" /> is opened in the desktop version of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Add your pre or post-plugins. For more information, see <a href="https://developer.sisense.com/display/API2/ElastiCube+Plugins">Pre- and Post-Build Plugins</a>.</li>
+            <li>Build the <MadCap:variable name="Variables.ElastiCube" /> in the desktop version of the <MadCap:variable name="Variables.ECM" />. <span class="bold">Note</span>: Any unbuilt changes in the <MadCap:variable name="Variables.ElastiCube" /> on the web-based version of the <MadCap:variable name="Variables.ECM" /> will be discarded.</li>
+        </ol>
+        <h3 class="notoc">Import/Export <MadCap:variable name="Variables.ElastiCube" />s</h3>
+        <p>Import or Exporting <MadCap:variable name="Variables.ElastiCube" />s can only be done through the desktop version of the <MadCap:variable name="Variables.ECM" /> in the <MadCap:variable name="Variables.ElastiCube" /> Server Console.</p>
+        <p class="bold">To export:</p>
+        <ol>
+            <li>In Windows, open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Select the relevant <MadCap:variable name="Variables.ElastiCube" />, stop it, and then select <span class="bold">Export</span>.<br /><img src="../Resources/Images/v7export.png" class="thumblarge" /></li>
+        </ol>
+        <p class="bold">To import:</p>
+        <ol>
+            <li>In Windows, open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Click the Import button and select the relevant file <MadCap:variable name="Variables.ElastiCube" /> to import. <span class="bold">Note</span>: <MadCap:variable name="Variables.ElastiCube" />s with the same name will be overwritten and replaced. Any unbuilt changes in the <MadCap:variable name="Variables.ElastiCube" /> in the web-based version of the <MadCap:variable name="Variables.ECM" /> will be discarded.<br /><img src="../Resources/Images/v7import.png" class="thumblarge" /></li>
+            <li>Refresh the <span class="bold">Data</span> page in the web-based version of the <MadCap:variable name="Variables.ECM" /> to access the imported <MadCap:variable name="Variables.ElastiCube" />.</li>
+        </ol>
+        <p class="bold">Attach-Detach <MadCap:variable name="Variables.ElastiCube" /></p>
+        <p>Attaching or detaching <MadCap:variable name="Variables.ElastiCube" />s can only be done through the desktop version of the <MadCap:variable name="Variables.ECM" /> in the <MadCap:variable name="Variables.ElastiCube" /> Server Console.</p>
+        <p class="bold">To detach an <MadCap:variable name="Variables.ElastiCube" />:</p>
+        <ol>
+            <li>In Windows, open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Select the relevant <MadCap:variable name="Variables.ElastiCube" /> and select <span class="bold">Detach</span>.</li>
+            <li>Refresh the Data Page in your browser and continue to work if needed. Any dashboards using the detached <MadCap:variable name="Variables.ElastiCube" /> will not function.</li>
+        </ol>
+        <p class="bold">To attach an <MadCap:variable name="Variables.ElastiCube" />:</p>
+        <ol>
+            <li>Refresh the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>In the <MadCap:variable name="Variables.CompanyName" /> Server Console, click the Attach button  <img src="../Resources/Images/v7attach.png" /> and the relevant file <MadCap:variable name="Variables.ElastiCube" /> to attach. <span class="bold">Note</span>: <MadCap:variable name="Variables.ElastiCube" />s with the same name will be overwritten and replaced. Any unbuilt changes in the <MadCap:variable name="Variables.ElastiCube" /> in the web-based version of the <MadCap:variable name="Variables.ECM" /> will be discarded.</li>
+            <li>Refresh the Data Page in your browser to access the attached <MadCap:variable name="Variables.ElastiCube" /> and continue to work if needed.</li>
+        </ol>
+        <h3 class="notoc">Change Connectivity</h3>
+        <p>Change connectivity is not available for <MadCap:variable name="Variables.ElastiCube" />s built in the web-based version of the <MadCap:variable name="Variables.ECM" />.</p>
+        <p class="bold">To change connectivity settings for an <MadCap:variable name="Variables.ElastiCube" /> build in the web-based version of the <MadCap:variable name="Variables.ECM" />:</p>
+        <ol>
+            <li>In Windows, open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Select the relevant <MadCap:variable name="Variables.ElastiCube" /> and select <span class="bold">Edit</span>. The <MadCap:variable name="Variables.ElastiCube" /> is opened in the desktop version of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>In the <MadCap:variable name="Variables.ECM" /> select <span class="bold"><MadCap:variable name="Variables.ElastiCube" />s</span> &gt; <span class="bold">Change connectivity</span>.</li>
+            <li>Change the relevant connectivity settings. For more information see <a href="managing-data/connectors/change-connect.htm">Changing Connectivity Settings for Data Sources</a>.</li>
+            <li>Perform a build from the desktop <MadCap:variable name="Variables.ECM" />. <span class="bold">Note</span>: Any unbuilt changes on the <MadCap:variable name="Variables.ElastiCube" /> in the web-based version of the <MadCap:variable name="Variables.ECM" /> will be discarded.</li>
+            <li>Refresh the Data Page in your browser and continue to work as needed.</li>
+        </ol>
+        <h3 class="notoc">Add Data from an Unsupported Data Source</h3>
+        <p>Currently, the web-based version of the <MadCap:variable name="Variables.ECM" /> supports data from CSV files, Excel spreadsheets, Oracle, SQL Server, MySQL, Google Sheets, RedShift and Postgres SQL (support for additional connectors will be released monthly), however, the web-based version of the <MadCap:variable name="Variables.ECM" /> supports all existing data sources to view and edit. This includes the ability to:</p>
+        <ul>
+            <li>Add/edit/delete new columns and custom SQL tables</li>
+            <li>Create/edit/delete relationships</li>
+            <li>Perform any table and field operations: rename, duplicate, delete, preview</li>
+            <li>Hide, import, or index fields</li>
+            <li>Set table level build settings</li>
+        </ul>
+        <p>If you need to work with data from a source that is not currently supported, you can import the data into the desktop version of the <MadCap:variable name="Variables.ECM" /> and continue to work on the <MadCap:variable name="Variables.ElastiCube" /> online after the data has been added.</p>
+        <p class="bold">To add data from unsupported data sources:</p>
+        <ol>
+            <li>In Windows, open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Select the relevant <MadCap:variable name="Variables.ElastiCube" /> and select <span class="bold">Edit</span>. The <MadCap:variable name="Variables.ElastiCube" /> is opened in the desktop version of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>In the desktop version of the <MadCap:variable name="Variables.ECM" />, add the relevant tables from any of the data sources supported in the desktop version of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Perform a build from the desktop <MadCap:variable name="Variables.ECM" />. <span class="bold">Note</span>: Any unbuilt changes in the <MadCap:variable name="Variables.ElastiCube" /> on the web-based version of the <MadCap:variable name="Variables.ECM" /> will be discarded.</li>
+            <li>Refresh the Data Page in your browser and continue to work as needed.</li>
+        </ol>
+    </body>
+</html>

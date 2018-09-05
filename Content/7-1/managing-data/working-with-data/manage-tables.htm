@@ -1,0 +1,135 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Managing Tables and Fields | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Managing Tables and Columns</h1>
+        <p>After you have imported your data into the ElastiCube Manager, it’s time to shape it into a data model that can support your dashboard and provide accurate information to your Views.</p>
+        <p>In the ElastiCube Manager, you have a variety of options you can use to model your data from the navigation pane on the left side or in the schema itself.</p>
+        <p>You can modify your data on two levels, the Table level and the Column level.</p>
+        <p>Any changes you make to your schema are reflected in the ElastiCube only and do not affect the data in your data source.</p>
+        <h2 class="notoc">Table Level</h2>
+        <p>You can manage tables imported into the ElastiCube through the navigation pane or through the table itself in the schema.</p>
+        <p>
+            <img src="../../../Resources/Images/tableschemalevels1.png" class="thumblarge" />
+        </p>
+        <p>The table below describes the menu options available from the navigation pane and the corresponding icons available in the table’s menu. Either method allows you to modify and manage your tables.</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Navigation Pane</th>
+                    <th>Table Icon</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Preview &amp; Edit</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7preview9.png" />
+                    </td>
+                    <td>Displays a preview of your table’s data. See <a href="preview-data.htm">Previewing your Data</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>Relationships</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/joinicon1.png" /></td>
+                    <td>Displays related tables together side by side. See <a href="create-relations.htm">Creating Relationships</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>Rename</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/renameicon1.png" /></td>
+                    <td>Allows you to rename the table.</td>
+                </tr>
+                <tr>
+                    <td>Duplicate</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/duplicateicon.png" /></td>
+                    <td>Allows you to duplicate the table.</td>
+                </tr>
+                <tr>
+                    <td>Refresh Schema</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/refreshschema.png" /></td>
+                    <td>Allows you to update a table’s columns if there was a change on the data source without having to add the table again.</td>
+                </tr>
+                <tr>
+                    <td>Hide</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/hideicon.png" /></td>
+                    <td>Allows you to hide a table. Hidden tables are not built with the rest of the ElastiCube.</td>
+                </tr>
+                <tr>
+                    <td>Add Custom Column</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/addcustomicon1.png" /></td>
+                    <td>Allows you to add a custom column to the ElastiCube. See <a href="../transforming-data/add-custom-field.htm">Adding Custom Columns</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>Build Behavior</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/behavioricon.png" /></td>
+                    <td>Allows you to define the build behavior for a specific table. See <a href="../build-settings.htm">Build Settings and Data Accumulation Behavior</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>Delete</td>
+                    <td>
+                        <img src="../../../Resources/Images/v7tablemenu2.png" />&gt;<img src="../../../Resources/Images/trashicon.png" /></td>
+                    <td>Allows you to delete a table.</td>
+                </tr>
+                <tr>
+                    <td>--</td>
+                    <td>&#160;</td>
+                    <td>By default, tables are pinned when you import your data. You can click this icon to unpin your tables so your tables are organized by Sisense around other pinned tables.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>To view your table’s meta, including its name, path, provider, location, and the number of columns it contains, hover over the table in the schema or in the navigation pane.</p>
+        <h2 class="notoc">Column  Level</h2>
+        <p>You can manage tables imported into the ElastiCube through the navigation pane. Columns that are part of a table are displayed below the table. On the left side of the column is an icon that indicates what type of data is in the column, Numeric, Date, or Text. You can click this icon to convert the column into another data type.</p>
+        <p>
+            <img src="../../../Resources/Images/relatedtable.png" class="thumblarge" />
+        </p>
+        <p>On the right side of the column’s name is an icon that indicates if the column is conducted to another column through a relationship. You can hover over the icon to view more details or disconnect the relationship.</p>
+        <p>For each column, you can hover over its name to display a menu from where you view the following options for managing your columns:</p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Menu Option</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Relationships</td>
+                    <td>Displays related columns together side by side. See <a href="create-relations.htm">Creating Relationships</a> for more information.</td>
+                </tr>
+                <tr>
+                    <td>Edit Relationship</td>
+                    <td>Allows you to edit a column’s relationship. This option is only available when the column is connected to another table.</td>
+                </tr>
+                <tr>
+                    <td>Rename</td>
+                    <td>Allows you to rename the column.</td>
+                </tr>
+                <tr>
+                    <td>Duplicate</td>
+                    <td>Allows you to duplicates the column in the table. This is useful if you need the same column with some modifications.</td>
+                </tr>
+                <tr>
+                    <td>Hide</td>
+                    <td>Allows you to hide a column. Click this option if you want to import the data associated with this column, but do not want this column available to dashboard designers and viewers.</td>
+                </tr>
+                <tr>
+                    <td>Indexed</td>
+                    <td>Allows you to index the column data for quicker processing in subsequent builds.</td>
+                </tr>
+                <tr>
+                    <td>Drop</td>
+                    <td>Allows you to remove column from the table.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

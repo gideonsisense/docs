@@ -1,0 +1,31 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1477" MadCap:lastWidth="538">
+    <head>
+        <title>Importing and Exporting Elasticube Data | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Importing and Exporting <MadCap:variable name="Variables.ElastiCube" /> Data</h1>
+        <p>
+            <span class="bold">Note</span>: This feature is currently available in the desktop version of the <MadCap:variable name="Variables.ECM" />. This feature will be migrated to the web-based <MadCap:variable name="Variables.ECM" /> in the near future. For more information, see <a href="../../upgrade-v7.htm"><MadCap:variable name="Variables.CompanyName" /> V7.0 Backwards Compatibility</a>.</p>
+        <p>
+            <MadCap:variable name="Variables.ElastiCube" /> data can be transferred to different machines. This is useful when you are deploying on a new machine or need to transfer the data to a different server.</p>
+        <p>The transferred data is stored in a compressed ecdata file. The file contains all of the information contained in an <MadCap:variable name="Variables.ElastiCube" />Data folder (including the source data),  and is used by the <MadCap:variable name="Variables.CompanyName" /> Server Console to build a new <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p class="bold">To export data:</p>
+        <ol>
+            <li>Open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Click on the relevant <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>Click <span class="bold">Stop</span> to stop the specific <MadCap:variable name="Variables.ElastiCube" /> (not the entire server).</li>
+            <li>Click <span class="bold">Export</span>. Enter a name for the file you are saving, and click <span class="bold">Save</span>.<br /><img src="../../../Resources/Images/exportecdata.png" class="thumblarge" /></li>
+        </ol>
+        <p class="bold">To import data:</p>
+        <ol>
+            <li>Open the <MadCap:variable name="Variables.CompanyName" /> Server Console.</li>
+            <li>Click on the import ecdata file icon <img src="../../../Resources/Images/ecdataexporticon.png" />.</li>
+            <li>Select the location of the ecdata file and click <span class="bold">Open</span>.</li>
+            <li>A window will appear showing the import progress. Once complete, the new <MadCap:variable name="Variables.ElastiCube" />s will be added to the list of existing <MadCap:variable name="Variables.ElastiCube" />s. Make sure the <MadCap:variable name="Variables.ElastiCube" /> is running before accessing it.</li>
+        </ol>
+        <p>
+            <img src="../../../Resources/Images/importecdata.png" class="thumblargeli" />
+        </p>
+        <span class="bold">Note</span>: You can also transfer data by copying the folder where <MadCap:variable name="Variables.CompanyName" /> stores the data locally, instead of exporting and importing the compressed file. <p>&#160;</p></body>
+</html>

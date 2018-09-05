@@ -1,0 +1,26 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1222" MadCap:lastWidth="670">
+    <head>
+        <title>Routing Queries in ElastiCube Sets | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Routing Queries in <MadCap:variable name="Variables.ElastiCube" /> Sets</h1>
+        <p>When a user queries an <MadCap:variable name="Variables.ElastiCube" /> that is part of an <MadCap:variable name="Variables.ElastiCube" /> Set, <MadCap:variable name="Variables.CompanyName" /> routes the query to a single <MadCap:variable name="Variables.ElastiCube" /> with the latest <MadCap:variable name="Variables.ElastiCube" /> build. By default, <MadCap:variable name="Variables.ElastiCube" /> Sets operate in active-passive mode. In active-passive mode, one <MadCap:variable name="Variables.ElastiCube" />, by default the <MadCap:variable name="Variables.ElastiCube" /> with the latest build, handles incoming queries. This <MadCap:variable name="Variables.ElastiCube" /> is active while the remaining <MadCap:variable name="Variables.ElastiCube" />s are on standby in passive mode.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> also supports active-active mode where queries are spread across available <MadCap:variable name="Variables.ElastiCube" />s within an <MadCap:variable name="Variables.ElastiCube" /> Set. In active-active mode, each <MadCap:variable name="Variables.ElastiCube" /> that is not currently building can handle queries.</p>
+        <p>You can modify how queries are routed to <MadCap:variable name="Variables.ElastiCube" />s within <MadCap:variable name="Variables.ElastiCube" /> Sets by selecting one of the following routing strategies:</p>
+        <p>
+            <span class="bold">Single</span>: (Default). <MadCap:variable name="Variables.ElastiCube" />s operate in active-passive mode where the <MadCap:variable name="Variables.ElastiCube" /> with the freshest data receives all the queries while the remaining <MadCap:variable name="Variables.ElastiCube" />s are on standby.</p>
+        <p>
+            <span class="bold">Multiple <MadCap:variable name="Variables.ElastiCube" />s – Fresh Data</span>: <MadCap:variable name="Variables.ElastiCube" />s operate in active-active mode where queries are spread across all <MadCap:variable name="Variables.ElastiCube" />s with the latest data.</p>
+        <p>
+            <span class="bold">Multiple <MadCap:variable name="Variables.ElastiCube" />s – Best Spread</span>: <MadCap:variable name="Variables.ElastiCube" />s operate in active-active mode where queries are spread across the largest group of <MadCap:variable name="Variables.ElastiCube" />s with identical data.</p>
+        <p class="bold">To set a query routing strategy:</p>
+        <ol>
+            <li>Click <span class="bold">Admin</span> and select the <span class="bold">Data Sources</span> tab on the left.</li>
+            <li>For the relevant <MadCap:variable name="Variables.ElastiCube" /> Set, select <span class="bold">Edit</span>.<br /><img src="../../../Resources/Images/v7setedit.png" class="thumblarge" /></li>
+            <li>From the Routing Strategy list, select the relevant strategy.</li>
+            <li>Click <span class="bold">Save</span>.</li>
+        </ol>
+    </body>
+</html>

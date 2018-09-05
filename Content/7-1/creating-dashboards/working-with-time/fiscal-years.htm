@@ -1,0 +1,69 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Fiscal Years | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Fiscal Years</h1>
+        <p>By default, <MadCap:variable name="Variables.CompanyName" /> calculates the beginning of the fiscal year as January 1st. In some cases, you might need to express your company’s date fields according to another fiscal month, such as April 1st. Sisense allows you to easily shift your fiscal calendar to start at a different month according to your company’s requirements.</p>
+        <p>This can be defined at the system level, by the Administrator, and also at the <MadCap:variable name="Variables.ElastiCube" /> level, by the Data Designer. This means that you can support one fiscal calendar month for your system, such as January 1st, while a specific <MadCap:variable name="Variables.ElastiCube" /> can be set according to the US tax year which begins October 1st.</p>
+        <p>When you change the fiscal calendar, this affects how time is calculated in your dashboard and you are also getting an indication, for example when filtering your widgets and dashboards by time, through the FY tag.</p>
+        <p>
+            <img src="../../../Resources/Images/Fiscal.png" class="thumblarge" />
+        </p>
+        <table>
+            <thead>
+                <tr>
+                    <th>Date Level</th>
+                    <th>Effects</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Year</td>
+                    <td>Changes the calendar year to fiscal. By default, the name reflects the year in which it ends. For example, if the fiscal year starts in April, the year for the date June 1, 2014 would be shown as FY 2015.</td>
+                </tr>
+                <tr>
+                    <td>Quarter</td>
+                    <td>Changes the calendar quarter to that of the quarter in the fiscal year. For example, if the fiscal year starts in April, the quarter for the date June 1, 2014 would be Q1.</td>
+                </tr>
+                <tr>
+                    <td>Month</td>
+                    <td>Not affected by fiscal year settings. The calendar month is the same as the fiscal month.</td>
+                </tr>
+                <tr>
+                    <td>Week</td>
+                    <td>Changes the calendar week to the week of the fiscal year. For example, if your fiscal year begins April 1st, April 3rd would fall under Week 1.</td>
+                </tr>
+                <tr>
+                    <td>Day/Minute/Hour</td>
+                    <td>Not affected by fiscal year settings.</td>
+                </tr>
+            </tbody>
+        </table>
+        <p>To set your fiscal year on the system level, see <a href="../../administration/system-settings/system-settings.htm">System Settings</a>.</p>
+        <p>Administrators and Data Designers can set the fiscal year on the <MadCap:variable name="Variables.ElastiCube" /> level.</p>
+        <p class="bold">To set your fiscal year on the <MadCap:variable name="Variables.ElastiCube" /> level:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Admin &gt; Data Sources</span>.</li>
+            <li>For the relevant <MadCap:variable name="Variables.ElastiCube" />, select the ElastiCube menu &gt; <span class="bold">Fiscal Year Start</span>, and then select the month.<br /><img src="../../../Resources/Images/fiscalmonths.png" /><br /></li>
+        </ol>
+        <h2 class="notoc">Formatting Fiscal Dates</h2>
+        <p>When you apply fiscal years, the default format for your dates is 2018 FY for years or Q1 2018 FY for quarters.</p>
+        <p>You can customize the format of the date through placeholders such as “y” and  “p” where “y” represents the year and “p” the previous year.</p>
+        <p>The examples below illustrate how you can format your dates:</p>
+        <ul>
+            <li>2017/18: yyyyp/yy</li>
+            <li>17/18: yp/yy</li>
+            <li>FY17/18: FY yp/yy</li>
+            <li>Q1 2018 FY:  Q yyyy FY</li>
+        </ul>
+        <p>By default, <MadCap:variable name="Variables.CompanyName" /> applies FY at the end of the year when fiscal years are applied. However, if you make any changes, <MadCap:variable name="Variables.CompanyName" /> will no longer add the FY automatically, so you must define this with the placeholder FY in the location you want as shown above.</p>
+        <p class="bold">To format your fiscal dates:</p>
+        <ol>
+            <li>On the Dashboard, click the <span class="bold">Pencil (Edit)</span> button <img src="../../../Resources/Images/editicon2.png" />   that appears in the top-right corner of a widget with a date dimension.<br /><img src="../../../Resources/Images/Fiscal2.png" class="thumblarge" /></li>
+            <li>Select the Calendar icon to define your formatting.<br /><img src="../../../Resources/Images/fiscal3.png" class="thumblarge" /></li>
+            <li>Select the relevant time period and enter the relevant placeholders in the format you want to be displayed in your widget. A preview of the custom format is displayed below.<br /><img src="../../../Resources/Images/fiscal4.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">OK</span>. The format of your dates is updated in the widget.</li>
+        </ol>
+    </body>
+</html>

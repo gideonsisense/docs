@@ -1,0 +1,50 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="2407" MadCap:lastWidth="1192">
+    <head>
+        <title>Sisense Architecture Internals | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>
+            <MadCap:variable name="Variables.CompanyName" /> Architecture</h1>
+        <p>This topic provides an advanced description of <MadCap:variable name="Variables.CompanyName" />’s architecture for IT managers and Administrators responsible for supporting <MadCap:variable name="Variables.CompanyName" /> in their organization.</p>
+        <p>For a high-level overview of the <MadCap:variable name="Variables.CompanyName" /> architecture, click <a href="concepts.htm">[%=Variables.CompanyName%] Architecture</a>.</p>
+        <p>When working with <MadCap:variable name="Variables.CompanyName" />, there are two possible types of deployments. The first type is a <b>Single Server Deployment</b> in which <MadCap:variable name="Variables.CompanyName" /> is installed on a single server. Single Server Deployments can be leveraged to support single integrations or as proof of concept integrations for larger deployments.</p>
+        <p>The second type is a <b>Distributed Deployment</b> where <MadCap:variable name="Variables.CompanyName" /> is installed on multiple machines, but only part of the components are active on each one. This type of configuration is used to support heavier traffic loads and <a href="../administration/high-availability-in-sisense/high-availability.htm">high availability</a>.</p>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> full-stack solution is provided in a single installation process.  After installing <MadCap:variable name="Variables.CompanyName" /> on a server, you will have access to all of the <MadCap:variable name="Variables.CompanyName" /> functionality.</p>
+        <p>The diagram below describes the main components of a <MadCap:variable name="Variables.CompanyName" /> installation and how <MadCap:variable name="Variables.CompanyName" /> supports a full-stack solution:</p>
+        <p>
+            <img src="../../Resources/Images/advarch1.png" class="thumblarge" />
+        </p>
+        <p>In this diagram, the yellow components specify <MadCap:variable name="Variables.CompanyName" /> client applications or APIs.  The blue components specify components of the <MadCap:variable name="Variables.CompanyName" /> server.</p>
+        <p>The Windows service and application names that you can see in the Windows Task Manager under the <b>Services</b> or <b>Processes</b> tabs appear in a dark blue font.</p>
+        <p>When <MadCap:variable name="Variables.CompanyName" /> is installed on a single server, the dotted line indicates the boundaries of the server firewall. The lines between the components indicate communication between them, and its direction. When the <MadCap:variable name="Variables.CompanyName" /> Server listens on a specific port for inbound traffic, the relevant ports must be open in the firewall for the communication to succeed.</p>
+        <p>The diagram above describes the ports used by the services, for more information about communication ports, click <a href="communication-ports.htm">here</a>.</p>
+        <h2 class="notoc">
+            <MadCap:variable name="Variables.CompanyName" /> Architecture</h2>
+        <p>Sisense supports a full stack solution from data, such as transaction details, user information, and machine-generated data, to dashboards accessible by viewers.</p>
+        <p>The Sisense Server is responsible for managing data. Before you can begin to manage data however, Sisense communicates with remote servers for importing data sources, licensing information, tracking and similar activities.</p>
+        <p>The Sisense Server manages data and supports the Sisense Web Server, which hosts the Sisense Web Application. In a Single deployment, the Sisense Server resides locally on your machine. In a Clustered deployment, the Sisense Server can reside on one of your machines or across many machines depending on your needs. For example, if you want to support a high availability environment, you may install the ElastiCube Server on one machine, the Application Server on another, and the Multi-Node Orchestration server on another machine.</p>
+        <h3 class="notoc">Sisense Server</h3>
+        <p>The Sisense Server is comprised of the following components:</p>
+        <ol>
+            <li>
+                <span class="bold">Web Server</span>: The Sisense Web Server is installed locally on your computer and hosts the Sisense Web application. It provides access to Sisense dashboards and Sisense Admin screens for user management. Each dashboard created is maintained within the Web Server catalog and application database, which contains metadata regarding users, groups, dashboards and system settings. The Web Server is comprised of many additional services required by the Sisense front-end, including a Proxy service for routing application requests, plug-in management, and more.<br />There are three main client applications that communicate with the Application Server:<ol><li><span class="bold">Sisense Web App</span>: This Sisense Web Application is the client application for dashboard creation and access, and system administration.</li><li><span class="bold">Sisense Mobile App</span>: This Sisense Mobile Application is an Android and Apple-device compatible application for viewing dashboards across devices.</li><li><span class="bold">REST API</span>: The Sisense REST API provides programmatic access to the Sisense Application Server functionality including managing ElastiCubes, user and group management, white labeling, user roles, reporting, and security.</li></ol></li>
+            <li>
+                <span class="bold">ElastiCube Server</span>: The ElastiCube Server supports the management of ElastiCubes and the data they contain. The Sisense Server also supports the Application Server, which queries the ElastiCube Server where the ElastiCubes are hosted. Within the ElastiCube Server are the following main components:<ol><li><span class="bold">ElastiCube Catalog</span>: The catalog maintains a list of ElastiCubes contained within the ElastiCube server.</li><li><span class="bold">Data Connectors</span>:  The Data Connectors service is responsible for managing both native and 3rd party connectors.</li></ol></li>
+            <li>
+                <span class="bold">Client Applications</span>:<ol><li><span class="bold">Sisense ElastiCube Manager</span>: A Windows client application for managing data sources. The ElastiCube Manager provides the GUI for creating ElastiCubes, including importing data sources, preparing them, and building the ElastiCubes.</li><li><span class="bold">Sisense Shell (PSM.exe)</span>: A command line interface for managing ElastiCubes, such as building an ElastiCube, attaching and detaching ElastiCubes from a server, updating data sources, etc.  The Sisense Shell can also be controlled programmatically.</li><li><span class="bold">Sisense Server Console</span>: A Windows application that controls Sisense servers, including attaching ElastiCube folders to Sisense servers and starting and stopping ElastiCubes.</li></ol></li>
+            <li>
+                <span class="bold">Licensing</span>: This service checks and validates licensing information.</li>
+            <li>
+                <span class="bold">Multi-Node Orchestration</span>: The Sisense Orchestrator Service is an automated service that can be configured to synchronize builds across the ElastiCube Set.</li>
+            <li>
+                <span class="bold">Remote Support Analysis</span>: This service is responsible for controlling logging, monitoring and automatic software updates.</li>
+            <li>
+                <span class="bold">Message Bus</span>: The Message bus is a module responsible for transporting events across Sisense components.</li>
+        </ol>
+        <h3 class="notoc">Sisense Remote Servers</h3>
+        <p>Sisense remote servers are used for license management, monitoring and software updates.</p>
+        <h3 class="notoc">Data Sources</h3>
+        <p>Data sources may be files or databases located on servers on a local network, or remote locations and web services such as SalesForce and Google AdWords. Sisense supports a variety of data sources through native connectors, customer REST connectors, and ODBC drivers. These connectors are used to import data into the ElastiCube Server.</p>
+    </body>
+</html>

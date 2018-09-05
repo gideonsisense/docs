@@ -1,0 +1,29 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="1298" MadCap:lastWidth="865">
+    <head>
+        <title>Connecting to Splunk  | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Splunk</h1>
+        <p>
+            <span class="bold">Note</span>:</p>
+        <p>The Splunk SDK for C# v1.0.x is deprecated, and has been replaced by the Splunk SDK for C# 2.0. Unlike the Splunk SDK for C# 1.0.x, the Splunk SDK for C# 2.0 abides by .NET guidelines, as well as FxCop and StyleCop rules.In addition, the API client in Splunk SDK for C# 2.0 is a Portable Class Library (PCL), and supports cross-platform development.Version 2 of the SDK is incompatible with version 1, and applications built with Splunk SDK for C# version 1.0.x will not recompile using Splunk SDK for C# version 2.0. See Migrating from Splunk SDK for C# v1.0.x for more information.</p>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to Splunk. The steps below detail how to connect to this type of data source.</p>
+        <ol>
+            <li>Click <span class="bold">Add data</span> in the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under the <span class="bold">Database Servers</span> category, select <span class="bold">Splunk</span>.<br /><img src="../../../Resources/Images/splunk.png" class="thumblarge" /></li>
+            <li>You will be prompted to enter the following information:</li>
+            <ul>
+                <li>
+                    <span class="bold">Database server location</span>: Enter the computer/server IP address which holds the Splunk instance.</li>
+                <li>Select either <span class="bold">Windows Authentication</span> if configured with the database or alternatively, <span class="bold">Use the Following User Name &amp; Password</span>, and enter the database credentials.<br /><img src="../../../Resources/Images/splunk2.png" class="thumblarge" /></li>
+            </ul>
+            <li>Click <span class="bold">Connect to Server</span>.<br />A list of available Splunk instances will appear in the list box below.</li>
+            <li>Select the relevant Splunk instance you want to work with and click <span class="bold">OK</span>.<br />All saved searches associated with the Splunk instance will appear in a new window.<br />To preview data contained in a particular Splunk search, highlight the search in the list and in click in the <span class="bold">Preview</span> pane. To preview the search, select the <span class="bold">Preview</span> checkbox.</li>
+            <li>Select the checkbox next to each table or view you want to use.<br />Fields with similar names can be linked by selecting the <span class="bold">Automatically create relationships for fields with the same name</span> checkbox.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+        <p>&#160;</p>
+        <p>&#160;</p>
+    </body>
+</html>

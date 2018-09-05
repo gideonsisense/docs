@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Concepts | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1><MadCap:variable name="Variables.CompanyName" /> Basic Concepts and Terminology</h1>
+        <h2 class="notoc"><a name="Archite"></a><MadCap:variable name="Variables.CompanyName" /> Architecture
+</h2>
+        <p><a name="arch"></a>
+The <MadCap:variable name="Variables.CompanyName" /> system is comprised of the following components.</p>
+        <p>
+            <img src="../../Resources/Images/basicdiagram.png" class="thumblarge" />
+        </p>
+        <h3 class="notoc"><MadCap:variable name="Variables.ECM" />
+        </h3>
+        <p>The <MadCap:variable name="Variables.ECM" /> is a visual environment in which you create <MadCap:variable name="Variables.ElastiCube" />s. The <MadCap:variable name="Variables.ECM" /> is available online or locally on the desktop where <MadCap:variable name="Variables.CompanyName" /> is installed. The <MadCap:variable name="Variables.ECM" /> enables you to structure and import multiple data sources, create relationships between data, and perform ETL (Extract, Transform, and Load) processes to prepare data for analysis and visualization. For more information, see <a href="../managing-data/ElastiCubeManager.htm"><MadCap:variable name="Variables.ECM" /></a>.</p>
+        <h3 class="notoc"><MadCap:variable name="Variables.EcubeServer" />
+        </h3>
+        <p>The <MadCap:variable name="Variables.EcubeServer" /> is installed locally on your computer and enables access to <MadCap:variable name="Variables.ElastiCube" />s. Both the <MadCap:variable name="Variables.CompanyName" /> Web Application and the <MadCap:variable name="Variables.ECM" /> query the <MadCap:variable name="Variables.EcubeServer" /> and receive results.</p>
+        <h3 class="notoc"><MadCap:variable name="Variables.CompanyName" /> Server Console</h3>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Server Console provides administration functions for managing <MadCap:variable name="Variables.ElastiCube" />s on the <MadCap:variable name="Variables.EcubeServer" />.</p>
+        <h3 class="notoc"><MadCap:variable name="Variables.CompanyName" /> Web Application</h3>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Web application is an interactive web application that provides the user interface in which users can design, share, view and explore dashboards. The <MadCap:variable name="Variables.CompanyName" /> Web application runs in popular web browsers and enables access to the <MadCap:variable name="Variables.CompanyName" /> server.  Dashboards can also be viewed on mobile devices.</p>
+        <h3 class="notoc"><MadCap:variable name="Variables.CompanyName" /> Application Server</h3>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Application Server is installed locally on your computer and hosts the <MadCap:variable name="Variables.Sisense Web Application" />.<br /></p>
+        <h2 class="notoc"><MadCap:variable name="Variables.ElastiCube" />s</h2>
+        <p><MadCap:variable name="Variables.ElastiCube" /> are <MadCap:variable name="Variables.CompanyName" />’s proprietary super-fast data stores. <MadCap:variable name="Variables.ElastiCube" />s are specifically designed to withstand the extensive querying typically required by business intelligence applications.</p>
+        <p><MadCap:variable name="Variables.ElastiCube" />s enable you to mash up terabytes of data from a variety of sources, for example:</p>
+        <p>Traditional relational databases, such as SQL Server, MySQL or Oracle.</p>
+        <p>File-based data sources, such as spreadsheets (Excel) and CSV files.</p>
+        <p>Online web services, such as Salesforce.com, Google AdWords, Google Analytics, Zendesk and more.</p>
+        <p><MadCap:variable name="Variables.ElastiCube" />s are based on <MadCap:variable name="Variables.CompanyName" />’s proprietary In-Chip technology, which leverages the <MadCap:variable name="Variables.CompanyName" /> engine. Read more about the technology behind <MadCap:variable name="Variables.ElastiCube" /> in <MadCap:variable name="Variables.CompanyName" />'s <a href="https://www.sisense.com/technology/">technology section</a>.</p>
+        <p><MadCap:variable name="Variables.ElastiCube" />s are created and managed in the <MadCap:variable name="Variables.ECM" />.</p>
+        <h2 class="notoc"><MadCap:variable name="Variables.ElastiCube" /> Sets</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> <MadCap:variable name="Variables.ElastiCube" /> Sets are collections of <MadCap:variable name="Variables.ElastiCube" />s with identical schemas that support high availability by allowing you to query running <MadCap:variable name="Variables.ElastiCube" />s within the <MadCap:variable name="Variables.ElastiCube" /> Set while other <MadCap:variable name="Variables.ElastiCube" />s are building.</p>
+        <p>For more information see <a href="../administration/high-availability-in-sisense/ecubeset.htm"><MadCap:variable name="Variables.ElastiCube" /> Sets</a>.</p>
+        <h2 class="notoc">Widgets</h2>
+        <p>Each widget is a dynamic visualization of data. You pick the type of data to appear in a widget and you pick the type of visualization (chart type). A few examples of widgets are displayed below:</p>
+        <p>Column Chart Widget</p>
+        <p>
+            <img src="../../Resources/Images/column.png" alt="Column Widget" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Indicator Widget</h3>
+        <p>
+            <img src="../../Resources/Images/indicator.png" alt="Indicator WIdget" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Pivot Widget</h3>
+        <p>
+            <img src="../../Resources/Images/pivot.PNG" alt="Pivot Widget" class="thumblarge" />
+        </p>
+        <h3 class="notoc">Scatter Chart Widget</h3>
+        <p>
+            <img src="../../Resources/Images/scatter.png" alt="Scatter Widget" class="thumblarge" />
+        </p>
+        <p>To learn more about the different widget types, click <a href="../creating-dashboards/adding-widgets-to-dash/widget-designer.htm">here</a>.</p>
+        <h2 class="notoc">Dashboards</h2>
+        <p>A dashboard is a collection of one or more widgets that visualize the data that you select and design.</p>
+        <p>
+            <img src="../../Resources/Images/v7dashboard.png" class="thumblarge" />
+        </p>
+        <p>You define which widgets appear in the dashboard, their design, how they are organized and the filtering of the data that appears.</p>
+        <p>You can access your own dashboards and dashboards others shared with you.</p>
+        <p><MadCap:variable name="Variables.CompanyName" /> allows you to create as many dashboards as you need. No limitations! When you create a dashboard, you are the dashboard’s owner. Owners can share dashboards that they have created with other <MadCap:variable name="Variables.CompanyName" /> users.</p>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides a variety of built-in automatic dashboard sharing features. You can easily share a dashboard with others in the <MadCap:variable name="Variables.CompanyName" /> environment or have a dashboard automatically delivered to your chosen recipients by email (on a scheduled basis or upon each data update).</p>
+        <h2 class="notoc">Fields</h2>
+        <p>Widgets are composed of fields that represent the data in your data sources. You create widgets by simply selecting from the fields displayed in a Data Browser, which appears in various places across the product. Each field represents a column of data in the <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>
+            <img src="../../Resources/Images/databrowser.png" alt="Data Browser" class="thumblarge" />
+        </p>
+        <p>When designing widgets, fields can be categorized into three groups:</p>
+        <ul>
+            <li><b>Numeric Fields</b>: Numbers (quantified data), such as salaries, sales, scores, number of clicks and so on. This is data that you may want to aggregate or calculate. For example, the sum of sales or the average of costs.</li>
+            <li><span class="bold">Date Fields</span>: Dates can describe both date and time values. Dates can be used to organize your data into hierarchies according to year, quarter, and month or into buckets of time such as by hour or 15 minute intervals. For more information, see <a href="../creating-dashboards/working-with-time/time-in-sisense.htm">Working with Time</a>.</li>
+            <li><b>Descriptive Fields</b>: Items used to label and categorize, such as Products, Locations, Categories and so on.</li>
+        </ul>
+        <p>Generally, widgets combine both these types of fields.</p>
+        <p>For example, to show the sales of a product over time, Sales is the numeric data and both Products and Time are descriptive data.</p>Descriptive data can be considered as numeric when it is simply a count of the number of items. For example, Activities can be considered numeric when it is a count of the number of Activities. A number can be considered as descriptive when it is an actual entity. For example, an identification ID or phone number.<p>For information regarding <MadCap:variable name="Variables.CompanyName" /> internals and a more advanced explanation of the <MadCap:variable name="Variables.CompanyName" /> architecture, click <a href="architecture-internal.htm">[%=Variables.CompanyName%] Architecture Internals</a>.</p></body>
+</html>

@@ -1,0 +1,92 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="8" MadCap:lastHeight="6804" MadCap:lastWidth="1166">
+    <head>
+        <title>Rebranding Sisense Automated Emails | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Rebranding <MadCap:variable name="Variables.CompanyName" /> Automated Emails</h1>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> automated emails are sent to users according to predefined scenarios. When a predefined scenario such as a build alert is triggered, an automated email is sent to the relevant <MadCap:variable name="Variables.CompanyName" /> users.</p>
+        <p>You can customize these emails to match your company’s branding.</p>
+        <p>This page describes the <MadCap:variable name="Variables.CompanyName" /> automated emails and how you can replace them with your own so each time a predefined scenario is triggered, <MadCap:variable name="Variables.CompanyName" /> sends your customized emails to your <MadCap:variable name="Variables.CompanyName" /> users.</p>
+        <h2 class="notoc">
+            <MadCap:variable name="Variables.CompanyName" /> Automated Emails</h2>
+        <p>You can rebrand the following automatic emails:</p>
+        <ul>
+            <li>
+                <span class="bold">Build Alert</span>: Email sent each time a build alert is triggered.</li>
+            <li>
+                <span class="bold">Dashboard Errors Reports</span>: Email sent when a dashboard report fails.</li>
+            <li>
+                <span class="bold">Dashboard Errors Reports Bulk Fail</span>: Email sent when a large amount of email reports fail.</li>
+            <li>
+                <span class="bold">Dashboard Reports</span>: Email sent to the recipient of a shared dashboard when you share a dashboard.</li>
+            <li>
+                <span class="bold">Empty Dashboard Report</span>: Email sent to an administrator when an empty dashboard report is sent.</li>
+            <li>
+                <span class="bold">KPI Alert</span>: Email sent each time a KPI alert is triggered.</li>
+            <li>
+                <span class="bold">New User Invitation</span>: Email sent to a new user invited to <MadCap:variable name="Variables.CompanyName" />.</li>
+            <li>
+                <span class="bold">Password Recovery</span>: Email sent to a user who requested a new password.</li>
+            <li>
+                <span class="bold">Share <MadCap:variable name="Variables.ElastiCube" /></span>:&#160;Email sent to the recipient of a shared <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>
+                <span class="bold">Share With</span>: Email sent to the recipient of a shared dashboard.</li>
+            <li>
+                <span class="bold">Transfer Ownership</span>: Email sent to a user who received ownership of a dashboard from another owner.</li>
+            <li>
+                <span class="bold">User Created</span>: Email sent to a user when a user is created.</li>
+            <li>
+                <span class="bold">User Created AD</span>: Email sent when a user is created in <MadCap:variable name="Variables.CompanyName" /> after being added from Active Directory.</li>
+        </ul>
+        <p>For each automated email, <MadCap:variable name="Variables.CompanyName" /> provides an email template in the format of EJS and LESS files. These files are located within template folders inside the Template Parent folder located at:</p>
+        <p class="code">...Program Files\Sisense\PrismWeb\vnext\src\features\emails\templates</p>
+        <h3 class="notoc">LESS Files</h3>
+        <p>All templates contain the style.less file that refers to a stylesheet that defines the branding used in <MadCap:variable name="Variables.CompanyName" />’s automated emails. The content of every style.less is as follows:</p>
+        <p class="code">@import '../styles.less';</p>
+        <p>The stylesheet referred to by all the email templates is called styles.less located at:</p>
+        <p class="code">...\Program Files\Sisense\PrismWeb\vnext\src\features\emails\templates</p>
+        <p>By replacing the content of the styles.less file with your own CSS, you can redefine the branding used in all of the email templates to your custom branding.</p>
+        <h3 class="notoc">EJS Files</h3>
+        <p>Each template folder contains an EJS file, which contains HTML and JavaScript that describe the content of the email.</p>
+        <p>You can use any text/HTML editor to modify the HTML.ejs files according to your needs.</p>
+        <p>The following is an example of an HTML.ejs file.</p>
+        <pre xml:space="preserve">&lt;% include ../header %&gt;
+    &lt;tr&gt;   
+      &lt;td&gt;
+        &lt;div class="contentText"&gt;
+          &lt;p class="userText" style="margin: 0;"&gt;&lt;%= i18nContent.hi %&gt; &lt;%= newOwnerUserName %&gt;,&lt;/p&gt;
+          &lt;p class="generalInfo" style="margin: 0;"&gt;&lt;%- i18nContent.generalInfo %&gt;&lt;/p&gt;
+        &lt;/div&gt;
+      &lt;/td&gt;
+   &lt;/tr&gt;  
+&lt;% include ../footer %&gt;</pre>
+        <p>
+            <img src="../../../../Resources/Images/EJS-Example1.png" class="thumblarge" />
+        </p>
+        <p>Each EJS file has three sections, a header, body, and footer; each of which describes various areas in the email your users receive.</p>
+        <p>Section 1 is the Header section defined in the EJS file as &lt;% include ../header %&gt;. This is a reference to the header.ejs file located at:</p>
+        <p class="code">…\Program Files\Sisense\PrismWeb\Resources\branding\emails</p>
+        <p>The header.ejs file defines the title and image used in the header section of each email template. You can modify the header by replacing the header.ejs file with or replace the &lt;% include ../header %&gt; tag from each template with your own HTML and JavaScript.</p>
+        <p>Section 2 is the Body section, which contains the content displayed in the email your users receive. There are two types of content displayed in automated emails, tokens and strings. Tokens refer to Sisense variables such as the Sisense username or dashboard owner’s name. For example, the &lt;%= newOwnerUserName %&gt; token displays the new owner of a dashboard’s Sisense username in the automated email.</p>
+        <pre xml:space="preserve">&lt;tr&gt;
+   &lt;td&gt;
+     &lt;div class="contentText"&gt;
+        &lt;p class="userText" style="margin: 0;"&gt;&lt;%= i18nContent.hi %&gt; &lt;%= newOwnerUserName %&gt;,&lt;/p&gt;
+        &lt;p class="generalInfo" style="margin: 0;"&gt;&lt;%- i18nContent.generalInfo %&gt;&lt;/p&gt;
+     &lt;/div&gt;
+   &lt;/td&gt;
+&lt;/tr&gt;</pre>
+        <p>&#160;</p>
+        <p>When you replace the HTML.ejs file with your own files, you can still use the Sisense tokens. For more information about tokens you can add to your automated emails, see Applying Sisense Tokens.</p>
+        <p>In addition, each template contains an object such as i18nContent.hi that displays strings predefined by Sisense. These strings cannot be modified, however, you can remove and replace the object with your own content.</p>
+        <p>The final section, Section 3 contains the footer. Like the header, the footer, &lt;% include ../footer %&gt;, is a reference to a footer.ejs file located at:</p>
+        <p>…\Program Files\Sisense\PrismWeb\Resources\branding\emails</p>
+        <p>The footer.ejs file defines the copyright text and image used in the footer section of each email template. You can modify the footer by replacing the footer.ejs file with or replace the &lt;% include ../footer %&gt; tag from each template with your own HTML and JavaScript.</p>
+        <p>Images that are displayed in the Header and Footer are stored in the following location:</p>
+        <p class="code">...\Program Files\Sisense\PrismWeb\vnext\src\features\emails\templates\images</p>
+        <p>You can replace these with your own images by maintaining the same file names used, however, it is recommended to replace the content of the Header and Footer sections altogether with your own content.</p>
+        <h2 class="notoc">Replacing <MadCap:variable name="Variables.CompanyName" /> Automated Emails</h2>
+        <p>If you prefer to implement your own email templates for <MadCap:variable name="Variables.CompanyName" />’s predefined scenarios, you can replace Sisense’s emails with your own through the <MadCap:variable name="Variables.CompanyName" /> REST API.</p>Note: Rebranding <MadCap:variable name="Variables.CompanyName" /> emails must be enabled for your license. Contact your Account Manager for more information.<p>For each automated email, <MadCap:variable name="Variables.CompanyName" /> provides an email template in the format of EJS and LESS files. These files are located within template folders inside the Template Parent folder located at:</p><p class="code">...Program Files\Sisense\PrismWeb\vnext\src\features\emails\templates</p><p>Some template folders may contain an html-org.ejs file. These files are legacy templates and are maintained for backwards compatibility. Newer developments should only modify or replace the html.ejs files.</p><p><span class="bold">Note</span>: While it is possible to modify the content of your automated emails through the language.js file located in the templates folder, the recommended method is modify the email templates as described in the procedure below.</p><p>After you have prepared your new automated emails, through the /branding endpoint of the REST API, you can configure <MadCap:variable name="Variables.CompanyName" /> to send the customized automated emails when the relevant event is triggered.</p><p class="bold">To define the location of your branded emails:</p><ol><li>Copy the contents of the directory:<br />...Program Files\Sisense\PrismWeb\vnext\src\features\emails\templates</li><li>Paste all the folders in the following directory:<br />...Program Files\Sisense\PrismWeb\Resources\branding\emails<br /><span class="bold">Note</span>:&#160;You will modify the templates in this folder and configure <MadCap:variable name="Variables.CompanyName" /> to send them instead of the original <span class="bold"><MadCap:variable name="Variables.CompanyName" /> automated emails</span>.</li><li>For each template you want to modify, change the contents of html.ejs files and styles.less as described in <span class="bold"><MadCap:variable name="Variables.CompanyName"></MadCap:variable> Automated Emails</span>.</li><li>Access the <MadCap:variable name="Variables.CompanyName" /> REST API.<br /><img src="../../../../Resources/Images/v7restapi.png" class="thumblarge" /></li><li>In version .9 of the REST API, select the POST /branding.<br /><img src="../../../../Resources/Images/branding1.png" class="thumblarge" /></li><li>In the email object define the following information:<br /><span class="bold">Note</span>: If you have already rebranded  your <MadCap:variable name="Variables.Sisense Web Application" />, copy the current settings through the GET /branding endpoint and paste them into the POST /branding endpoint modifying or adding the emails object. If you only modify the emails object, the remaining objects and keys are set to their default <MadCap:variable name="Variables.CompanyName" /> and will overwrite any existing settings.<table><thead><tr><th>Key</th><th>Description</th></tr></thead><tbody><tr><td>senderEmail</td><td>The email address from which the automated email is to be sent.<br />When you define the senderEmail value, you must verify your domain in <MadCap:variable name="Variables.CompanyName" />’s Mandrill email service. Click <a href="https://mandrill.zendesk.com/hc/en-us/articles/205582277-How-to-Add-DNS-Records-for-Sending-Domains">here</a> for more information.</td></tr><tr><td>senderName</td><td>The name to be displayed as the Sender in the automated email.</td></tr><tr><td>templates_directory</td><td><p>The directory location of your template folders. <MadCap:variable name="Variables.CompanyName" /> accepts /resources/branding/emails as a custom location for automated email templates.</p><p>This directory is located on your <MadCap:variable name="Variables.CompanyName" /> server at </p><p><span class="code">...Program Files\Sisense\PrismWeb\Resources\branding\emails</span></p></td></tr><tr><td>passwordRecoverySubject</td><td>The subject line of the password recovery email.</td></tr><tr><td>newUserInviteSubject</td><td>The subject line of the new user email.</td></tr><tr><td>createdUserSubject</td><td>The subject line of the new user invite email.</td></tr><tr><td>shareWithNewUserSubject</td><td>The subject line of the shared dashboard with a new user email.</td></tr><tr><td>shareWithExistingUserSubject</td><td>The subject line of the shared dashboard email.</td></tr><tr><td>transferOwnership</td><td>The subject line of the dashboard transfer ownership email.</td></tr></tbody></table></li><p>For example:</p><p class="code">"emails": {</p><p class="code">"senderEmail": "sys-admin@company.com",</p><p class="code">"senderName": "sys-admin",</p><p class="code">"templates_directory": "/resources/branding/emails",</p><p class="code">"passwordRecoverySubject": "Recover Password",</p><p class="code">"newUserInviteSubject": "new User Account Activation",</p><p class="code">"shareWithNewUserSubject": "A Dashboard has been shared with you:",</p><p class="code">"shareWithExistingUserSubject": "A Dashboard has been shared with you:"</p><p class="code">},</p></ol><ol start="7"><li>Click <span class="bold">Run</span>. The next time an automated email is sent, your templates are sent instead of <MadCap:variable name="Variables.CompanyName" />’s predefined emails.</li></ol><h2 class="notoc">Applying <MadCap:variable name="Variables.CompanyName" /> Tokens</h2><p>Most <MadCap:variable name="Variables.CompanyName" /> automated emails include tokens that you can apply to your automated emails. When the email is sent, <MadCap:variable name="Variables.CompanyName" /> populates the token with the relevant value. For example, the &lt;%= user %&gt; token represents the <MadCap:variable name="Variables.CompanyName" />’s username.</p><p>Each template has tokens defined by <MadCap:variable name="Variables.CompanyName" /> that you can apply listed below. Tokens from one automated email cannot be applied to another. Applying tokens to other automated emails, for example adding &lt;%= user %&gt; to the KPI alert email results</p><p><span class="bold">build_alert</span>: Sent when a build alert is triggered.</p><p>No Template Tokens Available</p><p><span class="bold">Dashboard_errors_report</span>: Sent when an Dashboard email report fails.</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p><p class="code">&lt;%= errors[i].user %&gt;</p><p class="code">&lt;%= errors[i].error %&gt;</p><p class="code">&lt;%= errors[i].widgetFailed %&gt;</p><p class="code">&lt;%= errors[i].widgetCount %&gt;</p><p><span class="bold">Dashboard_errors_report_bulk_fail</span>: Sent when a Dashboard email report sent to a large amount of users fails.</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p><p class="code">&lt;%= errors[i].user %&gt;</p><p class="code">&lt;%= errors.groups[i] %&gt;</p><p><span class="bold">Dashboard_report</span>: An automated email that contains a dashboard report sent to users.</p><p>Template Tokens Available</p><p class="code">&lt;%= url %&gt;</p><p class="code">&lt;%= images[i] %&gt;</p><p><span class="bold">Empty_dashboard_report</span>: An automated email that contains an empty dashboard report sent to users.</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p><p><span class="bold">Kpi_alert</span>: Sent to shared users when a KPI alert is triggered.</p><p>Template Tokens Available</p><p class="code">&lt;%= measure %&gt;</p><p class="code">&lt;%= value %&gt;</p><p class="code">&lt;%= message %&gt;</p><p><span class="bold">New_user_invitation</span>: Sent to a new user that you have invited to join.</p><p>Template Tokens Available</p><p><span class="code">&lt;%= owner %&gt;</span></p><p>* The folder for this template contains a file called HTML-ORG.ejs. This file is for older versions of <MadCap:variable name="Variables.CompanyName" /> and is maintained for backward compatibility.</p><p><span class="bold">Password_recovery</span>: Sent when a user requests their password from the Forgot Password page.</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p><p>* The folder for this template contains a file called HTML-ORG.ejs. This file is for older versions of <MadCap:variable name="Variables.CompanyName" /> and is maintained for backward compatibility.</p><p><span class="bold">Share_with</span>: Sent to a new recipient of a dashboard when the dashboard is shared with them.</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p><p>* The folder for this template contains a file called HTML-ORG.ejs. This file is for older versions of <MadCap:variable name="Variables.CompanyName" /> and is maintained for backward compatibility.</p><p><span class="bold">transfer_ownership</span>: Sent to the new owner of a dashboard when ownership is transferred.</p><p>Template Tokens Available</p><p class="code">&lt;%= newOwnerUserName %&gt;</p><p class="code">&lt;%= oldOwnerUserName %&gt;</p><p class="code">&lt;%= sharingDashboardName %&gt;</p><p><span class="bold">User_created</span>: Sent to the recipients of new <MadCap:variable name="Variables.CompanyName" /> accounts.</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p><p><span class="bold">User_created_ad</span>: Sent when a user is created in <MadCap:variable name="Variables.CompanyName" /> after being added from Active Directory</p><p>Template Tokens Available</p><p class="code">&lt;%= user %&gt;</p></body>
+</html>

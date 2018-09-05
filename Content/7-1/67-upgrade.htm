@@ -1,0 +1,24 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="690" MadCap:lastWidth="1498">
+    <head>
+        <title>Sisense V6.7 Upgrade Guide | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>
+            <MadCap:variable name="Variables.CompanyName" /> V6.7 Upgrade Guide</h1>
+        <p>In <MadCap:variable name="Variables.CompanyName" /> V6.7, the <MadCap:variable name="Variables.CompanyName" /> application database was upgraded to MongoDB V3.4.  This version provides many security enhancements and new features including authenticated access. In some cases, this may affect your configuration. </p>
+        <p>If you answer “No” to the questions below, you do not need to perform any manual configuration following upgrade to <MadCap:variable name="Variables.CompanyName" /> V6.7. If you answer “Yes” to either question, continue reading for instructions.</p>
+        <p class="bold">Do you have a high-availability deployment of Sisense?</p>
+        <p>If you have implemented a high availability configuration, you need to manually re-configure your MongoDB replica set as <MadCap:variable name="Variables.CompanyName" /> has implemented new security restrictions to protect the MongoDB. See <a href="administration/high-availability-in-sisense/replica-sets.htm">Replicating the Application Database</a> for more information.</p>
+        <p class="bold">Do you back up your <MadCap:variable name="Variables.CompanyName" /> application database?</p>
+        <p>If you backup your <MadCap:variable name="Variables.CompanyName" /> application database, or use scripts that routinely do this for you, the location of the application database has been changed from:</p>
+        <p class="code">%ProgramData%\Sisense\PrismWeb\DB\Prod</p>
+        <p>to its new location at:</p>
+        <p class="code">%ProgramData%\Sisense\PrismWeb\Repository\DB</p>
+        <p>See <a href="getting-started/backing-up-sisense-application-database.htm">Backing Up Your Application Database</a> for more information.</p>
+        <p class="bold">Did you implement any custom code that accesses the MongoDB directly?</p>
+        <p>If you have scripts that access the <MadCap:variable name="Variables.CompanyName" /> MongoDB directly, you must modify them and add user credentials as <MadCap:variable name="Variables.CompanyName" /> has secured the MongoDB by preventing unauthorized access to it. If you need to access the MongoDB, you can use a read-only user or a read-write user depending on script implementation. For more information, see <a href="administration/application-database/access-sisense-application-database.htm">Accessing the Sisense Application Database</a>.</p>
+        <p>
+            <span class="bold">Note</span>: If you upgrade to <MadCap:variable name="Variables.CompanyName" /> V6.7 after downgrading from V6.7 to an earlier version, you need to delete this folder: <span class="code">C:\ProgramData\sisense\PrismWeb\Repository</span> prior to upgrading to <MadCap:variable name="Variables.CompanyName" /> V6.7.</p>
+    </body>
+</html>

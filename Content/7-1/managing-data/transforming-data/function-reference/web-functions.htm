@@ -1,0 +1,75 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Web Functions | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Web Functions</h1>
+        <p>You can use web functions in custom tables and fields. See <a href="../add-custom-table.htm">Adding a New Custom Table</a> and <a href="../define-edit-field-formulas.htm">Defining and Editing Field Formula</a> for further details.  Below are explanations of available web functions.</p>
+        <p><span class="bold">Note</span>: In all circumstances, the URL must include ‘http://’. For example, if the URL is www.sisense.com, the syntax should be GetFile (‘http:// www.sisense.com’)</p>
+        <p class="bold">DomainIs: true/false DomainIs (URL,compared domain)</p>
+        <p>Get whether the given urls domain matches the given domain. For example ‘http://www.wikipedia.org’ matches org, wikipedia, www.wikipedia.org.</p>
+        <p class="bold">GetFile: string GetFile (url)</p>
+        <p>Extract the filename portion of the path in the given url and returns it.</p>
+        <p>The filename is everything after the last slash in the path.</p>
+        <p class="bold">GetHost: string GetHost (url)</p>
+        <p>Extract host from the given url, for example ‘www.wikipedia.org’ in’http://www.wikipedia.org’</p>
+        <p class="bold">GetPassword: string GetPassword (url)</p>
+        <p>Extract password from the given url.</p>
+        <p>Specified in the url following the user name, with leading colon (‘:’) and trailing at sign (@), as in ‘http://user:password@host/.’</p>
+        <p class="bold">GetPath: string GetPath (url)</p>
+        <p>Extract path from the given url.</p>
+        <p>Path is the url portion following the host name, for example ‘/wiki/Business_intelligence’ in</p>
+        <p>‘http://www.wikipedia.org/wiki/Business_Intelligence’</p>
+        <p class="bold">GetPort: string GetPort (url)</p>
+        <p>Extract port from the given url, parsed as integret, for example 123 in ‘http://www.wikipedia.org:123/’</p>
+        <p class="bold">GetQuery: string GetQuery(url)</p>
+        <p>Extract the query from the given url.</p>
+        <p>Specified in the url after the ‘?’ and before (optional) the ‘#’ sign, for example ‘par=val’ in ‘http://www.wikipedia.org/?par=val#ref’.</p>
+        <p class="bold">GetQueryParamValue (url,param name): string GetQueryParamValue (url,param name)</p>
+        <p>Extract param value from the given url’s query, by the given param name.</p>
+        <p>Param/Value pairs when supplied, are delimited by an ampersand or a semicolon.</p>
+        <p class="bold">GetRef: string GetRef (url)</p>
+        <p>Extract ref from given url.</p>
+        <p>Specified in the url starting after last appearance of the ‘#’ sign, for example ‘ref’ in ‘http://www.wikipedia.org/?par=val#ref’</p>
+        <p class="bold">GetScheme: string GetScheme (url)</p>
+        <p>Extract scheme from given url.</p>
+        <p>Skips leading spaces and followed colon (‘:’) sign, for example ‘http://www.wikipedia.org/’</p>
+        <p class="bold">GetUserName: string GetUserName (url)</p>
+        <p>Extract user name from given url.</p>
+        <p>Specified in the url before the host name and delimited by an ‘@’ as in ‘http://user@host/.’</p>
+        <p class="bold">HasHost: true\fast HasHost (url)</p>
+        <p>Get whether the given url specifies a host.</p>
+        <p class="bold">HasPassword: true\fast HasPassword (url)</p>
+        <p>Get whether the given url specifies a password.</p>
+        <p class="bold">HasPath: true\fast HasPath (url)</p>
+        <p>Get whether the given url specifies a path.</p>
+        <p class="bold">HasPort: true\fast HasPort (url)</p>
+        <p>Get whether the given url specifies a port.</p>
+        <p class="bold">HasQuery: true\fast HasQuery (url)</p>
+        <p>Get whether the given url specifies a query.</p>
+        <p class="bold">HasRef: true\fast HasRef (url)</p>
+        <p>Get whether the given url specifies a ref.</p>
+        <p class="bold">HasScheme: true\fast HasScheme (url)</p>
+        <p>Get whether the given url specifies a scheme.</p>
+        <p class="bold">HasUsername: true\fast HasUsername (url)</p>
+        <p>Get whether the given url specifies a user name.</p>
+        <p class="bold">HostIsIpAddress: true\fast HostIsIpAddress (url)</p>
+        <p>Get whether the given url host name is an ip address.</p>
+        <p class="bold">IsEmptyUrl: true\fast IsEmptyUrl (url)</p>
+        <p>Get whether the given url is empty.</p>
+        <p class="bold">IsFileUrl: true\fast IsFileUrl (url)</p>
+        <p>Get whether the given url is a file url.</p>
+        <p class="bold">IsSecuredUrl: true\fast IsSecuredUrl (url)</p>
+        <p>Get whether the given url scheme indicates a secured connection(https).</p>
+        <p class="bold">IsStandardScheme: true\fast IsStandardScheme (url)</p>
+        <p>Returns true if the scheme for the current urk is a known ‘standard’ scheme.</p>
+        <p>Standard schemes have an authority and a path section (including file:).</p>
+        <p class="bold">IsValidUrl: true\fast IsValidUrl (url)</p>
+        <p>Get whether the given url has a valid form.</p>
+        <p class="bold">PathForRequest: true\fast PathForRequest (url)</p>
+        <p>Returns the path that should be sent to the server.</p>
+        <p>This is the path, parameter, and query portions of the url.</p>
+        <p class="bold">SchemeIs: true\fast SchemeIs (url)</p>
+        <p>Get whether the given url scheme portion matches the given scheme.</p>
+    </body>
+</html>

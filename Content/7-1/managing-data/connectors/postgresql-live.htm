@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1764" MadCap:lastWidth="719">
+    <head>
+        <title>PostgreSQL Live | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>PostgreSQL Live</h1>
+        <p>This topic describes how you can add live connections to your PostgreSQL&#160;Server databases from the <MadCap:variable name="Variables.Sisense Web Application"></MadCap:variable>. </p>
+        <p>For information about live connections, see <a href="../LiveConnect.htm"><MadCap:variable name="Variables.CompanyName" /> Live Connect</a>. </p>
+        <h2>Adding Live Connections</h2>
+        <p class="bold">To add a live connection:</p>
+        <ol>
+            <li>In the <MadCap:variable name="Variables.Sisense Web Application" />, select <span class="bold">Admin</span> &gt; <span class="bold">Data Sources</span>. The Data Sources page is displayed.<br /><img src="../../../Resources/Images/Sisenselive-1-768x381.png" class="thumblarge" /></li>
+            <li>In the Data Sources page, click <span class="bold">Add Live Connection</span>. The Add Live Connection dialog box is displayed.<br /><img src="../../../Resources/Images/v7livecon.png" class="thumblarge" /></li>
+            <li>In the Add Live Connection dialog box, select your live data source.</li>
+            <li>Under the Connect tab, enter the following credentials:</li>
+            <p class="indent">
+                <span class="bold">Location</span>: The IP address of your data source.</p>
+            <p class="indent">
+                <span class="bold">User Name</span>: The user name  to access data source.</p>
+            <p class="indent">
+                <span class="bold">Password</span>: The password to access your data source.</p>
+            <li>(Optional) Select <span class="bold">Encrypt Connection</span> to configure the driver to encrypt all communication with the PostgreSQL Server instance before sending it over the network, and then select <span class="bold">Trust Server Certificate</span>.</li>
+            <li>Click <span class="bold">Next</span>.</li>
+            <li>Under the Select Data tab, on the left side is a list of schemas located in your data source. Select the relevant schema.  You can find the schema easily by searching for it through the search field at the top of the list to filter the schemas displayed. After selecting the schema, a list of the available tables and views are displayed.</li>
+            <li>Select a table or view. You can find the table easily by searching for it through the search field at the top of the list to filter the tables displayed.</li>
+            <li>Click <span class="bold">Next</span>.</li>
+            <li>Under the Connection Settings tab, set the following:<br /><span class="bold">Connection Name</span>: Enter a name for your connection. This field defines the name of your data source displayed in the <MadCap:variable name="Variables.Sisense Web Application" />.<br /><span class="bold">Refresh Rate</span>: Enter or select the refresh rate for your data source. The shortest refresh rate you can set is 10 seconds. The refresh rate is the time in between queries to the data source. If the previous query has not been completed, the next query is not sent until the previous refresh is complete unless the refresh rate is greater than the time it took to complete the refresh since the last query. For example, if your refresh rate is 10 seconds, and your query takes 15 seconds, the next query is sent when the previous query is complete as 10 seconds has passed and the previous query is complete. If your refresh rate is 30 seconds, and the previous query is complete, the next refresh will be in 30 seconds from the last query.<br /><span class="bold">Time Out</span>: Enter or select the Time Out rate for your data source. The Time Out rate determines how long <MadCap:variable name="Variables.CompanyName" /> waits before cancelling a query that does not receive a response from your data source.</li>
+            <li>Click <span class="bold">Done</span>. The connection is added as a data set to your Data Sources page.</li>
+        </ol>
+    </body>
+</html>

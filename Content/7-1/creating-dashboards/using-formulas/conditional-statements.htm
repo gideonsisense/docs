@@ -1,0 +1,13 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="1124" MadCap:lastWidth="904">
+    <head>
+        <title>Conditional Statements | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Conditional Statements</h1>
+        <p>Conditional statements are formulas that enable you to create additional categories in your data set. When the condition is met, the new category is added to your  visualization without modifying the data source itself.</p>
+        <p>For example, if you want to calculate only certain values according to conditions you define, you can use a conditional statement to include only the values of interest.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> provides several conditional statements that enable you to evaluate criteria and display only the relevant results in your dashboard.</p>
+        <span class="bold">Note</span>: Conditional states work on measures and aggregations only and return numeric values.<h2 class="notoc">IF</h2><p class="code">IF (Boolean_expression, true value, false value)</p><p>Evaluates a boolean expression and returns the first value when evaluated as true, and returns the second value when evaluated as false.</p><p>For example:</p><p class="code">(if(Sum(Sales) &lt; 10, 0, Sum(Sales) )</p><p>Nested IF statements are also supported.</p><p>For example:</p><p class="code">if (Sum(Sales) &lt; 100 , 1 ,(if (Sum(Sales) &lt; 1000 , 2, 3) )</p><h2 class="notoc">Case</h2><p class="code">CASE</p><p class="code">WHEN Boolean_expression THEN result_expression</p><p class="code">[ ... ]</p><p class="code">[ ELSE else_result_expression ]</p><p class="code">END</p><p>The CASE function evaluates boolean expressions, and when evaluated as true, returns the corresponding result_expression. If no match is found, the else_result_expression is returned. If there is no default returned and no values match, then Null is returned.</p><p>For example:</p><p class="code">CASE</p><p class="code">WHEN Sum(Sales) &lt; 100 THEN 1</p><p class="code">WHEN Sum(Sales) &lt; 1000 THEN 2</p><p class="code">ELSE 3</p><p class="code">END</p></body>
+</html>

@@ -1,0 +1,68 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="6" MadCap:lastHeight="3493" MadCap:lastWidth="520">
+    <head>
+        <title>Column Chart | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Column Chart</h1>
+        <p>The column chart can be used in different business scenarios, especially for comparing items, and comparing data over time. The chart can include multiple values on both the X and Y-axis, as well as a break down by categories displayed on the Y-axis.</p>
+        <h2 class="notoc">Adding Data</h2>
+        <ol>
+            <li>In the <span class="bold">Categories</span> panel, click <span class="bold">Add +</span> to select the field(s) whose values will be placed on the X-Axis.<br />Typically, the X-Axis of a Column Chart is descriptive data. You must add at least one item to <span class="bold">Categories</span>, and at most, two items.<br />When two <span class="bold">Category</span> items are added, then the chart’s X-Axes are automatically grouped. To change the order of the categories, drag a category up or down in the Categories list.<br /><span class="bold">One Category Item</span><br /><img src="../../../Resources/Images/columnone.png" class="thumblarge" /><br /><span class="bold">Two Category Items</span><br /><img src="../../../Resources/Images/columntwo.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">Values</span> area, select the field whose value determines the height of the columns by clicking <span class="bold">Add +</span>. Typically, the Y&#8209;Axis of a Column Chart is used to represent numeric data.<br />You must add at least one field to <span class="bold">Values</span>. When more than one Value is added, then each item is represented in the chart by its own color and area.</li>
+            <li>
+                <span class="bold">Break by</span>: Select a field by which to break (group) the data represented in this chart by clicking<span class="bold"> Add +</span>.<br />Each group is represented by a different column and is automatically added to the chart’s legend.<br />This is an optional field, and operates under the following conditions:</li>
+            <ul>
+                <li>At most one <span class="bold">Break by</span> field can be added.</li>
+                <li>The <span class="bold">Break by</span> option is available only when a single field was added to <span class="bold">Values </span>(Y-Axis).</li>
+                <li>Only a single field can be added to <span class="bold">Values</span>, if the <span class="bold">Break by</span> option, described below, was used.</li>
+            </ul>
+            <li>Define filters for the widget, as described in <a href="../filtering-dashboards-and-widgets/designer-filters/create-dashboard-filter.htm">Filtering Dashboards</a>.</li>
+        </ol>
+        <h2 class="notoc">Designing the Column Chart</h2>
+        <p>Fine-tune the appearance of the COLUMN CHART Widget, using the following tools:</p>
+        <ul>
+            <li>
+                <span class="bold">Column&#160;Type</span>: Select how columns are represented in the Widget:<ul><li><span class="bold">Classic</span>: Columns are displayed side by side.</li><li><span class="bold">Stacked</span>: Columns are stacked on top of each other and do not overlap. The tooltips over the columns show the percentage distribution among the Values.</li><li><span class="bold">Stacked 100</span>: Columns are stacked on top of each other (but do not overlap) and the combined column is stretched to represent 100%. This option is most commonly used when the relative distribution of the values is more important than their aggregation.</li></ul></li>
+        </ul>
+        <p>Selecting the Column Type</p>
+        <p>
+            <img src="../../../Resources/Images/columntype.png" />
+        </p>
+        <table style="width: 100%;">
+            <col />
+            <col />
+            <col />
+            <tbody>
+                <tr>
+                    <td>Classic</td>
+                    <td>Stacked</td>
+                    <td>Stacked 1000</td>
+                </tr>
+                <tr>
+                    <td>
+                        <img src="../../../Resources/Images/columnclassic-280x300.png" class="thumblarge" />
+                    </td>
+                    <td>
+                        <img src="../../../Resources/Images/columnstacked-285x300.png" class="thumblarge" />
+                    </td>
+                    <td>
+                        <img src="../../../Resources/Images/columnstacked100-274x300.png" class="thumblarge" />
+                    </td>
+                </tr>
+            </tbody>
+        </table>
+        <ul>
+            <li>
+                <span class="bold">Legend</span>: Specify whether to show or hide the Legend and its position.</li>
+            <li>
+                <span class="bold">Value Labels</span>: Specify whether to show or hide labels showing values in the Column Chart. You can also select the angle of the labels.<br /><img src="../../../Resources/Images/valueLabels1.png" class="thumblarge" /></li>
+            <li>
+                <span class="bold">X-Axis</span>: Enable or disable the following options:<ul><li><span class="bold">Grid Lines</span>: Shows (Default) / hides.</li><li><span class="bold">Labels</span>: Shows (Default) / hides.</li><li><span class="bold">Title</span>: Select the checkbox to display the X-Axis title. To edit the title, type in a new title. Click outside the text box to apply the new value.</li></ul></li>
+            <li>
+                <span class="bold">Y-Axis</span>: Enable or disable the following options:<ul><li><span class="bold">Grid Lines</span>: Shows (Default) / hides.</li><li><span class="bold">Logarithmic</span>: Displays using orders of magnitude.</li><li><span class="bold">Labels</span>: Shows (Default) / hides.</li><li><span class="bold">Title</span>: Select the checkbox to display the y-axis title. To edit the title, type in a new title. Click outside the text box to apply the new value.</li><li><span class="bold">Values on Axis</span>: To change the default minimum, maximum or interval values on the axis, type in the new values, and click outside the text boxes to apply the new values. To restore any of the values to their default states, click on the reset button. reset button</li></ul></li>
+            <li>
+                <span class="bold">Auto Zoom</span>: When a widget contains more data than can comfortably be displayed in one view, Auto Zoom will resize the chart to include more data, and in some cases adds a zoom bar under the widget. The zoom bar enables you to scroll right and left and to zoom in/out of different parts of the width of the widget.</li>
+        </ul>
+    </body>
+</html>

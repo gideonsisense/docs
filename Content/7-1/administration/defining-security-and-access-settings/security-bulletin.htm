@@ -1,0 +1,27 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head>
+        <title>Security Bulletin | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Security Bulletin</h1>
+        <p class="bold">Update regarding a security vulnerability resolved in Sisense V6.7.1 on May 23, 2018</p>
+        <p>Starting from <MadCap:variable name="Variables.CompanyName" /> V6.7, there was an issue with data security rules. This rare issue occurred only when a single dashboard contained at least two widgets from entirely disconnected tables - meaning that there was no relationship path leading from one table to the other.</p>
+        <p>If a filter was applied on one of the tables, data security rules of the second table were disabled. The widget showing data from the second table would display all data, without data security rule restrictions.</p>
+        <p>Note that the issue did not occur when a dashboard only used widgets related to a single data security field. The issue also did not occur if there was any relationship path between the tables of the data security fields. The relationship path did not have to be a direct relationship between the tables, it could be a relationship that went through other tables.</p>
+        <p>The issue is resolved in Sisense V6.7.1 (build 6.7.1.17004), and in <MadCap:variable name="Variables.CompanyName" /> V7.1.2.</p>
+        <p>&#160;</p>
+        <p class="bold">Update regarding Meltdown (CVE-2017-5754) and Spectre (CVE-2017-5753 and CVE-2017-5715)</p>
+        <p>The Meltdown/Spectre vulnerabilities are the recent vulnerabilities found in Intel’s processors. These are vulnerabilities in all of the Windows operating systems. Sisense provides an application and does not provide the server hardware or the Windows OS. These are provided by customers. As such, it’s the customers’ responsibility to secure their OS.</p>
+        <p>We recommend customers follow all security recommendations of the vendors who provided the customers OS. The current Windows recommendation is to install the latest available security updates for the OS. Sisense has run extensive performance tests on the OS patch (Windows patch) and found a minimal impact on performance.</p>
+        <p>For more information about these vulnerabilities and how to negate them, see:</p>
+        <p>
+            <a href="https://meltdownattack.com/">Meltdown and Spectre</a>: A high-level description of the vulnerabilities.</p>
+        <p>
+            <a href="https://googleprojectzero.blogspot.co.il/2018/01/reading-privileged-memory-with-side.html">Project Zero</a>: Describes the theory behind the vulnerabilities by those who discovered them.</p>
+        <p>
+            <a href="https://newsroom.intel.com/news-releases/intel-issues-updates-protect-systems-security-exploits/">Intel Official Announcement</a>: Describes Intel’s response to the vulnerabilities.</p>
+        <p>
+            <a href="https://www.amd.com/en/corporate/speculative-execution">AMD Processor Security</a>: Describes AMD’s response to the vulnerabilities.</p>
+    </body>
+</html>

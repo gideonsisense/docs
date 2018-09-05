@@ -1,0 +1,132 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to PayPal | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to PayPal</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> PayPal connector is a standalone connector that allows you to import data from PayPal’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.ECM" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to PayPal’s API. To obtain a connection string, you will need to retrieve an API Key from PayPal or register a PayPal app.</p>
+        <p>Once you have connected to PayPal, you can import a variety of tables from the PayPal API.</p>
+        <p>This page describes how to install the PayPal connector, how to connect to</p>
+        <p>PayPal with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the PayPal Connector</a>
+            </li>
+            <li><a href="#Connecti">Connecting to the PayPal REST API</a>
+            </li>
+            <li><a href="#Adding">Adding PayPal Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#PayPal">PayPal Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the PayPal Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the PayPal connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the PayPal connector:</p>
+        <ol>
+            <li>Contact us for the PayPal installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.</li>
+        </ol>
+        <p>The PayPal connector is displayed in the <MadCap:variable name="Variables.ECM" />under<span class="bold"> Add Data</span> &gt; <span class="bold">Web Services</span>.</p>
+        <p>
+            <img src="../../../Resources/Images/paypal connect.png" class="thumblarge" />
+        </p>
+        <h2 class="notoc"><a name="Connecti"></a>Connecting to the PayPal REST API</h2>
+        <p>There are two authentication methods available for connecting to PayPal, through an API Key or through OAuth. Both methods expose the same data, the difference is in what information is required by PayPal to authenticate your account. For the API Key, all you need is a key provided my PayPal in your account. For Oauth, you need to register an app with PayPal, and then pass those details to <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>After you have the relevant information from PayPal, you create a connection string and connect to PayPal.</p>
+        <p>To access PayPal’s REST API from <MadCap:variable name="Variables.CompanyName" />, you must provide valid Oauth PayPal credentials. These credentials are provided by PayPal when you create an application.</p>
+        <h3 class="notoc">Creating an App</h3>
+        <p>You can follow the procedure below to register an app and obtain the OAuth client credentials, the Client Id and Client Secret:</p>
+        <ol>
+            <li>Log in to your PayPal developer account and click the <span class="bold">Dashboard</span> tab.</li>
+            <li>On the REST API apps section, click <span class="bold">Create App</span>.</li>
+            <li>Enter the App Name.</li>
+            <li>From the list, select the sandbox account that will be used to get data from.</li>
+        </ol>
+        <p>PayPal generates a set of sandbox and live OAuth keys for the application. The sandbox credentials are shown after creating the app. For the live credentials, select the Live option. The sandbox credentials will be used to get data only for the sandbox account selected when creating the App, while the Live credentials will be used to get data only for the developer account used to create this app.</p>
+        <h2 class="notoc"><a name="Adding"></a>Adding PayPal Tables to Your ElastiCube</h2>
+        <p>After you have retrieve your API Key or OAuth credentials from PayPal, you provide the relevant information in a connection string. <MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to PayPal and import data into the <MadCap:variable name="Variables.ECM" />. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. </p>
+        <p>The following parameters are mandatory for PayPal's connection string:&#160;</p>
+        <ul>
+            <li><span class="bold">OAuthClientId</span>: Set this to the consumer key in your app settings.</li>
+            <li><span class="bold">OAuthClientSecret</span>: Set this to the consumer secret in your app settings.</li>
+            <li><span class="bold">CallbackURL</span>: Set this to the callback URL you specified in your app settings.</li>
+            <li><span class="bold">InitiateOAuth</span>: Set this to GETANDREFRESH. You can use InitiateOAuth to avoid repeating the OAuth exchange and manually setting the OAuthAccessToken and OAuthAccessTokenSecret.</li>
+            <li><span class="bold">UseSandbox</span>: Set this to true if you are using sandbox credentials.</li>
+        </ul>
+        <p>For API Keys, the connection string to PayPal is in the following format:</p>
+        <p class="code">jdbc:paypal:APIKey=xxxxxxxxxxxxxxxxxxxxxx;</p>
+        <p>For OAuth, the connection string to PayPal is in the following format:</p>
+        <p class="code">jdbc:paypal:OAuthClientId=AZhGVsogGRX5uqwtE0B9il15uhFrbvSklbu2Hg;</p>
+        <p class="code">OAuthClientSecret=EGFkKCToAep3uH9EMRtaj_GHWmm3;InitiateOAuth=GETANDREFRESH;</p>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <p class="bold">To add PayPal data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">PayPal</span>. The Connect to PayPal window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter your connection string.</li>
+            <li>Click <span class="bold">Connect to Server</span>. PayPal is displayed in the Select Database list.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to PayPal and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <h2 class="notoc"><a name="PayPal"></a>PayPal Tables</h2>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> PayPal connector allows you to import the following tables into the <MadCap:variable name="Variables.ECM" />.</p>
+        <h3 class="notoc">Available Tables</h3>
+        <table>
+            <thead>
+                <tr>
+                    <th>Name</th>
+                    <th>Description</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>AuthorizationDetails</td>
+                    <td>Query details about Authorizations.</td>
+                </tr>
+                <tr>
+                    <td>CaptureDetails</td>
+                    <td>Query details about a captured Payment.</td>
+                </tr>
+                <tr>
+                    <td>CreditCardDetails</td>
+                    <td>Query details about the funding instrument of the payer, such as a Credit Card or a token that represents a Credit Card.</td>
+                </tr>
+                <tr>
+                    <td>Invoices</td>
+                    <td>Query Invoices in PayPal.</td>
+                </tr>
+                <tr>
+                    <td>Notifications</td>
+                    <td>Query the list of event types that are subscribed to a Webhook.</td>
+                </tr>
+                <tr>
+                    <td>OrderDetails</td>
+                    <td>Query details about an Order in PayPal.</td>
+                </tr>
+                <tr>
+                    <td>Payments</td>
+                    <td>Query details about Payments</td>
+                </tr>
+                <tr>
+                    <td>PaymentTransactions</td>
+                    <td>Query Transaction details including the amount and item details.</td>
+                </tr>
+                <tr>
+                    <td>RefundDetails</td>
+                    <td>Query details about a specific Refund.</td>
+                </tr>
+                <tr>
+                    <td>Refunds</td>
+                    <td>Query the available refunds in Stripe.</td>
+                </tr>
+                <tr>
+                    <td>SaleDetails</td>
+                    <td>Query details about a Sale Transaction.</td>
+                </tr>
+                <tr>
+                    <td>Webhooks</td>
+                    <td>Query the list of Webhooks.</td>
+                </tr>
+            </tbody>
+        </table>
+    </body>
+</html>

@@ -1,0 +1,22 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1374" MadCap:lastWidth="878">
+    <head>
+        <title>Connecting to SQL Server | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to SQL Server</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to databases, tables and views contained with Microsoft SQL Server databases. The steps below detail how to connect to this type of data source.</p>
+        <ol>
+            <li>Click <span class="bold">Add data</span> on the top menu of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under <span class="bold">Database servers</span>, select <span class="bold">Microsoft SQL Server</span>.<br /><img src="../../../Resources/Images/add-ms-SQL.png" class="thumblarge" /><br />The Connect to SQL Server window is displayed.<br /><img src="../../../Resources/Images/connect2sql.png" class="thumblarge" /></li>
+            <li>
+                <span class="bold">Database server location</span>: Enter the computer/server IP address of the database. To connect to a database running on your own computer enter <span class="bold">localhost</span>.</li>
+            <li>Select either <span class="bold">Windows Authentication</span> if configured with the database or alternatively, <span class="bold">Use the Following User Name &amp; Password</span>, and enter the database credentials.</li>
+            <li>(Optional) Select <span class="bold">Encrypt Connection</span> to configure the driver to encrypt all communication with the SQL Server instance before sending it over the network, and then select <span class="bold">Trust Server Certificate</span>.</li>
+            <li>Click <span class="bold">Connect to server</span>.</li>
+            <li>From the <span class="bold">Select Database</span> list, select the database you want to work with, and click <span class="bold">OK</span>.<br />All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/choose-tables.png" class="thumblarge" /><br />To view a preview of data contained in a particular table, highlight the table or view in the list and click the preview pane below. To preview the table, select the <span class="bold">Preview</span> checkbox. Enable the checkbox next to each table or view you would like to use.<br />Existing relationships between tables can be automatically replicated in the ElastiCube by selecting the <span class="bold">Automatically create relationships from database</span> option. Likewise fields with similar names can be linked by selecting the <span class="bold">Automatically create relationships for fields with the same name</span> option.</li>
+            <li>If you want to customize the data before importing it into the ElastiCube, you can run a custom SQL query to manipulate the data. This can be useful, for example, when you want to import only a portion of the data, rather than all of the data. </li>
+            <li>Once all relevant tables are selected, click <span class="bold">Add</span>.</li>
+        </ol>
+    </body>
+</html>

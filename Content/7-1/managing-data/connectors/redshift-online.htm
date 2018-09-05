@@ -1,0 +1,41 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to Redshift | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Redshift</h1>
+        <p><span class="bold">Note:</span>&#160;This topic describes how to import data using the online <MadCap:variable name="Variables.Sisense Web Application" />. To import data through the desktop <MadCap:variable name="Variables.ECM" />, click <a href="redshift.htm">here</a>. </p>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to databases, tables and views contained within Amazon RedShift  databases. The steps below detail how to connect to this type of data source.</p>
+        <p class="bold">To import data from Amazon Redshift:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page of <MadCap:variable name="Variables.ECM" />, open an <MadCap:variable name="Variables.ElastiCube" /> or create a new <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>In the <MadCap:variable name="Variables.ElastiCube" />, click <img src="../../../Resources/Images/v7databutton.png" class="docbutton" />. The Add Data dialog box is displayed.<br /><img src="../../../Resources/Images/redshift1.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">Amazon Redshift</span> to open the Amazon Redshift settings.</li>
+            <img src="../../../Resources/Images/v7redshift.png" class="thumblarge" />
+            <li>Enter the following details:</li>
+            <ul>
+                <li><span class="bold">Location</span>: Enter the computer/server IP address of the database. This server address should include the port separated by a colon. By default, the port is 5439, for example: [IP Address]:5439. To connect to a database running on your own computer, enter <span class="bold">localhost</span>.</li>
+                <li>
+                    <p>If Windows Authentication is configured with the database in the <span class="bold">User Name</span> and <span class="bold">Password</span> fields, enter your database credentials.</p>
+                </li>
+            </ul>
+            <li><span class="bold">(Optional)</span> Select <span class="bold">Encrypt Connection</span> to configure the driver to encrypt all communication with Redshift before sending it over the network, and then select <span class="bold">Trust Server Certificate</span>.</li>
+            <li>Click <img src="../../../Resources/Images/v7next.png" class="docbutton" />. A list of tables in the database are displayed. All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/tablesettings.png" class="thumblarge" /></li>
+        </ol>
+        <ol start="7">
+            <li>
+                <p>From the Tables list, select the relevant table or view you want to work with. You can click  <img src="../../../Resources/Images/previewtable.png" class="docbutton" /> next to the relevant table or view to see a preview of the data inside it. When you select the table or view, two new options are displayed at the bottom of the list, <span class="bold">Import Relationships</span> and <span class="bold">Add Custom Import SQL</span>.</p>
+            </li>
+            <li>
+                <p>(Optional) By default, existing relationships between tables are automatically replicated in the <MadCap:variable name="Variables.ElastiCube" />. You can disable this by toggling the <span class="bold">Import Relationships</span> switch.</p>
+            </li>
+            <li>
+                <p>(Optional) Click + to customize the data you want to import with SQL. See <a href="import-custom.htm">Importing Data with Custom Queries</a> for more information.</p>
+            </li>
+            <li>
+                <p>After you have selected all the relevant tables, click <span class="bold">Done</span>. The tables are added to your schema in the <MadCap:variable name="Variables.ECM" />.</p>
+            </li>
+        </ol>
+        <p><span class="bold">Note</span>: If you encounter problems connecting to Amazon RedShift, please see <a href="https://support.sisense.com/entries/69097730-EalsticubeManager-hangs-when-trying-to-add-Amazon-Redshift-data">this article</a> in our support forums.</p>
+    </body>
+</html>

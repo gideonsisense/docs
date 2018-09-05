@@ -1,0 +1,30 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Connecting to SQL | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to SQL</h1>
+        <p><span class="bold">Note:</span>&#160;This topic describes how to import data using the online <MadCap:variable name="Variables.Sisense Web Application" />. To import data through the desktop <MadCap:variable name="Variables.ECM" />, click <a href="sql-server.htm">here</a>. </p>
+        <p>The web-based version of the <MadCap:variable name="Variables.ECM" />  enables easy and quick access to databases, tables and views contained with SQL  databases.</p>
+        <p><span class="bold">Note</span>:&#160;Sisense connects to your SQL&#160;database through the default port 1433. This port should be open to <MadCap:variable name="Variables.CompanyName" /> so a connection can be made. Contact your IT&#160;department if this port is closed. </p>
+        <p class="bold">To import data from your SQL database:</p>
+        <ol>
+            <li>In the <span class="bold">Data</span> page of <MadCap:variable name="Variables.ECM" />, open an <MadCap:variable name="Variables.ElastiCube" /> or click <img src="../../../Resources/Images/v7ecube.png" class="docbutton" /> to create a new <MadCap:variable name="Variables.ElastiCube" />.</li>
+            <li>In the <MadCap:variable name="Variables.ElastiCube" />, click <img src="../../../Resources/Images/v7databutton.png" class="docbutton" />. The Add Data dialog box is displayed.<br /><img src="../../../Resources/Images/v7dataconnectors.png" class="thumblarge" /></li>
+            <li>Click <span class="bold">SQL&#160;Server</span>. The SQL Server Database Connect area is displayed.<br /><img src="../../../Resources/Images/v7sql1.png" class="thumblarge" /></li>
+            <li>Enter the following details:</li>
+            <ul>
+                <li><span class="bold">Location</span>: Enter the computer/server IP address of the database. To connect to a database running on your own computer enter <span class="bold">localhost</span>.</li>
+                <li>
+                    <p>If Windows Authentication is configured with the database in the <span class="bold">User Name</span> and <span class="bold">Password</span> fields, enter your database credentials. </p>
+                </li>
+            </ul>
+            <li><span class="bold">(Optional)</span> Select <span class="bold">Encrypt Connection</span> to configure the driver to encrypt all communication with the SQL Server instance before sending it over the network, and then select <span class="bold">Trust Server Certificate</span>.</li>
+            <li>Click <img src="../../../Resources/Images/v7next.png" class="docbutton" />. A list of tables in the database are displayed. All tables and views associated with the database will appear in a new window.<br /><img src="../../../Resources/Images/v7sqltables.png" class="thumblarge" /></li>
+            <li>From the <span class="bold">Select Table</span> list, select the relevant database you want to work with, and click <span class="bold">Done</span>. To view a preview of data contained in a particular table, select the table or view in the list and in click the Preview Table.</li>
+            <li>After you have selected all the relevant tables, click <span class="bold">Done</span>. <br /></li>
+        </ol>
+        <h3 class="notoc">Related Topics</h3>
+        <p>If your build fails due to connectivity issues, see <a href="https://support.sisense.com/hc/en-us/articles/360007765154-Troubleshooting-Windows-Authentication-Login-to-SQL-Server">Troubleshooting Windows Authentication</a> for more information.</p>
+    </body>
+</html>

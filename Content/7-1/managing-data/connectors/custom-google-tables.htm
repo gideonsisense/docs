@@ -1,0 +1,131 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="5" MadCap:lastHeight="3814" MadCap:lastWidth="790">
+    <head>
+        <title>Customizing Google Analytics and AdWords Tables | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Customizing Google Analytics and AdWords Tables</h1>
+        <h2 class="notoc">Introduction</h2>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> provides a connector to easily access data from both Google Analytics and AdWords. By default certain tables and fields are imported from these sources. A detailed description of these standard tables and fields can be found below.</p>
+        <p>In addition, you can add customized tables and additional fields. For more details, read the section below on customization.</p>
+        <h2 class="notoc">Standard Tables from Google Analytics</h2>
+        <p>Below is a list of ready-made reports you can easily access using the Sisense Google Analytics provider.</p>
+        <ul>
+            <li>
+                <span class="bold">Goals, Daily Report</span>: Site,date,source,medium,goalCompletionsAll,goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value, goal2Value, goal3Value, goal4Value</li>
+            <li>
+                <span class="bold">Goals, Monthly Report</span>: Site, year, month, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals, Weekly Report</span>: Site, year, week, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Keyword, Daily Report</span>: Site, date, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Keyword, Daily Report</span>: Site, year, month, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Keyword, Daily Report</span>: Site, year, month, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Keyword, Weekly Report</span>: Site, year, week, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Geography, Daily Report</span>: Site, date, continent, subcontinent, region, country, city, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Geography, Monthly Report</span>: Site, date, continent, subcontinent, region, country, city, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Geography, Weekly Report</span>: Site, date, continent, subcontinent, region, country, city, campaign, keyword, hostname, source, medium, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value</li>
+            <li>
+                <span class="bold">Goals By Content, Daily Report</span>: Site, date, pagePath, pageTitle, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value, goal2Value, goal3Value, goal4Value</li>
+            <li>
+                <span class="bold">Goals By Content, Monthly Report</span>: Site, year, month, pagePath, pageTitle, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value, goal2Value, goal3Value, goal4Value</li>
+            <li>
+                <span class="bold">Goals By Content, Weekly Report</span>: Site, year, week, pagePath, pageTitle, goalCompletionsAll, goal1Completions, goal2Completions, goal3Completions, goal4Completions, goalValueAll, goal1Value, goal2Value, goal3Value, goal4Value</li>
+            <li>
+                <span class="bold">Traffic, Daily Report</span>: Site, date, bounces, entrances, exits, newVisits, pageviews, timeOnPage, timeOnSite, visitors, visits</li>
+            <li>
+                <span class="bold">Traffic, Monthly Report</span>: Site, year, month, bounces, entrances, exits, newVisits, pageviews, timeOnPage, timeOnSite, visitors, visits</li>
+            <li>
+                <span class="bold">Traffic, Weekly Report</span>: Site, year, week, bounces, entrances, exits, newVisits, pageviews, timeOnPage, timeOnSite, visitors, visits</li>
+            <li>
+                <span class="bold">Traffic By Geography, Daily Report</span>: Site, date, continent, subcontinent, region, country, city, bounces, entrances, exits, newVisits, pageviews, timeOnPage, timeOnSite, visits</li>
+            <li>
+                <span class="bold">Traffic By Geography, Monthly Report</span>: Site, year, month, continent, subcontinent, region, country, city, bounces, entrances, exits, newVisits, pageviews, timeOnPage, timeOnSite, visits</li>
+            <li>
+                <span class="bold">Traffic By Geography, Weekly Report</span>: Site, year, week, continent, subcontinent, region, country, city, bounces, entrances, exits, newVisits, pageviews, timeOnPage, timeOnSite, visits</li>
+            <li>
+                <span class="bold">Traffic By Keyword, Daily Report</span>: Site, year, date, pagePath, pageTitle, source, medium, bounces, entrances, exits, newVisits, pageviews, timeOnPage, visits</li>
+            <li>
+                <span class="bold">Traffic By Keyword, Monthly Report</span>: Site, year, month, pagePath, pageTitle, source, medium, bounces, entrances, exits, newVisits, pageviews, timeOnPage, visits</li>
+            <li>
+                <span class="bold">Traffic By Keyword, Weekly Report</span>: Site, year, week, pagePath, pageTitle, source, medium, bounces, entrances, exits, newVisits, pageviews, timeOnPage, visits</li>
+            <li>
+                <span class="bold">Traffic By Content, Daily Report</span>: Site, date, pagePath, pageTitle , source , medium, bounces , entrances, exits , newVisits , pageviews, timeOnPage, visits</li>
+            <li>
+                <span class="bold">Traffic By Content, Monthly Report</span>: Site, year, month, pagePath, pageTitle , source , medium, bounces , entrances, exits , newVisits , pageviews, timeOnPage, visits</li>
+            <li>
+                <span class="bold">Traffic By Content, Weekly Report</span>: Site, year, week, pagePath, pageTitle , source , medium, bounces , entrances, exits , newVisits , pageviews, timeOnPage, visits</li>
+            <li>
+                <span class="bold">Traffic By Navigation, Daily Report</span>: Site, date, pagePath, landingPagePath, exitPagePath, secondPagePath , medium, uniquePageviews, bounces, entrances, exits, newVisits, pageviews, timeOnPage</li>
+            <li>
+                <span class="bold">Traffic By Navigation, Monthly Report</span>: Site, year, Month, pagePath, landingPagePath, exitPagePath, secondPagePath , medium, uniquePageviews, bounces, entrances, exits, newVisits, pageviews, timeOnPage</li>
+            <li>
+                <span class="bold">Traffic By Content, Navigation Report</span>: Site, year, week, pagePath, landingPagePath, exitPagePath, secondPagePath, medium, uniquePageviews, bounces, entrances, exits, newVisits, pageviews, timeOnPage</li>
+        </ul>
+        <h2 class="notoc">Standard Tables from Google AdWords</h2>
+        <p>Below is a list of ready-made reports you can easily access using the Sisense Google AdWords provider.</p>
+        <ul>
+            <li>
+                <span class="bold">Ad Group Performance Report</span>: AccountDescriptiveName, Date, Campaign, Campaign Id, Ad Group, Ad Group Id, AD Group Status, Avg Position, Clicks, Avg CPC, Cost, Cost/Conv. (1-per-click), Ad Distribution, Impressions, Conversions, (1-per-click), Device, ClickType</li>
+            <li>
+                <span class="bold">Ad Group (Report) Daily Report</span>: AccountDescriptiveName, Date, Campaign, Campaign Id, Ad Group, Ad Group Id, AD Group Status, Avg Position, Clicks, Avg CPC, Cost, Cost/Conv. (1-per-click), Ad Distribution, Impressions, Conversions, (1-per-click), Device, ClickType</li>
+            <li>
+                <span class="bold">Ad Group (Report) Monthly Report</span>: AccountDescriptiveName, Month, Campaign, Campaign Id, Campaign Status, Ad Group, Ad Group Id, AD Group Status, Avg Position, Clicks, Avg CPC, CTR, Avg CPM, Cost, Cost/Conv. (1-per-click), Ad Distribution, Impressions, Conversions, (1-per-click), Device, ClickType</li>
+            <li>
+                <span class="bold">Search Query Performance, Daily Report</span>: AccountDescriptiveName, Date, Search Query, Search Query Match Type, Avg Position, Clicks, Cost, Impressions, Conversions (1-per-click)</li>
+            <li>
+                <span class="bold">Search Query Performance, Monthly Report</span>: AccountDescriptiveName, Month, Search Query, Search Query Match Type, Avg Position, Clicks, Cost, Impressions, Conversions (1-per-click)</li>
+            <li>
+                <span class="bold">Keyword, Daily Report</span>: AccountDescriptiveName, Date , Campaign, Campaign Id, Campaign Status, Ad Group, Ad Group Id, Ad Group Status, Keyword, Avg Position, Clicks, Cost, Impressions, Conversions (1-per-click), Est. First Page Bid</li>
+            <li>
+                <span class="bold">Keyword, Monthly Report</span>: AccountDescriptiveName, Month , Campaign, Campaign Id, Campaign Status, Ad Group, Ad Group Id, Ad Group Status, Keyword, Avg Position, Clicks, Cost, Impressions, Conversions (1-per-click), Est. First Page Bid</li>
+            <li>
+                <span class="bold">Geo Performance Report</span>: AccountDescriptiveName, Campaign, Campaign Id, Country Criteria Id, City, Metro, Region, Campaign Status, Ad Group, Ad Group Id, Ad Group Status, Clicks, Cost, Impressions</li>
+        </ul>
+        <h2 class="notoc">Adding and Customizing Tables and Fields in Google Analytics and AdWords</h2>
+        <p>You can customize both the tables and the fields that you imported from Google Analytics and AdWords. Using the procedure below, you can also import fields from tables that are not automatically imported by <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p class="bold">To customize the imported data:</p>
+        <ol>
+            <li>Find the appropriate dimension from the Google API: <a href="https://developers.google.com/analytics/devguides/reporting/core/dimsmets">Google Analytics API</a> / <a href="https://developers.google.com/adwords/api/docs/appendix/reports#keywords">Google AdWords API</a>.</li><![CDATA[
+]]><span class="bold">            Note</span>: Use the dimension name and not the XML attribute.
+             <img src="../../../Resources/Images/dim-name.png" /><li>Open the GAnalytics.Fields and GAnalytics.Tables xml files for Google Analytics, or the AdWords.Fields and AdWords.Tables xml files for Google AdWords. These files can usually be found in the following location after the first successful build through the Google Analytics of Google Adwords connector:</li><ul style="list-style-type: circle;"><li>%ProgramData%\Sisense\PrismServer\LocalRepository2.0\Resources\Google\Analytics</li><li>%ProgramData%\Sisense\PrismServer\LocalRepository2.0\Resources\Google\Adwords</li></ul><![CDATA[
+            ]]><span class="bold">Note</span>: If you are unable to locate the files in the above directories, look under %AppData% \Roaming\Sisense\Prism\LocalRepository2.0\Resources\Google\Analytics/AdWords, or search for the XML files in your root directory.
+            <li>To add a new field from a different table, open the “GAnalytics.Tables.xml” file or “AdWords.Tables.xml” file, and add a new table element that includes the new field.
+        <p><span class="bold">Note</span>: Do not add the field to an existing table element.</p><p>In the following example, AccountTimeZoneId is a field from a table that is not imported by default.</p><p class="code">&lt;table name="Time Zone Table Example" report_type="Query" aggregation_type="Monthly"&gt;</p><p class="code">&lt;fields&gt;</p><p class="code">&lt;field id="AccountTimeZoneId"&gt;&lt;/field&gt;</p><p class="code">&lt;/fields&gt;</p><p class="code">&lt;/table&gt;</p><p class="code">&lt;/tables&gt;</p></li><li>Add the same field to the relevant GAnalytics.Fields or AdWords.Fields xml file, as follows:</li></ol>
+        <p>
+            <span class="bold">Note</span>: Do not add the field to an existing table element.</p>
+        <p>In the following example, AccountTimeZoneId is a field from a table that is not imported by default.</p>
+        <p class="code">&lt;table name="Time Zone Table Example" report_type="Query" aggregation_type="Monthly"&gt;</p>
+        <p class="code">&lt;fields&gt;</p>
+        <p class="code">&lt;field id="AccountTimeZoneId"&gt;&lt;/field&gt;</p>
+        <p class="code">&lt;/fields&gt;</p>
+        <p class="code">&lt;/table&gt;</p>
+        <p class="code">&lt;/tables&gt;</p>
+        <p class="indent">Once you save these changes and connect to Google Analytics, you will see the AccountTimeZoneId field in the ‘Time Zone Table’ example.</p>
+        <h3 class="notoc">Notes</h3>
+        <ul>
+            <li>At least one new table must be added to the Tables.xml file before field changes are made to any standard tables.</li>
+            <img src="../../../Resources/Images/tab-ele.png" class="thumblarge" />
+        </ul>
+        <ul>
+            <li>When the <span class="bold">type</span> attribute is long, the build may fail. If this happens, change the <span class="bold">type</span> from long to a different type, for example string.</li>
+        </ul>
+        <h2 class="notoc">Adding Custom Dimensions and Values to Google Analytics Tables</h2>
+        <p>To import custom dimensions and values, they must be first defined in the ‘Fields’ XML, and later included in the relevant reports in the ‘Tables’ XML.</p>
+        <p>Open the fields XML from: <span class="code">%ProgramData%\Sisense\PrismServer\LocalRepository2.0\Resources\Google\Analytics</span></p>
+        <p>Custom Dimension:</p>
+        <p class="code">&lt;field id=”ga:dimension1” name=”FIELD_NAME” response_value=”ga:dimension1”</p>
+        <p>Custom Metric:</p>
+        <p class="code">&lt;field id=”ga:customVarValue1” name=”VALUE_NAME” response_value=”ga:customVarValue1”</p>
+        <p>The serial number of the dimension/value must be the same as defined in Google Analytics. The rest of the custom field attributes must be defined according to type; you can use a similar field for reference.</p>
+        <p>After adding the field, save the XML and add the field to the relevant report in the tables XML.</p>
+        <p>For more troubleshooting, see our <a href="https://support.sisense.com/entries/95873227-How-to-add-custom-tables-and-fields-to-Google-Adwords">forum post</a>.</p>
+    </body>
+</html>

@@ -1,0 +1,20 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="2" MadCap:lastHeight="797" MadCap:lastWidth="745">
+    <head>
+        <title>Managing User Sessions | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Managing User Sessions</h1>
+        <p>When a user signs into the <MadCap:variable name="Variables.Sisense Web Application" />, a session cookie is stored in their browser. The session cookie allows the user to remain logged in and authenticated even after ending a session by closing the browser.</p>
+        <p>For security reasons, you may want to logout your users or end their session when they close the browser. Through the <MadCap:variable name="Variables.CompanyName" /> REST API, you can add an additional property, sessionOnlyCookie, to the POST, /api/settings/security of REST API v.9.</p>
+        <p>When the Boolean value of sessionOnlyCookie is true, the login page does not display the “Remember Me” checkbox in the user’s browser and logging in to <MadCap:variable name="Variables.CompanyName" /> generates a session cookie.</p>
+        <p>
+            <img src="../../../Resources/Images/rememberme1.png" class="thumblarge" />
+        </p>
+        <p>When the user logs out or closes their browser, the session ends and they must log in again to access <MadCap:variable name="Variables.CompanyName" />.</p>
+        <p>The following is an example of a cURL command in which the Remember Me button is no longer displayed in the Login page.</p>
+        <p class="code">&lt;pre&gt;curl -X POST –header “Content-Type: application/json” –header “Accept: application/json” -d “{</p>
+        <p class="code">\”sessionOnlyCookie\” : \”true\”</p>
+        <p class="code">}” “http://localhost:8081/api/settings/security”&lt;/pre&gt;</p>
+    </body>
+</html>

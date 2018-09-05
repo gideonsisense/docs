@@ -1,0 +1,232 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd">
+    <head><title>Exact | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Exact Online</h1>
+        <p>The <MadCap:variable name="Variables.CompanyName" /> Exact connector is a standalone connector that allows you to import data from Exact’s API into the <MadCap:variable name="Variables.ECM" />. After you have downloaded and installed the connector, you can connect through a connection string you provide <MadCap:variable name="Variables.CompanyName" /> in the <MadCap:variable name="Variables.ECM" />. The connection string is used to authenticate users who connect to the Exact APIs. To obtain a connection string, you will need to create a Exact app.</p>
+        <p>Once you have connected to Exact, you can import a variety of tables from the Exact API.</p>
+        <p>This page describes how to install the Exact connector, how to connect to Exact with a connection string, and what tables you can import into the <MadCap:variable name="Variables.ECM" />:</p>
+        <ul>
+            <li><a href="#Installi">Installing the Exact Connector</a>
+            </li>
+            <li><a href="#Adding">Adding Exact Tables to your <MadCap:variable name="Variables.ElastiCube" /></a>
+            </li>
+            <li><a href="#Exact">Exact Tables</a>
+            </li>
+        </ul>
+        <h2 class="notoc"><a name="Installi"></a>Installing the Exact Connector</h2>
+        <p><MadCap:variable name="Variables.CompanyName" /> provides the Exact connector as a standalone connector that you can download and add to your list of default <MadCap:variable name="Variables.CompanyName" /> connectors.</p>
+        <p class="bold">To install the Exact connector:</p>
+        <ol>
+            <li><a href="http://data.sisense.com/connectors/jvm/latest/release/Exact Online.Connector.Installer.exe">Download</a> the Exact installation file.</li>
+            <li>Open the installation file and click <span class="bold">Install</span>.</li>
+            <li>After the installation process is complete, click <span class="bold">Close</span>.<br />The Exact connector is displayed in the <MadCap:variable name="Variables.ECM" /> under <span class="bold">Add Data</span> &gt; <span class="bold">Web Services</span>.</li>
+        </ol>
+        <h3 class="notoc"><a name="Adding"></a>Adding Exact Tables to your ElastiCube</h3>
+        <p><MadCap:variable name="Variables.CompanyName" /> uses connection strings to connect to Exact and import data into the <MadCap:variable name="Variables.ECM" />. The default connection string for Exact is:</p>
+        <p class="code">  jdbc:exactonline:InitiateOAuth=GETANDREFRESH;Region=’United States’;Division=5512;</p>
+        <p>After you connect using the default connection string, <MadCap:variable name="Variables.CompanyName" /> redirects you to Exact’s Login page where you log in and your account is authenticated. Once the account is authenticated, the relevant tables can be added to your <MadCap:variable name="Variables.ElastiCube" />.</p>
+        <p>If you want to customize your connection string, you can by creating an Exact app and passing additional connection string parameters. For more information, see <a href="#Register">Registering an App</a> at the end of this page.</p>
+        <p class="bold">To add Exact data:</p>
+        <ol>
+            <li>In <MadCap:variable name="Variables.ECM" />, click <span class="bold">Add Data</span> and then, <span class="bold">Exact</span>. The Connect to Exact window is displayed.</li>
+            <li>In <span class="bold">Datasource Connection String</span>, enter the connection string:  <span class="code">jdbc:exactonline:InitiateOAuth=GETANDREFRESH;Region='United States';Division=5512;</span></li>
+            <li>Click <span class="bold">Connect to Server</span>. You are redirected to the Exact Login page.</li>
+            <li>Log in to your Exact account. Exact is displayed in the Select Database list in the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Click <span class="bold">OK</span>. <MadCap:variable name="Variables.CompanyName" /> connects to Exact and displays a list of tables available for you to import.</li>
+            <li>Select the relevant tables and click <span class="bold">Add</span>. The tables are displayed in the <MadCap:variable name="Variables.ECM" />.</li>
+        </ol>
+        <p>If you have any problems connecting to your data source, see <a href="https://support.sisense.com/hc/en-us/community/posts/360013657533-Troubleshooting-JDBC-Data-Connectors?flash_digest=bb409caea6311b2ed547437d608be67bdab8187d">Troubleshooting JDBC Data Connectors</a>.</p>
+        <h2 class="notoc"><a name="Exact"></a>Exact Tables</h2>
+        <p>Exact’s RESTful APIs expose the following Exact tables that you can import into the <MadCap:variable name="Variables.ECM" /> through the <MadCap:variable name="Variables.CompanyName" /> Exact connector:</p>
+        <p class="bold">Available Tables</p>
+        <ul>
+            <li>AcceptQuotation</li>
+            <li>AccountInvolvedAccounts</li>
+            <li>AccountOwners</li>
+            <li>Accounts</li>
+            <li>Addresses</li>
+            <li>BankAccounts</li>
+            <li>BankEntries</li>
+            <li>BankEntryLines</li>
+            <li>CashEntries</li>
+            <li>CashEntryLines</li>
+            <li>CommunicationNotes</li>
+            <li>Complaints</li>
+            <li>Contacts</li>
+            <li>Costcenters</li>
+            <li>CostTransactions</li>
+            <li>Costunits</li>
+            <li>DepreciationMethods</li>
+            <li>DirectDebitMandates</li>
+            <li>DocumentAttachments</li>
+            <li>DocumentFolders</li>
+            <li>DocumentTypeFolders</li>
+            <li>Events</li>
+            <li>ExchangeRates</li>
+            <li>GeneralJournalEntries</li>
+            <li>GeneralJournalEntryLines</li>
+            <li>GLAccounts</li>
+            <li>GoodsDeliveries</li>
+            <li>GoodsDeliveryLines</li>
+            <li>InvoiceSalesOrders</li>
+            <li>InvoiceTerms</li>
+            <li>InvolvedUserRoles</li>
+            <li>InvolvedUsers</li>
+            <li>Items</li>
+            <li>ItemWarehouses</li>
+            <li>Journals</li>
+            <li>Mailboxes</li>
+            <li>MailMessageAttachments</li>
+            <li>MailMessages</li>
+            <li>OperationResources</li>
+            <li>Operations</li>
+            <li>Opportunities</li>
+            <li>PaymentConditions</li>
+            <li>PrintedSalesInvoices</li>
+            <li>PrintedSalesOrders</li>
+            <li>PrintQuotation</li>
+            <li>ProductionAreas</li>
+            <li>ProjectHourBudgets</li>
+            <li>ProjectRestrictionEmployees</li>
+            <li>ProjectRestrictionItems</li>
+            <li>ProjectRestrictionRebillings</li>
+            <li>Projects</li>
+            <li>PurchaseEntries</li>
+            <li>PurchaseEntryLines</li>
+            <li>QuotationLines</li>
+            <li>Quotations</li>
+            <li>RejectQuotation</li>
+            <li>ReopenQuotation</li>
+            <li>ReviewQuotation</li>
+            <li>SalesEntries</li>
+            <li>SalesEntryLines</li>
+            <li>SalesInvoiceLines</li>
+            <li>SalesInvoices</li>
+            <li>SalesItemPrices</li>
+            <li>SalesOrderID</li>
+            <li>SalesOrderLines</li>
+            <li>SalesOrders</li>
+            <li>ServiceRequests</li>
+            <li>ShopOrderMaterialPlans</li>
+            <li>ShopOrderRoutingStepPlans</li>
+            <li>ShopOrders</li>
+            <li>SolutionLinks</li>
+            <li>StockCountLines</li>
+            <li>StockCounts</li>
+            <li>SubscriptionLines</li>
+            <li>SubscriptionRestrictionEmployees</li>
+            <li>SubscriptionRestrictionItems</li>
+            <li>Subscriptions</li>
+            <li>Tasks</li>
+            <li>TimeCorrections</li>
+            <li>TimeTransactions</li>
+            <li>VATCodes</li>
+            <li>Warehouses</li>
+            <li>Workcenters</li>
+        </ul>
+        <p class="bold">Available Views</p>
+        <ul>
+            <li>AccountantInfo</li>
+            <li>AccountClasses</li>
+            <li>AccountClassificationNames</li>
+            <li>AccountClassifications</li>
+            <li>ActiveEmployments</li>
+            <li>AddressStates</li>
+            <li>AgingOverview</li>
+            <li>AgingPayablesList</li>
+            <li>AgingReceivablesList</li>
+            <li>Assets</li>
+            <li>AvailableFeatures</li>
+            <li>Banks</li>
+            <li>BatchNumbers</li>
+            <li>Budgets</li>
+            <li>Currencies</li>
+            <li>DefaultMailbox</li>
+            <li>Departments</li>
+            <li>Divisions</li>
+            <li>DocumentCategories</li>
+            <li>Documents</li>
+            <li>DocumentsAttachments</li>
+            <li>DocumentTypeCategories</li>
+            <li>DocumentTypes</li>
+            <li>Employees</li>
+            <li>EmploymentContractFlexPhases</li>
+            <li>EmploymentContracts</li>
+            <li>EmploymentEndReasons</li>
+            <li>EmploymentOrganizations</li>
+            <li>Employments</li>
+            <li>EmploymentSalaries</li>
+            <li>FinancialPeriods</li>
+            <li>GLClassifications</li>
+            <li>GLSchemes</li>
+            <li>GLTransactionTypes</li>
+            <li>HourCostTypes</li>
+            <li>ItemGroups</li>
+            <li>ItemVersions</li>
+            <li>JobGroups</li>
+            <li>JobTitles</li>
+            <li>JournalStatusList</li>
+            <li>Layouts</li>
+            <li>OpportunityContacts</li>
+            <li>OutstandingInvoicesOverview</li>
+            <li>PayablesList</li>
+            <li>PreferredMailbox</li>
+            <li>PriceLists</li>
+            <li>ProfitLossOverview</li>
+            <li>ProjectBudgetTypes</li>
+            <li>PurchaseOrderLines</li>
+            <li>PurchaseOrders</li>
+            <li>ReasonCodes</li>
+            <li>ReceivablesList</li>
+            <li>RecentCosts</li>
+            <li>RecentHours</li>
+            <li>ReportingBalance</li>
+            <li>Returns</li>
+            <li>RevenueList</li>
+            <li>SalesPriceListDetails</li>
+            <li>Schedules</li>
+            <li>SerialNumbers</li>
+            <li>ShippingMethods</li>
+            <li>StockBatchNumbers</li>
+            <li>StockSerialNumbers</li>
+            <li>StorageLocations</li>
+            <li>SubscriptionLineTypes</li>
+            <li>SubscriptionReasonCodes</li>
+            <li>SubscriptionTypes</li>
+            <li>TaxComponentRates</li>
+            <li>TaxEmploymentEndFlexCodes</li>
+            <li>TaxScheduleComponents</li>
+            <li>TaxSchedules</li>
+            <li>TimeAndBillingAccountDetails</li>
+            <li>TimeAndBillingActivitiesAndExpenses</li>
+            <li>TimeAndBillingEntryAccounts</li>
+            <li>TimeAndBillingEntryProjects</li>
+            <li>TimeAndBillingEntryRecentAccounts</li>
+            <li>TimeAndBillingEntryRecentActivitiesAndExpenses</li>
+            <li>TimeAndBillingEntryRecentHourCostTypes</li>
+            <li>TimeAndBillingEntryRecentProjects</li>
+            <li>TimeAndBillingItemDetails</li>
+            <li>TimeAndBillingProjectDetails</li>
+            <li>TransactionLines</li>
+            <li>Transactions</li>
+            <li>Units</li>
+            <li>UserRoles</li>
+            <li>UserRolesPerDivision</li>
+            <li>Users</li>
+            <li>VatPercentages</li>
+        </ul>
+        <h3 class="notoc"><a name="Register"></a>Registering an App</h3>
+        <p>To access Exact’s REST API from the <MadCap:variable name="Variables.ECM" />, you must provide valid Oauth Exact credentials through a <a href="connect-string.htm">connection string</a>. These credentials are provided by Exact when you register an application.</p>
+        <p>After you receive your credentials from Exact, you can create the <a href="connect-string.htm">connection string</a> and provide <MadCap:variable name="Variables.CompanyName" /> with it to connect to your data. Each connection string contains a authentication parameters that the data source uses to verify your identity and what information you can export to <MadCap:variable name="Variables.CompanyName" />. To learn more, see <a href="connect-string.htm">Connection String Parameters</a>.</p>
+        <p>Follow the steps below to obtain the OAuth client credentials, the OAuthClientId and OAuthClientSecret:</p>
+        <ol>
+            <li>Create an Exact Online developer account.</li>
+            <li>Log into the App Center and click <span class="bold">Manage Apps</span> &gt; <span class="bold">Add a New Application</span>.</li>
+            <li>Enter the app name to be displayed to users when they are prompted to grant permissions to your app.</li>
+            <li>Enter the Redirect URI.If you are making a desktop application, set the Redirect URI to <span class="code">http://localhost:portnumbe</span>r. If you are making a Web application, set the Redirect URI to a page you would like the user to be returned to after they have granted your application permissions.</li>
+            <li>Click <span class="bold">Edit</span> for your app. The client credentials, the client Id and client secret, are displayed.</li>
+        </ol>
+    </body>
+</html>

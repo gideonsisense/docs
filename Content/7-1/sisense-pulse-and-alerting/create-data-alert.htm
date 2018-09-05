@@ -1,0 +1,43 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="1926" MadCap:lastWidth="1218">
+    <head>
+        <title>Creating Data Alerts | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Creating Data Alerts</h1>
+        <p>This topic describes data alerts and how you can add them to <MadCap:variable name="Variables.CompanyName" /> Pulse.</p>
+        <p>Data alerts are triggered by conditions you define for your widgets. For example, if you have an Indicator widget that represents your company’s revenue, you can define an alert that notifies you when this revenue reaches or falls below a certain threshold.</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> supports alerts for the following widgets:</p>
+        <ul>
+            <li>Indicator Widgets</li>
+            <li>Area Chart Widgets</li>
+            <li>Bar Chart Widgets</li>
+            <li>Column Chart</li>
+            <li>Line Chart</li>
+        </ul>
+        <p>For each type of widget you can add to Pulse, you can monitor a single value. For example, for Column charts you can monitor a single section (value) of a column. To monitor multiple values, you can add each value you want to monitor to Pulse separately.</p>
+        <p>When creating data alerts, you define the condition that triggers the alert. <MadCap:variable name="Variables.CompanyName" /> provides three alert conditions that can trigger an alert:</p>
+        <p>
+            <img src="../../Resources/Images/pulsethreshold.png" /> Threshold</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> notifies you when a threshold is reached following a build. This condition is useful for monitoring metrics that follow a regular, cyclical schedule.</p>
+        <p>
+            <img src="../../Resources/Images/pulseauto.png" />Automatic</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> automatically notifies you when the <MadCap:variable name="Variables.CompanyName" /> alert engine identifies an anomaly in your data based on machine learning algorithms. The <MadCap:variable name="Variables.CompanyName" /> algorithm actively learns from your data and eliminates noise to identify anomalies in your data. <MadCap:variable name="Variables.CompanyName" />’s anomaly detection is based on a smoothing algorithm that takes the latest values into account. The more times an <MadCap:variable name="Variables.ElastiCube" /> is built, the more accurate <MadCap:variable name="Variables.CompanyName" /> becomes at identifying any anomalies and notifying you.</p>
+        <p>
+            <img src="../../Resources/Images/pulsefeed.png" /> Always</p>
+        <p>
+            <MadCap:variable name="Variables.CompanyName" /> notifies you after each build, regardless if there is a change in your data or not.</p>
+        <p>In addition, you can configure advanced settings that determine who receives the alert and what channel the alert is sent through. For more information see <a href="advanced-settings.htm">Advanced Settings</a>.</p>
+        <p class="bold">To create a data alert:</p>
+        <ol>
+            <li>From the widget’s menu, select <span class="bold">Add To Pulse</span>.</li>
+            <li>The Add to Pulse window is displayed.<br /><img src="../../Resources/Images/addtopulseauto.png" class="thumblarge" /></li>
+            <li>In the <span class="bold">Name</span> field, enter a meaningful name that represents your alert.</li>
+            <li>In the Alert Condition area, select the condition that triggers the alerts.<br /><MadCap:conditionalText MadCap:conditions="Default.Website"><span class="bold">Threshold</span>: <MadCap:variable name="Variables.CompanyName" /> defines the threshold value as the current value displayed in the widget. <MadCap:conditionalText MadCap:conditions="Default.Website">You can increase or decrease this value and define the equality and relational operators that determine when the threshold is met.</MadCap:conditionalText></MadCap:conditionalText><MadCap:conditionalText MadCap:conditions="Default.Website"><MadCap:conditionalText MadCap:conditions="Default.Website"><br /><img src="../../Resources/Images/v7thresh.png" class="thumblarge" MadCap:conditions="Default.Website" /><br /><span class="bold">Automatic</span>: <MadCap:variable name="Variables.CompanyName" /> automatically identifies anomalies in your data and alerts you.<br /><img src="../../Resources/Images/automaticalerts.png" class="thumblarge" MadCap:conditions="Default.Website" /><br /><span class="bold">Always</span>: <MadCap:variable name="Variables.CompanyName" /> notifies you every time the data changes.<br /><img src="../../Resources/Images/always.png" MadCap:conditions="Default.Website" /></MadCap:conditionalText></MadCap:conditionalText></li>
+            <li>Click <span class="bold">Add</span> to create the alert. The alert is added to <MadCap:variable name="Variables.CompanyName" /> Pulse.<br />For additional advanced configuration options, see <a href="advanced-settings.htm">Advanced Settings</a>.</li>
+        </ol>
+    </body>
+</html>

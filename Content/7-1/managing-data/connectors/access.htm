@@ -1,0 +1,28 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<html xmlns:MadCap="http://www.madcapsoftware.com/Schemas/MadCap.xsd" MadCap:lastBlockDepth="4" MadCap:lastHeight="928" MadCap:lastWidth="1472">
+    <head>
+        <title>Connecting to Access | Sisense | Documentation</title>
+    </head>
+    <body>
+        <h1>Connecting to Access</h1>
+        <p>The <MadCap:variable name="Variables.ECM" /> enables easy and quick access to tables contained within Microsoft Access files. </p>
+        <p class="bold">To connect to Microsoft Access:&#160;</p>
+        <ol>
+            <li>Click<span class="bold"> Add data</span> in the top menu of the desktop version of the <MadCap:variable name="Variables.ECM" />.</li>
+            <li>Under Files, select <span class="bold">Microsoft Access File</span>. <br /><img src="../../../Resources/Images/add-Access.png" class="thumblargeli" /></li>
+            <li>Select the Microsoft Access file you want to use. Click <span class="bold">OK</span>.<br />A popup will open with the following options.<br />All tables and views associated with the database will appear in a new window. To preview the data contained in a particular table, highlight the table or view in the list and click the preview pane below. To preview the table, select the <span class="bold">Preview</span> checkbox.</li>
+            <li>
+                <p>Select the checkboxes next to each table or view you want to use.</p>
+            </li>
+            <li>Existing relationships between tables can be automatically replicated in the <MadCap:variable name="Variables.ElastiCube" /> by selecting the<span class="bold"> Automatically create relationships from database</span> checkbox. Likewise fields with similar names can be linked by selecting the <span class="bold">Automatically create relationships for fields</span> with the same name checkbox.</li>
+            <li>Once all relevant tables are selected, click <span class="bold">OK</span>.</li>
+        </ol>
+        <p>
+            <span class="bold">Note</span>: <MadCap:variable name="Variables.CompanyName" /> does not support Access files that were created with the 32-bit version of Microsoft Access. If you try to upload an Access file created in a 32-bit version of Access, the following connection error is displayed.</p>
+        <p>
+            <img src="../../../Resources/Images/access-Error.png" class="thumblarge" />
+        </p>
+        <p>To upload 32-bit Access files, you can install Microsoft’s 64-bit <a href="http://www.microsoft.com/en-us/download/details.aspx?id=13255">Access Database Engine</a> to upload your Access files or click <a href="https://support.sisense.com/entries/98945738-Importing-32-bit-Access-Files">here</a> for more information.</p>
+        <p>&#160;</p>
+    </body>
+</html>
